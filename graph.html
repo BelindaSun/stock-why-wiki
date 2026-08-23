@@ -1,0 +1,793 @@
+<title>涨跌溯源图谱</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Libre+Franklin:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+
+<style>
+  :root {
+    --bg: #e9edf2;
+    --surface: #ffffff;
+    --surface-2: #f3f6fa;
+    --ink: #161b22;
+    --muted: #5a6472;
+    --hair: #d5dce4;
+    --stock: #b9781f;
+    --stock-soft: #e7c48a;
+    --industry: #1f817b;
+    --industry-soft: #8fcfca;
+    --edge: #9aa6b4;
+    --glow: rgba(185,120,31,0.16);
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #0b0e13;
+      --surface: #141922;
+      --surface-2: #1b2330;
+      --ink: #e9edf3;
+      --muted: #8a94a3;
+      --hair: #26303d;
+      --stock: #e0a03e;
+      --stock-soft: #7a5a24;
+      --industry: #4fc4c0;
+      --industry-soft: #245c5a;
+      --edge: #3a4757;
+      --glow: rgba(224,160,62,0.20);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b0e13;
+    --surface: #141922;
+    --surface-2: #1b2330;
+    --ink: #e9edf3;
+    --muted: #8a94a3;
+    --hair: #26303d;
+    --stock: #e0a03e;
+    --stock-soft: #7a5a24;
+    --industry: #4fc4c0;
+    --industry-soft: #245c5a;
+    --edge: #3a4757;
+    --glow: rgba(224,160,62,0.20);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Libre Franklin", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  .stage { position: fixed; inset: 0; display: grid; grid-template-columns: 1fr; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+  canvas.dragging { cursor: grabbing; }
+
+  /* ---- Header ---- */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 5;
+    display: flex; align-items: baseline; gap: 14px;
+    padding: 18px 22px; pointer-events: none;
+  }
+  header .mark {
+    font-family: "Fraunces", serif; font-weight: 900; font-size: 21px;
+    letter-spacing: -0.01em;
+  }
+  header .mark em { font-style: italic; font-weight: 400; color: var(--stock); }
+  header .sub {
+    font-size: 12px; color: var(--muted); letter-spacing: 0.02em;
+  }
+
+  /* ---- Legend ---- */
+  .legend {
+    position: fixed; left: 22px; bottom: 20px; z-index: 5;
+    display: flex; flex-direction: column; gap: 8px;
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--hair); border-radius: 12px;
+    padding: 13px 15px; font-size: 12px; color: var(--muted);
+    max-width: 220px;
+  }
+  .legend .row { display: flex; align-items: center; gap: 9px; }
+  .legend .dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+  .legend .dot.stock { background: var(--stock); }
+  .legend .dot.industry { background: var(--industry); }
+  .legend .dot.ghost { background: transparent; border: 1.5px dashed var(--edge); }
+  .legend .ln { width: 20px; flex: none; border-top: 2px solid var(--edge); }
+  .legend .ln.dash { border-top-style: dashed; }
+  .legend .ln.hold { border-top: 2px dotted var(--industry); }
+  .legend .ln.peer { border-top: 2px dashed var(--stock); }
+  .legend .hint { color: var(--ink); opacity: 0.55; padding-top: 3px; border-top: 1px solid var(--hair); }
+
+  /* ---- Theme toggle ---- */
+  .toggle {
+    position: fixed; top: 16px; right: 18px; z-index: 6; pointer-events: auto;
+    background: var(--surface); color: var(--ink);
+    border: 1px solid var(--hair); border-radius: 999px;
+    width: 38px; height: 38px; cursor: pointer; font-size: 15px;
+    display: grid; place-items: center; transition: background .15s;
+  }
+  .toggle:hover { background: var(--surface-2); }
+  .toggle:focus-visible { outline: 2px solid var(--stock); outline-offset: 2px; }
+
+  /* ---- Guide button + overlay ---- */
+  .guide-btn {
+    position: fixed; top: 16px; right: 64px; z-index: 6; pointer-events: auto;
+    background: var(--surface); color: var(--ink);
+    border: 1px solid var(--hair); border-radius: 999px;
+    height: 38px; padding: 0 16px; cursor: pointer;
+    font-family: "Libre Franklin", sans-serif; font-size: 13px; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 6px; transition: background .15s;
+  }
+  .guide-btn:hover { background: var(--surface-2); }
+  .guide-btn:focus-visible { outline: 2px solid var(--stock); outline-offset: 2px; }
+
+  .overlay {
+    position: fixed; inset: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 76%, transparent);
+    backdrop-filter: blur(6px);
+    display: grid; place-items: center; padding: 24px;
+    opacity: 0; visibility: hidden; transition: opacity .26s;
+  }
+  .overlay.open { opacity: 1; visibility: visible; }
+  .guide-card {
+    background: var(--surface); border: 1px solid var(--hair); border-radius: 18px;
+    width: min(780px, 100%); max-height: 88vh; overflow-y: auto;
+    padding: 34px 38px 40px; box-shadow: 0 30px 80px rgba(0,0,0,0.30);
+    position: relative;
+  }
+  .guide-card h2 { font-family: "Fraunces", serif; font-weight: 900; font-size: 27px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .guide-card .gsub { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+  .guide-card .thesis {
+    font-size: 15px; line-height: 1.62; border-left: 3px solid var(--stock);
+    padding: 6px 0 6px 16px; margin: 0 0 24px; color: var(--ink);
+  }
+  .guide-card .thesis b { color: var(--stock); }
+  .layer { display: grid; grid-template-columns: 42px 1fr; gap: 2px 14px; padding: 15px 0; border-top: 1px solid var(--hair); }
+  .layer .num { font-family: "Fraunces", serif; font-size: 27px; font-weight: 900; color: var(--stock); line-height: 1; grid-row: span 2; }
+  .layer.up .num { color: var(--industry); }
+  .layer .lname { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .layer .lname .hot { color: var(--industry); }
+  .layer .litem { font-size: 13.5px; line-height: 1.55; margin-bottom: 4px; color: var(--ink); }
+  .layer .litem b { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--stock); font-weight: 700; }
+  .layer.up .litem b { color: var(--industry); }
+  .layer .litem .st { color: var(--muted); }
+  .guide-card .flow {
+    font-family: "JetBrains Mono", monospace; font-size: 12px; line-height: 1.7;
+    background: var(--surface-2); border: 1px solid var(--hair); border-radius: 10px;
+    padding: 16px 18px; margin: 24px 0 4px; white-space: pre; overflow-x: auto; color: var(--ink);
+  }
+  .takeaways { margin-top: 26px; }
+  .takeaways h3 { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+  .takeaways .tk { display: flex; gap: 12px; margin-bottom: 14px; font-size: 14px; line-height: 1.62; }
+  .takeaways .tk .n { font-family: "Fraunces", serif; font-weight: 900; font-size: 21px; color: var(--stock); flex: none; line-height: 1.1; }
+  .takeaways .tk b { color: var(--ink); }
+  .guide-card .gclose { position: absolute; top: 18px; right: 20px; background: none; border: none; color: var(--muted); font-size: 24px; cursor: pointer; line-height: 1; width: 32px; height: 32px; border-radius: 8px; }
+  .guide-card .gclose:hover { background: var(--surface-2); color: var(--ink); }
+  @media (max-width: 560px) { .guide-card { padding: 26px 22px 32px; } .guide-btn span.lbl { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .overlay { transition: none; } }
+
+  /* ---- Detail panel ---- */
+  .panel {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 8;
+    width: min(400px, 92vw);
+    background: var(--surface);
+    border-left: 1px solid var(--hair);
+    transform: translateX(101%); transition: transform .34s cubic-bezier(.2,.8,.2,1);
+    display: flex; flex-direction: column;
+    box-shadow: -20px 0 50px rgba(0,0,0,0.14);
+  }
+  .panel.open { transform: translateX(0); }
+  .panel .phead { padding: 22px 24px 16px; border-bottom: 1px solid var(--hair); }
+  .panel .ptype {
+    font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .panel .ticker {
+    font-family: "JetBrains Mono", monospace; font-weight: 700;
+    font-size: 30px; margin: 6px 0 2px; letter-spacing: -0.01em;
+  }
+  .panel .cn { font-family: "Fraunces", serif; font-size: 19px; font-weight: 600; }
+  .panel .move {
+    margin-top: 12px; font-size: 12.5px; color: var(--muted);
+    display: flex; flex-wrap: wrap; gap: 6px 14px;
+  }
+  .panel .move b { color: var(--ink); font-weight: 600; }
+  .panel .pbody { padding: 20px 24px 40px; overflow-y: auto; }
+  .panel h4 {
+    font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+    margin: 22px 0 10px;
+  }
+  .panel h4:first-child { margin-top: 0; }
+  .panel p { margin: 0 0 12px; font-size: 14.5px; line-height: 1.62; color: var(--ink); }
+  .panel .lead { font-size: 15px; }
+  .panel ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .panel li { font-size: 13.5px; line-height: 1.5; display: flex; gap: 9px; }
+  .panel li .tk {
+    font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 12px;
+    color: var(--stock); flex: none; padding-top: 1px;
+  }
+  .panel li .tk.ind { color: var(--industry); }
+  .panel .chain { counter-reset: step; }
+  .panel .chain li { align-items: flex-start; color: var(--muted); }
+  .panel .chain li::before {
+    counter-increment: step; content: counter(step);
+    font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 11px;
+    color: var(--stock); background: var(--glow);
+    width: 20px; height: 20px; border-radius: 50%; flex: none;
+    display: grid; place-items: center;
+  }
+  .panel .src { font-size: 12px; color: var(--muted); }
+  .panel .src a { color: var(--industry); }
+  .panel .pending-note {
+    font-size: 13.5px; color: var(--muted); line-height: 1.6;
+    background: var(--surface-2); border: 1px dashed var(--hair);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .panel .close {
+    position: absolute; top: 16px; right: 16px;
+    background: none; border: none; color: var(--muted); cursor: pointer;
+    font-size: 22px; line-height: 1; width: 30px; height: 30px; border-radius: 8px;
+  }
+  .panel .close:hover { background: var(--surface-2); color: var(--ink); }
+
+  @media (max-width: 560px) {
+    .panel { top: auto; height: 74vh; width: 100vw; border-left: none; border-top: 1px solid var(--hair); transform: translateY(101%); }
+    .panel.open { transform: translateY(0); }
+    .legend { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .panel { transition: none; }
+  }
+</style>
+
+<div class="stage">
+  <canvas id="c"></canvas>
+</div>
+
+<header>
+  <span class="mark">涨跌溯源<em>·图谱</em></span>
+  <span class="sub">stock-why wiki · 点击节点看溯源，拖动可整理</span>
+</header>
+
+<button class="guide-btn" id="guideBtn" aria-label="打开产业链导览">📖 <span class="lbl">导览</span></button>
+<button class="toggle" id="themeBtn" aria-label="切换明暗主题">◐</button>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="AI 半导体产业链导览">
+  <div class="guide-card">
+    <button class="gclose" id="gclose" aria-label="关闭导览">×</button>
+    <h2>AI 半导体产业链 · 导览</h2>
+    <div class="gsub">13 个资产节点 + 3 个行业主题 · 2026-08-24</div>
+    <p class="thesis">AI 算力需求爆发，沿产业链层层传导——但 2026 年 8 月出现明显分化：<b>算力芯片端杀高估值回调，存储（HBM）端因硬缺口逆势走强。位置决定命运。</b></p>
+
+    <div class="layer">
+      <div class="num">①</div>
+      <div class="lname">上游设备 · 造芯片的机器</div>
+      <div style="grid-column:2">
+        <div class="litem"><b>ASML</b> 阿斯麦 — EUV 光刻机唯一供应商。<span class="st">本周 −4.4%，受中国自研 DUV + 美国出口管制压制（独有地缘风险）。</span></div>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="num">②</div>
+      <div class="lname">代工 · 把设计变成实物</div>
+      <div style="grid-column:2">
+        <div class="litem"><b>TSM</b> 台积电 — 先进制程基石，唯一双向枢纽。<span class="st">Q2 超预期却小幅回调，卡在「AI 超级周期 vs 高 capex 压利润」。</span></div>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="num">③</div>
+      <div class="lname">算力芯片 · 干活的大脑</div>
+      <div style="grid-column:2">
+        <div class="litem"><b>NVDA</b> 英伟达 — <span class="st">财报前（8/26）观望性回调，非利空。</span></div>
+        <div class="litem"><b>AMD</b> 超微 — <span class="st">一月狂跌 ~18%，客户流失 + ~123x 杀估值。</span></div>
+        <div class="litem"><b>CBRS</b> Cerebras — <span class="st">Q2 miss + 硬件 −23%，~68x 容不下瑕疵。</span></div>
+        <div class="litem st">共性：高估值 + 高预期，8 月集体杀估值。情绪杀为主，基本面未崩。</div>
+      </div>
+    </div>
+    <div class="layer up">
+      <div class="num">④</div>
+      <div class="lname">存储 HBM 三强 · 喂饱大脑的内存　<span class="hot">🔥 逆势走强</span></div>
+      <div style="grid-column:2">
+        <div class="litem"><b>SKHY</b> SK海力士 — <span class="st">HBM 霸主 ~54%，拿下 NVDA 70% HBM4 订单，估值仅 ~4x。</span></div>
+        <div class="litem"><b>SSNLF</b> 三星 — <span class="st">追赶者 ~28%，HBM4 行业首发，Q3 环比 +3 倍。</span></div>
+        <div class="litem"><b>MU</b> 美光 — <span class="st">逆势破 $1000，供不应求 + 5 年 take-or-pay 锁量锁价。</span></div>
+        <div class="litem st">为什么逆势？HBM 是硬缺口、靠长约锁价——把「周期股」波动合约化，成了资金的确定性洼地。</div>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="num">⑤</div>
+      <div class="lname">物理下游 · 芯片装进机房怎么跑</div>
+      <div style="grid-column:2">
+        <div class="litem"><b>SMCI</b> 超微电脑 — <span class="st">AI 服务器总装，$600 亿订单，但薄利放量、毛利可持续性存疑。</span></div>
+        <div class="litem"><b>DELL</b> 戴尔 — <span class="st">总装大厂版，AI 服务器营收 +757%，YTD +281% 创新高，体量碾压 SMCI。</span></div>
+        <div class="litem"><b>VRT</b> Vertiv — <span class="st">供电 + 液冷纯玩家，$150 亿 backlog，一年 +107%。</span></div>
+      </div>
+    </div>
+    <div class="layer up">
+      <div class="num">⑥</div>
+      <div class="lname">能源最上游 · 电从哪来　<span class="hot">⚡ 强势</span></div>
+      <div style="grid-column:2">
+        <div class="litem"><b>GEV</b> GE Vernova — <span class="st">发电+电网龙头，AI 电力短缺最大受益者，$1760 亿 backlog，两年 +450%。</span></div>
+        <div class="litem st">算力再强，没电也白搭——GEV 把 AI 叙事从芯片一路推到发电端。</div>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="num">⑦</div>
+      <div class="lname">板块母节点 · 温度计</div>
+      <div style="grid-column:2">
+        <div class="litem"><b>SMH</b> 半导体 ETF — <span class="st">一篮子龙头，近一月 −10% 板块回调，但年内仍 +55%。</span></div>
+      </div>
+    </div>
+
+    <div class="flow">主链   ASML ─▶ TSM ─▶ NVDA / AMD / CBRS ─▶ SMCI / DELL ─▶ VRT ─▶ 数据中心
+内存   MU / SKHY / SSNLF  ──HBM──▶  算力芯片
+电力   GEV ⚡ ──发电──▶ VRT ──▶ 机房</div>
+
+    <div class="takeaways">
+      <h3>两条最值得记住的主线</h3>
+      <div class="tk"><span class="n">1</span><div><b>分化 = 这波行情的关键词。</b> 同属「AI 半导体」，8 月却冰火两重天：算力芯片与设备在杀高估值，存储因 HBM 硬缺口逆势走强。越是「卡脖子 + 锁长约」的环节越抗跌。</div></div>
+      <div class="tk"><span class="n">2</span><div><b>杀的是估值，不是基本面。</b> 回调几家业绩其实还在增长（TSM +45%、AMD +50%、VRT +24%）。跌因是涨太多、预期太满、板块太拥挤（82% 基金经理称「史上最拥挤交易」）+「AI 是否超支」担忧。</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="row"><span class="dot stock"></span> 股票 / 资产</div>
+  <div class="row"><span class="dot industry"></span> 行业 / 主题</div>
+  <div class="row"><span class="dot ghost"></span> 待补（问到就长出）</div>
+  <div class="row"><span class="ln"></span> 已建立关系</div>
+  <div class="row"><span class="ln hold"></span> 成分 / 包含（ETF）</div>
+  <div class="row"><span class="ln peer"></span> 同类 / 竞争</div>
+  <div class="row"><span class="ln dash"></span> 潜在上下游</div>
+  <div class="hint">拖动节点整理布局 · 点节点看详情</div>
+</div>
+
+<aside class="panel" id="panel" aria-live="polite">
+  <button class="close" id="closeBtn" aria-label="关闭">×</button>
+  <div class="phead" id="phead"></div>
+  <div class="pbody" id="pbody"></div>
+</aside>
+
+<script>
+// ---------- Data (mirrors the wiki entries) ----------
+const NODES = [
+  { id:"NVDA", cn:"英伟达", type:"stock" },
+  { id:"TSM",  cn:"台积电", type:"stock" },
+  { id:"CBRS", cn:"Cerebras", type:"stock" },
+  { id:"AI",   cn:"AI 基础设施", label:"AI-INFRA", type:"industry" },
+  { id:"SEMI", cn:"半导体", label:"SEMIS", type:"industry" },
+  { id:"POWER",cn:"电力 / 能源", label:"POWER", type:"industry" },
+  // pending / 待补 — shows the graph keeps growing
+  { id:"ASML", cn:"阿斯麦", type:"stock" },
+  { id:"AMD",  cn:"AMD", type:"stock" },
+  { id:"MU",   cn:"美光", type:"stock" },
+  { id:"SKHY", cn:"SK 海力士", type:"stock" },
+  { id:"SSNLF",cn:"三星电子", type:"stock" },
+  { id:"SMH",  cn:"半导体 ETF", type:"stock" },
+  { id:"VRT",  cn:"Vertiv", type:"stock" },
+  { id:"SMCI", cn:"美超微", type:"stock" },
+  { id:"GEV",  cn:"GE Vernova", type:"stock" },
+  { id:"DELL", cn:"戴尔", type:"stock" },
+  // fresh stubs — the growth frontier keeps moving
+  { id:"CEG",  cn:"Constellation（核电）", type:"stock", pending:true },
+];
+
+const EDGES = [
+  { a:"TSM",  b:"NVDA", label:"独家代工" },
+  { a:"NVDA", b:"AI",   label:"核心供给" },
+  { a:"TSM",  b:"AI",   label:"扩产满足需求" },
+  { a:"NVDA", b:"SEMI", label:"板块权重股" },
+  { a:"TSM",  b:"SEMI", label:"板块基石" },
+  { a:"TSM",  b:"CBRS", label:"代工晶圆引擎" },
+  { a:"CBRS", b:"NVDA", label:"推理市场竞争" },
+  { a:"CBRS", b:"AI",   label:"推理效率战" },
+  { a:"CBRS", b:"SEMI", label:"高 beta 新贵" },
+  { a:"ASML", b:"TSM",  label:"独家 EUV 设备" },
+  { a:"ASML", b:"SEMI", label:"设备近垄断" },
+  { a:"ASML", b:"AI",   label:"最上游卖铲人" },
+  { a:"MU",   b:"NVDA", label:"HBM 供货" },
+  { a:"MU",   b:"AMD",  label:"HBM 供货" },
+  { a:"MU",   b:"CBRS", label:"HBM 供货" },
+  { a:"MU",   b:"AI",   label:"存储 AI 受益" },
+  { a:"AMD",  b:"NVDA", label:"头号挑战者" },
+  { a:"AMD",  b:"SEMI", label:"高 beta 龙头" },
+  { a:"TSM",  b:"AMD",  label:"代工 MI/EPYC" },
+  { a:"AMD",  b:"CBRS", label:"同抢推理" },
+  { a:"AMD",  b:"AI",   label:"AI 加速器" },
+  { a:"SMH",  b:"SEMI", label:"板块映射" },
+  { a:"SMH",  b:"NVDA", label:"成分股", kind:"holds" },
+  { a:"SMH",  b:"TSM",  label:"成分股", kind:"holds" },
+  { a:"SMH",  b:"AMD",  label:"成分股", kind:"holds" },
+  { a:"SMH",  b:"ASML", label:"成分股", kind:"holds" },
+  { a:"SMH",  b:"MU",   label:"成分股", kind:"holds" },
+  { a:"VRT",  b:"AI",   label:"供电散热刚需" },
+  { a:"VRT",  b:"SMCI", label:"散热集成" },
+  { a:"SMCI", b:"NVDA", label:"总装用芯片" },
+  { a:"SMCI", b:"AMD",  label:"总装用芯片" },
+  { a:"SMCI", b:"AI",   label:"服务器总装" },
+  { a:"GEV",  b:"AI",   label:"AI 用电最上游" },
+  { a:"GEV",  b:"VRT",  label:"供电衔接" },
+  { a:"GEV",  b:"POWER",label:"发电龙头" },
+  { a:"VRT",  b:"POWER",label:"配电散热" },
+  { a:"DELL", b:"SMCI", label:"总装双雄", kind:"peer" },
+  { a:"DELL", b:"NVDA", label:"总装用芯片" },
+  { a:"DELL", b:"AMD",  label:"总装用芯片" },
+  { a:"DELL", b:"AI",   label:"服务器总装" },
+  { a:"CEG",  b:"POWER",label:"核电供应", pending:true },
+  { a:"SKHY", b:"NVDA", label:"70% HBM4 订单" },
+  { a:"SKHY", b:"AI",   label:"HBM 咽喉" },
+  { a:"SSNLF",b:"NVDA", label:"HBM4 追赶" },
+  { a:"SSNLF",b:"AI",   label:"HBM 追赶" },
+  { a:"MU",   b:"SKHY", label:"HBM 三强", kind:"peer" },
+  { a:"SKHY", b:"SSNLF",label:"HBM 三强", kind:"peer" },
+  { a:"MU",   b:"SSNLF",label:"HBM 三强", kind:"peer" },
+];
+
+const DETAIL = {
+  NVDA: {
+    lead: "这不是坏消息导致的下跌，而是财报前的观望性回调。8/26 盘后公布 FY2027 Q2，市场在等这份「AI 风向标」给出需求确认，落地前资金倾向减仓避险。",
+    move: [["异动","连跌 6 天 · 10 日 −4.13%"],["催化剂","confirmed"]],
+    up: [["TSM","独家代工，产能决定供给"],["MU","HBM 内存是 AI 芯片瓶颈"],["MSFT/GOOGL","云厂商 capex = 订单簿"]],
+    down: [["AMD","直接竞争，常同向或对冲"],["SMH","权重股，带动整个板块"],["ETN/GEV","GPU 集群拉动电网需求"]],
+    chain: ["Q2 财报临近（8/26）","被视为整个 AI 交易的定调时刻","短线资金财报前降风险","连续温和下滑（波动非反转）"],
+    src: [["Motley Fool 8/21","https://www.fool.com/investing/2026/08/21/prediction-nvidia-stock-will-go-parabolic-after-aug-26-here-are-2-3-trillion-reasons-why/"]],
+  },
+  TSM: {
+    lead: "Q2 营收 $40.2B 超预期、全年营收增速上调至 40%+、AI 需求「火热」——基本面是强的。但股价反而谨慎回落，因为公司同时把 2026 capex 上调到 $600–640 亿并预警利润率下降。",
+    move: [["异动","$413 · YTD +36.7% · 近一周 −2%"],["催化剂","confirmed"]],
+    up: [["ASML","独家 EUV 光刻机，决定产能上限"],["材料/气体","光刻胶等制程隐性瓶颈"],["NVDA/AAPL","客户订单是需求源头"]],
+    down: [["NVDA","代工产能/价格直接传导到出货"],["SMH","capex 指引是全行业风向标"],["AMAT/LRCX","扩产 = 设备商订单"]],
+    chain: ["AI 芯片需求爆发","营收创纪录、上调全年指引","满足需求需巨额扩产（capex +$40 亿）","短期毛利率承压","利好中反而回调（买预期卖兑现）"],
+    src: [["CNBC 8/10","https://www.cnbc.com/2026/08/10/tsmc-revenue-surge-ai-chip-big-tech.html"]],
+  },
+  CBRS: {
+    lead: "表面财报不差（收入 +94%、上调全年指引），但市场盯住三处硬伤：收入仍低于预期、硬件销售 −23% 暴露「块状」需求、毛利率 46.5%→40.6%。叠加 IPO 后 ~68x 高估值，任何瑕疵都被放大成暴跌。",
+    move: [["异动","8/12 −14% · 8/18 −12.7%"],["催化剂","confirmed + likely"]],
+    up: [["TSM","代工晶圆级引擎，产能/良率是硬件成本约束"],["HBM/封装","决定芯片性能与成本"],["租算力","云业务靠租机房扩张，租金涨压毛利"]],
+    down: [["OpenAI","最大客户，80%+ backlog——护城河也是单点风险"],["NVDA","与其 GPU 在推理市场正面竞争"],["AI 应用层","更快更便宜推理利好实时 AI，但需求集中"]],
+    chain: ["收入 miss + 硬件 −23%：增长「块状」不线性","毛利率骤降：云扩张是烧钱换收入","~68x 估值容不下瑕疵，戴维斯双杀","80%+ 押注 OpenAI，单点风险被重新定价","CS-4 发布后利好兑现，获利了结"],
+    src: [["CNBC 8/12","https://www.cnbc.com/2026/08/12/cerebras-cbrs-q2-earnings-report-2026.html"],["Bloomberg「lumpy 需求」","https://www.bloomberg.com/news/articles/2026-08-12/cerebras-hardware-business-declines-in-sign-of-lumpy-demand"]],
+  },
+  AI: {
+    lead: "AI 训练/推理所需的芯片、服务器、内存、电力与散热的总和。云厂商的资本开支是它的需求源头。当前趋势：加速。",
+    members: [["NVDA","核心 GPU 供给，订单簿约 $1T"],["TSM","GPU 独家代工，capex 上调至 $600–640 亿"],["CBRS","晶圆级推理芯片，主题转向「推理效率战」"],["AMD","MI 加速器挑战 NVDA，估值敏感度飙升"],["ASML","最上游 EUV 卖铲人，受 AI 超支担忧顺链传导"],["MU·SKHY·SSNLF","HBM 存储三强，AI 内存咽喉"],["VRT·SMCI·DELL","物理下游：供电散热 + 服务器总装双雄"],["GEV","能源最上游：AI 电力短缺受益"]],
+    todo: "待补：核电（CEG）等电力细分。",
+  },
+  SEMI: {
+    lead: "设计、制造、封测芯片的全产业链。2026 费城半导体指数 +63%，但龙头分化明显（NVDA 仅 +21% 跑输板块）。当前趋势：强势。",
+    members: [["NVDA","板块权重股，今年跑输指数"],["TSM","板块基石，Q2 营收 +45%"],["CBRS","高 beta/高估值新贵，业绩波动大"],["AMD","高 beta 龙头，一度 +126% 后均值回归"],["ASML","EUV 设备近垄断，受地缘/出口管制扰动最大"],["MU·SKHY·SSNLF","HBM 三强，存储 AI 超级周期"],["SMH","板块 ETF 母节点"]],
+    todo: "待补：ASML 设备、AMD 竞争、SMH/SOXX ETF。",
+  },
+  ASML: {
+    lead: "基本面依旧强（Q2 营收 €9.33B，全年指引维持），本周下跌是地缘三力叠加：中国国资企业自造 DUV 光刻机、美国推进 DUV 对华出口禁令、板块大涨后估值性获利了结。是全链最上游的「卖铲人」。",
+    move: [["异动","本周 −4.4% · 距高点 −11.8%"],["催化剂","likely（多因素）"]],
+    up: [["蔡司 Zeiss","EUV 光学独家供应，ASML 自己的卡脖子上游"],["精密零部件","EUV 光源等复杂供应链"],["晶圆厂 capex","客户扩产意愿决定订单"]],
+    down: [["TSM","最大客户，ASML 交期决定其先进制程扩产节奏"],["NVDA/AMD/CBRS","间接下游：所有先进 AI 芯片都要过它的机器"],["中国晶圆厂","占 ~20% 收入，受出口管制约束"]],
+    chain: ["中国自研 DUV 进展，侵蚀中低端近垄断","美国 DUV 对华禁令推进，~20% 收入承压","PE ~56x 高估值，任何风吹草动被放大","板块 beta 联动 8 月「AI/半导体杀估值」"],
+    src: [["ts2.tech：单周 −4.4%","https://ts2.tech/en/asml-slides-4-4-in-a-week-as-thin-friday-bounce-tests-ai-capex-premium/"],["出口管制法案推进","https://coincentral.com/asml-stock-falls-8-as-china-export-control-bill-advances-analysts-weigh-in/"]],
+  },
+  AMD:  {
+    lead: "不是暴雷，是「涨太多 + 预期太满」后的均值回归。年内一度 +126%、TTM 市盈率 ~123x（行业均值 ~35），把增长完美定价。Q2 营收 +50% 到 $11.5B 超预期仍被砸盘。",
+    move: [["异动","7 月 −18% · 8 月跌破 $500"],["催化剂","confirmed + likely"]],
+    up: [["TSM","MI/EPYC/Ryzen 全靠台积电代工"],["HBM","AI 加速器关键瓶颈"],["CoWoS 封装","与 NVDA 抢同一批封装产能"]],
+    down: [["NVDA","直接竞争，同涨同跌但份额此消彼长"],["CBRS","同抢推理市场，收购 Taalas 强化推理"],["云厂商","MSFT/Meta/OpenAI/Oracle 采用 Helios 机架"]],
+    chain: ["年内 +126%、~123x：完美定价容不下瑕疵","AI 超支担忧 + 收益率上行，板块杀估值","SpaceX 只买 NVDA + DeepSeek 传自研芯片，客户叙事受打击","大会利好不及预期 + 财报超预期仍跌：买预期卖事实","费半三日暴跌，高 beta 龙头跌幅放大"],
+    src: [["Motley Fool：7 月跌 18%","https://www.fool.com/investing/2026/08/10/why-amd-stock-tumbled-18-in-july/"],["客户转向对手","https://intellectia.ai/news/stock/amd-shares-drop-as-major-customer-shifts-to-rival-for-ai-chips"]],
+  },
+  MU: {
+    lead: "跟本周普跌的 AMD/ASML 相反，美光是 AI 链里逆势走强的一环——8/18 首破 $1,000。核心是 HBM 供不应求：HBM4 已独供 NVDA Vera Rubin，还锁了 16 份 5 年 take-or-pay 长约（~$1000 亿 RPO），把「周期股」变成了「合约化」的确定性。",
+    move: [["异动","破 $1,000（+4.1%）· 前瞻 PE ~13"],["催化剂","confirmed"]],
+    up: [["ASML/TSM","先进制程需光刻设备与代工/自建产能"],["蚀刻/沉积设备","DRAM/NAND 制程资本开支"],["硅片/特种气体","原材料"]],
+    down: [["NVDA","HBM4 量产供货 Vera Rubin，GPU 必配"],["AMD/CBRS","AI 加速器同样依赖 HBM，供给紧张影响成本/交期"],["消费电子","传统 DRAM/NAND 周期需求盘"]],
+    chain: ["AI 加速器必配 HBM + 良率低产能紧：结构性供不应求","HBM4 领先量产 + 独供 NVDA Vera Rubin：绑定最强需求","5 年 take-or-pay 锁量锁价：周期波动被合约化","前瞻 PE ~13 不贵：板块杀估值时资金反而流入"],
+    src: [["Micron 破 $1,000","https://www.fxleaders.com/news/2026/08/18/micron-stock-breaks-1000-ai-memory-boom-1031/"],["HBM 领先者 2026 计划","https://io-fund.com/ai-stocks/micron-stock-up-100-hbm-leader-2026-plan"]],
+  },
+  SMH: {
+    lead: "这不是某只票的事——是整个半导体板块的估值性回调。上半年太猛（Q2 +70%，史上最佳）把预期打满；82% 基金经理称半导体是「史上最拥挤交易」，拥挤放大了回调深度。但年内仍 +55.6%，基本面未崩，属健康获利了结。",
+    move: [["异动","近一月 −10% · YTD +55.6%"],["催化剂","confirmed + likely"]],
+    up: [["NVDA / TSM","权重最大的成分，GPU 龙头 + 代工基石"],["AMD / ASML","高 beta 挑战者 + 唯一 EUV 设备商"],["MU","HBM 代表，近期逆势走强的成分"]],
+    down: [["板块情绪风向标","SMH 涨跌 = 市场对 AI/半导体交易的信心温度计"],["被动资金流","ETF 申赎放大成分股同涨同跌（beta 效应）"],["SOXX 等","其他半导体 ETF 的参照系"]],
+    chain: ["上半年暴涨 +70% + 极度拥挤：仓位太满缺买盘","AI 超支担忧 + 收益率上行：集体杀估值","被动 ETF 申赎：成分股 beta 踩踏被放大","但龙头业绩仍强：健康回调非趋势反转"],
+    src: [["chip rally stumbles","https://primexbt.com/news/semiconductor-etf-smh-drops-4-as-chip-rally-stumbles/"],["VanEck 持仓","https://www.vaneck.com/us/en/investments/semiconductor-etf-smh/"]],
+  },
+  SKHY: {
+    lead: "HBM 霸主，市占 ~50-55%，是 NVDA 最核心的 HBM 供应商。拿下 Vera Rubin 平台 ~70% 的 HBM4 订单，双方签 $500B+ 级长期合作。估值却仅 ~4 倍次年盈利，极度便宜——和 MU 一样是逆势走强的存储环节。",
+    move: [["异动","$130→$171 · PE ~4x"],["催化剂","confirmed"]],
+    up: [["ASML","存储先进制程需光刻设备"],["先进封装/键合","HBM 靠 3D 堆叠，封装是护城河"],["设备/晶圆材料","DRAM 制程资本开支"]],
+    down: [["NVDA","独家拿下 70% HBM4 订单，供货 Vera Rubin"],["AMD/CBRS","AI 加速器同样依赖其 HBM"],["MU/SSNLF","HBM 直接竞争，三家瓜分市场"]],
+    chain: ["HBM 供不应求 + 封装/良率领先：稳坐 50%+ 市占","独家拿下 NVDA 70% HBM4：绑定最强需求","$500B 长约 + 2GW AI 云：需求锁到多年后","估值仅 ~4x：板块杀估值时资金反而青睐"],
+    src: [["供全球一半 HBM、<4x 盈利","https://www.fool.com/investing/2026/08/06/sk-hynix-supplies-more-than-half-the-worlds-hbm-me/"],["拿下 NVDA 70% HBM4","https://www.semicone.com/article-385.html"]],
+  },
+  SSNLF: {
+    lead: "HBM 三强的「追赶者」（市占 ~28%，居 SKHY 之后、MU 之前）。早期 HBM3E 有良率问题，现激进爬坡：已量产行业首款商用 HBM4，Q3 预计环比增超 3 倍。弹性大，但执行/良率仍是变量。",
+    move: [["异动","补档 · Temasek 注资传闻带动"],["催化剂","confirmed"]],
+    up: [["ASML","存储与代工先进制程光刻设备"],["3D 堆叠技术","HBM 竞争力核心（zHBM/HBM5）"],["设备/材料","自有晶圆厂庞大 capex"]],
+    down: [["NVDA/AMD/CBRS","HBM4 供应商之一，追赶 SKHY 份额"],["MU/SKHY","HBM 直接竞争，三家瓜分"],["消费电子/代工","手机/面板/Foundry 非 AI 大盘"]],
+    chain: ["AI HBM 需求爆发 + 此前掉队：有追赶补涨空间","HBM4 行业首发 + Q3 环比 3 倍：份额营收快改善","腾挪通用产能 + 主权基金注资：供给资金双加码","仍落后 SKHY（28% vs 54%）：弹性大但良率是变量"],
+    src: [["首发商用 HBM4","https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing"],["HBM 是持续的礼物","https://www.blocksandfiles.com/flash/2026/07/31/for-samsung-hbm-is-the-gift-that-keeps-on-giving/5281709"]],
+  },
+  VRT: {
+    lead: "AI 数据中心供电+液冷的纯玩家（pure-play）。不卖芯片，卖让芯片能跑起来的「电和冷」——另一种卖铲人。Q2 营收 +24%、液冷 backlog ~$150 亿。近一月 −13% 是随板块杀估值，非基本面问题。",
+    move: [["异动","$262 · 一年 +107% · 近一月 −13%"],["催化剂","confirmed"]],
+    up: [["电力/铜/机电","配电、UPS、冷却系统零部件"],["液冷供应链","冷板、CDU、管路等散热硬件"],["数据中心 capex","云厂商建「AI 工厂」决定订单"]],
+    down: [["NVDA/AMD/CBRS","高功耗芯片必配液冷才能满载（互补非竞争）"],["SMCI","与整机厂协同集成供电+散热"],["电网/电力主题","数据中心电力短缺是需求宏观背书"]],
+    chain: ["AI 芯片功耗密度飙升：风冷不够，液冷成刚需","数据中心电力短缺：供电管理价值上升","液冷+供电纯玩家 + $150 亿 backlog：可见度高","近一月随 SMH 板块 −13%：高 beta 回调非个体问题"],
+    src: [["AI 数据中心的隐秘赢家","https://www.fool.com/investing/2026/08/09/why-vertiv-best-secrets-ai-data-center-boom/"],["$15B backlog、液冷主导","https://seekingalpha.com/article/4890719-vertiv-holdings-the-15-billion-backlog-liquid-cooling-dominance-and-the-ai-infrastructure-trade-wall-street-is-still-underpricing"]],
+  },
+  SMCI: {
+    lead: "AI 服务器总装厂——把 GPU/内存/散热组装成机架卖给数据中心。8/11 财报后大反弹：新增订单超 $600 亿、毛利意外升到 15-17%。但争议大：整机组装本质薄利放量，BofA 直言高毛利「不可持续」。",
+    move: [["异动","近 7 天 +23% · 股价约 $30 低位"],["催化剂","confirmed"]],
+    up: [["NVDA/AMD","GPU 是服务器最贵最关键部件"],["MU/SKHY/SSNLF","HBM/内存"],["VRT/液冷","高密度机架散热集成"]],
+    down: [["云厂商","直接客户，买机架搭建算力"],["NVDA/AMD 需求","总装订单是芯片需求的放大器/风向标"],["戴尔/HPE","服务器市场份额之争"]],
+    chain: ["AI 数据中心爆买算力：整机需求暴涨，$600 亿订单","客户/产品结构改善：毛利短期升到 15-17%","但组装门槛低、竞争激烈：高毛利被质疑不可持续","叠加历史财务包袱 + 低股价：波动极大，多空尖锐"],
+    src: [["$60B 订单，股价仍近 $30","https://www.foreignpolicyjournal.com/2026/08/10/super-micro-computer-nasdaq-smci-books-60-billion-in-ai-server-orders-but-stock-languishes-near-30/"],["分析师警告毛利不可持续","https://stocktwits.com/news-articles/markets/equity/smci-stock-eyes-1-month-high-as-analysts-lift-price-targets-caution-margins-not-sustainable/cZo8RzHRJgF"]],
+  },
+  GEV: {
+    lead: "发电+电网巨头，AI 用电的最上游——算力再强，没电也白搭。AI 数据中心用电暴增、面临电力短缺，GEV 是最大受益者之一，$1760 亿 backlog、两年 +450%。把 AI 叙事从芯片推到了发电端。",
+    move: [["异动","本周 +14.6% · 两年 +450%"],["催化剂","confirmed"]],
+    up: [["重型机械/金属","燃气轮机、变压器原材料"],["能源供应链","燃气/核能部件"],["电网 capex","公用事业与数据中心电力投资"]],
+    down: [["数据中心","供电源头，决定算力能否落地"],["VRT","电进机房后由 VRT 配电/散热"],["SMCI/DELL→芯片","整条耗电端共同的能源前提"]],
+    chain: ["AI 算力暴增：数据中心用电爆炸，电网供不上","电力短缺：新增发电 + 电网升级成刚需","发电龙头 + $1760 亿 backlog：多年上行周期","与耗电端互补：AI 建得越多它卖得越多"],
+    src: [["AI 订单半年翻倍","https://www.fool.com/investing/2026/08/20/ge-vernovas-ai-data-center-orders-just-doubled-all/"],["电力短缺最大赢家","https://247wallst.com/investing/2026/08/04/ge-vernova-set-to-be-biggest-winner-from-ai-data-centers-massive-power-shortfall/"]],
+  },
+  DELL: {
+    lead: "AI 服务器 ODM 大厂版，SMCI 的头号竞争对手但体量碾压。FY27 Q1 AI 服务器营收 $161 亿（+757%），YTD +281% 创历史新高。唯一瓶颈是内存短缺（呼应 HBM 紧缺主题）拖累交付。",
+    move: [["异动","+10% 至 $485 · YTD +281%"],["催化剂","confirmed"]],
+    up: [["NVDA/AMD","GPU 是核心与成本大头"],["MU/SKHY/SSNLF","内存/HBM，当前短缺瓶颈"],["VRT/液冷","高密度 AI 机架散热"]],
+    down: [["云厂商/企业","买 AI 服务器搭建算力"],["SMCI","直接竞争，规模战此消彼长"],["NVDA/AMD 需求","最大 ODM，订单是芯片需求风向标"]],
+    chain: ["AI 爆买算力：服务器需求暴涨，营收 +757%","规模/供应链强于 SMCI：大单更给大厂","上调指引 + $513 亿 backlog：股价创新高","但内存短缺成瓶颈：需求太猛反被上游卡脖子"],
+    src: [["逼近历史高点","https://finance.yahoo.com/markets/stocks/articles/dell-near-time-highs-record-160333836.html"],["AI 服务器推至 $485","https://www.fxleaders.com/news/2026/08/13/dell-stock-rips-10-percent-ai-server-boom-485/"]],
+  },
+  POWER: {
+    lead: "AI 把「电力」从传统慢周期行业重估为成长主题。数据中心用电暴增、面临短缺，发电/电网/核能进入多年上行周期——AI 链条的能源地基。",
+    members: [["GEV","发电+电气化龙头，$1760 亿 backlog"],["VRT","机房配电 + 液冷纯玩家"]],
+    todo: "待补：核电（CEG）、公用事业、独立电网设备等细分。",
+  },
+  CEG:  { pending:"Constellation 是美国最大核电运营商，AI 数据中心找稳定清洁电力的首选（已有科技巨头签核电购电协议）。问一句即可补全，接到电力/能源行业。" },
+};
+
+// ---------- Canvas force graph ----------
+const canvas = document.getElementById("c");
+const ctx = canvas.getContext("2d");
+let W, H, DPR;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+let COL = {};
+function readColors(){
+  COL = {
+    stock: css("--stock"), stockSoft: css("--stock-soft"),
+    industry: css("--industry"), industrySoft: css("--industry-soft"),
+    edge: css("--edge"), ink: css("--ink"), muted: css("--muted"),
+    surface: css("--surface"), bg: css("--bg"), hair: css("--hair"),
+  };
+}
+
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.id] = n; n.x = 0; n.y = 0; n.vx = 0; n.vy = 0; n.r = n.pending ? 20 : (n.type==="industry"? 34 : 30); });
+EDGES.forEach(e => { e.A = nodeMap[e.a]; e.B = nodeMap[e.b]; });
+
+function resize(){
+  DPR = Math.min(devicePixelRatio || 1, 2);
+  W = canvas.clientWidth; H = canvas.clientHeight;
+  canvas.width = W * DPR; canvas.height = H * DPR;
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+}
+
+// seed positions in a rough circle around center
+(function seed(){
+  const cx = 0.5, cy = 0.5;
+  NODES.forEach((n,i) => {
+    const ang = (i / NODES.length) * Math.PI * 2;
+    n.x = cx + Math.cos(ang) * 0.22 + (Math.random()-0.5)*0.04;
+    n.y = cy + Math.sin(ang) * 0.22 + (Math.random()-0.5)*0.04;
+  });
+  // anchor the two live hubs near center-ish
+  nodeMap.NVDA.x = 0.44; nodeMap.NVDA.y = 0.46;
+  nodeMap.TSM.x  = 0.58; nodeMap.TSM.y = 0.56;
+})();
+
+let selected = null, hover = null, drag = null, dragged = false;
+
+function toPx(n){ return { x: n.x * W, y: n.y * H }; }
+
+function step(){
+  // forces operate in normalized [0,1] space so it scales with viewport
+  const K_REP = 0.00055, K_SPRING = 0.010, SPRING_LEN = 0.20, CENTER = 0.0009, DAMP = 0.86;
+  for (let i=0;i<NODES.length;i++){
+    const a = NODES[i];
+    if (a === drag) continue;
+    for (let j=i+1;j<NODES.length;j++){
+      const b = NODES[j];
+      let dx = a.x-b.x, dy = a.y-b.y;
+      let d2 = dx*dx+dy*dy+0.0001; let d = Math.sqrt(d2);
+      let f = K_REP / d2;
+      let fx = f*dx/d, fy = f*dy/d;
+      a.vx += fx; a.vy += fy; b.vx -= fx; b.vy -= fy;
+    }
+  }
+  EDGES.forEach(e => {
+    const a=e.A,b=e.B; let dx=b.x-a.x, dy=b.y-a.y; let d=Math.sqrt(dx*dx+dy*dy)+0.0001;
+    let f = K_SPRING*(d-SPRING_LEN);
+    let fx=f*dx/d, fy=f*dy/d;
+    if (a!==drag){ a.vx+=fx; a.vy+=fy; }
+    if (b!==drag){ b.vx-=fx; b.vy-=fy; }
+  });
+  NODES.forEach(n => {
+    if (n===drag) return;
+    n.vx += (0.5-n.x)*CENTER; n.vy += (0.5-n.y)*CENTER;
+    n.vx *= DAMP; n.vy *= DAMP;
+    n.x += n.vx; n.y += n.vy;
+    const m = 0.06;
+    n.x = Math.max(m, Math.min(1-m, n.x));
+    n.y = Math.max(m*1.6, Math.min(1-m, n.y));
+  });
+}
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  // edges
+  EDGES.forEach(e => {
+    const p = toPx(e.A), q = toPx(e.B);
+    const active = selected && (e.a===selected || e.b===selected);
+    const holds = e.kind==="holds", peer = e.kind==="peer";
+    ctx.beginPath();
+    ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y);
+    ctx.strokeStyle = active ? COL.stock : (holds ? COL.industry : (peer ? COL.stock : COL.edge));
+    ctx.globalAlpha = holds ? (active?0.65:0.30) : peer ? (active?0.7:0.34) : (e.pending ? (active?0.7:0.4) : (active?0.95:0.65));
+    ctx.lineWidth = active ? 2.2 : (holds ? 1.1 : (peer ? 1.2 : 1.4));
+    ctx.setLineDash(e.pending ? [5,5] : (holds ? [1,6] : (peer ? [4,4] : [])));
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.globalAlpha = 1;
+    // edge label when related to selection
+    if (active){
+      const mx=(p.x+q.x)/2, my=(p.y+q.y)/2;
+      ctx.font = "600 11px 'Libre Franklin', sans-serif";
+      const tw = ctx.measureText(e.label).width;
+      ctx.fillStyle = COL.surface; ctx.globalAlpha=0.9;
+      ctx.fillRect(mx-tw/2-5, my-9, tw+10, 17);
+      ctx.globalAlpha=1;
+      ctx.fillStyle = COL.ink; ctx.textAlign="center"; ctx.textBaseline="middle";
+      ctx.fillText(e.label, mx, my);
+    }
+  });
+  // nodes
+  NODES.forEach(n => {
+    const p = toPx(n);
+    const isStock = n.type==="stock";
+    const base = isStock ? COL.stock : COL.industry;
+    const soft = isStock ? COL.stockSoft : COL.industrySoft;
+    const isSel = selected===n.id, isHov = hover===n;
+    // glow on selected/hover
+    if (isSel || isHov){
+      ctx.beginPath(); ctx.arc(p.x,p.y,n.r+9,0,7);
+      ctx.fillStyle = base; ctx.globalAlpha = 0.14; ctx.fill(); ctx.globalAlpha=1;
+    }
+    ctx.beginPath(); ctx.arc(p.x,p.y,n.r,0,7);
+    if (n.pending){
+      ctx.fillStyle = COL.surface; ctx.fill();
+      ctx.lineWidth = 1.6; ctx.setLineDash([4,4]); ctx.strokeStyle = base;
+      ctx.globalAlpha = 0.75; ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha=1;
+    } else {
+      ctx.fillStyle = base; ctx.fill();
+      if (isSel){ ctx.lineWidth=3; ctx.strokeStyle = soft; ctx.stroke(); }
+    }
+    // label: ticker
+    const tk = n.label || n.id;
+    ctx.textAlign="center"; ctx.textBaseline="middle";
+    ctx.font = (isStock? "700 ":"700 ") + (n.pending? "12px":"13px") + " 'JetBrains Mono', monospace";
+    ctx.fillStyle = n.pending ? base : (isStock ? "#1a1206" : "#04201f");
+    if (n.pending){ ctx.globalAlpha=0.9; }
+    ctx.fillText(tk, p.x, p.y - (n.pending?0:5));
+    ctx.globalAlpha=1;
+    // cn label under ticker (for live nodes)
+    if (!n.pending){
+      ctx.font = "600 10.5px 'Libre Franklin', sans-serif";
+      ctx.fillStyle = isStock ? "#2a1c08" : "#08302e";
+      ctx.fillText(n.cn, p.x, p.y + 9);
+    }
+  });
+}
+
+let settle = reduce ? 0 : 260;
+function loop(){
+  if (settle > 0 || drag){ step(); if(!drag) settle--; }
+  draw();
+  requestAnimationFrame(loop);
+}
+
+// ---------- Interaction ----------
+function nodeAt(mx,my){
+  for (let i=NODES.length-1;i>=0;i--){
+    const n=NODES[i], p=toPx(n);
+    if ((mx-p.x)**2 + (my-p.y)**2 <= (n.r+4)**2) return n;
+  }
+  return null;
+}
+function pos(ev){
+  const r = canvas.getBoundingClientRect();
+  const t = ev.touches ? ev.touches[0] : ev;
+  return { x: t.clientX - r.left, y: t.clientY - r.top };
+}
+canvas.addEventListener("pointerdown", ev => {
+  const m = pos(ev); const n = nodeAt(m.x,m.y);
+  if (n){ drag = n; dragged = false; canvas.classList.add("dragging"); canvas.setPointerCapture(ev.pointerId); }
+});
+canvas.addEventListener("pointermove", ev => {
+  const m = pos(ev);
+  if (drag){ drag.x = m.x/W; drag.y = m.y/H; drag.vx=0; drag.vy=0; dragged=true; settle = Math.max(settle,30); }
+  else { const n = nodeAt(m.x,m.y); hover = n; canvas.style.cursor = n ? "pointer" : "grab"; }
+});
+canvas.addEventListener("pointerup", ev => {
+  const m = pos(ev); const n = nodeAt(m.x,m.y);
+  if (drag && !dragged && n===drag){ select(n.id); }
+  drag = null; canvas.classList.remove("dragging");
+});
+
+// ---------- Panel ----------
+const panel = document.getElementById("panel");
+const phead = document.getElementById("phead");
+const pbody = document.getElementById("pbody");
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+function listHTML(arr, ind){
+  return "<ul>" + arr.map(([t,d]) => `<li><span class="tk${ind?' ind':''}">${esc(t)}</span><span>${esc(d)}</span></li>`).join("") + "</ul>";
+}
+function select(id){
+  selected = id;
+  const n = nodeMap[id], d = DETAIL[id] || {};
+  const typeLabel = n.type==="stock" ? "股票 / 资产" : "行业 / 主题";
+  phead.innerHTML =
+    `<div class="ptype" style="color:var(--${n.type==='stock'?'stock':'industry'})">${typeLabel}${n.pending?' · 待补':''}</div>`+
+    `<div class="ticker">${esc(n.label||n.id)}</div>`+
+    `<div class="cn">${esc(n.cn)}</div>`+
+    (d.move ? `<div class="move">${d.move.map(([k,v])=>`<span>${k} <b>${esc(v)}</b></span>`).join("")}</div>` : "");
+  let html = "";
+  if (n.pending){
+    html = `<div class="pending-note">${esc(d.pending)}</div>`;
+  } else if (n.type==="industry"){
+    html += `<p class="lead">${esc(d.lead)}</p>`;
+    html += `<h4>成员标的</h4>` + listHTML(d.members);
+    html += `<h4>待补</h4><p class="src">${esc(d.todo)}</p>`;
+  } else {
+    html += `<p class="lead">${esc(d.lead)}</p>`;
+    html += `<h4>因果链</h4><ul class="chain">` + d.chain.map(c=>`<li>${esc(c)}</li>`).join("") + `</ul>`;
+    html += `<h4>上游 · 谁影响它</h4>` + listHTML(d.up);
+    html += `<h4>下游 · 它影响谁</h4>` + listHTML(d.down);
+    html += `<h4>来源</h4>` + `<p class="src">` + d.src.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join(" · ") + `</p>`;
+  }
+  pbody.innerHTML = html;
+  panel.classList.add("open");
+}
+function closePanel(){ panel.classList.remove("open"); selected = null; }
+document.getElementById("closeBtn").addEventListener("click", closePanel);
+
+// ---------- Guide overlay ----------
+const overlay = document.getElementById("overlay");
+function closeGuide(){ overlay.classList.remove("open"); }
+document.getElementById("guideBtn").addEventListener("click", ()=> overlay.classList.add("open"));
+document.getElementById("gclose").addEventListener("click", closeGuide);
+overlay.addEventListener("click", e => { if(e.target===overlay) closeGuide(); });
+document.addEventListener("keydown", e => { if(e.key==="Escape"){ closeGuide(); closePanel(); } });
+
+// ---------- Theme ----------
+const themeBtn = document.getElementById("themeBtn");
+themeBtn.addEventListener("click", () => {
+  const cur = document.documentElement.getAttribute("data-theme");
+  const dark = cur ? cur==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.setAttribute("data-theme", dark ? "light" : "dark");
+  readColors();
+});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", readColors);
+
+// ---------- Boot ----------
+function boot(){ resize(); readColors(); }
+window.addEventListener("resize", () => { resize(); });
+boot();
+loop();
+// gentle intro nudge
+setTimeout(()=>{ select("GEV"); }, 600);
+</script>
