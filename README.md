@@ -1,5 +1,11 @@
 # 📈 Stock Why 维基 · 涨跌溯源
 
+> **What is this? (English)** A self-growing investment knowledge graph, written in Chinese.
+> Ask *"why did stock X move?"* and it traces the real catalyst, maps the **upstream** (what drives it)
+> and **downstream** (what it affects) companies and industries, and saves each answer here — getting
+> richer every time. Currently maps the full **AI-semiconductor supply chain**, from power generation to chips.
+> 🧭 **Interactive graph:** https://belindasun.github.io/stock-why-wiki/ · Notes are in Chinese.
+
 一个会**不断长大**的投资知识库：每次看到某只股票/资产涨跌，问一句"为什么"，就自动查清真实原因、画出它的**上游（谁影响它）**和**下游（它影响谁）**，并存进这里。问得越多，网织得越密。
 
 > 🧭 **在线关系图** → https://belindasun.github.io/stock-why-wiki/
