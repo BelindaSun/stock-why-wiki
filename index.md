@@ -12,6 +12,8 @@
 
 ## 条目（最新在上）
 
+- **2026-08-24** · [[NVO]] 诺和诺德 — 减肥药开创者，被礼来反超：CagriSema失利+降价压力，从高点跌56% → [stocks/NVO.md](stocks/NVO.md)
+- **2026-08-24** · [[LLY]] 礼来 — 减肥药领跑者：tirzepatide药效领先，美国肥胖市场>60%，上调指引 → [stocks/LLY.md](stocks/LLY.md)
 - **2026-08-24** · [[MRK]] 默沙东 — 同一癌症疫苗消息只涨10~13%（Moderna+139%）：重要性差异，对巨无霸只是增量 → [stocks/MRK.md](stocks/MRK.md)
 - **2026-08-24** · [[BNTX]] BioNTech — 从新冠转型肿瘤，8/19 同 Moderna 同日 +20%；mRNA抗癌双雄之一 → [stocks/BNTX.md](stocks/BNTX.md)
 - **2026-08-24** · [[CEG]] Constellation — 最大核电商，签 Meta/微软 AI 核电长约；基本面强却跌33%，重资本吞现金流 → [stocks/CEG.md](stocks/CEG.md)
