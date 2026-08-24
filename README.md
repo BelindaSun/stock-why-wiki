@@ -3,17 +3,20 @@
 > **What is this? (English)** A self-growing investment knowledge graph, written in Chinese.
 > Ask *"why did stock X move?"* and it traces the real catalyst, maps the **upstream** (what drives it)
 > and **downstream** (what it affects) companies and industries, and saves each answer here — getting
-> richer every time. Currently maps the full **AI-semiconductor supply chain**, from power generation to chips.
-> 🧭 **Interactive graph:** https://belindasun.github.io/stock-why-wiki/ · Notes are in Chinese.
+> richer every time. Two interactive maps so far — the **AI-semiconductor** chain (power → chips) and **biopharma** (mRNA oncology, GLP-1 obesity). Notes are in Chinese.
 
 一个会**不断长大**的投资知识库：每次看到某只股票/资产涨跌，问一句"为什么"，就自动查清真实原因、画出它的**上游（谁影响它）**和**下游（它影响谁）**，并存进这里。问得越多，网织得越密。
 
-> 🧭 **在线关系图** → https://belindasun.github.io/stock-why-wiki/
-> 点节点看溯源、拖动整理布局、右上角有产业链「导览」。
->
-> 目前有两张独立的图（互不相干）：
-> - 🧭 **AI 半导体** → https://belindasun.github.io/stock-why-wiki/
-> - 🧬 **生物医药** → https://belindasun.github.io/stock-why-wiki/graph-biotech.html
+## 🗺️ 两张在线地图（点开即用）
+
+每张图都能**点节点看溯源、拖动整理布局**，右上角有板块「导览」，顶部可**一键在两张图之间切换**。
+
+| 地图 | 覆盖 | 打开 |
+|---|---|---|
+| 🧭 **AI 半导体** | 发电 → 设备 → 代工 → 芯片 → HBM → 服务器，一条完整产业链 | **[打开 →](https://belindasun.github.io/stock-why-wiki/)** |
+| 🧬 **生物医药** | mRNA 抗癌 · 减肥药战场 · 罕见病/止痛 | **[打开 →](https://belindasun.github.io/stock-why-wiki/graph-biotech.html)** |
+
+_两张图互不相干，各管一个行业世界；问出新行业时会再长出新的一张。_
 
 ---
 
