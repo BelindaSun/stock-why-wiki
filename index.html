@@ -23,6 +23,9 @@
     --industry-soft: #8fcfca;
     --edge: #9aa6b4;
     --glow: rgba(185,120,31,0.16);
+    --private: #7a3fce;
+    --private-soft: #c9aef0;
+    --private-ink: #ffffff;
   }
   :root:not([data-theme="light"]) {
     @media (prefers-color-scheme: dark) {
@@ -38,6 +41,9 @@
       --industry-soft: #245c5a;
       --edge: #3a4757;
       --glow: rgba(224,160,62,0.20);
+      --private: #b18bf0;
+      --private-soft: #4a2f78;
+      --private-ink: #2a0a3f;
     }
   }
   :root[data-theme="dark"] {
@@ -53,6 +59,9 @@
     --industry-soft: #245c5a;
     --edge: #3a4757;
     --glow: rgba(224,160,62,0.20);
+    --private: #b18bf0;
+    --private-soft: #4a2f78;
+    --private-ink: #2a0a3f;
   }
 
   * { box-sizing: border-box; }
@@ -101,6 +110,7 @@
   .legend .dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
   .legend .dot.stock { background: var(--stock); }
   .legend .dot.industry { background: var(--industry); }
+  .legend .dot.priv { background: var(--private); border: 1.5px dashed var(--private); }
   .legend .dot.ghost { background: transparent; border: 1.5px dashed var(--edge); }
   .legend .ln { width: 20px; flex: none; border-top: 2px solid var(--edge); }
   .legend .ln.dash { border-top-style: dashed; }
@@ -301,7 +311,7 @@
   <div class="guide-card">
     <button class="gclose" id="gclose" aria-label="关闭导览">×</button>
     <h2>AI 半导体产业链 · 导览</h2>
-    <div class="gsub">21 家公司 + 8 个行业 · 供给侧 + 需求侧 · 2026-08-24</div>
+    <div class="gsub">21 家公司 + 2 引力中心 + 9 行业 · AI 全景 · 2026-08-24</div>
     <p class="thesis">AI 算力需求爆发，沿产业链层层传导——但 2026 年 8 月出现明显分化：<b>算力芯片端杀高估值回调，存储（HBM）端因硬缺口逆势走强。位置决定命运。</b></p>
 
     <div class="layer">
@@ -383,10 +393,11 @@
 需求侧   GOOGL / META ──买 GPU/电力/机房──▶ 供给侧（花钱的人）</div>
 
     <div class="takeaways">
-      <h3>三条最值得记住的主线</h3>
+      <h3>四条最值得记住的主线</h3>
       <div class="tk"><span class="n">1</span><div><b>分化 = 这波行情的关键词。</b> 同属「AI 半导体」，8 月却冰火两重天：算力芯片与设备在杀高估值，存储因 HBM 硬缺口逆势走强。越是「卡脖子 + 锁长约」的环节越抗跌。</div></div>
       <div class="tk"><span class="n">2</span><div><b>杀的是估值，不是基本面。</b> 回调几家业绩其实还在增长（TSM +45%、AMD +50%、VRT +24%）。跌因是涨太多、预期太满、板块太拥挤（82% 基金经理称「史上最拥挤交易」）+「AI 是否超支」担忧。</div></div>
       <div class="tk"><span class="n">3</span><div><b>供给侧卖铲子，需求侧掏钱包。</b> 前七层靠卖 AI 硬件赚钱（谁卡脖子谁赢）；需求侧是花钱买算力的巨头（谁的 capex 能变现谁赢）。他们的钱正是供给侧的订单。而需求侧内部有一条清晰的 <b>ROI 光谱</b>：<b>AMZN</b>（利润率还在扩张，证据最硬）&gt; <b>MSFT</b>（有真实 AI 收入，但利润率被 capex 压）&gt; <b>META</b>（第三块仍是押注）。同样砸千亿，市场信谁、疑谁，一目了然。</div></div>
+      <div class="tk"><span class="n">4</span><div><b>AI 资本循环——闭环的引力中心。</b> 紫色的 <b>OpenAI / Anthropic</b>（未上市）才是全图真正的中心：投资者的钱 → 灌进模型公司 → 变成天量算力长约（OpenAI 一家 $1.15 万亿）→ 成为 NVDA/博通/电力的订单簿。云厂商更是<b>一手投钱、一手卖算力</b>（微软之于 OpenAI、亚马逊之于 Anthropic）。看懂这个循环，就看懂了整轮 AI 行情的资金是怎么转的——也看懂了它的脆弱：一旦模型公司的收入增速撑不住，整个循环都会承压。</div></div>
     </div>
   </div>
 </div>
@@ -395,6 +406,7 @@
   <span class="grip" title="可拖动">⠿</span>
   <div class="row"><span class="dot stock"></span> 股票 / 资产</div>
   <div class="row"><span class="dot industry"></span> 行业 / 主题</div>
+  <div class="row"><span class="dot priv"></span> 未上市（引力中心）</div>
   <div class="row"><span class="dot ghost"></span> 待补（问到就长出）</div>
   <div class="row"><span class="ln"></span> 已建立关系</div>
   <div class="row"><span class="ln hold"></span> 成分 / 包含（ETF）</div>
@@ -423,6 +435,7 @@ const NODES = [
   { id:"CLOUD",cn:"云计算", label:"CLOUD", type:"industry" },
   { id:"ROBOT",cn:"自动驾驶/机器人", label:"AUTONOMY", type:"industry" },
   { id:"SPACE",cn:"商业航天", label:"SPACE", type:"industry" },
+  { id:"FM",   cn:"基础大模型", label:"MODELS", type:"industry" },
   // pending / 待补 — shows the graph keeps growing
   { id:"ASML", cn:"阿斯麦", type:"stock" },
   { id:"AMD",  cn:"AMD", type:"stock" },
@@ -443,8 +456,10 @@ const NODES = [
   { id:"SPCX", cn:"SpaceX", type:"stock" },
   // fresh stubs — the growth frontier keeps moving
   { id:"VST",  cn:"Vistra（核电/公用）", type:"stock", pending:true },
+  { id:"AVGO", cn:"博通（自研AI芯片）", type:"stock", pending:true },
   { id:"MSFT", cn:"微软", type:"stock" },
-  { id:"OPENAI",cn:"OpenAI（未上市）", label:"OPENAI", type:"stock", pending:true },
+  { id:"OPENAI",cn:"OpenAI", label:"OPENAI", type:"stock", private:true },
+  { id:"ANTHROPIC",cn:"Anthropic", label:"ANTHROPIC", type:"stock", private:true },
 ];
 
 const EDGES = [
@@ -508,8 +523,21 @@ const EDGES = [
   { a:"MSFT", b:"VRT",  label:"AI capex：数据中心" },
   { a:"MSFT", b:"GEV",  label:"AI capex：电力" },
   { a:"MSFT", b:"GOOGL",label:"云三巨头", kind:"peer" },
-  { a:"MSFT", b:"OPENAI",label:"持股27%+45%RPO(双刃)" },
-  { a:"OPENAI",b:"NVDA",label:"模型训练算力", pending:true },
+  { a:"OPENAI",b:"ANTHROPIC",label:"基础模型两强", kind:"peer" },
+  { a:"OPENAI",b:"FM",  label:"通用模型龙头" },
+  { a:"ANTHROPIC",b:"FM",label:"企业级龙头" },
+  { a:"OPENAI",b:"AI",  label:"总需求源" },
+  { a:"ANTHROPIC",b:"AI",label:"总需求源" },
+  { a:"MSFT", b:"OPENAI",label:"投资27%⇄$2500亿Azure" },
+  { a:"NVDA", b:"OPENAI",label:"投$300亿⇄$1000亿算力" },
+  { a:"AMZN", b:"OPENAI",label:"投至多$500亿" },
+  { a:"AMZN", b:"ANTHROPIC",label:"投$250亿⇄回购$1000亿AWS(ROI实证)" },
+  { a:"GOOGL",b:"ANTHROPIC",label:"投$400亿⇄5GW TPU" },
+  { a:"OPENAI",b:"AMD", label:"$900亿算力合约" },
+  { a:"CBRS", b:"OPENAI",label:"80% backlog 依赖" },
+  { a:"OPENAI",b:"AVGO",label:"$3500亿自研芯片", pending:true },
+  { a:"ANTHROPIC",b:"AVGO",label:"TPU(谷歌合作)", pending:true },
+  { a:"AVGO", b:"TSM",  label:"代工自研芯片", pending:true },
   { a:"AAPL", b:"CTECH",label:"消费电子霸主" },
   { a:"AAPL", b:"AI",   label:"需求侧(轻 capex)" },
   { a:"AAPL", b:"TSM",  label:"自研芯片代工" },
@@ -695,7 +723,28 @@ const DETAIL = {
     chain: ["Azure/Copilot 有真实付费需求→AI 收入高速增长","但 capex +61% 太猛 + 组件涨价→云毛利率多季度压缩","现在花钱、未来才收→市场担心转化率","OpenAI 占 45% RPO→护城河也是集中风险"],
     src: [["$190B capex 重定价 AI","https://www.globaldatacenterhub.com/p/microsoft-q3-fy2026-the-190b-capex"],["对 capex ROI 的担忧","https://seekingalpha.com/article/4898065-microsoft-reasons-to-be-concerned-about-capex-roi"]],
   },
-  OPENAI: { pending:"OpenAI 未上市，但它是 MSFT 深绑的模型供给核心（微软持股 27%、占其商业 RPO 约 45%），也是 NVDA 的算力大买家。作为图谱外圈关联节点——若日后上市或有更多披露即可补全。" },
+  OPENAI: {
+    lead: "ChatGPT/GPT 的缔造者，整张图的隐形引力中心之一。未上市，估值约 $8520 亿。它一家的 $1.15 万亿基建承诺，直接点燃 NVDA/博通/AMD/存储/电力整条供给链——不产芯片，却决定谁的订单簿有多厚。是「AI 资本循环」的中心。",
+    move: [["性质","未上市 · 估值 $8520 亿"],["基建承诺","$1.15 万亿(2025-2035)"]],
+    up: [["MSFT","持股 27% + $2500 亿 Azure"],["NVDA","投 $300 亿 + $1000 亿算力"],["AMZN","投至多 $500 亿 + AWS 算力"]],
+    down: [["整条 AI 硬件链","$1.15 万亿承诺是 NVDA/AVGO/AMD/电力的需求引爆点"],["CBRS","80%+ backlog 绑定 OpenAI"],["AVGO/TSM","自研 Jalapeño 芯片 $3500 亿"]],
+    chain: ["需要天量算力→签 $1.15 万亿跨厂商长约","这些长约 = 供给侧订单簿底气","云厂/英伟达既投钱又卖算力→资本循环","但月烧巨资依赖外部融资→收入放缓则循环承压"],
+    src: [["估值 $8520 亿收官融资","https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html"],["$1 万亿+ 基建开支","https://tomtunguz.com/openai-hardware-spending-2025-2035/"]],
+  },
+  ANTHROPIC: {
+    lead: "Claude 的缔造者，企业级 AI 龙头，全图另一个引力中心。未上市，估值约 $9650 亿，IPO 传闻 targeting $2 万亿。收入 run rate 一年从 $30 亿冲到 $65 亿（80x 增长），已首次运营盈利——是「AI 变现」最硬的私有样本。",
+    move: [["性质","未上市 · 估值 $9650 亿"],["收入","run rate ~$65 亿 · 80x 增长"]],
+    up: [["AMZN","投至多 $250 亿 + 5GW 算力"],["GOOGL","投至多 $400 亿 + 5GW TPU"],["AVGO/TSM","算力硬件更上游"]],
+    down: [["AMZN AWS","承诺十年 $1000 亿+ 采购→撑起 AWS 利润率"],["GOOGL Cloud","大额 TPU 订单"],["企业 AI","财富10强中8家是客户"]],
+    chain: ["Claude 企业采用爆发→收入 80x，现金流验证真实需求","承诺十年 $1000 亿采购 AWS→直接撑起 AMZN 的 ROI","亚马逊/谷歌各押数百亿→投资+卖算力双向绑定","但 $2 万亿 IPO 估值 vs 当前收入→能否兑现是问号"],
+    src: [["$650 亿 H 轮，估值 $9650 亿","https://www.anthropic.com/news/series-h"],["$2 万亿估值 vs 收入之争","https://fortune.com/2026/08/14/anthropic-valuation-ipo-amazon-trillion-openai/"]],
+  },
+  FM: {
+    lead: "基础大模型——AI 全景的「引力中心」。OpenAI 与 Anthropic 两强，是整条链的「总需求源」：把投资者的钱变成天量算力订单，灌进硬件/电力供给链。它俩的健康度 = 整个 AI 供给链景气的晴雨表。",
+    members: [["OPENAI","通用模型龙头，$1.15 万亿基建承诺"],["ANTHROPIC","企业级龙头，收入 80x 已运营盈利"]],
+    todo: "待补：xAI、Mistral、以及各家自研模型。",
+  },
+  AVGO: { pending:"博通是自研 AI 芯片(ASIC/定制加速器)的关键玩家：与 OpenAI 合设计推理芯片 Jalapeño($3500亿)、给谷歌做 TPU。是「云厂/模型公司想摆脱 NVDA 依赖」这条自研芯片线的核心。问「博通为什么涨」即可点亮，接到 OpenAI/谷歌/TSM。" },
   CTECH: {
     lead: "消费电子与终端生态。AI 时代的关键变量是「端侧 AI + 分发」——谁的装机量大、谁把 AI 装进操作系统，谁就有触达优势。当前以 Apple 的「克制打法」为焦点。",
     members: [["AAPL","轻 capex、重端侧+分发；赌 LLM 会商品化"]],
@@ -764,11 +813,12 @@ function readColors(){
     industry: css("--industry"), industrySoft: css("--industry-soft"),
     edge: css("--edge"), ink: css("--ink"), muted: css("--muted"),
     surface: css("--surface"), bg: css("--bg"), hair: css("--hair"),
+    private: css("--private"), privateSoft: css("--private-soft"), privateInk: css("--private-ink"),
   };
 }
 
 const nodeMap = {};
-NODES.forEach(n => { nodeMap[n.id] = n; n.x = 0; n.y = 0; n.vx = 0; n.vy = 0; n.r = n.pending ? 20 : (n.type==="industry"? 34 : 30); });
+NODES.forEach(n => { nodeMap[n.id] = n; n.x = 0; n.y = 0; n.vx = 0; n.vy = 0; n.r = n.pending ? 20 : (n.private ? 37 : (n.type==="industry"? 34 : 30)); });
 EDGES.forEach(e => { e.A = nodeMap[e.a]; e.B = nodeMap[e.b]; });
 
 function resize(){
@@ -860,8 +910,8 @@ function draw(){
   NODES.forEach(n => {
     const p = toPx(n);
     const isStock = n.type==="stock";
-    const base = isStock ? COL.stock : COL.industry;
-    const soft = isStock ? COL.stockSoft : COL.industrySoft;
+    const base = n.private ? COL.private : (isStock ? COL.stock : COL.industry);
+    const soft = n.private ? COL.privateSoft : (isStock ? COL.stockSoft : COL.industrySoft);
     const isSel = selected===n.id, isHov = hover===n;
     // glow on selected/hover
     if (isSel || isHov){
@@ -875,21 +925,26 @@ function draw(){
       ctx.globalAlpha = 0.75; ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha=1;
     } else {
       ctx.fillStyle = base; ctx.fill();
+      if (n.private){ // dashed outer ring marks "未上市"
+        ctx.beginPath(); ctx.arc(p.x,p.y,n.r+5,0,7);
+        ctx.setLineDash([4,4]); ctx.lineWidth=1.5; ctx.strokeStyle=base; ctx.globalAlpha=0.7;
+        ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha=1;
+      }
       if (isSel){ ctx.lineWidth=3; ctx.strokeStyle = soft; ctx.stroke(); }
     }
     // label: ticker
     const tk = n.label || n.id;
     ctx.textAlign="center"; ctx.textBaseline="middle";
-    ctx.font = (isStock? "700 ":"700 ") + (n.pending? "12px":"13px") + " 'JetBrains Mono', monospace";
-    ctx.fillStyle = n.pending ? base : (isStock ? "#1a1206" : "#04201f");
+    ctx.font = "700 " + (n.pending? "12px": (n.private? "12px":"13px")) + " 'JetBrains Mono', monospace";
+    ctx.fillStyle = n.pending ? base : (n.private ? COL.privateInk : (isStock ? "#1a1206" : "#04201f"));
     if (n.pending){ ctx.globalAlpha=0.9; }
     ctx.fillText(tk, p.x, p.y - (n.pending?0:5));
     ctx.globalAlpha=1;
     // cn label under ticker (for live nodes)
     if (!n.pending){
       ctx.font = "600 10.5px 'Libre Franklin', sans-serif";
-      ctx.fillStyle = isStock ? "#2a1c08" : "#08302e";
-      ctx.fillText(n.cn, p.x, p.y + 9);
+      ctx.fillStyle = n.private ? COL.privateInk : (isStock ? "#2a1c08" : "#08302e");
+      ctx.fillText(n.private ? "未上市" : n.cn, p.x, p.y + 9);
     }
   });
 }
@@ -940,9 +995,10 @@ function listHTML(arr, ind){
 function select(id){
   selected = id;
   const n = nodeMap[id], d = DETAIL[id] || {};
-  const typeLabel = n.type==="stock" ? "股票 / 资产" : "行业 / 主题";
+  const typeLabel = n.private ? "关联实体 · 未上市 (PRIVATE)" : (n.type==="stock" ? "股票 / 资产" : "行业 / 主题");
+  const typeColor = n.private ? "private" : (n.type==='stock' ? "stock" : "industry");
   phead.innerHTML =
-    `<div class="ptype" style="color:var(--${n.type==='stock'?'stock':'industry'})">${typeLabel}${n.pending?' · 待补':''}</div>`+
+    `<div class="ptype" style="color:var(--${typeColor})">${typeLabel}${n.pending?' · 待补':''}</div>`+
     `<div class="ticker">${esc(n.label||n.id)}</div>`+
     `<div class="cn">${esc(n.cn)}</div>`+
     (d.move ? `<div class="move">${d.move.map(([k,v])=>`<span>${k} <b>${esc(v)}</b></span>`).join("")}</div>` : "");
@@ -1020,7 +1076,7 @@ window.addEventListener("resize", () => { resize(); });
 boot();
 loop();
 // gentle intro nudge
-setTimeout(()=>{ select("MSFT"); }, 600);
+setTimeout(()=>{ select("OPENAI"); }, 600);
 </script>
 
 </body>
