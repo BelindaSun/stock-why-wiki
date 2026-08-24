@@ -12,6 +12,7 @@
 
 ## 条目（最新在上）
 
+- **2026-08-24** · [[MRK]] 默沙东 — 同一癌症疫苗消息只涨10~13%（Moderna+139%）：重要性差异，对巨无霸只是增量 → [stocks/MRK.md](stocks/MRK.md)
 - **2026-08-24** · [[BNTX]] BioNTech — 从新冠转型肿瘤，8/19 同 Moderna 同日 +20%；mRNA抗癌双雄之一 → [stocks/BNTX.md](stocks/BNTX.md)
 - **2026-08-24** · [[CEG]] Constellation — 最大核电商，签 Meta/微软 AI 核电长约；基本面强却跌33%，重资本吞现金流 → [stocks/CEG.md](stocks/CEG.md)
 - **2026-08-24** · [[MRNA]] Moderna — 单日暴涨+177%：mRNA癌症疫苗三期成功（与默沙东）；但仍在烧钱，属预期驱动 → [stocks/MRNA.md](stocks/MRNA.md)
