@@ -61,7 +61,9 @@
     overflow: hidden;
   }
 
-  .stage { position: fixed; inset: 0; display: grid; grid-template-columns: 1fr; }
+  .stage { position: fixed; inset: 0; display: grid; grid-template-columns: 1fr; transition: right .32s cubic-bezier(.2,.8,.2,1); }
+  body.panel-open .stage { right: min(400px, 92vw); }
+  @media (max-width: 560px) { body.panel-open .stage { right: 0; bottom: 74vh; } }
   canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
   canvas.dragging { cursor: grabbing; }
 
@@ -100,6 +102,8 @@
   .legend .ln.hold { border-top: 2px dotted var(--industry); }
   .legend .ln.peer { border-top: 2px dashed var(--stock); }
   .legend .hint { color: var(--ink); opacity: 0.55; padding-top: 3px; border-top: 1px solid var(--hair); }
+  .legend { cursor: move; touch-action: none; }
+  .legend .grip { position: absolute; top: 6px; right: 9px; color: var(--muted); font-size: 11px; letter-spacing: 1px; opacity: 0.6; }
 
   /* ---- Theme toggle ---- */
   .toggle {
@@ -347,7 +351,8 @@
   </div>
 </div>
 
-<div class="legend">
+<div class="legend" id="legend">
+  <span class="grip" title="可拖动">⠿</span>
   <div class="row"><span class="dot stock"></span> 股票 / 资产</div>
   <div class="row"><span class="dot industry"></span> 行业 / 主题</div>
   <div class="row"><span class="dot ghost"></span> 待补（问到就长出）</div>
@@ -355,7 +360,7 @@
   <div class="row"><span class="ln hold"></span> 成分 / 包含（ETF）</div>
   <div class="row"><span class="ln peer"></span> 同类 / 竞争</div>
   <div class="row"><span class="ln dash"></span> 潜在上下游</div>
-  <div class="hint">拖动节点整理布局 · 点节点看详情</div>
+  <div class="hint">拖动节点整理布局 · 点节点看详情 · 本卡片可拖动 ⠿</div>
 </div>
 
 <aside class="panel" id="panel" aria-live="polite">
@@ -786,8 +791,10 @@ function select(id){
   }
   pbody.innerHTML = html;
   panel.classList.add("open");
+  document.body.classList.add("panel-open");
+  requestAnimationFrame(()=>{ resize(); settle = Math.max(settle, 90); });
 }
-function closePanel(){ panel.classList.remove("open"); selected = null; }
+function closePanel(){ panel.classList.remove("open"); document.body.classList.remove("panel-open"); selected = null; requestAnimationFrame(()=>{ resize(); settle = Math.max(settle, 90); }); }
 document.getElementById("closeBtn").addEventListener("click", closePanel);
 
 // ---------- Guide overlay ----------
@@ -809,6 +816,25 @@ themeBtn.addEventListener("click", () => {
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", readColors);
 
 // ---------- Boot ----------
+// ---------- Draggable legend ----------
+(function(){
+  const lg = document.getElementById("legend"); if(!lg) return;
+  let dragging=false, ox=0, oy=0;
+  lg.addEventListener("pointerdown", e=>{
+    dragging=true; const r=lg.getBoundingClientRect();
+    ox=e.clientX-r.left; oy=e.clientY-r.top;
+    lg.style.left=r.left+"px"; lg.style.top=r.top+"px"; lg.style.bottom="auto"; lg.style.right="auto";
+    lg.setPointerCapture(e.pointerId); e.preventDefault();
+  });
+  lg.addEventListener("pointermove", e=>{
+    if(!dragging) return;
+    let x=Math.max(4, Math.min(innerWidth-lg.offsetWidth-4, e.clientX-ox));
+    let y=Math.max(4, Math.min(innerHeight-lg.offsetHeight-4, e.clientY-oy));
+    lg.style.left=x+"px"; lg.style.top=y+"px";
+  });
+  lg.addEventListener("pointerup", ()=>{ dragging=false; });
+})();
+
 function boot(){ resize(); readColors(); }
 window.addEventListener("resize", () => { resize(); });
 boot();
