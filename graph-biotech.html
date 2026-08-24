@@ -189,7 +189,7 @@
   <div class="guide-card">
     <button class="gclose" id="gclose" aria-label="关闭导览">×</button>
     <h2>生物医药 · 导览</h2>
-    <div class="gsub">5 家公司 + 3 个主题 · 2026-08-24 · 独立于 AI 半导体图</div>
+    <div class="gsub">8 家公司 + 3 个主题 · 2026-08-24 · 独立于 AI 半导体图</div>
     <p class="thesis">生物医药的涨跌，跟半导体是<b>两套逻辑</b>：这里股价由临床数据「二元」跳变、由竞争里的输赢决定，而不是线性的营收利润。</p>
 
     <div class="cluster">
@@ -199,9 +199,15 @@
       <div class="litem"><b>MRK</b> 默沙东 — <span class="st">Moderna 合作方，同消息只涨 10~13%（巨无霸只是增量）</span></div>
     </div>
     <div class="cluster">
-      <div class="cname">💊 减肥药双雄（GLP-1）</div>
+      <div class="cname">💊 减肥药战场（GLP-1）</div>
       <div class="litem"><b>LLY</b> 礼来 — <span class="st">领跑者，药效领先，美国肥胖市场 >60%，上调指引</span></div>
       <div class="litem"><b>NVO</b> 诺和诺德 — <span class="st">开创者今追赶者，CagriSema 失利+降价，从高点 −56%</span></div>
+      <div class="litem"><b>AMGN</b> 安进 — <span class="st">第三方挑战者，主打「月针」差异化（对手都是周针）</span></div>
+      <div class="litem"><b>PFE</b> 辉瑞 — <span class="st">迟到者，Metsera 收购的减肥管线 2028 后才上市</span></div>
+    </div>
+    <div class="cluster">
+      <div class="cname">🧩 自成一路</div>
+      <div class="litem"><b>VRTX</b> 福泰 — <span class="st">隐形冠军：CF 现金牛 + 非阿片止痛药 Journavx，创历史新高；与前两簇不搭界</span></div>
     </div>
 
     <div class="takeaways">
@@ -238,9 +244,11 @@ const NODES = [
   { id:"ONCO", cn:"mRNA 抗癌", label:"ONCO", type:"industry" },
   { id:"GLP1", cn:"减肥药", label:"GLP-1", type:"industry" },
   { id:"BIO",  cn:"生物科技", label:"BIOTECH", type:"industry" },
+  { id:"PFE",  cn:"辉瑞", type:"stock" },
+  { id:"AMGN", cn:"安进", type:"stock" },
+  { id:"VRTX", cn:"福泰", type:"stock" },
   // fresh stubs — 前沿继续长
-  { id:"PFE",  cn:"辉瑞（新冠合作）", type:"stock", pending:true },
-  { id:"AMGN", cn:"安进（减肥新秀）", type:"stock", pending:true },
+  { id:"VKTX", cn:"Viking（减肥新贵）", type:"stock", pending:true },
 ];
 
 const EDGES = [
@@ -255,8 +263,12 @@ const EDGES = [
   { a:"NVO",  b:"GLP1", label:"追赶者" },
   { a:"ONCO", b:"BIO",  label:"子赛道" },
   { a:"GLP1", b:"BIO",  label:"子赛道" },
-  { a:"PFE",  b:"BNTX", label:"新冠合作", pending:true },
-  { a:"AMGN", b:"GLP1", label:"减肥药挑战者", pending:true },
+  { a:"PFE",  b:"BNTX", label:"新冠合作" },
+  { a:"PFE",  b:"BIO",  label:"大象转身" },
+  { a:"PFE",  b:"GLP1", label:"迟到挑战者" },
+  { a:"AMGN", b:"GLP1", label:"月针挑战者" },
+  { a:"VRTX", b:"BIO",  label:"罕见病+止痛" },
+  { a:"VKTX", b:"GLP1", label:"减肥新贵", pending:true },
 ];
 
 const DETAIL = {
@@ -307,16 +319,39 @@ const DETAIL = {
   },
   GLP1: {
     lead: "以 GLP-1 治疗肥胖/糖尿病的超级赛道，未来十年最大医药机会之一。当前是「两家寡头 + 命运分岔」：拼药效、拼口服药、拼定价、拼下一代管线。",
-    members: [["LLY","领跑者，药效领先，市占 ~56.7%"],["NVO","追赶者，市占 ~37.1% 且萎缩"]],
-    todo: "待补：口服新秀（AMGN 等）、减肥药外溢受损行业（部分食品股）。",
+    members: [["LLY","领跑者，药效领先，市占 ~56.7%"],["NVO","追赶者，市占 ~37.1% 且萎缩"],["AMGN","第三方挑战者，主打月针差异化"],["PFE","迟到者，Metsera 管线 2028 后上市"]],
+    todo: "待补：小盘黑马（VKTX）、减肥药外溢受损行业（部分食品股）。",
   },
   BIO: {
     lead: "研发创新药/疫苗/疗法的高风险高回报行业。与 AI 半导体链互不相干，是独立的一张网。内部按主题聚簇——mRNA 抗癌、减肥药是当前最热的两簇。",
-    members: [["mRNA抗癌","MRNA·BNTX·MRK"],["减肥药","LLY·NVO"],["逻辑","临床二元 + 竞争输赢，非线性营收"]],
-    todo: "待补：辉瑞 PFE、福泰 VRTX、更多主题簇。",
+    members: [["mRNA抗癌","MRNA·BNTX·MRK"],["减肥药","LLY·NVO·AMGN·PFE"],["罕见病/止痛","VRTX 自成一路"],["逻辑","临床二元 + 竞争输赢，非线性营收"]],
+    todo: "待补：更多主题簇（心血管、疫苗、CGT 等）。",
   },
-  PFE:  { pending:"辉瑞是 BioNTech 的新冠疫苗合作方，也是老牌大药企。问「辉瑞为什么涨/跌」即可补全，接到 BioNTech 和生物科技行业。" },
-  AMGN: { pending:"安进带着自己的减肥药（如 MariTide）杀入 GLP-1 战场，是礼来/诺和之外的第三方挑战者。问一句即可补全，接到减肥药赛道。" },
+  PFE: {
+    lead: "老牌巨头，新冠红利退潮 + 专利悬崖 + 减肥药受挫，正艰难「大象转身」。月内市值蒸发 $70 亿+。赌 2029 年后靠肿瘤(Seagen) + 减肥药(Metsera $100 亿收购)翻身，但近期是空窗期。",
+    move: [["异动","月蒸发 $70 亿+ · 指引平淡"],["催化剂","confirmed"]],
+    up: [["新冠 franchise","与 BNTX 合作，现快速萎缩"],["专利悬崖","Eliquis 等，~$170 亿营收风险"],["Metsera 减肥管线","押 $1500 亿市场，2028 后上市"]],
+    down: [["BNTX","新冠合作方，红利同步退潮"],["LLY/NVO/AMGN","减肥药潜在搅局者(但迟到)"],["大药企并购","为填悬崖持续买管线"]],
+    chain: ["新冠红利退潮：失去一大块现金流","专利悬崖逼近(~$170亿风险)：核心营收要跳水","减肥药受挫、产品要 2028 后：近期没引擎","指引平淡 + 空窗期：市值月蒸发 $70 亿"],
+    src: [["市值月蒸发 $70 亿","https://www.nasdaq.com/articles/pfe-market-cap-falls-more-7b-month-how-play-stock"]],
+  },
+  AMGN: {
+    lead: "老牌生物制药巨头，带减肥药 MariTide 杀入 GLP-1，是礼来/诺和双雄之外的第三方挑战者。差异化打法：月针（对手都是周针）。二期减重 ~20%，9 项三期进行中。",
+    move: [["异动","MariTide 推进 9 项三期"],["催化剂","confirmed"]],
+    up: [["MariTide","GIP 阻断+GLP-1 激活，二期减重 ~20%"],["现有药盘(Repatha)","稳定现金流支撑管线"],["临床数据","三期结果决定成败"]],
+    down: [["LLY/NVO","减肥药双雄，MariTide 若成搅动格局"],["减肥药患者","月针 vs 周针，便利性差异"],["自动注射器","剂型创新带动配套"]],
+    chain: ["减肥市场 $1500 亿 + 双寡头：诱惑第三方入局","押「月针」差异化：便利性撕口子","二期减重 ~20% 不俗：认真推 9 项三期","但入场晚 + 结果未定：属挑战者期权"],
+    src: [["MariTide 进入三期 MARITIME","https://www.sahmcapital.com/news/content/amgen-advances-maritide-obesity-drug-into-phase-3-maritime-program-2026-05-12"]],
+  },
+  VRTX: {
+    lead: "生物科技的隐形冠军：垄断囊性纤维化(CF)特效药闷声赚钱，如今又长出第二引擎——非阿片止痛药 Journavx。2026 年 8 月中创历史新高。与 mRNA 抗癌、减肥药都不搭界，自成一路。",
+    move: [["异动","创历史新高 · 公允价值上调至 ~$378"],["催化剂","confirmed"]],
+    up: [["CF franchise(Trikafta)","现金牛，Q2 ~$24.5 亿，近垄断"],["Journavx 止痛药","第二引擎，Q2 环比 +71%"],["后期管线","肾病(11/30 审批)、1 型糖尿病细胞疗法"]],
+    down: [["阿片止痛药市场","Journavx 是非成瘾替代，冲击格局"],["CF 患者","近乎独家，定价权强"],["罕见病同业","高壁垒+高定价模式标杆"]],
+    chain: ["CF 近乎垄断：稳定高毛利现金牛","Journavx 放量(+71%)：多元化战略奏效","肾病/糖尿病管线临近：更多增长期权","单一依赖下降 + 多引擎：创历史新高"],
+    src: [["创历史新高，新引擎","https://www.fool.com/investing/2026/08/14/vertex-pharmaceuticals-just-hit-an-all-time-high-h/"]],
+  },
+  VKTX: { pending:"Viking Therapeutics 是减肥药领域的高弹性小盘新贵，口服+针剂管线被视为双雄之外的黑马。问「Viking 为什么涨/跌」即可补全，接到减肥药赛道。" },
 };
 
 // ---------- engine ----------
@@ -410,5 +445,5 @@ matchMedia("(prefers-color-scheme: dark)").addEventListener("change",readColors)
 function boot(){ resize(); readColors(); }
 window.addEventListener("resize",()=>{ resize(); });
 boot(); loop();
-setTimeout(()=>{ select("LLY"); }, 600);
+setTimeout(()=>{ select("VRTX"); }, 600);
 </script>
