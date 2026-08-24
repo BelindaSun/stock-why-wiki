@@ -12,6 +12,8 @@
 
 ## 条目（最新在上）
 
+- **2026-08-24** · [[ANTHROPIC]] Anthropic — 未上市/隐形中心:收入80x爆发($30亿→$65亿run rate)首次运营盈利,亚马逊+谷歌押注$650亿,IPO传闻$2万亿 → [stocks/ANTHROPIC.md](stocks/ANTHROPIC.md)
+- **2026-08-24** · [[OPENAI]] OpenAI — 未上市/隐形中心:估值$8520亿,$1.15万亿基建承诺点燃整条硬件链,是"AI资本循环"引力中心 → [stocks/OPENAI.md](stocks/OPENAI.md)
 - **2026-08-24** · [[MSFT]] 微软 — 核心问题:$1900亿capex跑赢回报了吗?有真实AI收入($370亿run rate)但利润率压缩;卡在AMZN与META之间,OpenAI绑定双刃剑 → [stocks/MSFT.md](stocks/MSFT.md)
 - **2026-08-24** · [[SPCX]] SpaceX — 6/12上市(约$2万亿),Starship+Starlink;AI关联间接:NVDA买家+连接层+太空算力想象 → [stocks/SPCX.md](stocks/SPCX.md)
 - **2026-08-24** · [[TSLA]] Tesla — 核心问题:$1.5万亿全押自动驾驶+机器人,是远见还是幻觉?落地远慢于叙事,2026疲软 → [stocks/TSLA.md](stocks/TSLA.md)
