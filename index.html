@@ -301,7 +301,7 @@
   <div class="guide-card">
     <button class="gclose" id="gclose" aria-label="关闭导览">×</button>
     <h2>AI 半导体产业链 · 导览</h2>
-    <div class="gsub">13 个资产节点 + 3 个行业主题 · 2026-08-24</div>
+    <div class="gsub">16 家公司 + 4 个行业 · 供给侧 + 需求侧 · 2026-08-24</div>
     <p class="thesis">AI 算力需求爆发，沿产业链层层传导——但 2026 年 8 月出现明显分化：<b>算力芯片端杀高估值回调，存储（HBM）端因硬缺口逆势走强。位置决定命运。</b></p>
 
     <div class="layer">
@@ -362,15 +362,26 @@
         <div class="litem"><b>SMH</b> 半导体 ETF — <span class="st">一篮子龙头，近一月 −10% 板块回调，但年内仍 +55%。</span></div>
       </div>
     </div>
+    <div class="layer up">
+      <div class="num">⑧</div>
+      <div class="lname">需求侧 · 掏钱买算力的应用巨头　<span class="hot">💰 新拼图</span></div>
+      <div style="grid-column:2">
+        <div class="litem"><b>GOOGL</b> Alphabet — <span class="st">核心议题：AI 会不会侵蚀搜索？短期没发生，长期是「重新定价」。</span></div>
+        <div class="litem"><b>META</b> Meta — <span class="st">核心议题：上千亿 capex 有没有回报？广告效率已证明，新 AI 产品仍是押注。</span></div>
+        <div class="litem st">前七层是「卖铲子的供给链」，这一层是「掏钱包的需求侧」——META 更是 NVDA/电力的超级大买家，一手连回硬件链。</div>
+      </div>
+    </div>
 
-    <div class="flow">主链   ASML ─▶ TSM ─▶ NVDA / AMD / CBRS ─▶ SMCI / DELL ─▶ VRT ─▶ 数据中心
-内存   MU / SKHY / SSNLF  ──HBM──▶  算力芯片
-电力   GEV ⚡ ──发电──▶ VRT ──▶ 机房</div>
+    <div class="flow">供给侧   ASML ─▶ TSM ─▶ NVDA/AMD/CBRS ─▶ SMCI/DELL ─▶ VRT ─▶ 数据中心
+内存     MU / SKHY / SSNLF ──HBM──▶ 算力芯片
+电力     GEV ⚡ / CEG ☢ ──发电──▶ VRT ──▶ 机房
+需求侧   GOOGL / META ──买 GPU/电力/机房──▶ 供给侧（花钱的人）</div>
 
     <div class="takeaways">
-      <h3>两条最值得记住的主线</h3>
+      <h3>三条最值得记住的主线</h3>
       <div class="tk"><span class="n">1</span><div><b>分化 = 这波行情的关键词。</b> 同属「AI 半导体」，8 月却冰火两重天：算力芯片与设备在杀高估值，存储因 HBM 硬缺口逆势走强。越是「卡脖子 + 锁长约」的环节越抗跌。</div></div>
       <div class="tk"><span class="n">2</span><div><b>杀的是估值，不是基本面。</b> 回调几家业绩其实还在增长（TSM +45%、AMD +50%、VRT +24%）。跌因是涨太多、预期太满、板块太拥挤（82% 基金经理称「史上最拥挤交易」）+「AI 是否超支」担忧。</div></div>
+      <div class="tk"><span class="n">3</span><div><b>供给侧卖铲子，需求侧掏钱包。</b> 前七层靠卖 AI 硬件赚钱（谁卡脖子谁赢）；GOOGL/META 是花钱买算力的需求侧（谁的 capex 能变现谁赢）。META 一手花上千亿买 GPU/电力、一手靠广告造血——需求侧的钱，正是供给侧的订单。</div></div>
     </div>
   </div>
 </div>
@@ -402,6 +413,7 @@ const NODES = [
   { id:"AI",   cn:"AI 基础设施", label:"AI-INFRA", type:"industry" },
   { id:"SEMI", cn:"半导体", label:"SEMIS", type:"industry" },
   { id:"POWER",cn:"电力 / 能源", label:"POWER", type:"industry" },
+  { id:"ADS",  cn:"数字广告", label:"AD-TECH", type:"industry" },
   // pending / 待补 — shows the graph keeps growing
   { id:"ASML", cn:"阿斯麦", type:"stock" },
   { id:"AMD",  cn:"AMD", type:"stock" },
@@ -414,8 +426,11 @@ const NODES = [
   { id:"GEV",  cn:"GE Vernova", type:"stock" },
   { id:"DELL", cn:"戴尔", type:"stock" },
   { id:"CEG",  cn:"Constellation", type:"stock" },
+  { id:"GOOGL",cn:"Alphabet", type:"stock" },
+  { id:"META", cn:"Meta", type:"stock" },
   // fresh stubs — the growth frontier keeps moving
   { id:"VST",  cn:"Vistra（核电/公用）", type:"stock", pending:true },
+  { id:"MSFT", cn:"微软（云/OpenAI）", type:"stock", pending:true },
 ];
 
 const EDGES = [
@@ -463,6 +478,16 @@ const EDGES = [
   { a:"CEG",  b:"AI",   label:"清洁基荷供电" },
   { a:"GEV",  b:"CEG",  label:"发电互补", kind:"peer" },
   { a:"VST",  b:"POWER",label:"核电/公用", pending:true },
+  { a:"GOOGL",b:"META", label:"广告双寡头", kind:"peer" },
+  { a:"GOOGL",b:"ADS",  label:"搜索广告帝国" },
+  { a:"META", b:"ADS",  label:"社交广告帝国" },
+  { a:"GOOGL",b:"AI",   label:"需求侧龙头" },
+  { a:"META", b:"AI",   label:"需求侧龙头" },
+  { a:"GOOGL",b:"NVDA", label:"算力需求(训 Gemini)" },
+  { a:"META", b:"NVDA", label:"GPU 超级买家" },
+  { a:"META", b:"VRT",  label:"AI capex：供电散热" },
+  { a:"META", b:"GEV",  label:"AI capex：电力" },
+  { a:"MSFT", b:"AI",   label:"云/OpenAI 巨头", pending:true },
   { a:"SKHY", b:"NVDA", label:"70% HBM4 订单" },
   { a:"SKHY", b:"AI",   label:"HBM 咽喉" },
   { a:"SSNLF",b:"NVDA", label:"HBM4 追赶" },
@@ -498,9 +523,9 @@ const DETAIL = {
     src: [["CNBC 8/12","https://www.cnbc.com/2026/08/12/cerebras-cbrs-q2-earnings-report-2026.html"],["Bloomberg「lumpy 需求」","https://www.bloomberg.com/news/articles/2026-08-12/cerebras-hardware-business-declines-in-sign-of-lumpy-demand"]],
   },
   AI: {
-    lead: "AI 训练/推理所需的芯片、服务器、内存、电力与散热的总和。云厂商的资本开支是它的需求源头。当前趋势：加速。",
-    members: [["NVDA","核心 GPU 供给，订单簿约 $1T"],["TSM","GPU 独家代工，capex 上调至 $600–640 亿"],["CBRS","晶圆级推理芯片，主题转向「推理效率战」"],["AMD","MI 加速器挑战 NVDA，估值敏感度飙升"],["ASML","最上游 EUV 卖铲人，受 AI 超支担忧顺链传导"],["MU·SKHY·SSNLF","HBM 存储三强，AI 内存咽喉"],["VRT·SMCI·DELL","物理下游：供电散热 + 服务器总装双雄"],["GEV","能源最上游：AI 电力短缺受益"]],
-    todo: "待补：核电（CEG）等电力细分。",
+    lead: "AI 训练/推理所需的芯片、服务器、内存、电力与散热的总和——加上花钱买这一切的「需求侧」应用巨头。供给侧卖铲子，需求侧掏钱包。当前趋势：加速。",
+    members: [["NVDA","核心 GPU 供给，订单簿约 $1T"],["TSM","GPU 独家代工，capex 上调至 $600–640 亿"],["CBRS·AMD","推理/加速器挑战者"],["ASML","最上游 EUV 卖铲人"],["MU·SKHY·SSNLF","HBM 存储三强，AI 内存咽喉"],["VRT·SMCI·DELL","物理下游：供电散热 + 服务器总装"],["GEV·CEG","能源最上游：发电 + 核电"],["GOOGL·META","需求侧：掏钱买算力的应用巨头"]],
+    todo: "待补：微软(MSFT)、亚马逊等更多需求侧买家。",
   },
   SEMI: {
     lead: "设计、制造、封测芯片的全产业链。2026 费城半导体指数 +63%，但龙头分化明显（NVDA 仅 +21% 跑输板块）。当前趋势：强势。",
@@ -601,6 +626,28 @@ const DETAIL = {
     src: [["牛熊之辩，距高点 1/3","https://financefeeds.com/constellation-energy-ceg-stock-prediction-bull-bear-case/"],["CNN Markets: CEG","https://www.cnn.com/markets/stocks/CEG"]],
   },
   VST:  { pending:"Vistra 是另一家核电+公用事业巨头，同样受益 AI 数据中心电力需求。点亮后与 CEG 并列成核电双雄，把 power-energy 的核电一角补厚。" },
+  ADS: {
+    lead: "数字广告是 GOOGL / META 的命脉，也是 AI 冲击最直接的战场。正从「十条蓝链接」结构性转向「AI 答案 + 嵌入式广告」——谁能给 AI 界面装回变现引擎，谁就赢。",
+    members: [["GOOGL","搜索广告帝国，AI Overviews 开新库存"],["META","社交广告，AI 化最激进(Andromeda/Advantage+)"]],
+    todo: "待补：亚马逊广告、The Trade Desk、AppLovin 等。",
+  },
+  GOOGL: {
+    lead: "搜索广告帝国 + 云 + Gemini。核心争议：AI 会不会侵蚀 Search。短期没发生（Q2 搜索广告 +17%），长期是「重新定价」而非「被炸掉」——战场转到「谁握高商业意图入口 + 谁能给 AI 界面装回变现引擎」。",
+    move: [["议题","AI vs 搜索商业模式"],["Q2 搜索广告","$633 亿 · +17%"]],
+    up: [["数字广告支出","搜索广告是主收入"],["AI 算力","自研 TPU + NVDA GPU 训 Gemini"],["分发/流量(TAC)","护城河也是反垄断靶心"]],
+    down: [["开放网络/发布商","零点击搜索削弱导流"],["OpenAI/Perplexity","抢信息类查询(但缺广告引擎)"],["云 GCP","AI 需求带动第二增长曲线"]],
+    chain: ["AI 直接答题→信息类查询点击减少","但这类查询本就不值钱(无商业意图)","高商业意图查询仍黏 Google + AI Mode 新变现","长期风险：单位变现稀释 + 反垄断自伤护城河"],
+    src: [["搜索广告 +17%，AI Overviews 一年后仍加速","https://www.digitalapplied.com/blog/alphabet-q2-2026-earnings-search-ads-ai-overviews"],["AI 时代谷歌统治现裂痕","https://www.cnbc.com/2026/06/23/googles-online-dominance-is-showing-signs-of-cracking-in-ai-era.html"]],
+  },
+  META: {
+    lead: "社交广告帝国 + 巨额 AI capex。核心争议：每年 $1300–1450 亿 capex 有没有回报。广告效率已证明(自我造血)、用户增长喂养广告、新 AI 产品仍是押注。同时是硬件链的超级大买家。",
+    move: [["异动","Q2 后 −10% 至 ~$529"],["FCF","暴跌 91% 至 $7.84 亿"]],
+    up: [["数字广告支出","几乎全部收入来源"],["NVDA GPU","超级大买家 + 自研 MTIA"],["数据中心/电力","capex 大头，拉动 VRT/GEV"]],
+    down: [["广告主","Advantage+ 提升 ROAS(每 $1 回报 $4.52)"],["GOOGL","数字广告双寡头"],["AI 硬件供给链","Meta capex 是 NVDA/电力需求重要来源"]],
+    chain: ["广告 AI 化→效率实打实提升→现金流入","但 capex 规模超广告效率覆盖范围→FCF 压缩 91%","缺口 = 对「新 AI 产品」的信心押注","折旧延时炸弹 + Reality Labs 烧钱前科→市场 PTSD"],
+    src: [["capex 吓坏华尔街，FCF 暴跌","https://www.tradingkey.com/analysis/stocks/us-stocks/262063667-meta-stock-crashing-after-q2-2026-earnings-eps-miss-capex-tradingkey"],["广告机器强劲但 capex 吓人","https://www.digitalapplied.com/blog/meta-q2-2026-earnings-ad-strength-capex-selloff"]],
+  },
+  MSFT: { pending:"微软是另一个 AI 需求侧巨头：Azure 云 + 押注 OpenAI，也是 NVDA GPU 的超级买家。点亮后与 GOOGL/META 并列成「AI 需求侧」一簇。问「微软为什么涨/跌」即可补全。" },
 };
 
 // ---------- Canvas force graph ----------
@@ -873,7 +920,7 @@ window.addEventListener("resize", () => { resize(); });
 boot();
 loop();
 // gentle intro nudge
-setTimeout(()=>{ select("CEG"); }, 600);
+setTimeout(()=>{ select("META"); }, 600);
 </script>
 
 </body>
