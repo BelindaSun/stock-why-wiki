@@ -1,0 +1,414 @@
+<title>生物医药溯源图谱</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Libre+Franklin:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+
+<style>
+  :root {
+    --bg: #efeaf0;
+    --surface: #ffffff;
+    --surface-2: #f7f2f6;
+    --ink: #1c161b;
+    --muted: #6a5f68;
+    --hair: #e0d5de;
+    --stock: #b01f5a;
+    --stock-soft: #e79ab8;
+    --industry: #2f7d4f;
+    --industry-soft: #93cfa8;
+    --edge: #b09aa6;
+    --glow: rgba(176,31,90,0.15);
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #120b10;
+      --surface: #1c141a;
+      --surface-2: #251a22;
+      --ink: #f0e8ee;
+      --muted: #a3919d;
+      --hair: #33232e;
+      --stock: #e05a8f;
+      --stock-soft: #6e2145;
+      --industry: #4fc47e;
+      --industry-soft: #245c3a;
+      --edge: #4a3540;
+      --glow: rgba(224,90,143,0.22);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #120b10;
+    --surface: #1c141a;
+    --surface-2: #251a22;
+    --ink: #f0e8ee;
+    --muted: #a3919d;
+    --hair: #33232e;
+    --stock: #e05a8f;
+    --stock-soft: #6e2145;
+    --industry: #4fc47e;
+    --industry-soft: #245c3a;
+    --edge: #4a3540;
+    --glow: rgba(224,90,143,0.22);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Libre Franklin", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased; overflow: hidden;
+  }
+  .stage { position: fixed; inset: 0; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+  canvas.dragging { cursor: grabbing; }
+
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 5;
+    display: flex; align-items: baseline; gap: 14px; padding: 18px 22px; pointer-events: none;
+  }
+  header .mark { font-family: "Fraunces", serif; font-weight: 900; font-size: 21px; letter-spacing: -0.01em; }
+  header .mark em { font-style: italic; font-weight: 400; color: var(--stock); }
+  header .sub { font-size: 12px; color: var(--muted); letter-spacing: 0.02em; }
+
+  .legend {
+    position: fixed; left: 22px; bottom: 20px; z-index: 5;
+    display: flex; flex-direction: column; gap: 8px;
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    backdrop-filter: blur(8px); border: 1px solid var(--hair); border-radius: 12px;
+    padding: 13px 15px; font-size: 12px; color: var(--muted); max-width: 230px;
+  }
+  .legend .row { display: flex; align-items: center; gap: 9px; }
+  .legend .dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+  .legend .dot.stock { background: var(--stock); }
+  .legend .dot.industry { background: var(--industry); }
+  .legend .dot.ghost { background: transparent; border: 1.5px dashed var(--edge); }
+  .legend .ln { width: 20px; flex: none; border-top: 2px solid var(--edge); }
+  .legend .ln.peer { border-top: 2px dashed var(--stock); }
+  .legend .ln.dash { border-top-style: dashed; }
+  .legend .hint { color: var(--ink); opacity: 0.55; padding-top: 3px; border-top: 1px solid var(--hair); }
+
+  .guide-btn {
+    position: fixed; top: 16px; right: 64px; z-index: 6; pointer-events: auto;
+    background: var(--surface); color: var(--ink); border: 1px solid var(--hair); border-radius: 999px;
+    height: 38px; padding: 0 16px; cursor: pointer;
+    font-family: "Libre Franklin", sans-serif; font-size: 13px; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 6px; transition: background .15s;
+  }
+  .guide-btn:hover { background: var(--surface-2); }
+  .guide-btn:focus-visible { outline: 2px solid var(--stock); outline-offset: 2px; }
+  .toggle {
+    position: fixed; top: 16px; right: 18px; z-index: 6; pointer-events: auto;
+    background: var(--surface); color: var(--ink); border: 1px solid var(--hair); border-radius: 999px;
+    width: 38px; height: 38px; cursor: pointer; font-size: 15px; display: grid; place-items: center; transition: background .15s;
+  }
+  .toggle:hover { background: var(--surface-2); }
+  .toggle:focus-visible { outline: 2px solid var(--stock); outline-offset: 2px; }
+
+  .overlay {
+    position: fixed; inset: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 76%, transparent); backdrop-filter: blur(6px);
+    display: grid; place-items: center; padding: 24px; opacity: 0; visibility: hidden; transition: opacity .26s;
+  }
+  .overlay.open { opacity: 1; visibility: visible; }
+  .guide-card {
+    background: var(--surface); border: 1px solid var(--hair); border-radius: 18px;
+    width: min(720px, 100%); max-height: 88vh; overflow-y: auto;
+    padding: 34px 38px 40px; box-shadow: 0 30px 80px rgba(0,0,0,0.30); position: relative;
+  }
+  .guide-card h2 { font-family: "Fraunces", serif; font-weight: 900; font-size: 27px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .guide-card .gsub { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+  .guide-card .thesis { font-size: 15px; line-height: 1.62; border-left: 3px solid var(--stock); padding: 6px 0 6px 16px; margin: 0 0 24px; }
+  .guide-card .thesis b { color: var(--stock); }
+  .cluster { padding: 16px 0; border-top: 1px solid var(--hair); }
+  .cluster .cname { font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--industry); margin-bottom: 8px; }
+  .cluster .litem { font-size: 13.5px; line-height: 1.55; margin-bottom: 4px; }
+  .cluster .litem b { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--stock); font-weight: 700; }
+  .cluster .litem .st { color: var(--muted); }
+  .takeaways { margin-top: 24px; }
+  .takeaways h3 { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+  .takeaways .tk { display: flex; gap: 12px; margin-bottom: 14px; font-size: 14px; line-height: 1.62; }
+  .takeaways .tk .n { font-family: "Fraunces", serif; font-weight: 900; font-size: 21px; color: var(--stock); flex: none; line-height: 1.1; }
+  .takeaways .tk b { color: var(--ink); }
+  .guide-card .gclose { position: absolute; top: 18px; right: 20px; background: none; border: none; color: var(--muted); font-size: 24px; cursor: pointer; line-height: 1; width: 32px; height: 32px; border-radius: 8px; }
+  .guide-card .gclose:hover { background: var(--surface-2); color: var(--ink); }
+
+  .panel {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 8; width: min(400px, 92vw);
+    background: var(--surface); border-left: 1px solid var(--hair);
+    transform: translateX(101%); transition: transform .34s cubic-bezier(.2,.8,.2,1);
+    display: flex; flex-direction: column; box-shadow: -20px 0 50px rgba(0,0,0,0.16);
+  }
+  .panel.open { transform: translateX(0); }
+  .panel .phead { padding: 22px 24px 16px; border-bottom: 1px solid var(--hair); }
+  .panel .ptype { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .panel .ticker { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 30px; margin: 6px 0 2px; letter-spacing: -0.01em; }
+  .panel .cn { font-family: "Fraunces", serif; font-size: 19px; font-weight: 600; }
+  .panel .move { margin-top: 12px; font-size: 12.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 14px; }
+  .panel .move b { color: var(--ink); font-weight: 600; }
+  .panel .pbody { padding: 20px 24px 40px; overflow-y: auto; }
+  .panel h4 { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 22px 0 10px; }
+  .panel h4:first-child { margin-top: 0; }
+  .panel p { margin: 0 0 12px; font-size: 14.5px; line-height: 1.62; }
+  .panel .lead { font-size: 15px; }
+  .panel ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .panel li { font-size: 13.5px; line-height: 1.5; display: flex; gap: 9px; }
+  .panel li .tk { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 12px; color: var(--stock); flex: none; padding-top: 1px; }
+  .panel li .tk.ind { color: var(--industry); }
+  .panel .chain { counter-reset: step; }
+  .panel .chain li { align-items: flex-start; color: var(--muted); }
+  .panel .chain li::before {
+    counter-increment: step; content: counter(step);
+    font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 11px;
+    color: var(--stock); background: var(--glow); width: 20px; height: 20px; border-radius: 50%; flex: none; display: grid; place-items: center;
+  }
+  .panel .src { font-size: 12px; color: var(--muted); }
+  .panel .src a { color: var(--industry); }
+  .panel .pending-note { font-size: 13.5px; color: var(--muted); line-height: 1.6; background: var(--surface-2); border: 1px dashed var(--hair); border-radius: 10px; padding: 14px 16px; }
+  .panel .close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--muted); cursor: pointer; font-size: 22px; line-height: 1; width: 30px; height: 30px; border-radius: 8px; }
+  .panel .close:hover { background: var(--surface-2); color: var(--ink); }
+
+  @media (max-width: 560px) {
+    .panel { top: auto; height: 74vh; width: 100vw; border-left: none; border-top: 1px solid var(--hair); transform: translateY(101%); }
+    .panel.open { transform: translateY(0); }
+    .legend { display: none; }
+    .guide-btn span.lbl { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .panel, .overlay { transition: none; } }
+</style>
+
+<div class="stage"><canvas id="c"></canvas></div>
+
+<header>
+  <span class="mark">生物医药<em>·溯源</em></span>
+  <span class="sub">stock-why wiki · 点节点看溯源，拖动可整理</span>
+</header>
+
+<button class="guide-btn" id="guideBtn" aria-label="打开板块导览">📖 <span class="lbl">导览</span></button>
+<button class="toggle" id="themeBtn" aria-label="切换明暗主题">◐</button>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="生物医药板块导览">
+  <div class="guide-card">
+    <button class="gclose" id="gclose" aria-label="关闭导览">×</button>
+    <h2>生物医药 · 导览</h2>
+    <div class="gsub">5 家公司 + 3 个主题 · 2026-08-24 · 独立于 AI 半导体图</div>
+    <p class="thesis">生物医药的涨跌，跟半导体是<b>两套逻辑</b>：这里股价由临床数据「二元」跳变、由竞争里的输赢决定，而不是线性的营收利润。</p>
+
+    <div class="cluster">
+      <div class="cname">🧬 mRNA 抗癌三角</div>
+      <div class="litem"><b>MRNA</b> 莫德纳 — <span class="st">癌症疫苗三期成功，8/19 +177%（数据先声夺人）</span></div>
+      <div class="litem"><b>BNTX</b> BioNTech — <span class="st">从新冠转型肿瘤，同日 +20%（广撒网+家底厚）</span></div>
+      <div class="litem"><b>MRK</b> 默沙东 — <span class="st">Moderna 合作方，同消息只涨 10~13%（巨无霸只是增量）</span></div>
+    </div>
+    <div class="cluster">
+      <div class="cname">💊 减肥药双雄（GLP-1）</div>
+      <div class="litem"><b>LLY</b> 礼来 — <span class="st">领跑者，药效领先，美国肥胖市场 >60%，上调指引</span></div>
+      <div class="litem"><b>NVO</b> 诺和诺德 — <span class="st">开创者今追赶者，CagriSema 失利+降价，从高点 −56%</span></div>
+    </div>
+
+    <div class="takeaways">
+      <h3>两条最值得记住的主线</h3>
+      <div class="tk"><span class="n">1</span><div><b>重要性(materiality)：</b>同一个好消息，对小公司是"改变命运"、对巨无霸只是"增量"——所以 Moderna +177%，合作方默沙东只 +10%。判断新闻分量，要看它相对这家公司多大比重。</div></div>
+      <div class="tk"><span class="n">2</span><div><b>同赛道≠都赢：</b>减肥药是超级风口，但礼来吃肉、诺和挨打。决定命运的是<b>竞争里的输赢</b>，不是风口本身——别一听"板块火"就无脑买。</div></div>
+    </div>
+  </div>
+</div>
+
+<aside class="panel" id="panel" aria-live="polite">
+  <button class="close" id="closeBtn" aria-label="关闭">×</button>
+  <div class="phead" id="phead"></div>
+  <div class="pbody" id="pbody"></div>
+</aside>
+
+<div class="legend">
+  <div class="row"><span class="dot stock"></span> 公司</div>
+  <div class="row"><span class="dot industry"></span> 主题 / 赛道</div>
+  <div class="row"><span class="dot ghost"></span> 待补（问到就长出）</div>
+  <div class="row"><span class="ln"></span> 关系（合作 / 归属）</div>
+  <div class="row"><span class="ln peer"></span> 竞争 / 同类</div>
+  <div class="row"><span class="ln dash"></span> 潜在关系</div>
+  <div class="hint">拖动节点整理 · 点节点看溯源</div>
+</div>
+
+<script>
+const NODES = [
+  { id:"MRNA", cn:"莫德纳", type:"stock" },
+  { id:"BNTX", cn:"BioNTech", type:"stock" },
+  { id:"MRK",  cn:"默沙东", type:"stock" },
+  { id:"LLY",  cn:"礼来", type:"stock" },
+  { id:"NVO",  cn:"诺和诺德", type:"stock" },
+  { id:"ONCO", cn:"mRNA 抗癌", label:"ONCO", type:"industry" },
+  { id:"GLP1", cn:"减肥药", label:"GLP-1", type:"industry" },
+  { id:"BIO",  cn:"生物科技", label:"BIOTECH", type:"industry" },
+  // fresh stubs — 前沿继续长
+  { id:"PFE",  cn:"辉瑞（新冠合作）", type:"stock", pending:true },
+  { id:"AMGN", cn:"安进（减肥新秀）", type:"stock", pending:true },
+];
+
+const EDGES = [
+  { a:"MRNA", b:"BNTX", label:"mRNA抗癌双雄", kind:"peer" },
+  { a:"MRNA", b:"MRK",  label:"癌症疫苗合作" },
+  { a:"MRNA", b:"ONCO", label:"疫苗龙头" },
+  { a:"BNTX", b:"ONCO", label:"肿瘤转型" },
+  { a:"MRK",  b:"ONCO", label:"合作方参与" },
+  { a:"MRK",  b:"BIO",  label:"大药企" },
+  { a:"LLY",  b:"NVO",  label:"减肥药双雄", kind:"peer" },
+  { a:"LLY",  b:"GLP1", label:"领跑者" },
+  { a:"NVO",  b:"GLP1", label:"追赶者" },
+  { a:"ONCO", b:"BIO",  label:"子赛道" },
+  { a:"GLP1", b:"BIO",  label:"子赛道" },
+  { a:"PFE",  b:"BNTX", label:"新冠合作", pending:true },
+  { a:"AMGN", b:"GLP1", label:"减肥药挑战者", pending:true },
+];
+
+const DETAIL = {
+  MRNA: {
+    lead: "mRNA 平台公司，从新冠疫苗转向癌症疫苗。8/19 单日暴涨 +177%——与默沙东的个性化 mRNA 癌症疫苗（黑色素瘤）三期成功，史上首个。但仍在烧钱，属预期驱动。",
+    move: [["异动","8/19 +177% · 28× 成交量"],["催化剂","confirmed"]],
+    up: [["MRK","默沙东合作，Keytruda 联用"],["mRNA/LNP 平台","一套平台可延伸多病"],["临床/FDA","生物药由数据二元驱动"]],
+    down: [["MRK","合作共享收益"],["BNTX","mRNA 抗癌对手，同涨同跌"],["mRNA 同业","验证抗癌路线"]],
+    chain: ["癌症疫苗三期成功","mRNA 平台被验证可抗癌","打开数十亿美元长期市场","资金蜂拥买预期，28× 量暴涨"],
+    src: [["癌症疫苗过关暴涨","https://www.vantagemarkets.com/market-analysis/moderna-mrna-stock-cancer-vaccine-surge-20-august-2026/"]],
+  },
+  BNTX: {
+    lead: "当年与辉瑞做新冠疫苗成名，如今全力转型抗癌。8/19 与 Moderna 同日 +20%——同一个「mRNA 治癌」主题被点燃。14 项肿瘤临床 + €166 亿现金垫底。",
+    move: [["异动","8/19 +20% · 目标价 $120.6"],["催化剂","confirmed"]],
+    up: [["临床/FDA","14 项关键期肿瘤临床是主线"],["mRNA+ADC 平台","从疫苗延伸到实体瘤"],["€166 亿现金","支撑转型与回购"]],
+    down: [["MRNA","mRNA 抗癌对手，同涨同跌"],["新冠业务","快速萎缩，转型动因"],["肿瘤/ADC 同业","临床进展搅动板块"]],
+    chain: ["Moderna 癌症疫苗成功","主题外溢，同赛道被重估","自身转型故事强化","但仍亏损，属主题驱动"],
+    src: [["转向肿瘤股价大涨","https://stockstotrade.com/news/biontech-se-bntx-news-2026_08_19-2/"]],
+  },
+  MRK: {
+    lead: "135 年历史的制药巨头，肿瘤霸主。Keytruda 年销 ~$317 亿、占营收一半。同一癌症疫苗消息只涨 10~13%（Moderna +139%）——对巨无霸只是「增量」，非「生死事件」。",
+    move: [["异动","8/19 +10~13% · YTD +45%"],["催化剂","confirmed"]],
+    up: [["Keytruda","占营收一半，主导股价"],["肿瘤/疫苗管线","下一批增长引擎"],["MRNA 合作","延伸肿瘤版图"]],
+    down: [["MRNA","合作方，共享疫苗收益"],["肿瘤同业","Keytruda 是行业标杆"],["大药企并购","专利悬崖逼它买管线"]],
+    chain: ["癌症疫苗对它是增量利好","Keytruda 占半壁，疫苗撼不动基本盘","但 2028 专利悬崖悬顶","疫苗是接班人之一，值得涨 10%"],
+    src: [["Moderna 的胜利也是 Merck 的","https://www.sahmcapital.com/news/content/modernas-cancer-vaccine-win-is-mercks-story-too-2026-08-19"]],
+  },
+  LLY: {
+    lead: "减肥药战争的领跑者。tirzepatide（Zepbound/Mounjaro）减重强于对手，GLP-1 市占 ~56.7%、美国肥胖市场 >60%，还在扩大。Q2 超预期、上调指引至营收 $850–870 亿（+25%）。",
+    move: [["异动","上调指引 +25% · 走强"],["催化剂","confirmed"]],
+    up: [["tirzepatide","营收发动机，减重数据领先"],["口服 GLP-1","Foundayo 卡位下一战场"],["产能","GLP-1 供不应求，扩产即销量"]],
+    down: [["NVO","头号对手，抢的份额多来自诺和"],["肥胖相关疾病","侵蚀心血管/糖尿病大市场"],["GLP-1 供应链","针剂/笔/原料庞大外包"]],
+    chain: ["替尔泊肽减重领先，份额向礼来集中","需求爆棚+扩产跟上，销量超诺和","口服药打开更大市场","Q2 超预期+上调指引反复确认领先"],
+    src: [["GLP-1 市场分化加剧","https://www.cnbc.com/2026/08/06/eli-lilly-novo-nordisk-earnings-glp1-market.html"]],
+  },
+  NVO: {
+    lead: "减肥药开创者、如今追赶者。semaglutide（Ozempic/Wegovy）先火，现被礼来反超：GLP-1 市占 ~37.1% 且萎缩，从高点跌约 56%。三座大山：药效差一档、CagriSema 失利、被迫降价。",
+    move: [["异动","8/5 −5% · 距高点 −56%"],["催化剂","confirmed"]],
+    up: [["semaglutide","营收支柱，但减重弱于对手"],["下一代管线","CagriSema 三期失利是重挫"],["定价/政策","MFN+Medicaid+自行降价 50%"]],
+    down: [["LLY","头号对手，份额此消彼长"],["丹麦经济","诺和体量是国家级"],["减肥药定价","降价 50% 重设板块价格锚"]],
+    chain: ["司美减重弱于替尔泊肽，份额流失","翻盘药 CagriSema 三期失利","政策压价+自行降价，单价利润双杀","下调指引，被重估为承压追赶者"],
+    src: [["诺和指引令人失望","https://www.cnbc.com/2026/08/04/novo-nordisk-releases-earnings-and-guidance.html"]],
+  },
+  ONCO: {
+    lead: "把 mRNA 从「传染病疫苗」转向「癌症治疗」的新兴赛道。2026 年 8 月因三期数据成功被点燃——「mRNA 能治癌」从概念走向验证。二元驱动、预期先行、同涨同跌。",
+    members: [["MRNA","癌症疫苗三期成功，8/19 +177%"],["BNTX","转型肿瘤，14 项临床，同日 +20%"],["MRK","Moderna 合作方，Keytruda 联用"]],
+    todo: "待补：其他 ADC 与肿瘤免疫玩家。",
+  },
+  GLP1: {
+    lead: "以 GLP-1 治疗肥胖/糖尿病的超级赛道，未来十年最大医药机会之一。当前是「两家寡头 + 命运分岔」：拼药效、拼口服药、拼定价、拼下一代管线。",
+    members: [["LLY","领跑者，药效领先，市占 ~56.7%"],["NVO","追赶者，市占 ~37.1% 且萎缩"]],
+    todo: "待补：口服新秀（AMGN 等）、减肥药外溢受损行业（部分食品股）。",
+  },
+  BIO: {
+    lead: "研发创新药/疫苗/疗法的高风险高回报行业。与 AI 半导体链互不相干，是独立的一张网。内部按主题聚簇——mRNA 抗癌、减肥药是当前最热的两簇。",
+    members: [["mRNA抗癌","MRNA·BNTX·MRK"],["减肥药","LLY·NVO"],["逻辑","临床二元 + 竞争输赢，非线性营收"]],
+    todo: "待补：辉瑞 PFE、福泰 VRTX、更多主题簇。",
+  },
+  PFE:  { pending:"辉瑞是 BioNTech 的新冠疫苗合作方，也是老牌大药企。问「辉瑞为什么涨/跌」即可补全，接到 BioNTech 和生物科技行业。" },
+  AMGN: { pending:"安进带着自己的减肥药（如 MariTide）杀入 GLP-1 战场，是礼来/诺和之外的第三方挑战者。问一句即可补全，接到减肥药赛道。" },
+};
+
+// ---------- engine ----------
+const canvas = document.getElementById("c");
+const ctx = canvas.getContext("2d");
+let W, H, DPR;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+let COL = {};
+function readColors(){
+  COL = { stock: css("--stock"), stockSoft: css("--stock-soft"), industry: css("--industry"), industrySoft: css("--industry-soft"),
+    edge: css("--edge"), ink: css("--ink"), muted: css("--muted"), surface: css("--surface"), bg: css("--bg"), hair: css("--hair") };
+}
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.id] = n; n.x=0; n.y=0; n.vx=0; n.vy=0; n.r = n.pending ? 20 : (n.type==="industry"? 34 : 30); });
+EDGES.forEach(e => { e.A = nodeMap[e.a]; e.B = nodeMap[e.b]; });
+function resize(){ DPR = Math.min(devicePixelRatio||1,2); W=canvas.clientWidth; H=canvas.clientHeight; canvas.width=W*DPR; canvas.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); }
+(function seed(){ NODES.forEach((n,i)=>{ const a=(i/NODES.length)*Math.PI*2; n.x=0.5+Math.cos(a)*0.22+(Math.random()-0.5)*0.04; n.y=0.5+Math.sin(a)*0.22+(Math.random()-0.5)*0.04; });
+  nodeMap.ONCO.x=0.42; nodeMap.ONCO.y=0.44; nodeMap.GLP1.x=0.6; nodeMap.GLP1.y=0.56; })();
+
+let selected=null, hover=null, drag=null, dragged=false;
+function toPx(n){ return { x:n.x*W, y:n.y*H }; }
+function step(){
+  const K_REP=0.00055,K_SPRING=0.010,SPRING_LEN=0.20,CENTER=0.0009,DAMP=0.86;
+  for(let i=0;i<NODES.length;i++){ const a=NODES[i]; if(a===drag)continue;
+    for(let j=i+1;j<NODES.length;j++){ const b=NODES[j]; let dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy+0.0001,d=Math.sqrt(d2),f=K_REP/d2,fx=f*dx/d,fy=f*dy/d; a.vx+=fx;a.vy+=fy;b.vx-=fx;b.vy-=fy; } }
+  EDGES.forEach(e=>{ const a=e.A,b=e.B; let dx=b.x-a.x,dy=b.y-a.y,d=Math.sqrt(dx*dx+dy*dy)+0.0001,f=K_SPRING*(d-SPRING_LEN),fx=f*dx/d,fy=f*dy/d; if(a!==drag){a.vx+=fx;a.vy+=fy;} if(b!==drag){b.vx-=fx;b.vy-=fy;} });
+  NODES.forEach(n=>{ if(n===drag)return; n.vx+=(0.5-n.x)*CENTER; n.vy+=(0.5-n.y)*CENTER; n.vx*=DAMP; n.vy*=DAMP; n.x+=n.vx; n.y+=n.vy; const m=0.06; n.x=Math.max(m,Math.min(1-m,n.x)); n.y=Math.max(m*1.6,Math.min(1-m,n.y)); });
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  EDGES.forEach(e=>{ const p=toPx(e.A),q=toPx(e.B); const active=selected&&(e.a===selected||e.b===selected); const peer=e.kind==="peer";
+    ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y);
+    ctx.strokeStyle = active ? COL.stock : (peer ? COL.stock : COL.edge);
+    ctx.globalAlpha = peer ? (active?0.7:0.34) : (e.pending ? (active?0.7:0.4) : (active?0.95:0.6));
+    ctx.lineWidth = active ? 2.2 : (peer ? 1.2 : 1.4);
+    ctx.setLineDash(e.pending ? [5,5] : (peer ? [4,4] : []));
+    ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha=1;
+    if(active){ const mx=(p.x+q.x)/2,my=(p.y+q.y)/2; ctx.font="600 11px 'Libre Franklin',sans-serif"; const tw=ctx.measureText(e.label).width;
+      ctx.fillStyle=COL.surface; ctx.globalAlpha=0.9; ctx.fillRect(mx-tw/2-5,my-9,tw+10,17); ctx.globalAlpha=1;
+      ctx.fillStyle=COL.ink; ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText(e.label,mx,my); } });
+  NODES.forEach(n=>{ const p=toPx(n); const isStock=n.type==="stock"; const base=isStock?COL.stock:COL.industry; const soft=isStock?COL.stockSoft:COL.industrySoft;
+    const isSel=selected===n.id, isHov=hover===n;
+    if(isSel||isHov){ ctx.beginPath(); ctx.arc(p.x,p.y,n.r+9,0,7); ctx.fillStyle=base; ctx.globalAlpha=0.14; ctx.fill(); ctx.globalAlpha=1; }
+    ctx.beginPath(); ctx.arc(p.x,p.y,n.r,0,7);
+    if(n.pending){ ctx.fillStyle=COL.surface; ctx.fill(); ctx.lineWidth=1.6; ctx.setLineDash([4,4]); ctx.strokeStyle=base; ctx.globalAlpha=0.75; ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha=1; }
+    else { ctx.fillStyle=base; ctx.fill(); if(isSel){ ctx.lineWidth=3; ctx.strokeStyle=soft; ctx.stroke(); } }
+    const tk=n.label||n.id; ctx.textAlign="center"; ctx.textBaseline="middle";
+    ctx.font="700 "+(n.pending?"12px":"13px")+" 'JetBrains Mono',monospace";
+    ctx.fillStyle = n.pending ? base : (isStock ? "#2a0a17" : "#052616");
+    if(n.pending) ctx.globalAlpha=0.9;
+    ctx.fillText(tk, p.x, p.y-(n.pending?0:5)); ctx.globalAlpha=1;
+    if(!n.pending){ ctx.font="600 10.5px 'Libre Franklin',sans-serif"; ctx.fillStyle=isStock?"#3a0f20":"#07341f"; ctx.fillText(n.cn,p.x,p.y+9); } });
+}
+let settle = reduce ? 0 : 280;
+function loop(){ if(settle>0||drag){ step(); if(!drag)settle--; } draw(); requestAnimationFrame(loop); }
+function nodeAt(mx,my){ for(let i=NODES.length-1;i>=0;i--){ const n=NODES[i],p=toPx(n); if((mx-p.x)**2+(my-p.y)**2<=(n.r+4)**2) return n; } return null; }
+function pos(ev){ const r=canvas.getBoundingClientRect(); const t=ev.touches?ev.touches[0]:ev; return {x:t.clientX-r.left,y:t.clientY-r.top}; }
+canvas.addEventListener("pointerdown",ev=>{ const m=pos(ev),n=nodeAt(m.x,m.y); if(n){ drag=n; dragged=false; canvas.classList.add("dragging"); canvas.setPointerCapture(ev.pointerId); } });
+canvas.addEventListener("pointermove",ev=>{ const m=pos(ev); if(drag){ drag.x=m.x/W; drag.y=m.y/H; drag.vx=0; drag.vy=0; dragged=true; settle=Math.max(settle,30); } else { const n=nodeAt(m.x,m.y); hover=n; canvas.style.cursor=n?"pointer":"grab"; } });
+canvas.addEventListener("pointerup",ev=>{ const m=pos(ev),n=nodeAt(m.x,m.y); if(drag&&!dragged&&n===drag) select(n.id); drag=null; canvas.classList.remove("dragging"); });
+
+const panel=document.getElementById("panel"), phead=document.getElementById("phead"), pbody=document.getElementById("pbody");
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+function listHTML(arr,ind){ return "<ul>"+arr.map(([t,d])=>`<li><span class="tk${ind?' ind':''}">${esc(t)}</span><span>${esc(d)}</span></li>`).join("")+"</ul>"; }
+function select(id){
+  selected=id; const n=nodeMap[id], d=DETAIL[id]||{};
+  const typeLabel = n.type==="stock" ? "公司" : "主题 / 赛道";
+  phead.innerHTML = `<div class="ptype" style="color:var(--${n.type==='stock'?'stock':'industry'})">${typeLabel}${n.pending?' · 待补':''}</div>`+
+    `<div class="ticker">${esc(n.label||n.id)}</div>`+`<div class="cn">${esc(n.cn)}</div>`+
+    (d.move ? `<div class="move">${d.move.map(([k,v])=>`<span>${k} <b>${esc(v)}</b></span>`).join("")}</div>` : "");
+  let html="";
+  if(n.pending){ html=`<div class="pending-note">${esc(d.pending)}</div>`; }
+  else if(n.type==="industry"){ html+=`<p class="lead">${esc(d.lead)}</p>`; html+=`<h4>成员 / 要点</h4>`+listHTML(d.members); html+=`<h4>待补</h4><p class="src">${esc(d.todo)}</p>`; }
+  else { html+=`<p class="lead">${esc(d.lead)}</p>`; html+=`<h4>因果链</h4><ul class="chain">`+d.chain.map(c=>`<li>${esc(c)}</li>`).join("")+`</ul>`;
+    html+=`<h4>上游 · 谁影响它</h4>`+listHTML(d.up); html+=`<h4>下游 · 它影响谁</h4>`+listHTML(d.down);
+    html+=`<h4>来源</h4><p class="src">`+d.src.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join(" · ")+`</p>`; }
+  pbody.innerHTML=html; panel.classList.add("open");
+}
+function closePanel(){ panel.classList.remove("open"); selected=null; }
+document.getElementById("closeBtn").addEventListener("click",closePanel);
+const overlay=document.getElementById("overlay");
+function closeGuide(){ overlay.classList.remove("open"); }
+document.getElementById("guideBtn").addEventListener("click",()=>overlay.classList.add("open"));
+document.getElementById("gclose").addEventListener("click",closeGuide);
+overlay.addEventListener("click",e=>{ if(e.target===overlay) closeGuide(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ closeGuide(); closePanel(); } });
+const themeBtn=document.getElementById("themeBtn");
+themeBtn.addEventListener("click",()=>{ const cur=document.documentElement.getAttribute("data-theme"); const dark=cur?cur==="dark":matchMedia("(prefers-color-scheme: dark)").matches; document.documentElement.setAttribute("data-theme",dark?"light":"dark"); readColors(); });
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",readColors);
+function boot(){ resize(); readColors(); }
+window.addEventListener("resize",()=>{ resize(); });
+boot(); loop();
+setTimeout(()=>{ select("LLY"); }, 600);
+</script>

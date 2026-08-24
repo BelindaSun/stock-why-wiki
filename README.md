@@ -10,6 +10,10 @@
 
 > 🧭 **在线关系图** → https://belindasun.github.io/stock-why-wiki/
 > 点节点看溯源、拖动整理布局、右上角有产业链「导览」。
+>
+> 目前有两张独立的图（互不相干）：
+> - 🧭 **AI 半导体** → https://belindasun.github.io/stock-why-wiki/
+> - 🧬 **生物医药** → https://belindasun.github.io/stock-why-wiki/graph-biotech.html
 
 ---
 
