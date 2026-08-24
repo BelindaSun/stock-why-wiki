@@ -12,6 +12,10 @@
 
 ## 条目（最新在上）
 
+- **2026-08-24** · [[SPCX]] SpaceX — 6/12上市(约$2万亿),Starship+Starlink;AI关联间接:NVDA买家+连接层+太空算力想象 → [stocks/SPCX.md](stocks/SPCX.md)
+- **2026-08-24** · [[TSLA]] Tesla — 核心问题:$1.5万亿全押自动驾驶+机器人,是远见还是幻觉?落地远慢于叙事,2026疲软 → [stocks/TSLA.md](stocks/TSLA.md)
+- **2026-08-24** · [[AMZN]] Amazon — AI capex的ROI样板:capex猛增同时AWS利润率+650bp至39.4%,自研Trainium真赚钱(对照Meta) → [stocks/AMZN.md](stocks/AMZN.md)
+- **2026-08-24** · [[AAPL]] Apple — 核心问题:AI"落后"是致命还是聪明克制?赌LLM商品化,靠分发+端侧;成败系于新Siri → [stocks/AAPL.md](stocks/AAPL.md)
 - **2026-08-24** · [[META]] Meta — 核心问题:上千亿AI capex有没有回报?广告效率已证明(自我造血),新AI产品仍是押注;Q2 FCF暴跌91%股价-10% → [stocks/META.md](stocks/META.md)
 - **2026-08-24** · [[GOOGL]] Alphabet — 核心问题:AI会不会侵蚀Search?短期没发生(Q2搜索+17%),长期是"重新定价"而非"炸掉" → [stocks/GOOGL.md](stocks/GOOGL.md)
 - **2026-08-24** · [[AMGN]] 安进 — 带减肥药 MariTide（月针）杀入 GLP-1，双雄之外第三方挑战者 → [stocks/AMGN.md](stocks/AMGN.md)
