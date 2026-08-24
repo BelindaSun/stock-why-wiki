@@ -371,8 +371,9 @@ const NODES = [
   { id:"SMCI", cn:"美超微", type:"stock" },
   { id:"GEV",  cn:"GE Vernova", type:"stock" },
   { id:"DELL", cn:"戴尔", type:"stock" },
+  { id:"CEG",  cn:"Constellation", type:"stock" },
   // fresh stubs — the growth frontier keeps moving
-  { id:"CEG",  cn:"Constellation（核电）", type:"stock", pending:true },
+  { id:"VST",  cn:"Vistra（核电/公用）", type:"stock", pending:true },
 ];
 
 const EDGES = [
@@ -416,7 +417,10 @@ const EDGES = [
   { a:"DELL", b:"NVDA", label:"总装用芯片" },
   { a:"DELL", b:"AMD",  label:"总装用芯片" },
   { a:"DELL", b:"AI",   label:"服务器总装" },
-  { a:"CEG",  b:"POWER",label:"核电供应", pending:true },
+  { a:"CEG",  b:"POWER",label:"核电运营" },
+  { a:"CEG",  b:"AI",   label:"清洁基荷供电" },
+  { a:"GEV",  b:"CEG",  label:"发电互补", kind:"peer" },
+  { a:"VST",  b:"POWER",label:"核电/公用", pending:true },
   { a:"SKHY", b:"NVDA", label:"70% HBM4 订单" },
   { a:"SKHY", b:"AI",   label:"HBM 咽喉" },
   { a:"SSNLF",b:"NVDA", label:"HBM4 追赶" },
@@ -543,10 +547,18 @@ const DETAIL = {
   },
   POWER: {
     lead: "AI 把「电力」从传统慢周期行业重估为成长主题。数据中心用电暴增、面临短缺，发电/电网/核能进入多年上行周期——AI 链条的能源地基。",
-    members: [["GEV","发电+电气化龙头，$1760 亿 backlog"],["VRT","机房配电 + 液冷纯玩家"]],
-    todo: "待补：核电（CEG）、公用事业、独立电网设备等细分。",
+    members: [["GEV","发电+电气化龙头，$1760 亿 backlog"],["CEG","最大核电运营商，签 Meta/微软 AI 核电长约"],["VRT","机房配电 + 液冷纯玩家"]],
+    todo: "待补：公用事业（VST）、SMR 小型堆、电网设备等细分。",
   },
-  CEG:  { pending:"Constellation 是美国最大核电运营商，AI 数据中心找稳定清洁电力的首选（已有科技巨头签核电购电协议）。问一句即可补全，接到电力/能源行业。" },
+  CEG: {
+    lead: "美国最大核电运营商——核电是唯一能扛住 AI 恒定高负荷的清洁基荷电源。基本面强（上调指引、签 Meta/微软长约）却跌 33%，因为钱都投进 Calpine 整合、核电扩容、Crane 重启，短期自由现金流被吞。",
+    move: [["异动","近一年 −14% · 距高点 −33%"],["催化剂","confirmed"]],
+    up: [["核燃料/铀","反应堆燃料成本与供给"],["监管审批","延寿/扩容/重启都需批准"],["电力需求","AI 把基荷需求推上多年上行"]],
+    down: [["Meta/微软/CyrusOne","签 20 年核电长约，直接购电"],["NVDA/AMD/CBRS","间接：AI 算力最终靠清洁基荷电力"],["GEV","同 AI 电力主题，运营 vs 卖设备互补"]],
+    chain: ["AI 要 7×24 清洁基荷电力：核电成唯一现实选项","最大核电商 + Meta/微软超长约：营收可见度极高","但兑现需巨额投入：自由现金流仅 $2.95 亿","买预期压现金流担忧 + 板块回撤：基本面强却跌 33%"],
+    src: [["牛熊之辩，距高点 1/3","https://financefeeds.com/constellation-energy-ceg-stock-prediction-bull-bear-case/"],["CNN Markets: CEG","https://www.cnn.com/markets/stocks/CEG"]],
+  },
+  VST:  { pending:"Vistra 是另一家核电+公用事业巨头，同样受益 AI 数据中心电力需求。点亮后与 CEG 并列成核电双雄，把 power-energy 的核电一角补厚。" },
 };
 
 // ---------- Canvas force graph ----------
@@ -789,5 +801,5 @@ window.addEventListener("resize", () => { resize(); });
 boot();
 loop();
 // gentle intro nudge
-setTimeout(()=>{ select("GEV"); }, 600);
+setTimeout(()=>{ select("CEG"); }, 600);
 </script>

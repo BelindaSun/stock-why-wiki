@@ -12,6 +12,7 @@
 
 ## 条目（最新在上）
 
+- **2026-08-24** · [[CEG]] Constellation — 最大核电商，签 Meta/微软 AI 核电长约；基本面强却跌33%，重资本吞现金流 → [stocks/CEG.md](stocks/CEG.md)
 - **2026-08-24** · [[MRNA]] Moderna — 单日暴涨+177%：mRNA癌症疫苗三期成功（与默沙东）；但仍在烧钱，属预期驱动 → [stocks/MRNA.md](stocks/MRNA.md)
 - **2026-08-24** · [[DELL]] 戴尔 — AI服务器营收暴增757%,YTD+281%创新高;SMCI的大厂竞争对手,内存短缺是瓶颈 → [stocks/DELL.md](stocks/DELL.md)
 - **2026-08-24** · [[GEV]] GE Vernova — AI电力短缺最大受益者,本周+14.6%两年+450%;$1760亿backlog,发电最上游 → [stocks/GEV.md](stocks/GEV.md)
