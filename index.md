@@ -12,6 +12,7 @@
 
 ## 条目（最新在上）
 
+- **2026-08-24** · [[GOOGL]] Alphabet — 核心问题:AI会不会侵蚀Search?短期没发生(Q2搜索+17%),长期是"重新定价"而非"炸掉" → [stocks/GOOGL.md](stocks/GOOGL.md)
 - **2026-08-24** · [[AMGN]] 安进 — 带减肥药 MariTide（月针）杀入 GLP-1，双雄之外第三方挑战者 → [stocks/AMGN.md](stocks/AMGN.md)
 - **2026-08-24** · [[VRTX]] 福泰 — 隐形冠军创历史新高：CF 现金牛 + 非阿片止痛药 Journavx 新引擎 → [stocks/VRTX.md](stocks/VRTX.md)
 - **2026-08-24** · [[PFE]] 辉瑞 — 转型阵痛：专利悬崖+新冠退潮+减肥药受挫，月蒸发$70亿 → [stocks/PFE.md](stocks/PFE.md)
