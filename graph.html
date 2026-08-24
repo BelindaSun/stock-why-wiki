@@ -296,7 +296,7 @@
   <div class="guide-card">
     <button class="gclose" id="gclose" aria-label="关闭导览">×</button>
     <h2>AI 半导体产业链 · 导览</h2>
-    <div class="gsub">20 家公司 + 8 个行业 · 供给侧 + 需求侧 · 2026-08-24</div>
+    <div class="gsub">21 家公司 + 8 个行业 · 供给侧 + 需求侧 · 2026-08-24</div>
     <p class="thesis">AI 算力需求爆发，沿产业链层层传导——但 2026 年 8 月出现明显分化：<b>算力芯片端杀高估值回调，存储（HBM）端因硬缺口逆势走强。位置决定命运。</b></p>
 
     <div class="layer">
@@ -364,6 +364,7 @@
         <div class="litem"><b>GOOGL</b> Alphabet — <span class="st">AI 会不会侵蚀搜索？短期没发生，长期是「重新定价」。</span></div>
         <div class="litem"><b>META</b> Meta — <span class="st">上千亿 capex 有没有回报？广告效率已证明，新 AI 产品仍是押注。</span></div>
         <div class="litem"><b>AMZN</b> 亚马逊 — <span class="st">AI capex 的 ROI 样板：AWS +37%，capex 猛增利润率还扩张。</span></div>
+        <div class="litem"><b>MSFT</b> 微软 — <span class="st">Azure 破 $1000 亿，绑定 OpenAI(持股27%)；有收入但利润率被压。</span></div>
         <div class="litem"><b>AAPL</b> 苹果 — <span class="st">异类：不打 capex 军备赛，赌「模型商品化 + 端侧分发」。</span></div>
         <div class="litem"><b>TSLA</b> 特斯拉 — <span class="st">$1.5万亿全押自动驾驶+机器人，远见 vs 幻觉张力最强。</span></div>
         <div class="litem"><b>SPCX</b> SpaceX — <span class="st">外圈关联：Starlink 连接底座 + 芯片买家 + 太空算力想象。</span></div>
@@ -380,7 +381,7 @@
       <h3>三条最值得记住的主线</h3>
       <div class="tk"><span class="n">1</span><div><b>分化 = 这波行情的关键词。</b> 同属「AI 半导体」，8 月却冰火两重天：算力芯片与设备在杀高估值，存储因 HBM 硬缺口逆势走强。越是「卡脖子 + 锁长约」的环节越抗跌。</div></div>
       <div class="tk"><span class="n">2</span><div><b>杀的是估值，不是基本面。</b> 回调几家业绩其实还在增长（TSM +45%、AMD +50%、VRT +24%）。跌因是涨太多、预期太满、板块太拥挤（82% 基金经理称「史上最拥挤交易」）+「AI 是否超支」担忧。</div></div>
-      <div class="tk"><span class="n">3</span><div><b>供给侧卖铲子，需求侧掏钱包。</b> 前七层靠卖 AI 硬件赚钱（谁卡脖子谁赢）；需求侧是花钱买算力的巨头（谁的 capex 能变现谁赢）。他们的钱正是供给侧的订单。而需求侧内部也在分化：<b>AMZN 的 capex ROI 已被验证</b>（AWS 利润率还在涨），<b>META 的回报仍存疑</b>（新 AI 产品没变现）——同样砸千亿，市场信谁一目了然。</div></div>
+      <div class="tk"><span class="n">3</span><div><b>供给侧卖铲子，需求侧掏钱包。</b> 前七层靠卖 AI 硬件赚钱（谁卡脖子谁赢）；需求侧是花钱买算力的巨头（谁的 capex 能变现谁赢）。他们的钱正是供给侧的订单。而需求侧内部有一条清晰的 <b>ROI 光谱</b>：<b>AMZN</b>（利润率还在扩张，证据最硬）&gt; <b>MSFT</b>（有真实 AI 收入，但利润率被 capex 压）&gt; <b>META</b>（第三块仍是押注）。同样砸千亿，市场信谁、疑谁，一目了然。</div></div>
     </div>
   </div>
 </div>
@@ -437,7 +438,8 @@ const NODES = [
   { id:"SPCX", cn:"SpaceX", type:"stock" },
   // fresh stubs — the growth frontier keeps moving
   { id:"VST",  cn:"Vistra（核电/公用）", type:"stock", pending:true },
-  { id:"MSFT", cn:"微软（云/OpenAI）", type:"stock", pending:true },
+  { id:"MSFT", cn:"微软", type:"stock" },
+  { id:"OPENAI",cn:"OpenAI（未上市）", label:"OPENAI", type:"stock", pending:true },
 ];
 
 const EDGES = [
@@ -494,7 +496,15 @@ const EDGES = [
   { a:"META", b:"NVDA", label:"GPU 超级买家" },
   { a:"META", b:"VRT",  label:"AI capex：供电散热" },
   { a:"META", b:"GEV",  label:"AI capex：电力" },
-  { a:"MSFT", b:"AI",   label:"云/OpenAI 巨头", pending:true },
+  { a:"MSFT", b:"AI",   label:"需求侧龙头" },
+  { a:"MSFT", b:"CLOUD",label:"Azure 破 $1000 亿" },
+  { a:"MSFT", b:"NVDA", label:"GPU超级买家+自研Maia" },
+  { a:"MSFT", b:"MU",   label:"内存需求" },
+  { a:"MSFT", b:"VRT",  label:"AI capex：数据中心" },
+  { a:"MSFT", b:"GEV",  label:"AI capex：电力" },
+  { a:"MSFT", b:"GOOGL",label:"云三巨头", kind:"peer" },
+  { a:"MSFT", b:"OPENAI",label:"持股27%+45%RPO(双刃)" },
+  { a:"OPENAI",b:"NVDA",label:"模型训练算力", pending:true },
   { a:"AAPL", b:"CTECH",label:"消费电子霸主" },
   { a:"AAPL", b:"AI",   label:"需求侧(轻 capex)" },
   { a:"AAPL", b:"TSM",  label:"自研芯片代工" },
@@ -506,7 +516,7 @@ const EDGES = [
   { a:"AMZN", b:"VRT",  label:"AI capex：数据中心" },
   { a:"AMZN", b:"GEV",  label:"AI capex：电力" },
   { a:"AMZN", b:"GOOGL",label:"云三巨头", kind:"peer" },
-  { a:"AMZN", b:"MSFT", label:"云三巨头", kind:"peer", pending:true },
+  { a:"AMZN", b:"MSFT", label:"云三巨头", kind:"peer" },
   { a:"TSLA", b:"ROBOT",label:"自动驾驶/机器人核心" },
   { a:"TSLA", b:"AI",   label:"需求侧(训 FSD)" },
   { a:"TSLA", b:"NVDA", label:"训 FSD 算力买家" },
@@ -672,7 +682,15 @@ const DETAIL = {
     chain: ["广告 AI 化→效率实打实提升→现金流入","但 capex 规模超广告效率覆盖范围→FCF 压缩 91%","缺口 = 对「新 AI 产品」的信心押注","折旧延时炸弹 + Reality Labs 烧钱前科→市场 PTSD"],
     src: [["capex 吓坏华尔街，FCF 暴跌","https://www.tradingkey.com/analysis/stocks/us-stocks/262063667-meta-stock-crashing-after-q2-2026-earnings-eps-miss-capex-tradingkey"],["广告机器强劲但 capex 吓人","https://www.digitalapplied.com/blog/meta-q2-2026-earnings-ad-strength-capex-selloff"]],
   },
-  MSFT: { pending:"微软是另一个 AI 需求侧巨头：Azure 云 + 押注 OpenAI，也是 NVDA GPU 的超级买家。点亮后与 GOOGL/META/AMZN 并列成「云/AI 需求侧」一簇。问「微软为什么涨/跌」即可补全。" },
+  MSFT: {
+    lead: "Azure 云 + Copilot + OpenAI 大股东(27%)。卡在 AMZN(ROI已证明)和 META(存疑)之间——有实打实 AI 收入($370亿 run rate)，但 capex 增速太猛、利润率被压，市场担心「需求→持久 FCF」转化跟不上。OpenAI 是独特护城河，也是独特集中风险。",
+    move: [["议题","capex 跑赢回报？OpenAI 是福是祸"],["Azure","破 $1000 亿 · AI run rate $370亿(+123%)"]],
+    up: [["NVDA","GPU 超级买家 + 自研 Maia"],["MU/HBM · 电力","capex $1900 亿，拉动内存/VRT/GEV"],["OpenAI","模型供给核心，占商业 RPO 约 45%"]],
+    down: [["企业客户","M365 Copilot 3000 万席位、GitHub 5000 万"],["OpenAI","持股 27%，$2500 亿增量 Azure 承诺"],["AMZN/GOOGL","云三巨头竞争"]],
+    chain: ["Azure/Copilot 有真实付费需求→AI 收入高速增长","但 capex +61% 太猛 + 组件涨价→云毛利率多季度压缩","现在花钱、未来才收→市场担心转化率","OpenAI 占 45% RPO→护城河也是集中风险"],
+    src: [["$190B capex 重定价 AI","https://www.globaldatacenterhub.com/p/microsoft-q3-fy2026-the-190b-capex"],["对 capex ROI 的担忧","https://seekingalpha.com/article/4898065-microsoft-reasons-to-be-concerned-about-capex-roi"]],
+  },
+  OPENAI: { pending:"OpenAI 未上市，但它是 MSFT 深绑的模型供给核心（微软持股 27%、占其商业 RPO 约 45%），也是 NVDA 的算力大买家。作为图谱外圈关联节点——若日后上市或有更多披露即可补全。" },
   CTECH: {
     lead: "消费电子与终端生态。AI 时代的关键变量是「端侧 AI + 分发」——谁的装机量大、谁把 AI 装进操作系统，谁就有触达优势。当前以 Apple 的「克制打法」为焦点。",
     members: [["AAPL","轻 capex、重端侧+分发；赌 LLM 会商品化"]],
@@ -680,8 +698,8 @@ const DETAIL = {
   },
   CLOUD: {
     lead: "云计算是 AI 变现最直接的渠道——把算力打包卖给企业。AWS/Azure/GCP 三巨头竞赛，AI 是新引擎，也是「capex ROI」最容易验证的地方（有企业客户直接付费）。",
-    members: [["AMZN","AWS +37%，利润率还扩张，ROI 样板"],["GOOGL","GCP，AI 需求带动第二增长曲线"]],
-    todo: "待补：微软 Azure(MSFT)、甲骨文等。",
+    members: [["AMZN","AWS +37%，利润率还扩张，ROI 样板"],["MSFT","Azure 破 $1000 亿，绑定 OpenAI"],["GOOGL","GCP，AI 需求带动第二增长曲线"]],
+    todo: "待补：甲骨文(OCI)、其他云玩家。",
   },
   ROBOT: {
     lead: "自动驾驶 + 人形机器人。AI 从「屏幕里」走向「物理世界」的赛道，叙事宏大但落地慢。估值极度依赖预期，是「远见 vs 幻觉」张力最强的一块。",
@@ -997,5 +1015,5 @@ window.addEventListener("resize", () => { resize(); });
 boot();
 loop();
 // gentle intro nudge
-setTimeout(()=>{ select("AMZN"); }, 600);
+setTimeout(()=>{ select("MSFT"); }, 600);
 </script>
