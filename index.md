@@ -12,6 +12,7 @@
 
 ## 条目（最新在上）
 
+- **2026-08-24** · [[MSFT]] 微软 — 核心问题:$1900亿capex跑赢回报了吗?有真实AI收入($370亿run rate)但利润率压缩;卡在AMZN与META之间,OpenAI绑定双刃剑 → [stocks/MSFT.md](stocks/MSFT.md)
 - **2026-08-24** · [[SPCX]] SpaceX — 6/12上市(约$2万亿),Starship+Starlink;AI关联间接:NVDA买家+连接层+太空算力想象 → [stocks/SPCX.md](stocks/SPCX.md)
 - **2026-08-24** · [[TSLA]] Tesla — 核心问题:$1.5万亿全押自动驾驶+机器人,是远见还是幻觉?落地远慢于叙事,2026疲软 → [stocks/TSLA.md](stocks/TSLA.md)
 - **2026-08-24** · [[AMZN]] Amazon — AI capex的ROI样板:capex猛增同时AWS利润率+650bp至39.4%,自研Trainium真赚钱(对照Meta) → [stocks/AMZN.md](stocks/AMZN.md)
