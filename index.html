@@ -573,12 +573,12 @@ const EDGES = [
 
 const DETAIL = {
   NVDA: {
-    lead: "这不是坏消息导致的下跌，而是财报前的观望性回调。8/26 盘后公布 FY2027 Q2，市场在等这份「AI 风向标」给出需求确认，落地前资金倾向减仓避险。",
-    move: [["异动","连跌 6 天 · 10 日 −4.13%"],["催化剂","confirmed"]],
-    up: [["TSM","独家代工，产能决定供给"],["MU","HBM 内存是 AI 芯片瓶颈"],["MSFT/GOOGL","云厂商 capex = 订单簿"]],
-    down: [["AMD","直接竞争，常同向或对冲"],["SMH","权重股，带动整个板块"],["ETN/GEV","GPU 集群拉动电网需求"]],
-    chain: ["Q2 财报临近（8/26）","被视为整个 AI 交易的定调时刻","短线资金财报前降风险","连续温和下滑（波动非反转）"],
-    src: [["Motley Fool 8/21","https://www.fool.com/investing/2026/08/21/prediction-nvidia-stock-will-go-parabolic-after-aug-26-here-are-2-3-trillion-reasons-why/"]],
+    lead: "8/26 财报炸裂→8/27 跳涨约 6%、单日市值 +$4400 亿。悬念揭晓：Q2 营收 $962 亿(+106%)、数据中心创纪录 $890 亿(+117%)，更引爆的是 2027 年约 +70% 增长指引(近两倍预期)，Vera Rubin 已满产。破了连续 4 季「财报后即跌」魔咒。作为全图中心，它跳涨带动整条 AI 链情绪。",
+    move: [["异动","财报后 +6% · 单日 +$4400亿 · 收 ~$210"],["催化剂","confirmed(财报)"]],
+    up: [["TSM","独家代工，产能决定供给"],["MU/SKHY","HBM 内存是 AI 芯片瓶颈"],["MSFT/GOOGL/AMZN/META","云厂 capex = 订单簿"]],
+    down: [["SMH","中心节点，跳涨带动整个板块情绪"],["存储/电力/服务器","需求可见度拉长，全链受益"],["AVGO/AMD","路线之争的另一极/竞争"]],
+    chain: ["财报前担忧 AI 需求见顶→观望减仓","实际数据中心 +117% + Vera Rubin 获全部超大厂订单→证伪见顶","2027 +70% 增长指引→把 AI 需求可见度大幅拉长","市场此刻仍在奖励「确定性」，NVDA 给出最强可见度"],
+    src: [["CNBC：财报后 +$400B","https://www.cnbc.com/2026/08/27/nvidia-nvda-q2-earnings.html"],["黄仁勋预测 FY28 +70%","https://www.cnbc.com/2026/08/26/nvidia-nvda-earnings-report-q2-2027-live-updates.html"]],
   },
   TSM: {
     lead: "Q2 营收 $40.2B 超预期、全年营收增速上调至 40%+、AI 需求「火热」——基本面是强的。但股价反而谨慎回落，因为公司同时把 2026 capex 上调到 $600–640 亿并预警利润率下降。",
@@ -1089,7 +1089,7 @@ window.addEventListener("resize", () => { resize(); });
 boot();
 loop();
 // gentle intro nudge
-setTimeout(()=>{ select("AVGO"); }, 600);
+setTimeout(()=>{ select("NVDA"); }, 600);
 </script>
 
 </body>
