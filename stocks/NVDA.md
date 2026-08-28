@@ -31,7 +31,8 @@ _Asset type: stock_ · _Last updated: 2026-08-28_
 2. 实际数据中心 +117%、Vera Rubin 获所有超大厂订单 → 证伪"见顶"叙事
 3. 2027 年 +70% 增长指引 → 把 AI 需求可见度大幅拉长,重定价整个 AI 交易
 4. 作为全图中心节点 → NVDA 跳涨带动 [[SMH]] 板块 + 存储/电力/服务器全链情绪
-**值得注意:** 财报同时有"内存成本压毛利"的小瑕疵,但被 70% 增长指引完全盖过。这也印证了本 wiki 的一条主线——市场此刻仍在奖励"确定性",而 NVDA 给出了最强的需求可见度。
+**值得注意:** 财报同时有"内存成本压毛利"的小瑕疵——管理层指引毛利率将从本季约 75% 探底至 FY27 Q4 的 **71-72%**;但被 70% 增长指引完全盖过。另一个信号:对上游的**供给承诺翻倍到约 $2790 亿**(锁定产能)。这印证了本 wiki 的一条主线——市场此刻仍在奖励"确定性",而 NVDA 给出了最强的需求可见度。
+**盯的变量(供投资记录):** 毛利率探底 71-72% 是否如期企稳、Vera Rubin ramp 速度、供给承诺兑现。
 **Sources:** [Fortune: Nvidia doubles Q2 revenue to $96B](https://fortune.com/2026/08/26/nvidia-results-q2-earnings/) · [CNBC: Nvidia adds $400B+ after blowout earnings](https://www.cnbc.com/2026/08/27/nvidia-nvda-q2-earnings.html) · [CNBC: Huang forecasts 70% FY2028 growth](https://www.cnbc.com/2026/08/26/nvidia-nvda-earnings-report-q2-2027-live-updates.html) · [24/7 Wall St: NVDA surges 6% on 70% growth forecast](https://247wallst.com/investing/2026/08/27/nvidia-surges-6-as-a-70-growth-forecast-overrides-a-memory-margin-warning-amd-and-intel-tick-up/)
 
 ## 2026-08-23 — 财报前连续回调，非利空驱动
