@@ -12,6 +12,8 @@
 
 ## 条目（最新在上）
 
+- **2026-08-28** · [[NVDA]] 英伟达 — 财报炸裂前跌后涨:Q2营收$962亿(+106%)+2027年+70%增长指引,单日市值+$4400亿,破"财报后即跌"魔咒 → [stocks/NVDA.md](stocks/NVDA.md)
+
 - **2026-08-24** · [[AVGO]] 博通 — 定制AI芯片(ASIC)之王:给谷歌/Meta/OpenAI/Anthropic造芯,是NVDA的"去NVDA化"替代路线;$730亿backlog → [stocks/AVGO.md](stocks/AVGO.md)
 - **2026-08-24** · [[ANTHROPIC]] Anthropic — 未上市/隐形中心:收入80x爆发($30亿→$65亿run rate)首次运营盈利,亚马逊+谷歌押注$650亿,IPO传闻$2万亿 → [stocks/ANTHROPIC.md](stocks/ANTHROPIC.md)
 - **2026-08-24** · [[OPENAI]] OpenAI — 未上市/隐形中心:估值$8520亿,$1.15万亿基建承诺点燃整条硬件链,是"AI资本循环"引力中心 → [stocks/OPENAI.md](stocks/OPENAI.md)
@@ -43,4 +45,3 @@
 - **2026-08-24** · [[AMD]] 超微 — 一个月狂跌:AI交易降温+客户流失(SpaceX转投NVDA)+高估值(~123x)获利了结,情绪杀非基本面崩 → [stocks/AMD.md](stocks/AMD.md)
 - **2026-08-23** · [[CBRS]] Cerebras — 8月连续暴跌：Q2收入miss + 硬件-23% + 毛利率骤降，高估值(~68x)容不下瑕疵 → [stocks/CBRS.md](stocks/CBRS.md)
 - **2026-08-23** · [[TSM]] 台积电 — Q2 超预期却小幅回调，卡在"AI 超级周期 vs. 高 capex 压利润" → [stocks/TSM.md](stocks/TSM.md)
-- **2026-08-23** · [[NVDA]] 英伟达 — 财报前(8/26)连续回调，非利空驱动，属观望性减仓 → [stocks/NVDA.md](stocks/NVDA.md)
