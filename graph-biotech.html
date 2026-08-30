@@ -224,7 +224,7 @@
   <div class="guide-card">
     <button class="gclose" id="gclose" aria-label="关闭导览">×</button>
     <h2>生物医药 · 导览</h2>
-    <div class="gsub">8 家公司 + 3 个主题 · 2026-08-24 · 独立于 AI 半导体图</div>
+    <div class="gsub">10 家公司 + 3 个主题 · 2026-08-30 · 独立于 AI 半导体图</div>
     <p class="thesis">生物医药的涨跌，跟半导体是<b>两套逻辑</b>：这里股价由临床数据「二元」跳变、由竞争里的输赢决定，而不是线性的营收利润。</p>
 
     <div class="cluster">
@@ -243,6 +243,8 @@
     <div class="cluster">
       <div class="cname">🧩 自成一路</div>
       <div class="litem"><b>VRTX</b> 福泰 — <span class="st">隐形冠军：CF 现金牛 + 非阿片止痛药 Journavx，创历史新高；与前两簇不搭界</span></div>
+      <div class="litem"><b>REGN</b> Regeneron — <span class="st">Dupixent + EYLEA HD，多产品研发复利</span></div>
+      <div class="litem"><b>ISRG</b> Intuitive Surgical — <span class="st">手术机器人装机 + 耗材服务飞轮</span></div>
     </div>
 
     <div class="takeaways">
@@ -283,6 +285,8 @@ const NODES = [
   { id:"PFE",  cn:"辉瑞", type:"stock" },
   { id:"AMGN", cn:"安进", type:"stock" },
   { id:"VRTX", cn:"福泰", type:"stock" },
+  { id:"REGN", cn:"Regeneron", type:"stock" },
+  { id:"ISRG", cn:"直觉外科", type:"stock" },
   // fresh stubs — 前沿继续长
   { id:"VKTX", cn:"Viking（减肥新贵）", type:"stock", pending:true },
 ];
@@ -304,6 +308,8 @@ const EDGES = [
   { a:"PFE",  b:"GLP1", label:"迟到挑战者" },
   { a:"AMGN", b:"GLP1", label:"月针挑战者" },
   { a:"VRTX", b:"BIO",  label:"罕见病+止痛" },
+  { a:"REGN", b:"BIO",  label:"抗体平台" },
+  { a:"ISRG", b:"BIO",  label:"手术机器人" },
   { a:"VKTX", b:"GLP1", label:"减肥新贵", pending:true },
 ];
 
@@ -386,6 +392,22 @@ const DETAIL = {
     down: [["阿片止痛药市场","Journavx 是非成瘾替代，冲击格局"],["CF 患者","近乎独家，定价权强"],["罕见病同业","高壁垒+高定价模式标杆"]],
     chain: ["CF 近乎垄断：稳定高毛利现金牛","Journavx 放量(+71%)：多元化战略奏效","肾病/糖尿病管线临近：更多增长期权","单一依赖下降 + 多引擎：创历史新高"],
     src: [["创历史新高，新引擎","https://www.fool.com/investing/2026/08/14/vertex-pharmaceuticals-just-hit-an-all-time-high-h/"]],
+  },
+  REGN: {
+    lead: "平台型生物制药公司。Q2 2026 多产品同时增长：Dupixent 全球销售 +38%，EYLEA HD 美国销售 +52%，Libtayo +30%。核心不是单次临床事件，而是研发平台持续产出。",
+    move: [["基线","纳入医药十股研究池"],["证据","Q2 2026 公司财报"]],
+    up: [["Dupixent","跨适应症最大增长引擎"],["EYLEA HD","眼科升级换代"],["抗体平台","持续产出新药与适应症"]],
+    down: [["Sanofi","Dupixent 合作方"],["眼科市场","影响抗 VEGF 与生物类似药竞争"],["免疫/肿瘤同业","关键数据改变细分格局"]],
+    chain: ["抗体平台产出多个产品","多适应症扩张带来现金流","现金流继续投入研发","新产品延长增长周期"],
+    src: [["Regeneron Q2 2026","https://investor.regeneron.com/news-releases/news-release-details/regeneron-reports-second-quarter-2026-financial-and-operating"]],
+  },
+  ISRG: {
+    lead: "手术机器人平台龙头。长期飞轮是 da Vinci 装机 → 医生培训与工作流锁定 → 手术量 → 器械耗材和服务收入。Q2 2026 放置 468 台系统，其中 246 台为 da Vinci 5。",
+    move: [["基线","纳入医药十股研究池"],["证据","Q2 2026 公司财报"]],
+    up: [["医院资本预算","决定装机速度"],["医生培训/临床证据","决定采用与利用率"],["全球手术量","经常性收入的核心输入"]],
+    down: [["医院工作流","形成培训和服务生态"],["手术器械供应链","每台手术持续消耗"],["机器人竞争者","新平台重设行业门槛"]],
+    chain: ["da Vinci 5 装机增加","更多医生和医院进入平台","手术量带动耗材与服务","经常性收入反哺研发"],
+    src: [["Intuitive Q2 2026","https://investor.intuitivesurgical.com/news-releases/news-release-details/intuitive-announces-second-quarter-earnings-6"]],
   },
   VKTX: { pending:"Viking Therapeutics 是减肥药领域的高弹性小盘新贵，口服+针剂管线被视为双雄之外的黑马。问「Viking 为什么涨/跌」即可补全，接到减肥药赛道。" },
 };

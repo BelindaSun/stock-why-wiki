@@ -6,11 +6,16 @@
 - 每个行业/主题一份：`industries/<slug>.md`
 - 条目之间用 `[[TICKER]]` / `[[industry:slug]]` 互相链接，形成图谱
 
-📖 **[导览 · AI 半导体产业链谱系](overview.md)** — 把 11 只票按"设备→代工→芯片→存储→总装→供电散热"分层的总览页
+📖 **[导览 · AI 半导体产业链谱系](overview.md)** — 把科技链按"设备→代工→芯片→存储→总装→供电散热"分层
+
+🧬 **[导览 · 医药十股研究谱系](healthcare-overview.md)** — 10 只医药/医疗标的，按代谢、平台型生科、肿瘤接续和高二元研发/器械分层
 
 ---
 
 ## 条目（最新在上）
+
+- **2026-08-30** · [[REGN]] Regeneron — Dupixent、EYLEA HD、Libtayo 多产品同时增长，平台型研发复利 → [stocks/REGN.md](stocks/REGN.md)
+- **2026-08-30** · [[ISRG]] Intuitive Surgical — da Vinci 5 装机升级，长期看手术量与耗材/服务飞轮 → [stocks/ISRG.md](stocks/ISRG.md)
 
 - **2026-08-28** · [[NVDA]] 英伟达 — 财报炸裂前跌后涨:Q2营收$962亿(+106%)+2027年+70%增长指引,单日市值+$4400亿,破"财报后即跌"魔咒 → [stocks/NVDA.md](stocks/NVDA.md)
 
