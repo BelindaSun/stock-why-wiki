@@ -1,15 +1,15 @@
 # 📈 Stock Why 维基 · 涨跌溯源
 
-> **What is this? (English)** A self-growing investment knowledge graph, written in Chinese.
+> **What is this? (English)** A self-growing, bilingual investment knowledge graph.
 > Ask *"why did stock X move?"* and it traces the real catalyst, maps the **upstream** (what drives it)
 > and **downstream** (what it affects) companies and industries, and saves each answer here — getting
-> richer every time. Two interactive maps so far — the **AI-semiconductor** chain (power → chips) and **biopharma** (mRNA oncology, GLP-1 obesity). Notes are in Chinese.
+> richer every time. Two interactive maps so far — the **AI-semiconductor** chain (power → chips) and **biopharma** (mRNA oncology, GLP-1 obesity). Use the `中 / EN` control to switch languages.
 
 一个会**不断长大**的投资知识库：每次看到某只股票/资产涨跌，问一句"为什么"，就自动查清真实原因、画出它的**上游（谁影响它）**和**下游（它影响谁）**，并存进这里。问得越多，网织得越密。
 
 ## 🗺️ 两张在线地图（点开即用）
 
-每张图都能**点节点看溯源、拖动整理布局**，右上角有板块「导览」，顶部可**一键在两张图之间切换**。
+每张图都能**点节点看溯源、拖动整理布局**，右上角有板块「导览」和 `中 / EN` 语言切换，顶部可**一键在两张图之间切换**。英文版也可通过 `?lang=en` 直接分享。
 
 | 地图 | 覆盖 | 打开 |
 |---|---|---|
@@ -49,6 +49,10 @@ _两张图互不相干，各管一个行业世界；问出新行业时会再长�
 ## 它是怎么长大的
 
 每问一只新票，就多一份档案、多几条连线。GitHub 的提交历史会记录每一次增长——就像看着它一天天变厚。
+
+## 双语维护
+
+中文仍是研究原稿；英文译文集中保存在 [`i18n-en.json`](i18n-en.json)，页面切换逻辑在 [`i18n.js`](i18n.js)。新增中文内容尚未翻译时会自动回退显示中文，因此日常更新不会造成页面报错或内容消失。
 
 ---
 

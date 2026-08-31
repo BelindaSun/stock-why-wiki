@@ -1,5 +1,9 @@
-<title>生物医药溯源图谱</title>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>生物医药溯源图谱</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Libre+Franklin:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
@@ -205,6 +209,8 @@
   }
   @media (prefers-reduced-motion: reduce) { .panel, .overlay { transition: none; } }
 </style>
+</head>
+<body>
 
 <div class="stage"><canvas id="c"></canvas></div>
 
@@ -272,6 +278,7 @@
   <div class="hint">拖动节点整理 · 点节点看溯源 · 本卡片可拖动 ⠿</div>
 </div>
 
+<script src="./i18n.js"></script>
 <script>
 const NODES = [
   { id:"MRNA", cn:"莫德纳", type:"stock" },
@@ -448,9 +455,9 @@ function draw(){
     ctx.lineWidth = active ? 2.2 : (peer ? 1.2 : 1.4);
     ctx.setLineDash(e.pending ? [5,5] : (peer ? [4,4] : []));
     ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha=1;
-    if(active){ const mx=(p.x+q.x)/2,my=(p.y+q.y)/2; ctx.font="600 11px 'Libre Franklin',sans-serif"; const tw=ctx.measureText(e.label).width;
+    if(active){ const mx=(p.x+q.x)/2,my=(p.y+q.y)/2; ctx.font="600 11px 'Libre Franklin',sans-serif"; const edgeLabel=swText(e.label); const tw=ctx.measureText(edgeLabel).width;
       ctx.fillStyle=COL.surface; ctx.globalAlpha=0.9; ctx.fillRect(mx-tw/2-5,my-9,tw+10,17); ctx.globalAlpha=1;
-      ctx.fillStyle=COL.ink; ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText(e.label,mx,my); } });
+      ctx.fillStyle=COL.ink; ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText(edgeLabel,mx,my); } });
   NODES.forEach(n=>{ const p=toPx(n); const isStock=n.type==="stock"; const base=isStock?COL.stock:COL.industry; const soft=isStock?COL.stockSoft:COL.industrySoft;
     const isSel=selected===n.id, isHov=hover===n;
     if(isSel||isHov){ ctx.beginPath(); ctx.arc(p.x,p.y,n.r+9,0,7); ctx.fillStyle=base; ctx.globalAlpha=0.14; ctx.fill(); ctx.globalAlpha=1; }
@@ -462,7 +469,7 @@ function draw(){
     ctx.fillStyle = n.pending ? base : (isStock ? "#2a0a17" : "#052616");
     if(n.pending) ctx.globalAlpha=0.9;
     ctx.fillText(tk, p.x, p.y-(n.pending?0:5)); ctx.globalAlpha=1;
-    if(!n.pending){ ctx.font="600 10.5px 'Libre Franklin',sans-serif"; ctx.fillStyle=isStock?"#3a0f20":"#07341f"; ctx.fillText(n.cn,p.x,p.y+9); } });
+    if(!n.pending){ ctx.font="600 10.5px 'Libre Franklin',sans-serif"; ctx.fillStyle=isStock?"#3a0f20":"#07341f"; ctx.fillText(swText(n.cn),p.x,p.y+9); } });
 }
 let settle = reduce ? 0 : 280;
 function loop(){ if(settle>0||drag){ step(); if(!drag)settle--; } draw(); requestAnimationFrame(loop); }
@@ -473,20 +480,20 @@ canvas.addEventListener("pointermove",ev=>{ const m=pos(ev); if(drag){ drag.x=m.
 canvas.addEventListener("pointerup",ev=>{ const m=pos(ev),n=nodeAt(m.x,m.y); if(drag&&!dragged&&n===drag) select(n.id); drag=null; canvas.classList.remove("dragging"); });
 
 const panel=document.getElementById("panel"), phead=document.getElementById("phead"), pbody=document.getElementById("pbody");
-function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
-function listHTML(arr,ind){ return "<ul>"+arr.map(([t,d])=>`<li><span class="tk${ind?' ind':''}">${esc(t)}</span><span>${esc(d)}</span></li>`).join("")+"</ul>"; }
+function esc(s){ return String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+function listHTML(arr,ind){ return "<ul>"+arr.map(([t,d])=>`<li><span class="tk${ind?' ind':''}">${esc(swText(t))}</span><span>${esc(swText(d))}</span></li>`).join("")+"</ul>"; }
 function select(id){
   selected=id; const n=nodeMap[id], d=DETAIL[id]||{};
-  const typeLabel = n.type==="stock" ? "公司" : "主题 / 赛道";
-  phead.innerHTML = `<div class="ptype" style="color:var(--${n.type==='stock'?'stock':'industry'})">${typeLabel}${n.pending?' · 待补':''}</div>`+
-    `<div class="ticker">${esc(n.label||n.id)}</div>`+`<div class="cn">${esc(n.cn)}</div>`+
-    (d.move ? `<div class="move">${d.move.map(([k,v])=>`<span>${k} <b>${esc(v)}</b></span>`).join("")}</div>` : "");
+  const typeLabel = swText(n.type==="stock" ? "公司" : "主题 / 赛道");
+  phead.innerHTML = `<div class="ptype" style="color:var(--${n.type==='stock'?'stock':'industry'})">${typeLabel}${n.pending?' · '+swText('待补'):''}</div>`+
+    `<div class="ticker">${esc(n.label||n.id)}</div>`+`<div class="cn">${esc(swText(n.cn))}</div>`+
+    (d.move ? `<div class="move">${d.move.map(([k,v])=>`<span>${esc(swText(k))} <b>${esc(swText(v))}</b></span>`).join("")}</div>` : "");
   let html="";
-  if(n.pending){ html=`<div class="pending-note">${esc(d.pending)}</div>`; }
-  else if(n.type==="industry"){ html+=`<p class="lead">${esc(d.lead)}</p>`; html+=`<h4>成员 / 要点</h4>`+listHTML(d.members); html+=`<h4>待补</h4><p class="src">${esc(d.todo)}</p>`; }
-  else { html+=`<p class="lead">${esc(d.lead)}</p>`; html+=`<h4>因果链</h4><ul class="chain">`+d.chain.map(c=>`<li>${esc(c)}</li>`).join("")+`</ul>`;
-    html+=`<h4>上游 · 谁影响它</h4>`+listHTML(d.up); html+=`<h4>下游 · 它影响谁</h4>`+listHTML(d.down);
-    html+=`<h4>来源</h4><p class="src">`+d.src.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join(" · ")+`</p>`; }
+  if(n.pending){ html=`<div class="pending-note">${esc(swText(d.pending))}</div>`; }
+  else if(n.type==="industry"){ html+=`<p class="lead">${esc(swText(d.lead))}</p>`; html+=`<h4>${swText('成员 / 要点')}</h4>`+listHTML(d.members); html+=`<h4>${swText('待补')}</h4><p class="src">${esc(swText(d.todo))}</p>`; }
+  else { html+=`<p class="lead">${esc(swText(d.lead))}</p>`; html+=`<h4>${swText('因果链')}</h4><ul class="chain">`+d.chain.map(c=>`<li>${esc(swText(c))}</li>`).join("")+`</ul>`;
+    html+=`<h4>${swText('上游 · 谁影响它')}</h4>`+listHTML(d.up); html+=`<h4>${swText('下游 · 它影响谁')}</h4>`+listHTML(d.down);
+    html+=`<h4>${swText('来源')}</h4><p class="src">`+d.src.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(swText(t))}</a>`).join(" · ")+`</p>`; }
   pbody.innerHTML=html; panel.classList.add("open");
   document.body.classList.add("panel-open");
   requestAnimationFrame(()=>{ resize(); settle=Math.max(settle,90); });
@@ -522,5 +529,10 @@ matchMedia("(prefers-color-scheme: dark)").addEventListener("change",readColors)
 function boot(){ resize(); readColors(); }
 window.addEventListener("resize",()=>{ resize(); });
 boot(); loop();
+window.addEventListener("stockwhy:languagechange",()=>{ if(selected) select(selected); draw(); });
+swInitI18n();
 setTimeout(()=>{ select("VRTX"); }, 600);
 </script>
+
+</body>
+</html>

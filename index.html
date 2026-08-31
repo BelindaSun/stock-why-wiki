@@ -1,10 +1,9 @@
 <!doctype html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>涨跌溯源图谱</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Libre+Franklin:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
@@ -290,6 +289,8 @@
     .panel { transition: none; }
   }
 </style>
+</head>
+<body>
 
 <div class="stage">
   <canvas id="c"></canvas>
@@ -421,6 +422,7 @@
   <div class="pbody" id="pbody"></div>
 </aside>
 
+<script src="./i18n.js"></script>
 <script>
 // ---------- Data (mirrors the wiki entries) ----------
 const NODES = [
@@ -911,12 +913,13 @@ function draw(){
     if (active){
       const mx=(p.x+q.x)/2, my=(p.y+q.y)/2;
       ctx.font = "600 11px 'Libre Franklin', sans-serif";
-      const tw = ctx.measureText(e.label).width;
+      const edgeLabel = swText(e.label);
+      const tw = ctx.measureText(edgeLabel).width;
       ctx.fillStyle = COL.surface; ctx.globalAlpha=0.9;
       ctx.fillRect(mx-tw/2-5, my-9, tw+10, 17);
       ctx.globalAlpha=1;
       ctx.fillStyle = COL.ink; ctx.textAlign="center"; ctx.textBaseline="middle";
-      ctx.fillText(e.label, mx, my);
+      ctx.fillText(edgeLabel, mx, my);
     }
   });
   // nodes
@@ -957,7 +960,7 @@ function draw(){
     if (!n.pending){
       ctx.font = "600 10.5px 'Libre Franklin', sans-serif";
       ctx.fillStyle = n.private ? COL.privateInk : (isStock ? "#2a1c08" : "#08302e");
-      ctx.fillText(n.private ? "未上市" : n.cn, p.x, p.y + 9);
+      ctx.fillText(swText(n.private ? "未上市" : n.cn), p.x, p.y + 9);
     }
   });
 }
@@ -1001,33 +1004,33 @@ canvas.addEventListener("pointerup", ev => {
 const panel = document.getElementById("panel");
 const phead = document.getElementById("phead");
 const pbody = document.getElementById("pbody");
-function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+function esc(s){ return String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
 function listHTML(arr, ind){
-  return "<ul>" + arr.map(([t,d]) => `<li><span class="tk${ind?' ind':''}">${esc(t)}</span><span>${esc(d)}</span></li>`).join("") + "</ul>";
+  return "<ul>" + arr.map(([t,d]) => `<li><span class="tk${ind?' ind':''}">${esc(swText(t))}</span><span>${esc(swText(d))}</span></li>`).join("") + "</ul>";
 }
 function select(id){
   selected = id;
   const n = nodeMap[id], d = DETAIL[id] || {};
-  const typeLabel = n.private ? "关联实体 · 未上市 (PRIVATE)" : (n.type==="stock" ? "股票 / 资产" : "行业 / 主题");
+  const typeLabel = swText(n.private ? "关联实体 · 未上市 (PRIVATE)" : (n.type==="stock" ? "股票 / 资产" : "行业 / 主题"));
   const typeColor = n.private ? "private" : (n.type==='stock' ? "stock" : "industry");
   phead.innerHTML =
-    `<div class="ptype" style="color:var(--${typeColor})">${typeLabel}${n.pending?' · 待补':''}</div>`+
+    `<div class="ptype" style="color:var(--${typeColor})">${typeLabel}${n.pending?' · '+swText('待补'):''}</div>`+
     `<div class="ticker">${esc(n.label||n.id)}</div>`+
-    `<div class="cn">${esc(n.cn)}</div>`+
-    (d.move ? `<div class="move">${d.move.map(([k,v])=>`<span>${k} <b>${esc(v)}</b></span>`).join("")}</div>` : "");
+    `<div class="cn">${esc(swText(n.cn))}</div>`+
+    (d.move ? `<div class="move">${d.move.map(([k,v])=>`<span>${esc(swText(k))} <b>${esc(swText(v))}</b></span>`).join("")}</div>` : "");
   let html = "";
   if (n.pending){
-    html = `<div class="pending-note">${esc(d.pending)}</div>`;
+    html = `<div class="pending-note">${esc(swText(d.pending))}</div>`;
   } else if (n.type==="industry"){
-    html += `<p class="lead">${esc(d.lead)}</p>`;
-    html += `<h4>成员标的</h4>` + listHTML(d.members);
-    html += `<h4>待补</h4><p class="src">${esc(d.todo)}</p>`;
+    html += `<p class="lead">${esc(swText(d.lead))}</p>`;
+    html += `<h4>${swText('成员标的')}</h4>` + listHTML(d.members);
+    html += `<h4>${swText('待补')}</h4><p class="src">${esc(swText(d.todo))}</p>`;
   } else {
-    html += `<p class="lead">${esc(d.lead)}</p>`;
-    html += `<h4>因果链</h4><ul class="chain">` + d.chain.map(c=>`<li>${esc(c)}</li>`).join("") + `</ul>`;
-    html += `<h4>上游 · 谁影响它</h4>` + listHTML(d.up);
-    html += `<h4>下游 · 它影响谁</h4>` + listHTML(d.down);
-    html += `<h4>来源</h4>` + `<p class="src">` + d.src.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(t)}</a>`).join(" · ") + `</p>`;
+    html += `<p class="lead">${esc(swText(d.lead))}</p>`;
+    html += `<h4>${swText('因果链')}</h4><ul class="chain">` + d.chain.map(c=>`<li>${esc(swText(c))}</li>`).join("") + `</ul>`;
+    html += `<h4>${swText('上游 · 谁影响它')}</h4>` + listHTML(d.up);
+    html += `<h4>${swText('下游 · 它影响谁')}</h4>` + listHTML(d.down);
+    html += `<h4>${swText('来源')}</h4>` + `<p class="src">` + d.src.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(swText(t))}</a>`).join(" · ") + `</p>`;
   }
   pbody.innerHTML = html;
   panel.classList.add("open");
@@ -1088,6 +1091,8 @@ function boot(){ resize(); readColors(); }
 window.addEventListener("resize", () => { resize(); });
 boot();
 loop();
+window.addEventListener("stockwhy:languagechange", ()=>{ if(selected) select(selected); draw(); });
+swInitI18n();
 // gentle intro nudge
 setTimeout(()=>{ select("NVDA"); }, 600);
 </script>
