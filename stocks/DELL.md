@@ -22,6 +22,20 @@ _Asset type: stock (NYSE)_ · _Last updated: 2026-08-24_
 ---
 ## Timeline (newest first)
 
+## 2026-09-01 — 财报再超预期,又一次上调指引
+**Move:** AI 需求驱动创纪录业绩,股价走强
+**Catalyst confidence:** confirmed(财报)
+
+**What happened:** Dell **再次上调指引**:全年营收展望上调 **$250 亿至 $1920 亿**,调整后 EPS 从 $17.90 大幅上调到 **$25.50**;AI 服务器 FY27 目标从 $600 亿升到 **$740 亿**。印证了上一条"大厂总装规模碾压"的逻辑,AI 服务器需求持续超预期。与 [[SMCI]] 的差距进一步拉开。
+
+**Causal chain:**
+1. AI 数据中心资本开支持续超预期 → AI 服务器订单再上台阶
+2. 规模/供应链优势 → 大单继续向 Dell 集中,指引二次上调
+3. AI 服务器目标 $600亿→$740亿 → 增长可见度进一步提高
+4. 但内存短缺仍是隐忧 → 呼应 HBM/存储紧缺主题(需求越猛越受上游制约)
+
+**Sources:** [Investing/Reuters: Dell again lifts forecasts as AI demand powers record results](https://www.investing.com/news/stock-market-news/dell-again-lifts-forecasts-as-ai-demand-powers-record-results-4884556) · [TradersUnion: Anthropic revenue surge and Dell target hike](https://tradersunion.com/news/financial-news/show/3011925-anthropic-dell-revenue-market-watch/)
+
 ## 2026-08-24 — 创历史新高:AI 服务器营收暴增 757%,YTD +281%
 **Move:** 8 月中旬 +10% 至约 $484.5,YTD +281%,创历史新高;下次财报 9/3
 **Catalyst confidence:** confirmed(财报)

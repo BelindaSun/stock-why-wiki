@@ -14,14 +14,15 @@
 
 ## 条目（最新在上）
 
+- **2026-09-01** · [[ANTHROPIC]] Anthropic — 反超OpenAI成全球最贵AI初创:Q2收入$115亿(+14倍)转经营盈利,引入高盛IPO提速 → [stocks/ANTHROPIC.md](stocks/ANTHROPIC.md)
+- **2026-09-01** · [[OPENAI]] OpenAI — 秘密递交IPO申请,估值瞄准>$1万亿最快9月上市;run rate破$400亿但被Anthropic反超 → [stocks/OPENAI.md](stocks/OPENAI.md)
+- **2026-09-01** · [[DELL]] 戴尔 — 财报再超预期二次上调指引:年营收+$250亿到$1920亿,AI服务器目标$600亿→$740亿 → [stocks/DELL.md](stocks/DELL.md)
 - **2026-08-30** · [[REGN]] Regeneron — Dupixent、EYLEA HD、Libtayo 多产品同时增长，平台型研发复利 → [stocks/REGN.md](stocks/REGN.md)
 - **2026-08-30** · [[ISRG]] Intuitive Surgical — da Vinci 5 装机升级，长期看手术量与耗材/服务飞轮 → [stocks/ISRG.md](stocks/ISRG.md)
 
 - **2026-08-28** · [[NVDA]] 英伟达 — 财报炸裂前跌后涨:Q2营收$962亿(+106%)+2027年+70%增长指引,单日市值+$4400亿,破"财报后即跌"魔咒 → [stocks/NVDA.md](stocks/NVDA.md)
 
 - **2026-08-24** · [[AVGO]] 博通 — 定制AI芯片(ASIC)之王:给谷歌/Meta/OpenAI/Anthropic造芯,是NVDA的"去NVDA化"替代路线;$730亿backlog → [stocks/AVGO.md](stocks/AVGO.md)
-- **2026-08-24** · [[ANTHROPIC]] Anthropic — 未上市/隐形中心:收入80x爆发($30亿→$65亿run rate)首次运营盈利,亚马逊+谷歌押注$650亿,IPO传闻$2万亿 → [stocks/ANTHROPIC.md](stocks/ANTHROPIC.md)
-- **2026-08-24** · [[OPENAI]] OpenAI — 未上市/隐形中心:估值$8520亿,$1.15万亿基建承诺点燃整条硬件链,是"AI资本循环"引力中心 → [stocks/OPENAI.md](stocks/OPENAI.md)
 - **2026-08-24** · [[MSFT]] 微软 — 核心问题:$1900亿capex跑赢回报了吗?有真实AI收入($370亿run rate)但利润率压缩;卡在AMZN与META之间,OpenAI绑定双刃剑 → [stocks/MSFT.md](stocks/MSFT.md)
 - **2026-08-24** · [[SPCX]] SpaceX — 6/12上市(约$2万亿),Starship+Starlink;AI关联间接:NVDA买家+连接层+太空算力想象 → [stocks/SPCX.md](stocks/SPCX.md)
 - **2026-08-24** · [[TSLA]] Tesla — 核心问题:$1.5万亿全押自动驾驶+机器人,是远见还是幻觉?落地远慢于叙事,2026疲软 → [stocks/TSLA.md](stocks/TSLA.md)
@@ -38,7 +39,6 @@
 - **2026-08-24** · [[BNTX]] BioNTech — 从新冠转型肿瘤，8/19 同 Moderna 同日 +20%；mRNA抗癌双雄之一 → [stocks/BNTX.md](stocks/BNTX.md)
 - **2026-08-24** · [[CEG]] Constellation — 最大核电商，签 Meta/微软 AI 核电长约；基本面强却跌33%，重资本吞现金流 → [stocks/CEG.md](stocks/CEG.md)
 - **2026-08-24** · [[MRNA]] Moderna — 单日暴涨+177%：mRNA癌症疫苗三期成功（与默沙东）；但仍在烧钱，属预期驱动 → [stocks/MRNA.md](stocks/MRNA.md)
-- **2026-08-24** · [[DELL]] 戴尔 — AI服务器营收暴增757%,YTD+281%创新高;SMCI的大厂竞争对手,内存短缺是瓶颈 → [stocks/DELL.md](stocks/DELL.md)
 - **2026-08-24** · [[GEV]] GE Vernova — AI电力短缺最大受益者,本周+14.6%两年+450%;$1760亿backlog,发电最上游 → [stocks/GEV.md](stocks/GEV.md)
 - **2026-08-24** · [[SMCI]] 超微电脑 — 财报后反弹:$600亿AI服务器订单+毛利意外走高,但margin可持续性存疑 → [stocks/SMCI.md](stocks/SMCI.md)
 - **2026-08-24** · [[VRT]] Vertiv — AI数据中心供电+液冷纯玩家,$150亿backlog;一年+107%,近月-13%随板块回调 → [stocks/VRT.md](stocks/VRT.md)

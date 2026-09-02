@@ -23,6 +23,20 @@ ChatGPT/GPT 系列的缔造者。整张 AI 图的**隐形中心节点之一**:�
 ---
 ## Timeline (newest first)
 
+## 2026-09-01 — 秘密递交 IPO 申请,估值瞄准 >$1 万亿
+**Move:** 未上市→拟上市;确认秘密递表
+**Catalyst confidence:** confirmed(媒体报道)
+
+**What happened:** OpenAI **已秘密递交 IPO 申请**,联手高盛与摩根士丹利,最快 **2026 年 9 月**上市,估值瞄准 **>$1 万亿**。同时其收入 run rate 8 月突破 **$400 亿**(此前五个月平台期后再加速),但仍落后 [[ANTHROPIC]] 约 $250 亿——用户规模与曝光领先,企业变现被 Anthropic 反超。这标志着"引力中心"从私有走向公开市场,其估值将首次被公开定价。
+
+**Causal chain:**
+1. AI 资本循环需要持续巨额融资 → IPO 是打开公开市场资金的必然一步
+2. 收入重回加速($40B run rate)→ 给 IPO 估值提供支撑
+3. 但被 Anthropic 在收入上反超 → 叙事从"独一档"变"两强争霸"
+4. 上市后估值公开 → 整个 AI 资本循环的"中心定价"透明化,牵动全链情绪
+
+**Sources:** [ValueAddVC: OpenAI files confidentially for IPO, >$1T valuation](https://valueaddvc.com/blog/openai-revenue-2026-20b-arr-4b-month-path-to-profitability) · [Yahoo: Anthropic overtakes OpenAI](https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-dell-stock-soars-on-ai-sales-anthropic-overtakes-openai-as-worlds-most-valuable-ai-startup-100000518.html)
+
 ## 2026-08-24 — 关联实体档案:$8520亿估值,$1.15万亿基建承诺
 **Move:** 未上市;3/31 完成 $1220 亿融资,投后估值 $8520 亿
 **Catalyst confidence:** confirmed(融资/合约公告)

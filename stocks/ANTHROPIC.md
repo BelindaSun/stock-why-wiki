@@ -22,6 +22,20 @@ Claude 系列的缔造者,企业级 AI 龙头。全图另一个**隐形中心节
 ---
 ## Timeline (newest first)
 
+## 2026-09-01 — 反超 OpenAI 成全球最贵 AI 初创,IPO 提上日程
+**Move:** 未上市;Q2 收入披露 + IPO 进展带动关注
+**Catalyst confidence:** confirmed(收入/媒体报道)
+
+**What happened:** Anthropic 正式**在收入上反超 OpenAI**,成为全球最有价值的 AI 初创。Q2 收入超 **$115 亿(同比约 14 倍)**,调整后经营利润转正;run rate 4 月约 $30B 已超 OpenAI 的 $25B,到 7 月底冲到约 $65B。IPO 预期升温,已引入高盛。这坐实了它"企业级变现最硬的私有样本"定位——与 [[OPENAI]] 的"用户规模大但变现追赶"形成对照。
+
+**Causal chain:**
+1. 企业级 Claude 采用持续爆发 → 收入 14x,且转经营盈利(不同于纯烧钱叙事)
+2. 收入体量反超 OpenAI → "最贵 AI 初创"易主,估值话语权增强
+3. 引入高盛、IPO 提速 → 私有估值向公开市场兑现的路径清晰
+4. 反过来强化 [[AMZN]]/[[GOOGL]] 押注的账面价值 → 云双雄的 AI 战略被验证
+
+**Sources:** [Yahoo: Anthropic overtakes OpenAI as world's most valuable AI startup](https://finance.yahoo.com/sectors/technology/live/tech-stocks-today-dell-stock-soars-on-ai-sales-anthropic-overtakes-openai-as-worlds-most-valuable-ai-startup-100000518.html) · [ValueAddVC: OpenAI $40B ARR as Anthropic hits $65B](https://valueaddvc.com/blog/openai-revenue-2026-20b-arr-4b-month-path-to-profitability)
+
 ## 2026-08-24 — 关联实体档案:收入 80x 爆发,IPO 传闻估值 $2万亿
 **Move:** 未上市;5 月 Series H $650 亿,投后估值约 $9650 亿;8 月传 IPO targeting $2 万亿
 **Catalyst confidence:** confirmed(融资/收入公告)+ likely(IPO 估值未证实)
