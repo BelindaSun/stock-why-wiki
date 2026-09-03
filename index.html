@@ -465,8 +465,8 @@ const NODES = [
   { id:"VST",  cn:"Vistra（核电/公用）", type:"stock", pending:true },
   { id:"AVGO", cn:"博通", type:"stock" },
   { id:"MSFT", cn:"微软", type:"stock" },
-  { id:"OPENAI",cn:"OpenAI", label:"OPENAI", type:"stock", private:true },
-  { id:"ANTHROPIC",cn:"Anthropic", label:"ANTHROPIC", type:"stock", private:true },
+  { id:"OPENAI",cn:"OpenAI", label:"OPENAI", type:"stock", private:true, tag:"拟上市" },
+  { id:"ANTHROPIC",cn:"Anthropic", label:"ANTHROPIC", type:"stock", private:true, tag:"拟上市" },
 ];
 
 const EDGES = [
@@ -530,7 +530,7 @@ const EDGES = [
   { a:"MSFT", b:"VRT",  label:"AI capex：数据中心" },
   { a:"MSFT", b:"GEV",  label:"AI capex：电力" },
   { a:"MSFT", b:"GOOGL",label:"云三巨头", kind:"peer" },
-  { a:"OPENAI",b:"ANTHROPIC",label:"基础模型两强", kind:"peer" },
+  { a:"OPENAI",b:"ANTHROPIC",label:"两强·Anthropic 收入反超", kind:"peer" },
   { a:"OPENAI",b:"FM",  label:"通用模型龙头" },
   { a:"ANTHROPIC",b:"FM",label:"企业级龙头" },
   { a:"OPENAI",b:"AI",  label:"总需求源" },
@@ -686,11 +686,11 @@ const DETAIL = {
     src: [["AI 订单半年翻倍","https://www.fool.com/investing/2026/08/20/ge-vernovas-ai-data-center-orders-just-doubled-all/"],["电力短缺最大赢家","https://247wallst.com/investing/2026/08/04/ge-vernova-set-to-be-biggest-winner-from-ai-data-centers-massive-power-shortfall/"]],
   },
   DELL: {
-    lead: "AI 服务器 ODM 大厂版，SMCI 的头号竞争对手但体量碾压。FY27 Q1 AI 服务器营收 $161 亿（+757%），YTD +281% 创历史新高。唯一瓶颈是内存短缺（呼应 HBM 紧缺主题）拖累交付。",
-    move: [["异动","+10% 至 $485 · YTD +281%"],["催化剂","confirmed"]],
+    lead: "AI 服务器 ODM 大厂版，SMCI 的头号竞争对手且体量碾压。9/1 财报再超预期、二次上调指引：年营收上调 +$250 亿到 $1920 亿，AI 服务器目标从 $600 亿抬到 $740 亿。规模优势对 SMCI 的差距在拉大。",
+    move: [["异动","财报再超预期 · 二次上调指引"],["AI 服务器目标","$600亿 → $740亿"]],
     up: [["NVDA/AMD","GPU 是核心与成本大头"],["MU/SKHY/SSNLF","内存/HBM，当前短缺瓶颈"],["VRT/液冷","高密度 AI 机架散热"]],
     down: [["云厂商/企业","买 AI 服务器搭建算力"],["SMCI","直接竞争，规模战此消彼长"],["NVDA/AMD 需求","最大 ODM，订单是芯片需求风向标"]],
-    chain: ["AI 爆买算力：服务器需求暴涨，营收 +757%","规模/供应链强于 SMCI：大单更给大厂","上调指引 + $513 亿 backlog：股价创新高","但内存短缺成瓶颈：需求太猛反被上游卡脖子"],
+    chain: ["AI 爆买算力：服务器需求暴涨","规模/供应链强于 SMCI：大单更给大厂","财报再超预期→二次上调指引(年营收 +$250亿)","AI 服务器目标 $600亿→$740亿：与 SMCI 差距拉大","仍受内存短缺牵制交付"],
     src: [["逼近历史高点","https://finance.yahoo.com/markets/stocks/articles/dell-near-time-highs-record-160333836.html"],["AI 服务器推至 $485","https://www.fxleaders.com/news/2026/08/13/dell-stock-rips-10-percent-ai-server-boom-485/"]],
   },
   POWER: {
@@ -737,16 +737,16 @@ const DETAIL = {
     src: [["$190B capex 重定价 AI","https://www.globaldatacenterhub.com/p/microsoft-q3-fy2026-the-190b-capex"],["对 capex ROI 的担忧","https://seekingalpha.com/article/4898065-microsoft-reasons-to-be-concerned-about-capex-roi"]],
   },
   OPENAI: {
-    lead: "ChatGPT/GPT 的缔造者，整张图的隐形引力中心之一。未上市，估值约 $8520 亿。它一家的 $1.15 万亿基建承诺，直接点燃 NVDA/博通/AMD/存储/电力整条供给链——不产芯片，却决定谁的订单簿有多厚。是「AI 资本循环」的中心。",
-    move: [["性质","未上市 · 估值 $8520 亿"],["基建承诺","$1.15 万亿(2025-2035)"]],
+    lead: "ChatGPT/GPT 的缔造者，全图引力中心之一。9/1 消息：已秘密递交 IPO 申请，估值瞄准 >$1 万亿，最快 9 月上市——从纯私有走向拟上市。run rate 破 $400 亿但被 Anthropic 收入反超。它一家的 $1.15 万亿基建承诺，仍是 NVDA/博通/存储/电力订单簿的源头。",
+    move: [["性质","拟上市(IPO 进行中) · 瞄准 >$1万亿"],["run rate","破 $400 亿(被 Anthropic 反超)"]],
     up: [["MSFT","持股 27% + $2500 亿 Azure"],["NVDA","投 $300 亿 + $1000 亿算力"],["AMZN","投至多 $500 亿 + AWS 算力"]],
     down: [["整条 AI 硬件链","$1.15 万亿承诺是 NVDA/AVGO/AMD/电力的需求引爆点"],["CBRS","80%+ backlog 绑定 OpenAI"],["AVGO/TSM","自研 Jalapeño 芯片 $3500 亿"]],
     chain: ["需要天量算力→签 $1.15 万亿跨厂商长约","这些长约 = 供给侧订单簿底气","云厂/英伟达既投钱又卖算力→资本循环","但月烧巨资依赖外部融资→收入放缓则循环承压"],
     src: [["估值 $8520 亿收官融资","https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html"],["$1 万亿+ 基建开支","https://tomtunguz.com/openai-hardware-spending-2025-2035/"]],
   },
   ANTHROPIC: {
-    lead: "Claude 的缔造者，企业级 AI 龙头，全图另一个引力中心。未上市，估值约 $9650 亿，IPO 传闻 targeting $2 万亿。收入 run rate 一年从 $30 亿冲到 $65 亿（80x 增长），已首次运营盈利——是「AI 变现」最硬的私有样本。",
-    move: [["性质","未上市 · 估值 $9650 亿"],["收入","run rate ~$65 亿 · 80x 增长"]],
+    lead: "Claude 的缔造者，企业级 AI 龙头，全图另一个引力中心。9/1 大事：Q2 收入 $115 亿(+14 倍)转经营盈利，收入反超 OpenAI 成全球最贵 AI 初创，引入高盛推进 IPO 提速。从纯私有走向拟上市，估值传闻 targeting $2 万亿——是「AI 变现」最硬的样本。",
+    move: [["性质","拟上市(IPO 提速) · 估值 ~$9650 亿"],["收入","Q2 $115 亿(+14 倍)，反超 OpenAI"]],
     up: [["AMZN","投至多 $250 亿 + 5GW 算力"],["GOOGL","投至多 $400 亿 + 5GW TPU"],["AVGO/TSM","算力硬件更上游"]],
     down: [["AMZN AWS","承诺十年 $1000 亿+ 采购→撑起 AWS 利润率"],["GOOGL Cloud","大额 TPU 订单"],["企业 AI","财富10强中8家是客户"]],
     chain: ["Claude 企业采用爆发→收入 80x，现金流验证真实需求","承诺十年 $1000 亿采购 AWS→直接撑起 AMZN 的 ROI","亚马逊/谷歌各押数百亿→投资+卖算力双向绑定","但 $2 万亿 IPO 估值 vs 当前收入→能否兑现是问号"],
@@ -965,7 +965,7 @@ function draw(){
     if (!n.pending){
       ctx.font = "600 10.5px 'Libre Franklin', sans-serif";
       ctx.fillStyle = n.private ? COL.privateInk : (isStock ? "#2a1c08" : "#08302e");
-      ctx.fillText(swText(n.private ? "未上市" : n.cn), p.x, p.y + 9);
+      ctx.fillText(swText(n.private ? (n.tag || "未上市") : n.cn), p.x, p.y + 9);
     }
   });
 }
@@ -1099,7 +1099,7 @@ loop();
 window.addEventListener("stockwhy:languagechange", ()=>{ if(selected) select(selected); draw(); });
 swInitI18n();
 // gentle intro nudge
-setTimeout(()=>{ select("AVGO"); }, 600);
+setTimeout(()=>{ select("ANTHROPIC"); }, 600);
 </script>
 
 </body>
