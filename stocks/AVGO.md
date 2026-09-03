@@ -23,6 +23,22 @@ _Asset type: stock (NASDAQ)_ · _Last updated: 2026-08-24_
 ---
 ## Timeline (newest first)
 
+## 2026-09-03 — Q3 财报大超预期,却跌 ~5%:高预期消化,非基本面问题
+**Move:** 9/2 盘后财报后,盘后一度 -5%,后收窄至约 -3.5%(约 $354)
+**Catalyst confidence:** confirmed(财报)
+
+**What happened:** 典型的"beat 却跌"——数据其实很硬:Q3 营收 **$296 亿(+86%)**,AI 半导体收入 **$167 亿(+221%)**、占总营收 56%;调整后 EPS $3.32(超预期 $3.24)。**连 Q4 指引都很强**:营收 $348 亿(+93%),AI 收入 $217 亿(+236%)。但股价仍跌——因为它此前从 52 周高点 $495 已回落、估值高企,市场对这种"完美定价"的票要求"超预期还得再超一档",利好兑现后获利了结。这和你 wiki 里 [[NVDA]] 前几季、[[CBRS]] 的"高估值容不下瑕疵"是同一个机制。
+
+**Causal chain:**
+1. AI 定制芯片需求持续爆发 → Q3/Q4 数据与指引均强(基本面无瑕)
+2. 但股价前期已大涨、估值高 → 预期被打满,"beat" 不够"大 beat"
+3. 利好落地 → 短线获利了结,"buy the rumor, sell the news"
+4. 作为供给侧"第二极" → 其强指引反向确认了 AI capex 景气(对 [[GOOGL]]/[[META]]/[[OPENAI]] 定制芯片需求是正面信号),股价回调更多是估值层面而非需求层面
+
+**盯的变量:** FY27 AI 收入 >$1000 亿目标是否上调(上季就因"没上调"引发 12.6% 抛售,是这只票的敏感点)。
+
+**Sources:** [CNBC: Broadcom AVGO Q3 earnings report 2026](https://www.cnbc.com/2026/09/02/broadcom-avgo-q3-earnings-report-2026.html) · [TradingKey: Broadcom Q3 revenue +86%, shares fall 6% after hours](https://www.tradingkey.com/analysis/stocks/us-stocks/262147397-avgo-broadcom-q3-earnings-outlook-investors-ai-stock-after-tradingkey) · [Benzinga: Broadcom Q3 2026 earnings call transcript](https://www.benzinga.com/news/26/09/61592658/broadcom-q3-2026-earnings-call-transcript)
+
 ## 2026-08-24 — 补档:定制 AI 芯片之王,$730亿 backlog,估值不便宜
 **Move:** 非单一价格事件,补图关键供给侧节点
 **Catalyst confidence:** confirmed(财报/合作)

@@ -14,6 +14,7 @@
 
 ## 条目（最新在上）
 
+- **2026-09-03** · [[AVGO]] 博通 — Q3财报大超预期却跌~5%:营收$296亿(+86%)、AI芯片$167亿(+221%)、Q4指引强,但高估值"beat不够大beat"获利了结 → [stocks/AVGO.md](stocks/AVGO.md)
 - **2026-09-01** · [[ANTHROPIC]] Anthropic — 反超OpenAI成全球最贵AI初创:Q2收入$115亿(+14倍)转经营盈利,引入高盛IPO提速 → [stocks/ANTHROPIC.md](stocks/ANTHROPIC.md)
 - **2026-09-01** · [[OPENAI]] OpenAI — 秘密递交IPO申请,估值瞄准>$1万亿最快9月上市;run rate破$400亿但被Anthropic反超 → [stocks/OPENAI.md](stocks/OPENAI.md)
 - **2026-09-01** · [[DELL]] 戴尔 — 财报再超预期二次上调指引:年营收+$250亿到$1920亿,AI服务器目标$600亿→$740亿 → [stocks/DELL.md](stocks/DELL.md)
@@ -22,7 +23,6 @@
 
 - **2026-08-28** · [[NVDA]] 英伟达 — 财报炸裂前跌后涨:Q2营收$962亿(+106%)+2027年+70%增长指引,单日市值+$4400亿,破"财报后即跌"魔咒 → [stocks/NVDA.md](stocks/NVDA.md)
 
-- **2026-08-24** · [[AVGO]] 博通 — 定制AI芯片(ASIC)之王:给谷歌/Meta/OpenAI/Anthropic造芯,是NVDA的"去NVDA化"替代路线;$730亿backlog → [stocks/AVGO.md](stocks/AVGO.md)
 - **2026-08-24** · [[MSFT]] 微软 — 核心问题:$1900亿capex跑赢回报了吗?有真实AI收入($370亿run rate)但利润率压缩;卡在AMZN与META之间,OpenAI绑定双刃剑 → [stocks/MSFT.md](stocks/MSFT.md)
 - **2026-08-24** · [[SPCX]] SpaceX — 6/12上市(约$2万亿),Starship+Starlink;AI关联间接:NVDA买家+连接层+太空算力想象 → [stocks/SPCX.md](stocks/SPCX.md)
 - **2026-08-24** · [[TSLA]] Tesla — 核心问题:$1.5万亿全押自动驾驶+机器人,是远见还是幻觉?落地远慢于叙事,2026疲软 → [stocks/TSLA.md](stocks/TSLA.md)
