@@ -758,11 +758,11 @@ const DETAIL = {
     todo: "待补：xAI、Mistral、以及各家自研模型。",
   },
   AVGO: {
-    lead: "定制 AI 芯片(ASIC/XPU)之王，全图供给侧的关键「第二极」。所有想摆脱 NVDA 依赖、自研芯片的巨头（谷歌/Meta/OpenAI/Anthropic）几乎都找它合作设计。如果说 NVDA「卖通用铲子」，博通就是「帮你定制专属铲子」。$730 亿 AI backlog，但估值也已很高。",
-    move: [["性质","定制 ASIC 之王 · $730亿 backlog"],["AI 收入","Q2 $108 亿(+143%)"]],
+    lead: "定制 AI 芯片(ASIC)之王，供给侧「第二极」。9/2 Q3 财报数据很硬却盘后跌 ~5%——典型「beat 却跌」：高估值把预期打满，利好兑现即获利了结（同 NVDA 前几季 / CBRS 机制）。它的强指引反向确认了谷歌/Meta/OpenAI 的定制芯片需求是真的。",
+    move: [["异动","Q3 超预期仍 −3.5% 至 ~$354"],["AI 半导体","$167亿(+221%，占 56%)"]],
     up: [["TSM","3nm/2nm 定制芯片独家代工"],["MU/SKHY","HBM/内存配套"],["七代 TPU IP","定制设计能力是壁垒"]],
-    down: [["GOOGL","七代 TPU，2014 至今最长客户"],["META","定制 MTIA 芯片"],["OPENAI/ANTHROPIC","Jalapeño 10GW / 5GW TPU"]],
-    chain: ["超大厂不想被 NVDA 绑定 + 通用 GPU 贵→转自研 ASIC","但自研门槛极高→几乎都找博通合作设计","定制 ASIC 增速 44.6% vs 通用 GPU 16%→吃份额转移","把「模型公司自研芯片」的意图变成博通订单","但估值已高(~36x)→容错空间小"],
+    down: [["GOOGL","七代 TPU，2014 至今最长客户"],["META","定制 MTIA 芯片"],["OPENAI/ANTHROPIC","强指引反向确认定制需求真实"]],
+    chain: ["Q3 营收 $296亿(+86%)、EPS $3.32 超预期，Q4 指引强","但高估值把预期打满→利好兑现，获利了结","盘后跌 ~5%，收窄至 −3.5%（beat 却跌）","强指引反向确认谷歌/Meta/OpenAI 定制芯片需求","盯：FY27 AI 收入 >$1000亿 目标是否上调（上季没上调曾引发 12.6% 抛售）"],
     src: [["OpenAI×博通 10GW 定制加速器","https://investors.broadcom.com/news-releases/news-release-details/openai-and-broadcom-announce-strategic-collaboration-deploy-10"],["给谷歌/Meta/Anthropic/OpenAI 造芯","https://finance.yahoo.com/technology/ai/articles/broadcom-builds-custom-chips-google-215000298.html"]],
   },
   CTECH: {
@@ -1099,7 +1099,7 @@ loop();
 window.addEventListener("stockwhy:languagechange", ()=>{ if(selected) select(selected); draw(); });
 swInitI18n();
 // gentle intro nudge
-setTimeout(()=>{ select("NVDA"); }, 600);
+setTimeout(()=>{ select("AVGO"); }, 600);
 </script>
 
 </body>
