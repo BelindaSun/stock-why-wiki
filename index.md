@@ -14,6 +14,7 @@
 
 ## 条目（最新在上）
 
+- **2026-09-04** · [[industry:macro-rates]] 宏观利率 — 收益率回落+9月加息概率70%→50%(Waller鸽派+ADP走弱+油价回落);"分母"松动利好高估值AI,贯穿全图的宏观驱动 → [industries/macro-rates.md](industries/macro-rates.md)
 - **2026-09-03** · [[AVGO]] 博通 — Q3财报大超预期却跌~5%:营收$296亿(+86%)、AI芯片$167亿(+221%)、Q4指引强,但高估值"beat不够大beat"获利了结 → [stocks/AVGO.md](stocks/AVGO.md)
 - **2026-09-01** · [[ANTHROPIC]] Anthropic — 反超OpenAI成全球最贵AI初创:Q2收入$115亿(+14倍)转经营盈利,引入高盛IPO提速 → [stocks/ANTHROPIC.md](stocks/ANTHROPIC.md)
 - **2026-09-01** · [[OPENAI]] OpenAI — 秘密递交IPO申请,估值瞄准>$1万亿最快9月上市;run rate破$400亿但被Anthropic反超 → [stocks/OPENAI.md](stocks/OPENAI.md)
