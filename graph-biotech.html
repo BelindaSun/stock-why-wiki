@@ -420,6 +420,8 @@ const DETAIL = {
 };
 
 // ---------- engine ----------
+// swText: safe text passthrough (some call sites wrap display strings via this helper).
+function swText(s){ return s == null ? "" : String(s); }
 const canvas = document.getElementById("c");
 const ctx = canvas.getContext("2d");
 let W, H, DPR;
