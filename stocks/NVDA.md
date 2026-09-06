@@ -1,5 +1,5 @@
 # NVDA — NVIDIA Corporation
-_Asset type: stock_ · _Last updated: 2026-08-28_
+_Asset type: stock_ · _Last updated: 2026-09-06_
 
 ## Upstream — what drives it
 - [[TSM]] 台积电 — 独家代工 Nvidia 先进制程 GPU，产能/良率直接决定供给
@@ -12,13 +12,37 @@ _Asset type: stock_ · _Last updated: 2026-08-28_
 - [[AMD]] — 直接竞争对手，常与 NVDA 同向或对冲波动
 - 电力/电网设备（[[ETN]] [[GEV]]）— GPU 集群拉动数据中心用电，间接下游
 - [[SMH]] / [[SOXX]] 半导体 ETF — NVDA 权重大，其涨跌带动整个板块
+- Hugging Face（拟收购,~$130亿,2026-09）— 开源模型分发平台;NVDA 向上吃到"开发者入口/模型分发"层,超出纯硬件
 
 ## Related industries / themes
 - [[industry:ai-infrastructure]] — 加速，订单簿 2026–2027 已达 $1T
+- [[industry:macro-rates]] — 利率是其高估值的"分母",收益率回落对其估值端利好
 - [[industry:semiconductors]] — 强势，费城半导体指数今年 +63%（NVDA 仅 +21%，跑输板块）
 
 ---
 ## Timeline (newest first)
+
+## 2026-09-03 — 斥资 ~$130 亿收购 Hugging Face:从"卖铲子"向上吃到模型分发层
+**Move:** 9/2 签署 definitive agreement,9/3 确认;非纯价格事件,属重大战略 M&A
+**Catalyst confidence:** confirmed(公司公告/8-K)
+
+**What happened:** Nvidia 同意以约 **$129 亿**(现金付股东)+ **$10 亿**留才股权收购 **Hugging Face**——全球最大的开源 AI 模型/数据集社区平台(1800 万+ 开发者、300 万+ 模型、50 万+ 数据集)。预计 2027 上半年完成。这是 Nvidia 第二大收购(仅次于去年约 $200 亿的 Groq 资产)。承诺保持平台开放、继续支持其他芯片厂商。
+
+**为什么重要(战略含义 > 短期股价):**
+Nvidia 一直是"卖铲子"的(GPU + CUDA),这笔收购是它**向上游吃到"模型分发 + 开发者生态"层**的一步——从卖硬件,到掌握开发者从哪里下载、部署模型的入口。
+
+**Causal chain:**
+1. AI 竞争的下一层是"开发者心智 + 模型分发",而非只是算力
+2. Hugging Face 是开源模型事实上的"应用商店"/中立枢纽 → 谁拥有它,谁就握住开发者入口
+3. Nvidia 收购它 → CUDA(底层)+ Hugging Face(分发)双护城河,把生态锁得更深
+4. 承诺"保持开放、支持他厂芯片" → 既安抚社区,又降低反垄断阻力(否则中立枢纽被芯片龙头收购必遭审查)
+
+**值得盯的张力:**
+- **中立性 vs 归属**:Hugging Face 的价值来自"中立",被最大芯片商收购后,竞品([[AMD]]/[[AVGO]] 客户)会不会担心被边缘化?开放承诺能否兑现是关键
+- **反垄断**:一个"卖铲人"收购"开发者入口",大概率引来监管审查(参考它对 [[GOOGL]] 反垄断的观察)
+- **对模型层的微妙关系**:更贴近 [[OPENAI]]/[[ANTHROPIC]] 所在的模型分发层,合作与竞争的边界变模糊
+
+**Sources:** [NVIDIA Blog: NVIDIA to Acquire Hugging Face](https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/) · [CNBC: Nvidia agrees to buy Hugging Face for almost $13B](https://www.cnbc.com/2026/09/03/nvidia-agrees-to-buy-hugging-face-for-almost-13-billion-ai-expansion.html) · [Bloomberg: Nvidia acquires Hugging Face for ~$13B](https://www.bloomberg.com/news/articles/2026-09-03/nvidia-agrees-to-13-billion-deal-for-ai-platform-hugging-face) · [SEC 8-K (NVDA, 2026-09-02)](https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000078/nvda-20260902.htm)
 
 ## 2026-08-27 — 财报炸裂,股价跳涨:悬念揭晓,前跌后涨
 **Move:** 8/26 盘后财报后,8/27 股价涨约 6%,单日市值 +约 $4400 亿;收于约 $210(仍低于 5 月高点 $236)

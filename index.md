@@ -14,6 +14,7 @@
 
 ## 条目（最新在上）
 
+- **2026-09-06** · [[NVDA]] 英伟达 — ~$130亿收购Hugging Face(9/2签约):从"卖铲子"向上吃到开源模型分发层,CUDA+开发者入口双护城河;注意中立性/反垄断张力 → [stocks/NVDA.md](stocks/NVDA.md)
 - **2026-09-04** · [[industry:macro-rates]] 宏观利率 — 收益率回落+9月加息概率70%→50%(Waller鸽派+ADP走弱+油价回落);"分母"松动利好高估值AI,贯穿全图的宏观驱动 → [industries/macro-rates.md](industries/macro-rates.md)
 - **2026-09-03** · [[AVGO]] 博通 — Q3财报大超预期却跌~5%:营收$296亿(+86%)、AI芯片$167亿(+221%)、Q4指引强,但高估值"beat不够大beat"获利了结 → [stocks/AVGO.md](stocks/AVGO.md)
 - **2026-09-01** · [[ANTHROPIC]] Anthropic — 反超OpenAI成全球最贵AI初创:Q2收入$115亿(+14倍)转经营盈利,引入高盛IPO提速 → [stocks/ANTHROPIC.md](stocks/ANTHROPIC.md)
@@ -22,7 +23,6 @@
 - **2026-08-30** · [[REGN]] Regeneron — Dupixent、EYLEA HD、Libtayo 多产品同时增长，平台型研发复利 → [stocks/REGN.md](stocks/REGN.md)
 - **2026-08-30** · [[ISRG]] Intuitive Surgical — da Vinci 5 装机升级，长期看手术量与耗材/服务飞轮 → [stocks/ISRG.md](stocks/ISRG.md)
 
-- **2026-08-28** · [[NVDA]] 英伟达 — 财报炸裂前跌后涨:Q2营收$962亿(+106%)+2027年+70%增长指引,单日市值+$4400亿,破"财报后即跌"魔咒 → [stocks/NVDA.md](stocks/NVDA.md)
 
 - **2026-08-24** · [[MSFT]] 微软 — 核心问题:$1900亿capex跑赢回报了吗?有真实AI收入($370亿run rate)但利润率压缩;卡在AMZN与META之间,OpenAI绑定双刃剑 → [stocks/MSFT.md](stocks/MSFT.md)
 - **2026-08-24** · [[SPCX]] SpaceX — 6/12上市(约$2万亿),Starship+Starlink;AI关联间接:NVDA买家+连接层+太空算力想象 → [stocks/SPCX.md](stocks/SPCX.md)
