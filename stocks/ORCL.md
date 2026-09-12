@@ -35,11 +35,13 @@ _Asset type: stock (NYSE)_ · _Last updated: 2026-09-12_
 4. 但为交付要疯狂举债扩数据中心 → 现金流/杠杆承压
 
 **核心张力(为什么"炸裂"里藏隐忧):**
-- **客户集中**:约一半 backlog 系于 [[OPENAI]] 一家 → OpenAI 若放缓/自建/转单,Oracle 首当其冲(和 [[CBRS]] 80% 绑 OpenAI 同类风险,只是量级更大)
-- **重资本吞现金**:RPO 是"承诺"不是"现金",兑现要先砸巨额 capex 举债
+- **客户集中(有据)**:2025 年 9 月签的 **$3000 亿 / 5 年**云合约(2027 起),OpenAI 一家约占 $6640 亿 RPO 的 **~54%** → OpenAI 若放缓/自建/转单,Oracle 首当其冲(和 [[CBRS]] 80% 绑 OpenAI 同类风险,量级更大)。近季因客户基础变广,OpenAI 占比被稀释但仍 material。
+- **重资本吞现金(有据)**:RPO 是"承诺"不是"现金";FY2026 capex 翻倍到约 $556 亿,**自由现金流 -$237 亿(连续 5 季为负)** → 兑现 backlog 要先大举举债
 - **循环依赖**:它是"AI 资本循环"的一环——OpenAI 靠融资付它、它举债建算力给 OpenAI,一荣俱荣一损俱损
 
 **Sources:**
 - [Traders Agency: Oracle OCI +121% to $7.4B, backlog $664B](https://tradersagency.com/blog/oracles-cloud-infrastructure-revenue-jumps-121percent-to-dollar74-billion-as-backlog-swells-to-dollar664-billion)
 - [Rolling Out: Oracle's 363% backlog jump masks a real worry](https://rollingout.com/2026/09/10/oracle-earnings-backlog-what-to-watch/)
 - [Oracle IR: FY2026 Q1 financial results](https://investor.oracle.com/investor-news/news-details/2025/Oracle-Announces-Fiscal-Year-2026-First-Quarter-Financial-Results/default.aspx)
+- [IntuitionLabs: Oracle-OpenAI $300B deal (~54% of RPO)](https://intuitionlabs.ai/articles/oracle-openai-300b-deal-analysis)
+- [24/7 Wall St: Oracle weakens bear case with broader AI customer base, $664B backlog](https://247wallst.com/investing/2026/09/11/oracle-weakens-bear-case-with-broader-ai-customer-base-and-664-billion-backlog/)

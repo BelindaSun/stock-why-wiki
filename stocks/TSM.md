@@ -1,5 +1,5 @@
 # TSM — Taiwan Semiconductor (台积电)
-_Asset type: stock_ · _Last updated: 2026-08-23_
+_Asset type: stock_ · _Last updated: 2026-09-12_
 
 ## Upstream — what drives it
 - [[ASML]] — 独家 EUV 光刻机供应商，决定台积电先进制程产能上限
@@ -17,6 +17,20 @@ _Asset type: stock_ · _Last updated: 2026-08-23_
 
 ---
 ## Timeline (newest first)
+
+## 2026-09-12 — N2(2nm)放量验证:A20 Pro 成全球首款 2nm 手机芯片
+**Move:** 非价格事件,属先进制程放量的强验证点
+**Catalyst confidence:** confirmed(Apple 发布会/产品)
+
+**What happened:** [[AAPL]] 9/9 发布会的 iPhone 18 Pro 搭载 **A20 Pro**——**全球首款采用 TSMC N2(2nm)工艺的手机芯片**。TSMC N2 已于 2025 Q4 进入高量产、2026 全年快速爬坡。这把 TSM 的"2nm 商业化"从路线图变成**实际出货**,是其技术领先 + 定价权的直接兑现。
+
+**Causal chain:**
+1. 2nm 是当前最先进制程,门槛极高 → TSM 近乎独家
+2. A20 Pro 首发 2nm 手机芯片 → 证明 N2 良率/产能已达商用 → 技术领先兑现为营收
+3. 2nm 性能/能效提升(比 N3E 同功耗 +10-15%)+ 单价大涨(A20 Pro 传约 $280/颗,+80%)→ 量价齐升,支撑 TSM 毛利
+4. 下游 [[AAPL]](手机)+ [[NVDA]]/[[AMD]](AI 芯片下一代)都排队用 2nm → 需求可见度高
+**关联:** 这条与 [[AAPL]] 9/9 档互为印证——Apple 端是"新 Siri/换机催化",TSM 端是"2nm 放量验证",同一事件两个视角。(反向同步自投资账本会话)
+**Sources:** [Wccftech: Apple A20/A20 Pro first iPhone 2nm chipsets](https://wccftech.com/roundup/apple-a20-pro-first-iphone-2nm-chipsets-here-is-everything-you-need-to-know/) · [AppleInsider: iPhone 18 Pro 2nm A20 chip](https://appleinsider.com/articles/26/08/07/iphone-18-pro-rumor-roundup-2nm-a20-chip-c2-modem-under-display-face-id)
 
 ## 2026-08-23 — 财报超预期却小幅回调：好业绩 vs. 高投入的博弈
 **Move:** $413（8/18），YTD +36.7%，但近一周 -2%，距 52 周高点 $479 约低 14%  ·  **Catalyst confidence:** confirmed

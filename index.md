@@ -14,6 +14,7 @@
 
 ## 条目（最新在上）
 
+- **2026-09-12** · [[TSM]] 台积电 — N2(2nm)放量验证:A20 Pro成全球首款2nm手机芯片,技术领先兑现为出货;量价齐升 → [stocks/TSM.md](stocks/TSM.md)
 - **2026-09-11** · [[industry:macro-rates]] 宏观利率 — 8月CPI黏住(+3.4%),9月加息概率反弹到~90%:分母端压力回摆,应验9/3的双向风险警示 → [industries/macro-rates.md](industries/macro-rates.md)
 - **2026-09-10** · [[ORCL]] Oracle — FQ1炸裂:RPO积压订单飙到$6640亿(单季新签$300亿+AI云),OCI+121%;但约一半绑OpenAI,重资本+客户集中双刃 → [stocks/ORCL.md](stocks/ORCL.md)
 - **2026-09-09** · [[OPENAI]] OpenAI — 发布GPT-6 Astra:比Anthropic同级更省成本,夺回效率叙事、扳回一局;两强进入你追我赶 → [stocks/OPENAI.md](stocks/OPENAI.md)
@@ -51,4 +52,3 @@
 - **2026-08-24** · [[ASML]] 阿斯麦 — 本周-4.4%:中国自研DUV+美国出口管制法案+高估值(~56x)获利了结,基本面稳属情绪杀 → [stocks/ASML.md](stocks/ASML.md)
 - **2026-08-24** · [[AMD]] 超微 — 一个月狂跌:AI交易降温+客户流失(SpaceX转投NVDA)+高估值(~123x)获利了结,情绪杀非基本面崩 → [stocks/AMD.md](stocks/AMD.md)
 - **2026-08-23** · [[CBRS]] Cerebras — 8月连续暴跌：Q2收入miss + 硬件-23% + 毛利率骤降，高估值(~68x)容不下瑕疵 → [stocks/CBRS.md](stocks/CBRS.md)
-- **2026-08-23** · [[TSM]] 台积电 — Q2 超预期却小幅回调，卡在"AI 超级周期 vs. 高 capex 压利润" → [stocks/TSM.md](stocks/TSM.md)
