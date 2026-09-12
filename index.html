@@ -599,12 +599,12 @@ const DETAIL = {
     src: [["NVIDIA 官宣收购 Hugging Face","https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/"],["CNBC：约 $130 亿收购","https://www.cnbc.com/2026/09/03/nvidia-agrees-to-buy-hugging-face-for-almost-13-billion-ai-expansion.html"]],
   },
   TSM: {
-    lead: "Q2 营收 $40.2B 超预期、全年营收增速上调至 40%+、AI 需求「火热」——基本面是强的。但股价反而谨慎回落，因为公司同时把 2026 capex 上调到 $600–640 亿并预警利润率下降。",
-    move: [["异动","$413 · YTD +36.7% · 近一周 −2%"],["催化剂","confirmed"]],
-    up: [["ASML","独家 EUV 光刻机，决定产能上限"],["材料/气体","光刻胶等制程隐性瓶颈"],["NVDA/AAPL","客户订单是需求源头"]],
-    down: [["NVDA","代工产能/价格直接传导到出货"],["SMH","capex 指引是全行业风向标"],["AMAT/LRCX","扩产 = 设备商订单"]],
-    chain: ["AI 芯片需求爆发","营收创纪录、上调全年指引","满足需求需巨额扩产（capex +$40 亿）","短期毛利率承压","利好中反而回调（买预期卖兑现）"],
-    src: [["CNBC 8/10","https://www.cnbc.com/2026/08/10/tsmc-revenue-surge-ai-chip-big-tech.html"]],
+    lead: "9/12 强验证：Apple A20 Pro 成全球首款 2nm(TSMC N2)手机芯片，把 TSM 的「2nm 商业化」从路线图变成实际出货——技术领先 + 定价权直接兑现。与 Apple 9/9 那条互为印证(苹果端是换机催化，台积电端是 2nm 放量)。(此前 8/23：财报超预期却因高 capex 回调。)",
+    move: [["最新","2nm 放量验证 · A20 Pro 首发"],["单价","A20 Pro 传 ~$280/颗(+80%)"]],
+    up: [["ASML","独家 EUV 光刻机，决定 2nm 产能上限"],["材料/气体","光刻胶等制程隐性瓶颈"],["NVDA/AAPL/AMD","客户订单是需求源头"]],
+    down: [["AAPL","A20 Pro 首发 2nm，量价齐升"],["NVDA/AMD","下一代 AI 芯片排队用 2nm"],["SMH","capex/制程指引是全行业风向标"]],
+    chain: ["2nm 是最先进制程、门槛极高→TSM 近乎独家","A20 Pro 首发→证明 N2 良率/产能已达商用","性能 +10-15% + 单价大涨→量价齐升撑毛利","苹果+英伟达+AMD 都排队用 2nm→需求可见度高"],
+    src: [["Apple A20 首发 2nm","https://wccftech.com/roundup/apple-a20-pro-first-iphone-2nm-chipsets-here-is-everything-you-need-to-know/"],["iPhone 18 Pro 2nm A20","https://appleinsider.com/articles/26/08/07/iphone-18-pro-rumor-roundup-2nm-a20-chip-c2-modem-under-display-face-id"]],
   },
   CBRS: {
     lead: "表面财报不差（收入 +94%、上调全年指引），但市场盯住三处硬伤：收入仍低于预期、硬件销售 −23% 暴露「块状」需求、毛利率 46.5%→40.6%。叠加 IPO 后 ~68x 高估值，任何瑕疵都被放大成暴跌。",
@@ -1130,7 +1130,7 @@ loop();
 window.addEventListener("stockwhy:languagechange", ()=>{ if(selected) select(selected); draw(); });
 swInitI18n();
 // gentle intro nudge
-setTimeout(()=>{ select("ORCL"); }, 600);
+setTimeout(()=>{ select("TSM"); }, 600);
 </script>
 
 </body>
