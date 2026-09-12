@@ -23,6 +23,20 @@ ChatGPT/GPT 系列的缔造者。整张 AI 图的**隐形中心节点之一**:�
 ---
 ## Timeline (newest first)
 
+## 2026-09-09 — 发布 GPT-6 Astra:夺回效率叙事,反击 Anthropic
+**Move:** 未上市;新模型发布,重燃科技股 AI 热度
+**Catalyst confidence:** confirmed(产品发布)
+
+**What happened:** OpenAI 发布 **GPT-6 Astra**,主打**比 Anthropic 同级模型更省成本**(效率/性价比)。此前 Anthropic 在收入上反超(见 9/1 条),这次 OpenAI 用前沿模型能力+成本优势**扳回一局**,重新点燃了整个 AI 交易。私募二级估值同期约 $8940 亿(Forge,8/31)。CFO 称 2027 上市、增长够快可提前。
+
+**Causal chain:**
+1. Anthropic 收入反超 → OpenAI 需用产品力回应,巩固"前沿"地位
+2. GPT-6 Astra 更省成本 → 直击企业级(Anthropic 的强项)+ 利好 token 消耗经济
+3. 前沿模型进步 → 利好整条算力链(尤其存储/推理),科技股回暖
+4. 与 [[ANTHROPIC]] 的"两强"竞争进入"你追我赶"节奏(收入 vs 效率轮流领先)
+
+**Sources:** [CNBC: OpenAI GPT-6 Astra revives tech trade, more cost-efficient than Anthropic](https://www.cnbc.com/2026/09/07/stock-market-tuesday-live-updates.html) · [Forge: OpenAI private price ~$894B (8/31)](https://forgeglobal.com/openai_stock/)
+
 ## 2026-09-01 — 秘密递交 IPO 申请,估值瞄准 >$1 万亿
 **Move:** 未上市→拟上市;确认秘密递表
 **Catalyst confidence:** confirmed(媒体报道)

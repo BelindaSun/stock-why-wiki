@@ -28,6 +28,22 @@ _Last updated: 2026-09-04_ · _趋势：加息预期回落（分母端压力松�
 ---
 ## Timeline (newest first)
 
+## 2026-09-11 — 8月CPI黏住,加息概率反弹到~90%:分母端压力回摆(应验双向风险)
+**Move:** 8 月 CPI 同比 +3.4%(持平 7 月)、核心 +2.4%;9 月加息概率跳到近 **90%**
+**Catalyst confidence:** confirmed(CPI 数据/FedWatch)
+
+**What happened:** 正是 9/3 那条结尾警示的"通胀反弹就回摆"应验了。8 月 CPI 环比 +0.4%(核心 +0.3%,略超预期),同比仍卡在 3.4% 高位。通胀黏性坐实 → 交易员押 9 月**加息** 25bp 的概率从月初的回落状态**跳回近 90%**(当前基准利率 3.5-3.75%)。分母端(贴现率)压力重新上升。
+
+**Causal chain:**
+1. CPI 显示通胀黏、核心略超预期 → Fed 更有理由继续加息压通胀
+2. 加息概率 →~90% → 长端收益率上行压力回来 → 贴现率(分母)↑
+3. 分母↑ → 对高估值/长久期 AI 成长股是估值端逆风
+4. 但当天股市反而涨(油价大跌对冲通胀担忧)→ 说明短期还有别的力量在博弈,利率只是其中一条线
+
+**提醒:** 这就是本节点"双向看"的意义——9/3 松、9/11 又紧,来回摆。利率对 AI 板块是**背景变量**,不是单向利好或利空,要持续跟。
+
+**Sources:** [CNBC: CPI inflation report August 2026](https://www.cnbc.com/2026/09/11/cpi-inflation-report-august-2026.html) · [NBC: inflation ticked up in August, sets stage for Fed hike](https://www.nbcnews.com/business/economy/august-inflation-interest-rates-affordability-rcna597095)
+
 ## 2026-09-03 — 收益率回落 + 9月加息概率 70%→50%:分母端松动,利好高估值AI
 **Move:** 10 年期美债收益率降至约 4.76%(较前日 -3bp);市场对 9 月**加息**的概率从约 70% 降到约 50%
 **Catalyst confidence:** confirmed(数据/发言)

@@ -22,6 +22,22 @@ _Asset type: stock (NASDAQ)_ · _Last updated: 2026-08-24_
 ---
 ## Timeline (newest first)
 
+## 2026-09-09 — 秋季发布会:新 Siri AI 终于落地,押注开始兑现
+**Move:** 9/9 发布会;iPhone 18 Pro($1199起)+ Siri AI 正式发布
+**Catalyst confidence:** confirmed(发布会)
+
+**What happened:** 这正是 8/24 档里押的那个催化——**"成败系于新 Siri"的 Siri 来了**。基于大模型的 **Siri AI** 正式发布(能调用信息/日历等 App、多步执行任务),英文 beta 先行,10 月扩到法/日/韩/葡/西语;**但 EU 和中国暂不上线**。硬件端 iPhone 18 Pro $1199 起(涨价)。
+
+**Causal chain:**
+1. Apple 此前赌"LLM 商品化、价值在分发+端侧" → 用外部模型 + 自研端侧,不砸千亿自建
+2. 新 Siri 落地 → 把这套战略从"承诺"推进到"交付",验证窗口开启
+3. 若 Siri AI 好用 → 数十亿装机的分发优势可引爆换机超级周期(押注兑现)
+4. 但风险仍在:EU/中国缺席(监管/合规)、多语言要等到 10 月+、且能否真"好用"待市场检验
+
+**盯的变量:** Siri AI 实际口碑与换机拉动;EU/中国何时上线;内存涨价对毛利的压制(上季已因缺内存给出谨慎指引)。
+
+**Sources:** [CNBC: Apple sets iPhone launch event for Sept 9](https://www.cnbc.com/2026/08/26/apple-iphone-launch-date-john-ternus.html) · [8 News Now: Apple September event, Siri AI upgrades](https://www.8newsnow.com/news/local-news/apple-rumored-to-reveal-foldable-iphone-at-september-event/)
+
 ## 2026-08-24 — 核心问题:AI"落后"是致命伤还是聪明的克制?
 **Move:** 非价格事件,长期战略逻辑分析(2025 年曾因关税缓解 +35%)
 **Catalyst confidence:** confirmed(战略/报道)

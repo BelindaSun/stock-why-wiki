@@ -14,11 +14,13 @@
 
 ## 条目（最新在上）
 
+- **2026-09-11** · [[industry:macro-rates]] 宏观利率 — 8月CPI黏住(+3.4%),9月加息概率反弹到~90%:分母端压力回摆,应验9/3的双向风险警示 → [industries/macro-rates.md](industries/macro-rates.md)
+- **2026-09-10** · [[ORCL]] Oracle — FQ1炸裂:RPO积压订单飙到$6640亿(单季新签$300亿+AI云),OCI+121%;但约一半绑OpenAI,重资本+客户集中双刃 → [stocks/ORCL.md](stocks/ORCL.md)
+- **2026-09-09** · [[OPENAI]] OpenAI — 发布GPT-6 Astra:比Anthropic同级更省成本,夺回效率叙事、扳回一局;两强进入你追我赶 → [stocks/OPENAI.md](stocks/OPENAI.md)
+- **2026-09-09** · [[AAPL]] Apple — 秋季发布会:新Siri AI终于落地(英文beta,EU/中国暂无),"成败系于新Siri"的押注开始进入兑现窗口 → [stocks/AAPL.md](stocks/AAPL.md)
 - **2026-09-06** · [[NVDA]] 英伟达 — ~$130亿收购Hugging Face(9/2签约):从"卖铲子"向上吃到开源模型分发层,CUDA+开发者入口双护城河;注意中立性/反垄断张力 → [stocks/NVDA.md](stocks/NVDA.md)
-- **2026-09-04** · [[industry:macro-rates]] 宏观利率 — 收益率回落+9月加息概率70%→50%(Waller鸽派+ADP走弱+油价回落);"分母"松动利好高估值AI,贯穿全图的宏观驱动 → [industries/macro-rates.md](industries/macro-rates.md)
 - **2026-09-03** · [[AVGO]] 博通 — Q3财报大超预期却跌~5%:营收$296亿(+86%)、AI芯片$167亿(+221%)、Q4指引强,但高估值"beat不够大beat"获利了结 → [stocks/AVGO.md](stocks/AVGO.md)
 - **2026-09-01** · [[ANTHROPIC]] Anthropic — 反超OpenAI成全球最贵AI初创:Q2收入$115亿(+14倍)转经营盈利,引入高盛IPO提速 → [stocks/ANTHROPIC.md](stocks/ANTHROPIC.md)
-- **2026-09-01** · [[OPENAI]] OpenAI — 秘密递交IPO申请,估值瞄准>$1万亿最快9月上市;run rate破$400亿但被Anthropic反超 → [stocks/OPENAI.md](stocks/OPENAI.md)
 - **2026-09-01** · [[DELL]] 戴尔 — 财报再超预期二次上调指引:年营收+$250亿到$1920亿,AI服务器目标$600亿→$740亿 → [stocks/DELL.md](stocks/DELL.md)
 - **2026-08-30** · [[REGN]] Regeneron — Dupixent、EYLEA HD、Libtayo 多产品同时增长，平台型研发复利 → [stocks/REGN.md](stocks/REGN.md)
 - **2026-08-30** · [[ISRG]] Intuitive Surgical — da Vinci 5 装机升级，长期看手术量与耗材/服务飞轮 → [stocks/ISRG.md](stocks/ISRG.md)
@@ -28,7 +30,6 @@
 - **2026-08-24** · [[SPCX]] SpaceX — 6/12上市(约$2万亿),Starship+Starlink;AI关联间接:NVDA买家+连接层+太空算力想象 → [stocks/SPCX.md](stocks/SPCX.md)
 - **2026-08-24** · [[TSLA]] Tesla — 核心问题:$1.5万亿全押自动驾驶+机器人,是远见还是幻觉?落地远慢于叙事,2026疲软 → [stocks/TSLA.md](stocks/TSLA.md)
 - **2026-08-24** · [[AMZN]] Amazon — AI capex的ROI样板:capex猛增同时AWS利润率+650bp至39.4%,自研Trainium真赚钱(对照Meta) → [stocks/AMZN.md](stocks/AMZN.md)
-- **2026-08-24** · [[AAPL]] Apple — 核心问题:AI"落后"是致命还是聪明克制?赌LLM商品化,靠分发+端侧;成败系于新Siri → [stocks/AAPL.md](stocks/AAPL.md)
 - **2026-08-24** · [[META]] Meta — 核心问题:上千亿AI capex有没有回报?广告效率已证明(自我造血),新AI产品仍是押注;Q2 FCF暴跌91%股价-10% → [stocks/META.md](stocks/META.md)
 - **2026-08-24** · [[GOOGL]] Alphabet — 核心问题:AI会不会侵蚀Search?短期没发生(Q2搜索+17%),长期是"重新定价"而非"炸掉" → [stocks/GOOGL.md](stocks/GOOGL.md)
 - **2026-08-24** · [[AMGN]] 安进 — 带减肥药 MariTide（月针）杀入 GLP-1，双雄之外第三方挑战者 → [stocks/AMGN.md](stocks/AMGN.md)
