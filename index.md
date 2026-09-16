@@ -14,8 +14,8 @@
 
 ## 条目（最新在上）
 
+- **2026-09-16** · [[industry:macro-rates]] 宏观利率 — 10Y破5.02%(2007年来首次):油价破百+赤字+加息预期,分母升到近18年最高,AI高估值最大系统性逆风 → [industries/macro-rates.md](industries/macro-rates.md)
 - **2026-09-12** · [[TSM]] 台积电 — N2(2nm)放量验证:A20 Pro成全球首款2nm手机芯片,技术领先兑现为出货;量价齐升 → [stocks/TSM.md](stocks/TSM.md)
-- **2026-09-11** · [[industry:macro-rates]] 宏观利率 — 8月CPI黏住(+3.4%),9月加息概率反弹到~90%:分母端压力回摆,应验9/3的双向风险警示 → [industries/macro-rates.md](industries/macro-rates.md)
 - **2026-09-10** · [[ORCL]] Oracle — FQ1炸裂:RPO积压订单飙到$6640亿(单季新签$300亿+AI云),OCI+121%;但OpenAI一家约占45%($300亿/5年),重资本+客户集中双刃 → [stocks/ORCL.md](stocks/ORCL.md)
 - **2026-09-09** · [[OPENAI]] OpenAI — 发布GPT-6 Astra:比Anthropic同级更省成本,夺回效率叙事、扳回一局;两强进入你追我赶 → [stocks/OPENAI.md](stocks/OPENAI.md)
 - **2026-09-09** · [[AAPL]] Apple — 秋季发布会:新Siri AI终于落地(英文beta,EU/中国暂无),"成败系于新Siri"的押注开始进入兑现窗口 → [stocks/AAPL.md](stocks/AAPL.md)

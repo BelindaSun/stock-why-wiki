@@ -1,5 +1,5 @@
 # industry: macro-rates — 宏观利率 / 无风险利率
-_Last updated: 2026-09-04_ · _趋势：加息预期回落（分母端压力松动）_
+_Last updated: 2026-09-16_ · _趋势：收益率破 5%,分母端压力升至近 18 年最高_
 
 一句话：美债收益率 + Fed 政策预期,是所有资产的"**分母**"。它不是某个行业,而是贯穿整张图的**宏观驱动因子**——尤其决定高估值成长股(AI 板块)的估值水位。这是本 wiki 里之前反复被引用、但一直缺一个专门节点的"隐形变量"。
 
@@ -27,6 +27,31 @@ _Last updated: 2026-09-04_ · _趋势：加息预期回落（分母端压力松�
 
 ---
 ## Timeline (newest first)
+
+## 2026-09-16 — 10Y 破 5.02%,2007 年来首次:分母升到近 18 年最高,AI 高估值最大逆风
+**Move:** 9/15 10 年期美债收益率触及 **5.02-5.04%**,创 2007 年中以来最高;9/17 FOMC 预期加息 25bp(92% 概率)
+**Catalyst confidence:** confirmed(市场数据)
+
+**What happened:** 这是本节点迄今最重磅的一条——收益率从 9/3 的回落、9/11 的回摆,一路冲破 **5% 心理+技术关口**,到近 18 年最高。多重推力叠加:(1)油价破 $100(霍尔木兹海峡关闭无重启时间表)→ 通胀预期升;(2)通胀持续高于 2% 目标;(3)投资者要求补偿高政府债务/赤字 → **期限溢价**走高;(4)9/17 FOMC 几乎板上钉钉加息 25bp。
+
+**为什么这条对全图最关键:**
+5% 的无风险利率意味着"分母"升到近 18 年最贵。这是本 wiki 里所有高估值 AI 资产**最大的系统性逆风**——不是某家的问题,是给整片估值地基抬价。
+
+**Causal chain:**
+1. 油价破百 + 赤字担忧 + 加息预期 → 长端收益率冲破 5%
+2. 无风险利率 5% → 贴现率(分母)升到近 18 年最高
+3. 分母大涨 → 高估值/长久期成长股(AI 全家桶)估值端承压最重
+4. 债市"警告信号" → 资金可能从高倍数成长轮动向现金流确定的资产(利好 [[AMZN]] 云现金流、低 PE 的 [[MU]]/[[SKHY]];压 [[CBRS]]/[[TSLA]]/未盈利名)
+
+**与 learning-wiki 的分工:** 这条记"这次事件 + 传导";利率→估值的**通用原理**见 learning-wiki 专篇 [10Y 破 5% 的影响](https://learning-wiki-site.vercel.app/docs/career-impact/10y-treasury-yield-5-percent)(用户 2026-09 撰写)。两边互指,不重复。
+
+**盯的变量:** 9/17 FOMC 结果与措辞、油价/霍尔木兹、5% 是否站稳(站稳则估值中枢系统性下移,是比任何单只财报都更根本的力量)。
+
+**Sources:**
+- [CNBC: 10-year Treasury yield hits highest since 2007 as traders bet on Fed hike](https://www.cnbc.com/2026/09/15/10-year-treasury-yield-rises-to-highest-since-2007.html)
+- [Bloomberg: US 10-year Treasury yields rise to highest since 2007](https://www.bloomberg.com/news/articles/2026-09-15/us-10-year-treasury-yields-rise-to-highest-level-since-2007)
+- [InvestingLive: 10-year hits 5.02% as bond market warns ahead of Fed](https://investinglive.com/news/10-year-treasury-yields-hit-5-02-as-bond-market-sends-a-warning-ahead-of-the-fed/)
+- [Motley Fool: 10-year hit 5% — what it means for stocks](https://www.fool.com/investing/2026/09/14/the-10-year-treasury-yield-just-hit-the-significant-5-threshold-heres-what-that-means-for-the-stock-market/)
 
 ## 2026-09-11 — 8月CPI黏住,加息概率反弹到~90%:分母端压力回摆(应验双向风险)
 **Move:** 8 月 CPI 同比 +3.4%(持平 7 月)、核心 +2.4%;9 月加息概率跳到近 **90%**
