@@ -1,5 +1,5 @@
 # industry: macro-rates — 宏观利率 / 无风险利率
-_Last updated: 2026-09-16_ · _趋势：收益率破 5%,分母端压力升至近 18 年最高_
+_Last updated: 2026-09-17_ · _趋势：FOMC 加息 25bp + 10Y 收上 5%(19 年首次),分母端压力确认加剧_
 
 一句话：美债收益率 + Fed 政策预期,是所有资产的"**分母**"。它不是某个行业,而是贯穿整张图的**宏观驱动因子**——尤其决定高估值成长股(AI 板块)的估值水位。这是本 wiki 里之前反复被引用、但一直缺一个专门节点的"隐形变量"。
 
@@ -27,6 +27,29 @@ _Last updated: 2026-09-16_ · _趋势：收益率破 5%,分母端压力升至近
 
 ---
 ## Timeline (newest first)
+
+## 2026-09-17 — FOMC 全票加息 25bp 至 3.75%-4.00%(2023 年来首次):10Y 收上 5%(19 年首次),分母逆风确认加剧
+**Move:** 美联储 9/16(美东)宣布**加息 25bp**,联邦基金利率 → **3.75%-4.00%**,12-0 全票通过;点阵图 16/18 官员预计年内至少再加一次  ·  **Catalyst confidence:** confirmed(Fed 官方声明/点阵图/发布会)
+
+**What happened:** 9 月 15–16 日议息会议后,Fed 宣布加息 25bp——2023 年 7 月以来首次,也是 Warsh(5 月上任)治下首次利率动作。声明强调"通胀仍高企,本次行动将支持通胀更及时地回归 2% 目标";点阵图显示 18 位官员中 16 位预计年底前至少再加息一次。Warsh 发布会偏鹰:经济走强、通胀没降温、地缘紧张加剧是加息的三条理由,"趋势重要、单点数据是噪音"。市场反应:道指 -631 点(-1.2%)、标普 -0.4%、纳指基本持平;10Y 收益率盘中一度回落到 4.95%,收盘回升至 **5.003%**——19 年来首次收在 5% 上方。
+
+**Causal chain(5% 站没站稳?逆风加剧还是缓解?):**
+1. 全票加息 + 点阵图 16/18 预期年内再加 → "higher for longer" 不是说说而已,紧缩周期确认还没走完
+2. 10Y 收 5.003%(19 年首次收上 5%)→ 5% 关口从 9/15 的"盘中刺破"变成"收盘站稳",分母端压力从预期变成现实
+3. 分母继续贵 → 高估值/长久期 AI 资产估值逆风是**加剧**不是缓解;道指 -631 就是市场在为更贵的钱重新定价
+4. 但这 25bp 本身大部已被定价(会前加息概率 92–93%)→ 真正的增量信息是"年内可能再加"和 Warsh 的鹰派措辞,而非决议本身
+
+**日期说明:** 决议公布于美东 9/16 14:00(北京 9/17 凌晨 2:00),美股反应在 9/16 美东交易时段;本条按北京时间口径记 2026-09-17(另:9/16 锚点已被"10Y 破 5%"条目占用,保持锚点唯一)。
+
+**盯的变量:** 12 月 FOMC 是否兑现"再加一次"(点阵图 16/18)、PCE 通胀数据、油价/伊朗局势、10Y 能否守住 5% 上方(守住 = 估值中枢系统性下移,比任何单只财报都更根本)。
+
+**Sources:**
+- [WSJ: Stock Market News, Sept. 16, 2026 — Dow Falls More Than 600 Points After Fed Raises Key Interest Rate](https://www.wsj.com/livecoverage/fed-meeting-warsh-interest-rate-09-16-2026)
+- [Reuters: Markets steady after Fed raises rates, points to another hike this year](https://www.reuters.com/business/view-markets-steady-after-fed-raises-rates-points-another-hike-this-year-2026-09-16/)
+- [CNN: What Kevin Warsh said about the Fed's first rate hike since 2023](https://www.cnn.com/2026/09/16/economy/fed-rate-decision-september?cid=external-feeds_iluminar_meta)
+- [USA Today: Fed raises rates for first time since 2023](https://www.usatoday.com/story/money/economy/2026/09/16/fed-rate-decision-meeting-updates--live/91746863007/)
+- [Investopedia: Fed Officials Don't Think They're Done Hiking](https://www.investopedia.com/federal-reserve-fomc-meeting-september-live-12124331)
+- [Morningstar: Fed rate hike fails to calm troubled markets as Dow falls 600 points](https://www.morningstar.com/news/marketwatch/20260916415/fed-rate-hike-fails-to-calm-troubled-markets-as-dow-falls-600-points-expect-more-sharp-swings-in-stocks-and-bonds)
 
 ## 2026-09-16 — 10Y 破 5.02%,2007 年来首次:分母升到近 18 年最高,AI 高估值最大逆风
 **Move:** 9/15 10 年期美债收益率触及 **5.02-5.04%**,创 2007 年中以来最高;9/17 FOMC 预期加息 25bp(92% 概率)
