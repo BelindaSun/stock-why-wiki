@@ -15,7 +15,7 @@
 ## 条目（最新在上）
 
 - **2026-09-23** · [[industry:macro-rates]] 宏观利率 — 加息预期走强(10月~52%、12月累计~81%)但油价五连跌破$100对冲,10Y回落5%下方;分母分子拔河,科技新高金融被修理 → [industries/macro-rates.md](industries/macro-rates.md)
-- **2026-09-22** · [[AMD]] 超微 — 首破万亿:+10%收$615.52,第四家万亿芯片公司;Muse引爆的agent算力叙事→AI硬件全线重估 → [stocks/AMD.md](stocks/AMD.md)
+- **2026-09-22** · [[AMD]] 超微 — 首破万亿:+10%收$615.52,第四家美国万亿芯片公司;Muse引爆的agent算力叙事→AI硬件全线重估 → [stocks/AMD.md](stocks/AMD.md)
 - **2026-09-23** · [[industry:semiconductors]] 半导体 — 阿里真武V900(国产最强AI芯片)+新行业档 [[industry:china-tech]] 中国科技:国产替代与美国链分叉 → [industries/semiconductors.md](industries/semiconductors.md)
 - **2026-09-22** · [[BABA]] 阿里巴巴 — 云栖大会发布真武V900(2027年Q1量产)+20GW数据中心目标;港股收涨近2%创一月新高 → [stocks/BABA.md](stocks/BABA.md)
 - **2026-09-12** · [[TSM]] 台积电 — N2(2nm)放量验证:A20 Pro成全球首款2nm手机芯片,技术领先兑现为出货;量价齐升 → [stocks/TSM.md](stocks/TSM.md)
