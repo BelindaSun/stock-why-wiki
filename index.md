@@ -14,7 +14,9 @@
 
 ## 条目（最新在上）
 
-- **2026-09-17** · [[industry:macro-rates]] 宏观利率 — FOMC全票加息25bp至3.75%-4.00%(2023年来首次),点阵图16/18预计年内再加;10Y收5.003%(19年首次收上5%),分母逆风确认加剧 → [industries/macro-rates.md](industries/macro-rates.md)
+- **2026-09-23** · [[industry:macro-rates]] 宏观利率 — 加息预期走强(10月~52%、12月累计~81%)但油价五连跌破$100对冲,10Y回落5%下方;分母分子拔河,科技新高金融被修理 → [industries/macro-rates.md](industries/macro-rates.md)
+- **2026-09-22** · [[AMD]] 超微 — 首破万亿:+10%收$615.52,第四家万亿芯片公司;Muse引爆的agent算力叙事→AI硬件全线重估 → [stocks/AMD.md](stocks/AMD.md)
+- **2026-09-23** · [[industry:semiconductors]] 半导体 — 阿里镇武V900(中国最强AI芯片)+新行业档 [[industry:china-tech]] 中国科技:国产替代与美国链分叉 → [industries/semiconductors.md](industries/semiconductors.md)
 - **2026-09-12** · [[TSM]] 台积电 — N2(2nm)放量验证:A20 Pro成全球首款2nm手机芯片,技术领先兑现为出货;量价齐升 → [stocks/TSM.md](stocks/TSM.md)
 - **2026-09-10** · [[ORCL]] Oracle — FQ1炸裂:RPO积压订单飙到$6640亿(单季新签$300亿+AI云),OCI+121%;但OpenAI一家约占45%($300亿/5年),重资本+客户集中双刃 → [stocks/ORCL.md](stocks/ORCL.md)
 - **2026-09-09** · [[OPENAI]] OpenAI — 发布GPT-6 Astra:比Anthropic同级更省成本,夺回效率叙事、扳回一局;两强进入你追我赶 → [stocks/OPENAI.md](stocks/OPENAI.md)
@@ -50,5 +52,4 @@
 - **2026-08-24** · [[SMH]] 半导体ETF — 近一月-10%板块性获利了结,但年内仍+55%;"最拥挤交易"放大回调,基本面未崩 → [stocks/SMH.md](stocks/SMH.md)
 - **2026-08-24** · [[MU]] 美光 — 逆势走强!HBM供不应求,股价首破$1000;5年take-or-pay长约锁量锁价 → [stocks/MU.md](stocks/MU.md)
 - **2026-08-24** · [[ASML]] 阿斯麦 — 本周-4.4%:中国自研DUV+美国出口管制法案+高估值(~56x)获利了结,基本面稳属情绪杀 → [stocks/ASML.md](stocks/ASML.md)
-- **2026-08-24** · [[AMD]] 超微 — 一个月狂跌:AI交易降温+客户流失(SpaceX转投NVDA)+高估值(~123x)获利了结,情绪杀非基本面崩 → [stocks/AMD.md](stocks/AMD.md)
 - **2026-08-23** · [[CBRS]] Cerebras — 8月连续暴跌：Q2收入miss + 硬件-23% + 毛利率骤降，高估值(~68x)容不下瑕疵 → [stocks/CBRS.md](stocks/CBRS.md)
