@@ -29,7 +29,7 @@ If the folder or a file does not exist yet, create it. Never overwrite an existi
 ### 2. Get REAL, CURRENT facts — do not rely on memory
 - Use **WebSearch** to find what actually happened around the move: the date, the catalyst (earnings, guidance, macro print, a supplier's news, a policy, a commodity move, an analyst action).
 - Prefer named, checkable sources. If you cannot verify a specific catalyst, say so plainly rather than inventing one. Distinguish "confirmed catalyst" from "likely contributing factor."
-- Always note the date of the move you are explaining.
+- Always note the date of the move you are explaining. Date the entry by the **market-reaction day**, not the release day (after-hours earnings on 8/26 → entry dated 8/27). Each date anchor in a file must be unique; if the day is taken, use the next calendar day and add a one-line note explaining why.
 
 ### 3. Build the causal chain (the core value)
 Explain the move as a chain of mechanisms, not a list of facts. For each link answer: **why does X inevitably lead to Y?** Look for the non-obvious link, the physical constraint behind the digital story, the dependency the headline skips.
@@ -72,7 +72,7 @@ _Asset type: <stock / ETF / crypto / commodity>_ · _Last updated: <YYYY-MM-DD>_
 ## Timeline (newest first)
 
 ## <YYYY-MM-DD> — <one-line: the move + the catalyst>
-**Move:** <e.g. -8% intraday>  ·  **Catalyst confidence:** <confirmed / likely>
+**Move:** <e.g. -8% intraday, or "non-price event">  ·  **Catalyst confidence:** <confirmed / likely / 据报道 (reported, no primary source)>
 **What happened:** <2–3 sentence honest answer>
 **Causal chain:**
 1. <link> → 2. <link> → 3. <link>
