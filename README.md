@@ -39,6 +39,7 @@ _两张图互不相干，各管一个行业世界；问出新行业时会再长�
 | 单只资产的溯源 + 时间线 | [stocks/](stocks/) |
 | 行业/主题 | [industries/](industries/) |
 | 交互关系图（在线） | https://belindasun.github.io/stock-why-wiki/ |
+| 和 Investment Book / Investment Research 的分工 | [SYSTEM-MAP.md](SYSTEM-MAP.md) |
 
 ## 目前覆盖
 
