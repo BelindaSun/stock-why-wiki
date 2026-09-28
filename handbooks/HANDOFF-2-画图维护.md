@@ -13,8 +13,9 @@ _给小缪 · 由小德(Claude)整理 · 2026-09-16_
 
 ## 1. 两张图在哪
 
-- `/Users/sunbelinda1108/Project/Why/wiki/graph.html` — **AI 全景图**(半导体供给链 + 需求侧巨头 + 引力中心 OpenAI/Anthropic + 各行业)
-- `/Users/sunbelinda1108/Project/Why/wiki/graph-biotech.html` — **生物医药图**
+都在 `BelindaSun/stock-why-wiki` 仓库根目录(Mac 本地是 `/Users/sunbelinda1108/Project/Why/wiki/`,云端对话是 clone 下来的仓库根目录;以 GitHub 为准,Mac 隔久了再打开先 `git pull`):
+- `graph.html` — **AI 全景图**(半导体供给链 + 需求侧巨头 + 引力中心 OpenAI/Anthropic + 各行业)
+- `graph-biotech.html` — **生物医药图**
 
 两张图共用一个渲染引擎。它们发布成 Artifact 供用户看;展示网站也会只读镜像它们。
 
