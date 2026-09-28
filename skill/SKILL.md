@@ -9,10 +9,14 @@ You turn "why did X move?" into a rigorous causal map, then persist it into an e
 
 ## Wiki location (the memory of this skill)
 
-All output is saved here — this is what makes the knowledge base grow over time:
+All output is saved in the root of the GitHub repo `BelindaSun/stock-why-wiki` — this is what makes the knowledge base grow over time. GitHub is the source of truth, whichever machine you run on:
+- **Mac:** the local clone at `/Users/sunbelinda1108/Project/Why/wiki/` (it has an auto-push hook). If the Mac hasn't been used for a while, `git pull` before writing anything.
+- **Cloud session:** the cloned repo root. There is no auto-push hook — commit and push to the branch the session specifies; changes go live only after merging into `main`.
+
+All paths below are relative to that repo root.
 
 ```
-/Users/sunbelinda1108/Project/Why/wiki/
+<repo root>/
 ├── index.md                 # master index of every entry, newest first
 ├── stocks/<TICKER>.md       # one file per asset (stock/ETF/crypto/commodity)
 └── industries/<slug>.md     # one file per industry/theme
@@ -44,15 +48,15 @@ This is the part the user cares most about. Produce two maps:
 Max ~5 names per direction — pick the highest-signal links, not an exhaustive dump. Include ticker symbols wherever the entity is publicly traded so entries cross-link cleanly.
 
 ### 5. Write / update the wiki (always do this)
-- Write or append the asset file at `wiki/stocks/<TICKER>.md` using the **Entry template** below.
-- For each upstream/downstream/related **industry**, create or append a short note in `wiki/industries/<slug>.md` that back-links to this asset. (Skip if trivially small; use judgment.)
+- Write or append the asset file at `stocks/<TICKER>.md` using the **Entry template** below.
+- For each upstream/downstream/related **industry**, create or append a short note in `industries/<slug>.md` that back-links to this asset. (Skip if trivially small; use judgment.)
 - Cross-link every mentioned traded entity as a wiki link `[[TICKER]]` and every industry as `[[industry:slug]]`. These links let the graph grow — a later query on `[[COPX]]` finds this entry.
-- Update `wiki/index.md`: add or move this asset to the top with today's date and a one-line summary of the move.
+- Update `index.md`: add or move this asset to the top with today's date and a one-line summary of the move.
 
 ### 6. Answer the user in chat
 Give a tight narrative: the honest 2–3 sentence answer first, then the causal chain, then the upstream/downstream map as a compact list. End with 1–2 "threads to pull" — related tickers/industries already in the wiki they could ask about next. Mention which wiki files you created/updated. Match the user's language (Chinese question → Chinese answer; keep tickers and JSON keys in English).
 
-## Entry template (write this into `wiki/stocks/<TICKER>.md`)
+## Entry template (write this into `stocks/<TICKER>.md`)
 
 When the file is new, start with the header block. When it exists, append only a new `## <date> — <one-line event>` section under the timeline.
 

@@ -15,10 +15,12 @@ _给小缪 · 由小德(Claude)整理 · 2026-09-16_
 
 ## 1. Wiki 在哪、长什么样
 
-根目录:`/Users/sunbelinda1108/Project/Why/wiki/`
+根目录 = **`BelindaSun/stock-why-wiki` 仓库根目录**,在哪台机器上都一样。以 GitHub 为准:
+- Mac 本地:`/Users/sunbelinda1108/Project/Why/wiki/`
+- 云端对话:clone 下来的仓库根目录
 
 ```
-wiki/
+<仓库根目录>/
 ├── index.md                    # 主索引,最新在上。每次改动都要更新
 ├── overview.md                 # AI 产业链导览(分层总览)
 ├── healthcare-overview.md      # 医药谱系导览
@@ -28,8 +30,9 @@ wiki/
 └── graph-biotech.html          # 医药关系图 ← 别碰!见第 5 节
 ```
 
-- 它是 GitHub 仓库 `BelindaSun/stock-why-wiki`,**有自动推送钩子**——你存盘后看到自动 commit/push 是**预期行为**,别慌。
-- 展示网站(另一个 Astro 项目)只读镜像这个仓库,push 后自动重建上线,你不用管。
+- **Mac 本地**有自动推送钩子——存盘后看到自动 commit/push 是**预期行为**,别慌。Mac 隔了一段时间再打开,**先 `git pull` 再动手**,否则旧版本一推就会和云端的改动冲突。
+- **云端对话**没有这个钩子:改完自己 commit,推到本次指定的分支;合进 `main` 后才会上线。
+- 展示网站(另一个 Astro 项目)只读镜像这个仓库,`main` 更新后自动重建上线,你不用管。
 
 ---
 
@@ -97,7 +100,7 @@ _Asset type: stock/ETF/crypto/commodity · Last updated: <YYYY-MM-DD>_
 
 ## 5. ⚠️ 关系图:别直接手改!(最重要的一条)
 
-`wiki/graph.html` 和 `wiki/graph-biotech.html` **你不要直接编辑**。图由专门的**图维护窗口**负责(见手册②)。你只需把"**要改什么**"发给它(建图提示)。
+`graph.html` 和 `graph-biotech.html` **你不要直接编辑**。图由专门的**图维护窗口**负责(见手册②)。你只需把"**要改什么**"发给它(建图提示)。
 
 万一哪天真要动 HTML:
 1. **别调用未定义的函数**——`swText()` 曾被只调用未定义,直接把两张图画成**白屏**;它现已定义在引擎开头,**别删**。
