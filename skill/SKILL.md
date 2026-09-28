@@ -30,6 +30,8 @@ If the folder or a file does not exist yet, create it. Never overwrite an existi
 - Use **WebSearch** to find what actually happened around the move: the date, the catalyst (earnings, guidance, macro print, a supplier's news, a policy, a commodity move, an analyst action).
 - Prefer named, checkable sources. If you cannot verify a specific catalyst, say so plainly rather than inventing one. Distinguish "confirmed catalyst" from "likely contributing factor."
 - Always note the date of the move you are explaining. Date the entry by the **market-reaction day**, not the release day (after-hours earnings on 8/26 → entry dated 8/27). Each date anchor in a file must be unique; if the day is taken, use the next calendar day and add a one-line note explaining why.
+- **If WebSearch is unavailable:** do not substitute training knowledge, general market patterns, or "most likely cause" for a verified catalyst. Mark the entry with `⚠ Catalyst not verified — live search unavailable`. You may still complete structural/mechanical work (upstream/downstream mapping, wiki cross-links) that does not depend on the specific catalyst, but do not write an unverified guess as the move's cause. Re-run catalyst verification when search is restored.
+- **If WebSearch is available but finds no reliable catalyst:** record "未找到可验证的具体催化剂" honestly. Do not fabricate an explanation to complete the entry.
 
 ### 3. Build the causal chain (the core value)
 Explain the move as a chain of mechanisms, not a list of facts. For each link answer: **why does X inevitably lead to Y?** Look for the non-obvious link, the physical constraint behind the digital story, the dependency the headline skips.
