@@ -3,7 +3,7 @@ _Last updated: 2026-09-28_ · _趋势：国产替代 + 本土 AI 需求双轮驱
 
 一句话：以 BAT 级平台 + 国产半导体/云/大模型为核心的中国科技资产群。它的驱动逻辑与美国 AI 链**根本不同**：美国出口管制 → 国产替代叙事 + 政策支持 + 内需市场。硬塞进 [[industry:ai-infrastructure]] 或 [[industry:semiconductors]] 会把因果链搅浑，所以单独成档。
 
-📖 分层总览见 **[导览 · 中国 AI 全栈谱系](../china-overview.md)**。
+📖 分层总览见 **[导览 · 中国 AI 全栈谱系](../china-overview.md)**；🗺️ 关系图见 **[中国 AI 全栈图](https://belindasun.github.io/stock-why-wiki/graph-china.html)**。
 
 ## 三类驱动（每个中国科技档开头都标了）
 - **国产替代**：出口管制 / 自主可控，把海外供应商的份额拿过来 — 设备、代工、国产 AI 芯片
@@ -27,4 +27,3 @@ _Last updated: 2026-09-28_ · _趋势：国产替代 + 本土 AI 需求双轮驱
 ## 待补
 - 第二批建档：中微公司、华虹、海光信息、浪潮信息、中际旭创、百度；关联实体华为（昇腾）、字节跳动、DeepSeek
 - 第三批：小米、优必选等终端 / 机器人
-- 关系图 `graph-china.html`

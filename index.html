@@ -308,6 +308,7 @@
     <a class="mapitem" role="menuitem" href="https://stock-why-wiki-site.vercel.app/">🏠 网站首页</a>
     <a class="mapitem current" role="menuitem">🧭 AI 半导体图</a>
     <a class="mapitem" role="menuitem" href="https://belindasun.github.io/stock-why-wiki/graph-biotech.html">🧬 生物医药图</a>
+    <a class="mapitem" role="menuitem" href="https://belindasun.github.io/stock-why-wiki/graph-china.html">🇨🇳 中国 AI 全栈图</a>
   </div>
 </nav>
 <button class="guide-btn" id="guideBtn" aria-label="打开产业链导览">📖 <span class="lbl">导览</span></button>
@@ -848,8 +849,13 @@ const DETAIL = {
 };
 
 // ---------- Canvas force graph ----------
-// swText: safe text passthrough (some call sites wrap display strings via this helper).
-function swText(s){ return s == null ? "" : String(s); }
+// swText: wraps the i18n.js translator (window.swText) and falls back to a safe passthrough if it
+// failed to load. Never delete: every display string goes through it (white-screen guard, see 手册②).
+// Declared with `var`, not `function`: a function declaration is hoisted and would overwrite the
+// i18n.js translator before it can be captured, which silently disabled the English mode.
+var swText = (function (t) {
+  return function (s) { return s == null ? "" : (typeof t === "function" ? String(t(String(s))) : String(s)); };
+})(window.swText);
 const canvas = document.getElementById("c");
 const ctx = canvas.getContext("2d");
 let W, H, DPR;

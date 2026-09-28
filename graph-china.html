@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>中国 AI 全栈溯源图谱</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Libre+Franklin:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+
+<style>
+  :root {
+    --bg: #f1ece4;
+    --surface: #ffffff;
+    --surface-2: #f8f3ec;
+    --ink: #1d1712;
+    --muted: #6b6158;
+    --hair: #e3d9cc;
+    --stock: #b23a2e;          /* accent (vermilion) */
+    --stock-soft: #f0b1a8;
+    --industry: #2f6f73;
+    --industry-soft: #9fd0d2;
+    --edge: #b3a697;
+    --glow: rgba(178,58,46,0.14);
+    /* three drivers */
+    --d-sub: #e37a6c;          /* 国产替代 */
+    --d-local: #6ea3d8;        /* 本土 AI 需求 */
+    --d-global: #e2b24a;       /* 全球 AI capex */
+    --cross: #b8912a;          /* 跨图节点（AI 半导体图） */
+    --node-ink: #1f140f;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #13100d;
+      --surface: #1d1814;
+      --surface-2: #27201a;
+      --ink: #f1ebe4;
+      --muted: #a89c90;
+      --hair: #362c24;
+      --stock: #ec7a6b;
+      --stock-soft: #6b2a22;
+      --industry: #5fb8bd;
+      --industry-soft: #1f4a4c;
+      --edge: #54473c;
+      --glow: rgba(236,122,107,0.2);
+      --d-sub: #e0806f;
+      --d-local: #74a9dc;
+      --d-global: #deb04f;
+      --cross: #d6b04a;
+      --node-ink: #1a110c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #13100d;
+    --surface: #1d1814;
+    --surface-2: #27201a;
+    --ink: #f1ebe4;
+    --muted: #a89c90;
+    --hair: #362c24;
+    --stock: #ec7a6b;
+    --stock-soft: #6b2a22;
+    --industry: #5fb8bd;
+    --industry-soft: #1f4a4c;
+    --edge: #54473c;
+    --glow: rgba(236,122,107,0.2);
+    --d-sub: #e0806f;
+    --d-local: #74a9dc;
+    --d-global: #deb04f;
+    --cross: #d6b04a;
+    --node-ink: #1a110c;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Libre Franklin", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased; overflow: hidden;
+  }
+  .stage { position: fixed; inset: 0; }
+  body.panel-open .stage { right: min(400px, 92vw); }
+  @media (max-width: 560px) { body.panel-open .stage { right: 0; bottom: 74vh; } }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+  canvas.dragging { cursor: grabbing; }
+
+  .legend {
+    position: fixed; left: 22px; bottom: 20px; z-index: 5;
+    display: flex; flex-direction: column; gap: 8px;
+    background: color-mix(in srgb, var(--surface) 82%, transparent);
+    backdrop-filter: blur(8px); border: 1px solid var(--hair); border-radius: 12px;
+    padding: 13px 15px; font-size: 12px; color: var(--muted); max-width: 250px;
+  }
+  .legend .row { display: flex; align-items: center; gap: 9px; }
+  .legend .dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+  .legend .dot.sub { background: var(--d-sub); }
+  .legend .dot.local { background: var(--d-local); }
+  .legend .dot.global { background: var(--d-global); }
+  .legend .dot.cross { background: var(--surface); border: 2px solid var(--cross); }
+  .legend .dot.ghost { background: transparent; border: 1.5px dashed var(--edge); }
+  .legend .ln { width: 20px; flex: none; border-top: 2px solid var(--edge); }
+  .legend .ln.drv { border-top: 2px solid var(--muted); }
+  .legend .ln.sec { border-top: 2px dashed var(--muted); }
+  .legend .ln.peer { border-top: 2px dashed var(--stock); }
+  .legend .ln.cross { border-top: 2px dotted var(--cross); }
+  .legend .sep { border-top: 1px solid var(--hair); margin: 2px 0; }
+  .legend .hint { color: var(--ink); opacity: 0.55; padding-top: 3px; border-top: 1px solid var(--hair); }
+  .legend { cursor: move; touch-action: none; }
+  .legend .grip { position: absolute; top: 6px; right: 9px; color: var(--muted); font-size: 11px; letter-spacing: 1px; opacity: 0.6; }
+
+  .guide-btn {
+    position: fixed; top: 16px; right: 64px; z-index: 6; pointer-events: auto;
+    background: var(--surface); color: var(--ink); border: 1px solid var(--hair); border-radius: 999px;
+    height: 38px; padding: 0 16px; cursor: pointer;
+    font-family: "Libre Franklin", sans-serif; font-size: 13px; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 6px; transition: background .15s;
+  }
+  .guide-btn:hover { background: var(--surface-2); }
+  .guide-btn:focus-visible { outline: 2px solid var(--stock); outline-offset: 2px; }
+  .toggle {
+    position: fixed; top: 16px; right: 18px; z-index: 6; pointer-events: auto;
+    background: var(--surface); color: var(--ink); border: 1px solid var(--hair); border-radius: 999px;
+    width: 38px; height: 38px; cursor: pointer; font-size: 15px; display: grid; place-items: center; transition: background .15s;
+  }
+  .toggle:hover { background: var(--surface-2); }
+  .toggle:focus-visible { outline: 2px solid var(--stock); outline-offset: 2px; }
+
+  .mapnav { position: fixed; top: 14px; left: 20px; z-index: 12; }
+  .mapbtn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--surface); color: var(--ink); border: 1px solid var(--hair); border-radius: 11px;
+    padding: 8px 14px; cursor: pointer; font-family: "Fraunces", serif; font-weight: 900; font-size: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+  .mapbtn .caret { font-family: "Libre Franklin", sans-serif; font-size: 12px; color: var(--muted); font-weight: 600; }
+  .mapbtn:hover { background: var(--surface-2); }
+  .mapbtn:focus-visible { outline: 2px solid var(--stock); outline-offset: 2px; }
+  .mapsub { margin: 6px 3px 0; font-size: 11.5px; color: var(--muted); letter-spacing: .02em; }
+  .mapmenu {
+    position: absolute; top: calc(100% + 6px); left: 0; min-width: 230px;
+    background: var(--surface); border: 1px solid var(--hair); border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.20); padding: 6px; flex-direction: column; gap: 2px; display: none;
+  }
+  .mapnav.open .mapmenu { display: flex; }
+  .mapitem {
+    display: flex; align-items: center; gap: 9px; padding: 9px 11px; border-radius: 8px;
+    text-decoration: none; color: var(--ink); font-size: 13.5px; font-family: "Libre Franklin", sans-serif;
+  }
+  .mapitem:hover { background: var(--surface-2); }
+  .mapitem.current { color: var(--stock); font-weight: 600; cursor: default; }
+  .mapitem.current::after { content: "●"; margin-left: auto; font-size: 8px; }
+  @media (max-width: 560px) { .mapbtn { font-size: 14px; } .mapsub { display: none; } }
+
+  .overlay {
+    position: fixed; inset: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 76%, transparent); backdrop-filter: blur(6px);
+    display: grid; place-items: center; padding: 24px; opacity: 0; visibility: hidden; transition: opacity .26s;
+  }
+  .overlay.open { opacity: 1; visibility: visible; }
+  .guide-card {
+    background: var(--surface); border: 1px solid var(--hair); border-radius: 18px;
+    width: min(720px, 100%); max-height: 88vh; overflow-y: auto;
+    padding: 34px 38px 40px; box-shadow: 0 30px 80px rgba(0,0,0,0.30); position: relative;
+  }
+  .guide-card h2 { font-family: "Fraunces", serif; font-weight: 900; font-size: 27px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .guide-card .gsub { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+  .guide-card .thesis { font-size: 15px; line-height: 1.62; border-left: 3px solid var(--stock); padding: 6px 0 6px 16px; margin: 0 0 24px; }
+  .guide-card .thesis b { color: var(--stock); }
+  .cluster { padding: 16px 0; border-top: 1px solid var(--hair); }
+  .cluster .cname { font-family: "JetBrains Mono", monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .cluster .cname i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .cluster.sub .cname { color: var(--d-sub); } .cluster.sub .cname i { background: var(--d-sub); }
+  .cluster.local .cname { color: var(--d-local); } .cluster.local .cname i { background: var(--d-local); }
+  .cluster.global .cname { color: var(--d-global); } .cluster.global .cname i { background: var(--d-global); }
+  .cluster .litem { font-size: 13.5px; line-height: 1.55; margin-bottom: 4px; }
+  .cluster .litem b { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--ink); font-weight: 700; }
+  .cluster .litem .st { color: var(--muted); }
+  .scen { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 6px 0 4px; }
+  .scen th, .scen td { border-bottom: 1px solid var(--hair); padding: 7px 6px; text-align: left; vertical-align: top; }
+  .scen th { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--muted); font-weight: 700; }
+  .takeaways { margin-top: 24px; }
+  .takeaways h3 { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+  .takeaways .tk { display: flex; gap: 12px; margin-bottom: 14px; font-size: 14px; line-height: 1.62; }
+  .takeaways .tk .n { font-family: "Fraunces", serif; font-weight: 900; font-size: 21px; color: var(--stock); flex: none; line-height: 1.1; }
+  .takeaways .tk b { color: var(--ink); }
+  .guide-card .gclose { position: absolute; top: 18px; right: 20px; background: none; border: none; color: var(--muted); font-size: 24px; cursor: pointer; line-height: 1; width: 32px; height: 32px; border-radius: 8px; }
+  .guide-card .gclose:hover { background: var(--surface-2); color: var(--ink); }
+
+  .panel {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 8; width: min(400px, 92vw);
+    background: var(--surface); border-left: 1px solid var(--hair);
+    transform: translateX(101%); transition: transform .34s cubic-bezier(.2,.8,.2,1);
+    display: flex; flex-direction: column; box-shadow: -20px 0 50px rgba(0,0,0,0.16);
+  }
+  .panel.open { transform: translateX(0); }
+  .panel .phead { padding: 22px 24px 16px; border-bottom: 1px solid var(--hair); }
+  .panel .ptype { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .panel .ticker { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 28px; margin: 6px 0 2px; letter-spacing: -0.01em; }
+  .panel .cn { font-family: "Fraunces", serif; font-size: 19px; font-weight: 600; }
+  .panel .drivers { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .panel .chip { font-size: 11.5px; font-weight: 600; padding: 3px 9px; border-radius: 999px; color: var(--node-ink); }
+  .panel .chip.sec { background: transparent !important; border: 1.5px dashed; color: var(--ink); }
+  .panel .move { margin-top: 12px; font-size: 12.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 14px; }
+  .panel .move b { color: var(--ink); font-weight: 600; }
+  .panel .pbody { padding: 20px 24px 40px; overflow-y: auto; }
+  .panel h4 { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 22px 0 10px; }
+  .panel h4:first-child { margin-top: 0; }
+  .panel p { margin: 0 0 12px; font-size: 14.5px; line-height: 1.62; }
+  .panel .lead { font-size: 15px; }
+  .panel ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .panel li { font-size: 13.5px; line-height: 1.5; display: flex; gap: 9px; }
+  .panel li .tk { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 12px; color: var(--stock); flex: none; padding-top: 1px; max-width: 42%; }
+  .panel li .tk.ind { color: var(--industry); }
+  .panel .chain { counter-reset: step; }
+  .panel .chain li { align-items: flex-start; color: var(--muted); }
+  .panel .chain li::before {
+    counter-increment: step; content: counter(step);
+    font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 11px;
+    color: var(--stock); background: var(--glow); width: 20px; height: 20px; border-radius: 50%; flex: none; display: grid; place-items: center;
+  }
+  .panel .src { font-size: 12px; color: var(--muted); }
+  .panel .src a { color: var(--industry); }
+  .panel .golink { display: inline-block; margin-top: 4px; font-size: 13.5px; font-weight: 600; color: var(--cross); text-decoration: none; border-bottom: 1px dotted var(--cross); }
+  .panel .pending-note { font-size: 13.5px; color: var(--muted); line-height: 1.6; background: var(--surface-2); border: 1px dashed var(--hair); border-radius: 10px; padding: 14px 16px; }
+  .panel .close { position: absolute; top: 16px; right: 16px; background: none; border: none; color: var(--muted); cursor: pointer; font-size: 22px; line-height: 1; width: 30px; height: 30px; border-radius: 8px; }
+  .panel .close:hover { background: var(--surface-2); color: var(--ink); }
+
+  @media (max-width: 560px) {
+    .panel { top: auto; height: 74vh; width: 100vw; border-left: none; border-top: 1px solid var(--hair); transform: translateY(101%); }
+    .panel.open { transform: translateY(0); }
+    .legend { display: none; }
+    .guide-btn span.lbl { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .panel, .overlay { transition: none; } }
+</style>
+</head>
+<body>
+
+<div class="stage"><canvas id="c"></canvas></div>
+
+<nav class="mapnav" id="mapnav">
+  <button class="mapbtn" id="mapbtn" aria-haspopup="true" aria-expanded="false">🇨🇳 中国 AI 全栈 <span class="caret">▾</span></button>
+  <div class="mapsub">stock-why 溯源图谱 · 点节点看来龙去脉</div>
+  <div class="mapmenu" id="mapmenu" role="menu">
+    <a class="mapitem" role="menuitem" href="https://stock-why-wiki-site.vercel.app/">🏠 网站首页</a>
+    <a class="mapitem" role="menuitem" href="https://belindasun.github.io/stock-why-wiki/">🧭 AI 半导体图</a>
+    <a class="mapitem" role="menuitem" href="https://belindasun.github.io/stock-why-wiki/graph-biotech.html">🧬 生物医药图</a>
+    <a class="mapitem current" role="menuitem">🇨🇳 中国 AI 全栈图</a>
+  </div>
+</nav>
+<button class="guide-btn" id="guideBtn" aria-label="打开板块导览">📖 <span class="lbl">导览</span></button>
+<button class="toggle" id="themeBtn" aria-label="切换明暗主题">◐</button>
+
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="中国 AI 全栈导览">
+  <div class="guide-card">
+    <button class="gclose" id="gclose" aria-label="关闭导览">×</button>
+    <h2>中国 AI 全栈 · 导览</h2>
+    <div class="gsub">5 家公司 + 3 类驱动 · 2026-09-28 · 与 AI 半导体图平行</div>
+    <p class="thesis">同样是“中国科技股涨了”，背后可能是<b>三件完全不同的事</b>。先分清是哪一类驱动在动，再讲因果链。</p>
+
+    <div class="cluster sub">
+      <div class="cname"><i></i>国产替代</div>
+      <div class="litem"><b>北方华创</b> <span class="st">设备平台龙头；9/7 3D DRAM 刻蚀论文带动设备板块</span></div>
+      <div class="litem"><b>中芯国际</b> <span class="st">制造枢纽；Q2 营收和毛利率双超指引，8/14 H 股 +4.81%</span></div>
+      <div class="litem"><b>寒武纪</b> <span class="st">国产 AI 芯片龙头；半年报翻倍，8/10 却反跌 6.33%</span></div>
+    </div>
+    <div class="cluster local">
+      <div class="cname"><i></i>本土 AI 需求</div>
+      <div class="litem"><b>腾讯</b> <span class="st">最大买家之一；9/22 Muse 读穿，收涨 5.02%</span></div>
+      <div class="litem"><b>阿里巴巴</b> <span class="st">芯片-模型-云全栈；9/22 云栖大会发布真武 V900</span></div>
+    </div>
+    <div class="cluster global">
+      <div class="cname"><i></i>全球 AI capex</div>
+      <div class="litem"><b>中际旭创</b> <span class="st">光模块，卖给海外 AI 数据中心；第二批建档</span></div>
+    </div>
+
+    <div class="takeaways">
+      <h3>三条最值得记住的主线</h3>
+      <div class="tk"><span class="n">1</span><div><b>先分驱动，再讲因果。</b>设备、代工、国产芯片跟的是出口管制；腾讯、阿里跟的是自己的资本开支和变现；光模块跟的是 NVDA 的周期。</div></div>
+      <div class="tk"><span class="n">2</span><div><b>同一件事，三列可能反着走。</b></div></div>
+      <table class="scen">
+        <thead><tr><th>情景</th><th>国产替代</th><th>本土 AI 需求</th><th>全球 AI capex</th></tr></thead>
+        <tbody>
+          <tr><td>美国放松对华 AI 芯片出口</td><td>↓</td><td>↑</td><td>—</td></tr>
+          <tr><td>美国收紧管制</td><td>↑</td><td>↓</td><td>⚠</td></tr>
+          <tr><td>国内大厂上调资本开支</td><td>↑</td><td>↑</td><td>—</td></tr>
+          <tr><td>美国云厂商下修资本开支</td><td>—</td><td>—</td><td>↓</td></tr>
+        </tbody>
+      </table>
+      <div class="tk"><span class="n">3</span><div><b>两条链有接口。</b>9/22 Meta 的 Muse 登顶：美股 AMD 首破万亿，港股腾讯 +5%。同一个智能体叙事，落到“卖算力”和“用算力”两端。</div></div>
+    </div>
+  </div>
+</div>
+
+<aside class="panel" id="panel" aria-live="polite">
+  <button class="close" id="closeBtn" aria-label="关闭">×</button>
+  <div class="phead" id="phead"></div>
+  <div class="pbody" id="pbody"></div>
+</aside>
+
+<div class="legend" id="legend">
+  <span class="grip" title="可拖动">⠿</span>
+  <div class="row"><span class="dot sub"></span> 国产替代</div>
+  <div class="row"><span class="dot local"></span> 本土 AI 需求</div>
+  <div class="row"><span class="dot global"></span> 全球 AI capex</div>
+  <div class="row"><span class="dot cross"></span> 跨图节点（AI 半导体图）</div>
+  <div class="row"><span class="dot ghost"></span> 待补（第二批建档）</div>
+  <div class="sep"></div>
+  <div class="row"><span class="ln drv"></span> 主驱动</div>
+  <div class="row"><span class="ln sec"></span> 次驱动</div>
+  <div class="row"><span class="ln"></span> 产业链关系</div>
+  <div class="row"><span class="ln peer"></span> 竞争 / 同类</div>
+  <div class="row"><span class="ln cross"></span> 跨图接口</div>
+  <div class="hint">公司颜色 = 主驱动 · 点节点看溯源 · 本卡片可拖动 ⠿</div>
+</div>
+
+<script src="./i18n.js"></script>
+<script>
+// Node types: hub = 三类驱动（固定位置）; stock = 已建档公司（颜色 = 主驱动）;
+// cross = AI 半导体图上的节点（跨图接口）; pending = 待补（第二批建档）。
+const NODES = [
+  { id:"SUB",    name:"国产替代",     sub:"驱动 ①", type:"hub", driver:"sub",    fx:0.30, fy:0.46 },
+  { id:"LOCAL",  name:"本土 AI 需求", sub:"驱动 ②", type:"hub", driver:"local",  fx:0.68, fy:0.40 },
+  { id:"GLOBAL", name:"全球 AI capex", sub:"驱动 ③", type:"hub", driver:"global", fx:0.70, fy:0.80 },
+
+  { id:"002371.SZ", name:"北方华创", type:"stock", driver:"sub" },
+  { id:"688981.SS", name:"中芯国际", type:"stock", driver:"sub" },
+  { id:"688256.SS", name:"寒武纪",   type:"stock", driver:"sub" },
+  { id:"0700.HK",   name:"腾讯",     type:"stock", driver:"local" },
+  { id:"BABA",      name:"阿里巴巴", type:"stock", driver:"local" },
+
+  { id:"NVDA", name:"英伟达", type:"cross" },
+  { id:"ASML", name:"阿斯麦", type:"cross" },
+  { id:"META", name:"Meta",   type:"cross" },
+
+  // 待补 —— 第二批建档
+  { id:"688012.SS", name:"中微公司", type:"pending", driver:"sub" },
+  { id:"688041.SS", name:"海光信息", type:"pending", driver:"sub" },
+  { id:"HUAWEI",    name:"华为昇腾", type:"pending", driver:"sub", private:true },
+  { id:"BIDU",      name:"百度",     type:"pending", driver:"local" },
+  { id:"300308.SZ", name:"中际旭创", type:"pending", driver:"global" },
+];
+
+// kind: drv = 公司 → 驱动（sec:true 为次驱动）; peer = 竞争 / 同类; cross = 跨图接口; 默认 = 产业链关系
+const EDGES = [
+  { a:"002371.SZ", b:"SUB",    kind:"drv", label:"主驱动：国产设备替代" },
+  { a:"688981.SS", b:"SUB",    kind:"drv", label:"主驱动：制造自主" },
+  { a:"688981.SS", b:"LOCAL",  kind:"drv", sec:true, label:"次驱动：AI 需求外溢到成熟制程" },
+  { a:"688256.SS", b:"SUB",    kind:"drv", label:"主驱动：去 NVDA 化" },
+  { a:"688256.SS", b:"LOCAL",  kind:"drv", sec:true, label:"次驱动：订单来自国内大厂" },
+  { a:"0700.HK",   b:"LOCAL",  kind:"drv", label:"主驱动：最大算力买家之一" },
+  { a:"BABA",      b:"LOCAL",  kind:"drv", label:"主驱动：芯片-模型-云全栈" },
+  { a:"BABA",      b:"SUB",    kind:"drv", sec:true, label:"次驱动：平头哥自研芯片" },
+
+  { a:"002371.SZ", b:"688981.SS", label:"设备 → 代工" },
+  { a:"688981.SS", b:"688256.SS", label:"代工 → AI 芯片" },
+  { a:"0700.HK",   b:"BABA",      kind:"peer", label:"模型 / 云 / 智能体竞争" },
+  { a:"688256.SS", b:"BABA",      kind:"peer", label:"自研真武 vs 外购国产卡" },
+
+  { a:"NVDA", b:"SUB",       kind:"cross", label:"对华出口越紧，替代越刚需" },
+  { a:"NVDA", b:"LOCAL",     kind:"cross", label:"对华出口越松，能买的卡越多" },
+  { a:"NVDA", b:"GLOBAL",    kind:"cross", label:"全球 AI capex 的温度计" },
+  { a:"ASML", b:"688981.SS", kind:"cross", label:"DUV 出货（EUV 被禁）" },
+  { a:"META", b:"0700.HK",   kind:"cross", label:"9/22 Muse 读穿" },
+
+  { a:"688012.SS", b:"SUB",       kind:"drv", pending:true, label:"刻蚀设备" },
+  { a:"688012.SS", b:"002371.SZ", kind:"peer", pending:true, label:"设备同行" },
+  { a:"688041.SS", b:"SUB",       kind:"drv", pending:true, label:"国产 CPU / DCU" },
+  { a:"HUAWEI",    b:"688256.SS", kind:"peer", pending:true, label:"国产 AI 芯片两极" },
+  { a:"HUAWEI",    b:"SUB",       kind:"drv", pending:true, label:"未上市" },
+  { a:"BIDU",      b:"LOCAL",     kind:"drv", pending:true, label:"文心 + 智能云 + 昆仑芯" },
+  { a:"300308.SZ", b:"GLOBAL",    kind:"drv", pending:true, label:"光模块卖给海外 AI 数据中心" },
+];
+
+const DRIVER_NAME = { sub:"国产替代", local:"本土 AI 需求", global:"全球 AI capex" };
+const AI_MAP = "https://belindasun.github.io/stock-why-wiki/";
+
+const DETAIL = {
+  SUB: {
+    lead: "出口管制把原本属于海外供应商的份额，留给了国产设备、代工和 AI 芯片。管得越紧，这一列越受益；一旦放松，替代的紧迫性就下降。",
+    members: [["北方华创","设备 · 主驱动"],["中芯国际","代工 · 主驱动"],["寒武纪","AI 芯片 · 主驱动"],["阿里巴巴","自研真武芯片 · 次驱动"],["盯什么","美方管制松紧、国内晶圆厂扩产、国产设备和芯片的验证进度"]],
+    todo: "待补：中微公司、海光信息、华为昇腾（未上市）。",
+  },
+  LOCAL: {
+    lead: "中国自己的模型、云和应用在花钱买算力。钱从腾讯、阿里、字节的资本开支里来，流向国产卡、服务器和数据中心。",
+    members: [["腾讯","最大买家之一 · Q2 资本开支 +176%"],["阿里巴巴","芯片-模型-云全栈 · 20GW 数据中心目标"],["中芯国际","AI 需求外溢到成熟制程 · 次驱动"],["寒武纪","订单来自国内大厂 · 次驱动"],["盯什么","大厂资本开支指引、模型和智能体的用户与变现"]],
+    todo: "待补：百度；字节跳动、DeepSeek（未上市）。",
+  },
+  GLOBAL: {
+    lead: "卖给海外 AI 基建的中国公司：光模块、PCB、服务器代工。它们跟的是 NVDA 和美国云厂商的周期，不是国产替代的周期。",
+    members: [["中际旭创","高速光模块 · 第二批建档"],["NVDA","周期锚：美国 AI 资本开支的温度计"],["盯什么","美国云厂商资本开支指引、NVDA 财报、海外订单"]],
+    todo: "这一列目前是空的，是第二批建档的重点。",
+  },
+
+  "002371.SZ": {
+    lead: "中国最大、品类最全的半导体设备商（刻蚀、薄膜沉积、氧化扩散、清洗），国产设备替代的平台型龙头。",
+    move: [["异动","9/7 设备板块午后拉升"],["催化剂","3D DRAM 刻蚀论文 · confirmed"]],
+    chain: ["DRAM 平面微缩到头，行业转向 3D 堆叠","瓶颈从光刻转到高深宽比刻蚀","3D DRAM 对 EUV 依赖较低，国产存储多一条路","刻蚀是北方华创的核心产品线，被重估为受益方"],
+    up: [["国内晶圆厂资本开支","中芯、华虹、长存、长鑫扩产就是订单"],["设备管制","管得越紧，国产设备越被需要"],["研发投入","上半年研发 +29%，净利增速被压到 +5%"]],
+    down: [["中芯国际","国产设备能力决定扩产能否摆脱海外"],["国产存储","3D NAND 和 DRAM 扩产的设备来源"],["ASML 与美系设备商","在华份额被替代的另一面"]],
+    src: [["腾讯新闻：3D DRAM 刻蚀突破","https://news.qq.com/rain/a/20260905A0B9R500"],["工商時報：兩步循環蝕刻","https://www.ctee.com.tw/news/20260907700073-430804"],["深交所：2026 半年报","https://disc.static.szse.cn/disc/disk03/finalpage/2026-08-26/5b947dae-f3ad-4009-8874-248e9abff0fd.PDF"]],
+  },
+  "688981.SS": {
+    lead: "大陆最大、最先进的晶圆代工厂，A+H 两地上市。拿不到 EUV，靠 DUV 推进先进制程；成熟制程接近满载。国产 AI 芯片的产能上限。",
+    move: [["异动","8/14 H 股 +4.81% · HK$70.8"],["催化剂","Q2 双超指引 · confirmed"]],
+    chain: ["AI 基建需要大量配套芯片，成熟制程就能做","AI 需求外溢到中芯的成熟产线","利用率 93.7% + 涨价，毛利率一季跳升 5 个点","Q3 指引只增 2–4%：产能接近满载，股价涨而不狂"],
+    up: [["ASML DUV","EUV 被禁，DUV 决定先进制程能走多远"],["北方华创等国产设备","既是保障，也是约束"],["实体清单","决定能买什么设备、能给谁代工"]],
+    down: [["寒武纪等国产 AI 芯片","产能和良率是它们出货的上限"],["全球成熟制程价格","扩产和涨价会外溢"],["国产设备商","中芯的资本开支就是它们的订单"]],
+    src: [["21 财经：Q2 毛利率环比 +5 个百分点","https://m.21jingji.com/article/20260813/herald/584ebb4d08dbce592a82cca77e10285b.html"],["新浪财经：AH 股双双大涨","https://finance.sina.com.cn/stock/hkstock/2026-08-14/doc-ininfvzv2947672.shtml"],["TrendForce：AI spillover","https://www.trendforce.com/news/2026/08/14/news-smic-2q26-gross-margin-hits-25-3-eyes-26-28-in-3q-as-ai-spillover-pricing-momentum-build/"]],
+  },
+  "688256.SS": {
+    lead: "国产 AI 加速卡龙头，中国“去 NVDA 化”供给侧最纯的上市标的。科创板市值最大的公司之一，高估值、高波动，是板块的情绪锚。",
+    move: [["异动","8/10 −6.33% · ¥1124.0"],["催化剂","半年报 · 业绩 confirmed，下跌原因 likely"]],
+    chain: ["上半年营收 +108%、净利 +123%","但 4–6 月已大涨、市值一度破万亿：早被 price in","存货和预付款激增：是锁产能还是出货慢？解读分歧","科创板 ±20% 加巨量成交：高位回撤被放大"],
+    up: [["NVDA 对华出口","管得越紧，国产卡越刚需；放松则替代压力下降"],["中芯国际代工","拿不到台积电先进制程，产能是天花板"],["国内大厂资本开支","腾讯、阿里、字节买多少卡，就是订单"]],
+    down: [["国产 AI 芯片同业","海光、摩尔线程、沐曦跟着它涨跌"],["科创 50 指数","权重股，指数规则也会反过来影响股价"],["国内 AI 服务器","国产卡出货带动整机"]],
+    src: [["财联社：上半年净利 +123%","https://www.cls.cn/detail/2448737"],["新浪财经：8/10 跌超 6%","https://finance.sina.com.cn/tob/2026-08-10/doc-inimuvrt2941809.shtml"],["大河财立方：市值破万亿","https://app.dahecube.com/nweb/news/20260630/278728nbbae4e9ec54.htm"]],
+  },
+  "0700.HK": {
+    lead: "微信 + 游戏 + 广告平台，也是中国 AI 资本开支最大的买家之一。在中国 AI 链里站在需求侧：买算力，再用 AI 改造广告、游戏和微信。",
+    move: [["异动","9/22 +5.02% · HK$451.6"],["催化剂","Meta Muse 读穿 · likely"]],
+    chain: ["Meta 的智能体 Muse 登顶美区 App Store","市场把微信内测的“小微”看作中国版 Muse","微信 = 社交 + 内容 + 服务 + 支付，变现路径更短","年内跌约 26%（怕投入太大），一个回报信号就触发修复"],
+    up: [["算力供给","NVDA（受管制）和国产卡，决定模型节奏"],["广告和游戏","现金牛，为 AI 投入买单"],["国内监管","版号、平台监管、数据合规"]],
+    down: [["国内 AI 算力链","Q2 资本开支 527.84 亿元（+176%）就是订单"],["阿里巴巴","模型、云、智能体的直接竞争者"],["微信小程序生态","智能体直接下单，会改变流量分配"]],
+    src: [["21 财经：腾讯、阿里放量大涨","https://m.21jingji.com/article/20260922/herald/0511e93cbb79699aa557ad7c154ee539.html"],["Morningstar：Meta 的智能体成功","https://www.morningstar.com/stocks/tencent-shares-look-cheap-metas-ai-agent-success-boosts-bull-case"],["新浪财经：Q2 资本开支 528 亿元","https://finance.sina.com.cn/stock/t/2026-08-12/doc-inimzytn5306358.shtml"]],
+  },
+  BABA: {
+    lead: "云 + 电商巨头。平头哥自研芯片（真武）+ Qwen 模型 + 阿里云，构成“芯片-模型-云”全栈：需求侧买算力，供给侧也在自研替代。",
+    move: [["异动","9/22 港股 +1.95% · HK$114.8"],["催化剂","云栖大会 · confirmed"]],
+    chain: ["云栖大会一次发布芯片、云、模型三件套","真武 V900 算力是上代 3 倍：国产替代从“能用”到“好用”","20GW 数据中心目标：自研芯片有内部需求消化","但年内港股仍跌约 23%：事件驱动反弹，不是趋势反转"],
+    up: [["美国出口管制","国产替代叙事的总源头"],["阿里云资本开支","20GW 目标消化自研芯片产能"],["平头哥架构能力","真武、倚天一年一代"]],
+    down: [["中国 AI 云客户","真武超节点已上架阿里云"],["寒武纪等国产卡","自研芯片与外购国产卡的竞争"],["腾讯","模型、云、智能体的竞争"]],
+    src: [["财联社 / 新浪：真武 V900","https://finance.sina.cn/stock/jdts/2026-09-22/detail-inissitf7062568.d.html"],["工商時報：V900 瞄準兆級模型","https://www.ctee.com.tw/news/20260923700100-439901"]],
+  },
+
+  NVDA: {
+    lead: "美国 AI 算力龙头。对中国链是一个双向开关：对华出口越松，本土 AI 需求越受益、国产替代越受压；它的周期也是全球 AI capex 那一列的温度计。",
+    links: [["对华出口许可","同时作用于国产替代和本土 AI 需求，方向相反"],["全球 AI capex","光模块等中国公司跟它的周期走"]],
+  },
+  ASML: {
+    lead: "EUV 光刻机的唯一供应商。对中国只能卖 DUV，DUV 的出货和荷兰管制决定中芯国际先进制程能走多远。",
+    links: [["中芯国际","EUV 被禁，靠 DUV 多重曝光"],["北方华创","3D DRAM 等绕开 EUV 的路线，给国产设备更多空间"]],
+  },
+  META: {
+    lead: "9/22 Meta 的智能体 Muse 登顶美区 App Store：美股 AMD 首破万亿，港股腾讯 +5%。同一个智能体叙事，落到两条链的“卖算力”和“用算力”两端。",
+    links: [["腾讯","微信内测的“小微”被看作中国版 Muse"]],
+  },
+
+  "688012.SS": { pending:"中微公司：刻蚀设备龙头，北方华创的同行。第二批建档，接到“国产替代”。" },
+  "688041.SS": { pending:"海光信息：国产 CPU 和 DCU。第二批建档，接到“国产替代”。" },
+  HUAWEI:      { pending:"华为昇腾：国产 AI 芯片的另一极。华为未上市，按关联实体建档（待建）。" },
+  BIDU:        { pending:"百度：文心模型 + 百度智能云 + 自研昆仑芯。第二批建档，接到“本土 AI 需求”。" },
+  "300308.SZ": { pending:"中际旭创：高速光模块，主要卖给海外 AI 数据中心，跟的是 NVDA 周期。第二批建档，是“全球 AI capex”这一列的第一家。" },
+};
+
+// ---------- engine ----------
+// swText: wraps the i18n.js translator (window.swText) and falls back to a safe passthrough if it
+// failed to load. Never delete: every display string goes through it (white-screen guard, see 手册②).
+// Declared with `var`, not `function`, so it does not overwrite i18n.js's translator before capture.
+var swText = (function (t) {
+  return function (s) { return s == null ? "" : (typeof t === "function" ? String(t(String(s))) : String(s)); };
+})(window.swText);
+const canvas = document.getElementById("c");
+const ctx = canvas.getContext("2d");
+let W, H, DPR;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+let COL = {};
+function readColors(){
+  COL = { stock: css("--stock"), edge: css("--edge"), ink: css("--ink"), muted: css("--muted"), surface: css("--surface"),
+    bg: css("--bg"), hair: css("--hair"), cross: css("--cross"), nodeInk: css("--node-ink"),
+    sub: css("--d-sub"), local: css("--d-local"), global: css("--d-global") };
+}
+function dcol(d){ return COL[d] || COL.edge; }
+const nodeMap = {};
+NODES.forEach(n => { nodeMap[n.id] = n; n.vx=0; n.vy=0;
+  n.r = n.type==="hub" ? 44 : n.type==="stock" ? 34 : n.type==="cross" ? 28 : 26; });
+EDGES.forEach(e => { e.A = nodeMap[e.a]; e.B = nodeMap[e.b]; });
+function resize(){ DPR = Math.min(devicePixelRatio||1,2); W=canvas.clientWidth; H=canvas.clientHeight; canvas.width=W*DPR; canvas.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); }
+(function seed(){
+  const start = { "002371.SZ":[0.12,0.30], "688981.SS":[0.20,0.62], "688256.SS":[0.42,0.62], "0700.HK":[0.86,0.36], "BABA":[0.56,0.22],
+    NVDA:[0.88,0.62], ASML:[0.26,0.90], META:[0.92,0.16], "688012.SS":[0.10,0.18], "688041.SS":[0.34,0.18], HUAWEI:[0.44,0.82],
+    BIDU:[0.76,0.18], "300308.SZ":[0.54,0.88] };
+  NODES.forEach(n=>{ if(n.type==="hub"){ n.x=n.fx; n.y=n.fy; return; }
+    const s=start[n.id]||[0.5,0.5]; n.x=s[0]+(Math.random()-0.5)*0.02; n.y=s[1]+(Math.random()-0.5)*0.02; });
+})();
+
+let selected=null, hover=null, drag=null, dragged=false;
+function toPx(n){ return { x:n.x*W, y:n.y*H }; }
+// Screen areas nodes should stay out of (legend card, map switcher), in canvas pixels.
+function blockers(){
+  const c=canvas.getBoundingClientRect(), out=[];
+  for(const id of ["legend","mapnav"]){ const el=document.getElementById(id);
+    if(!el || getComputedStyle(el).display==="none") continue;
+    const r=el.getBoundingClientRect(); out.push({ x0:r.left-c.left, y0:r.top-c.top, x1:r.right-c.left, y1:r.bottom-c.top }); }
+  return out;
+}
+function avoid(n, rects){
+  const p=toPx(n), pad=n.r+10;
+  for(const b of rects){
+    if(p.x<b.x0-pad||p.x>b.x1+pad||p.y<b.y0-pad||p.y>b.y1+pad) continue;
+    // push out through the nearest side that keeps the node on screen
+    const opts=[ { d:(b.x1+pad)-p.x, ax:"x", v:(b.x1+pad)/W }, { d:p.y-(b.y0-pad), ax:"y", v:(b.y0-pad)/H },
+                 { d:p.x-(b.x0-pad), ax:"x", v:(b.x0-pad)/W }, { d:(b.y1+pad)-p.y, ax:"y", v:(b.y1+pad)/H } ]
+      .filter(o=>o.v>=0.05&&o.v<=0.95).sort((u,w)=>u.d-w.d);
+    if(opts.length){ n[opts[0].ax]=opts[0].v; }
+    n.vx*=0.3; n.vy*=0.3;
+  }
+}
+function step(){
+  const K_REP=0.00060,K_SPRING=0.010,SPRING_LEN=0.20,CENTER=0.0006,DAMP=0.86;
+  const rects=blockers();
+  // Forces are computed in aspect-corrected space (units of the shorter screen side), so a narrow
+  // phone screen spreads nodes as well as a wide one; sx/sy convert back to normalized coordinates.
+  const S=Math.min(W,H), sx=W/S, sy=H/S;
+  for(let i=0;i<NODES.length;i++){ const a=NODES[i];
+    for(let j=i+1;j<NODES.length;j++){ const b=NODES[j]; let dx=(a.x-b.x)*sx,dy=(a.y-b.y)*sy,d2=dx*dx+dy*dy+0.0001,d=Math.sqrt(d2),f=K_REP/d2,fx=f*dx/d/sx,fy=f*dy/d/sy; a.vx+=fx;a.vy+=fy;b.vx-=fx;b.vy-=fy; } }
+  EDGES.forEach(e=>{ const a=e.A,b=e.B; let dx=(b.x-a.x)*sx,dy=(b.y-a.y)*sy,d=Math.sqrt(dx*dx+dy*dy)+0.0001,f=K_SPRING*(d-SPRING_LEN),fx=f*dx/d/sx,fy=f*dy/d/sy; a.vx+=fx;a.vy+=fy;b.vx-=fx;b.vy-=fy; });
+  NODES.forEach(n=>{
+    if(n===drag){ n.vx=0; n.vy=0; return; }
+    if(n.type==="hub"){ n.vx=0; n.vy=0; return; }   // 三类驱动固定，布局稳定
+    n.vx+=(0.5-n.x)*CENTER; n.vy+=(0.5-n.y)*CENTER; n.vx*=DAMP; n.vy*=DAMP; n.x+=n.vx; n.y+=n.vy;
+    const mx=(n.r+6)/W, my=(n.r+6)/H; n.x=Math.max(mx,Math.min(1-mx,n.x)); n.y=Math.max(Math.max(0.10,my),Math.min(1-my,n.y));
+    avoid(n, rects); });
+}
+function edgeStyle(e, active){
+  if(e.kind==="drv"){ const hub = e.B.type==="hub" ? e.B : e.A;
+    return { col: dcol(hub.driver), a: e.pending ? (active?0.75:0.4) : (active?1:(e.sec?0.55:0.8)),
+      w: active?2.6:(e.sec?1.5:2.2), dash: e.pending ? [5,5] : (e.sec ? [7,5] : []) }; }
+  if(e.kind==="peer")  return { col: COL.stock, a: active?0.75:(e.pending?0.28:0.38), w: active?2:1.2, dash:[4,4] };
+  if(e.kind==="cross") return { col: COL.cross, a: active?0.95:0.6, w: active?2.2:1.6, dash:[2,4] };
+  return { col: active?COL.ink:COL.edge, a: active?0.9:0.75, w: active?2.2:1.8, dash:[] };
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  EDGES.forEach(e=>{ const p=toPx(e.A),q=toPx(e.B); const active=selected&&(e.a===selected||e.b===selected); const s=edgeStyle(e,active);
+    ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y);
+    ctx.strokeStyle=s.col; ctx.globalAlpha=s.a; ctx.lineWidth=s.w; ctx.setLineDash(s.dash);
+    ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha=1;
+    if(active){ const mx=(p.x+q.x)/2,my=(p.y+q.y)/2; ctx.font="600 11px 'Libre Franklin',sans-serif"; const lbl=swText(e.label); const tw=ctx.measureText(lbl).width;
+      ctx.fillStyle=COL.surface; ctx.globalAlpha=0.92; ctx.fillRect(mx-tw/2-5,my-9,tw+10,17); ctx.globalAlpha=1;
+      ctx.fillStyle=COL.ink; ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillText(lbl,mx,my); } });
+  NODES.forEach(n=>{ const p=toPx(n); const isSel=selected===n.id, isHov=hover===n;
+    const base = n.type==="cross" ? COL.cross : dcol(n.driver);
+    if(isSel||isHov){ ctx.beginPath(); ctx.arc(p.x,p.y,n.r+9,0,7); ctx.fillStyle=base; ctx.globalAlpha=0.16; ctx.fill(); ctx.globalAlpha=1; }
+    ctx.beginPath(); ctx.arc(p.x,p.y,n.r,0,7);
+    let ink = COL.nodeInk;
+    if(n.type==="pending"){ ctx.fillStyle=COL.surface; ctx.fill(); ctx.lineWidth=1.6; ctx.setLineDash(n.private?[2,3]:[4,4]); ctx.strokeStyle=base; ctx.stroke(); ctx.setLineDash([]); ink=COL.ink; }
+    else if(n.type==="cross"){ ctx.fillStyle=COL.surface; ctx.fill(); ctx.lineWidth=2.6; ctx.strokeStyle=base; ctx.stroke(); ink=COL.ink; }
+    else { ctx.fillStyle=base; ctx.fill(); if(n.type==="hub"){ ctx.lineWidth=3; ctx.strokeStyle=COL.surface; ctx.globalAlpha=0.7; ctx.beginPath(); ctx.arc(p.x,p.y,n.r-5,0,7); ctx.stroke(); ctx.globalAlpha=1; }
+      if(isSel){ ctx.beginPath(); ctx.arc(p.x,p.y,n.r,0,7); ctx.lineWidth=3; ctx.strokeStyle=COL.ink; ctx.stroke(); } }
+    ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillStyle=ink;
+    const maxW = 2*n.r-8;
+    if(n.type==="pending"){ fitFont(swText(n.name),maxW,"600",11,"'Libre Franklin',sans-serif"); ctx.globalAlpha=0.9; ctx.fillText(swText(n.name),p.x,p.y); ctx.globalAlpha=1; return; }
+    const top = n.type==="cross" ? n.id : swText(n.name);
+    const bottom = n.type==="cross" ? "↗ "+swText("AI 图") : (n.type==="hub" ? swText(n.sub) : n.id);
+    fitFont(top,maxW,"700", n.type==="cross"?12:13, n.type==="cross"?"'JetBrains Mono',monospace":"'Libre Franklin',sans-serif");
+    ctx.fillText(top,p.x,p.y-6);
+    fitFont(bottom,maxW, n.type==="stock"?"700":"600", n.type==="stock"?9.5:10, n.type==="stock"?"'JetBrains Mono',monospace":"'Libre Franklin',sans-serif");
+    ctx.globalAlpha=0.85; ctx.fillText(bottom,p.x,p.y+9); ctx.globalAlpha=1; });
+}
+// Shrinks the font (down to 8px) until the label fits inside its circle — English names run longer.
+function fitFont(text,maxW,weight,size,family){
+  let s=size; ctx.font=`${weight} ${s}px ${family}`;
+  while(s>8 && ctx.measureText(text).width>maxW){ s-=0.5; ctx.font=`${weight} ${s}px ${family}`; }
+}
+let settle = reduce ? 0 : 320;
+function loop(){ if(settle>0||drag){ step(); if(!drag)settle--; } draw(); requestAnimationFrame(loop); }
+function nodeAt(mx,my){ for(let i=NODES.length-1;i>=0;i--){ const n=NODES[i],p=toPx(n); if((mx-p.x)**2+(my-p.y)**2<=(n.r+4)**2) return n; } return null; }
+function pos(ev){ const r=canvas.getBoundingClientRect(); const t=ev.touches?ev.touches[0]:ev; return {x:t.clientX-r.left,y:t.clientY-r.top}; }
+canvas.addEventListener("pointerdown",ev=>{ const m=pos(ev),n=nodeAt(m.x,m.y); if(n){ drag=n; dragged=false; canvas.classList.add("dragging"); canvas.setPointerCapture(ev.pointerId); } });
+canvas.addEventListener("pointermove",ev=>{ const m=pos(ev); if(drag){ drag.x=m.x/W; drag.y=m.y/H; if(drag.type==="hub"){ drag.fx=drag.x; drag.fy=drag.y; } dragged=true; settle=Math.max(settle,30); } else { const n=nodeAt(m.x,m.y); hover=n; canvas.style.cursor=n?"pointer":"grab"; } });
+canvas.addEventListener("pointerup",ev=>{ const m=pos(ev),n=nodeAt(m.x,m.y); if(drag&&!dragged&&n===drag) select(n.id); drag=null; canvas.classList.remove("dragging"); });
+
+const panel=document.getElementById("panel"), phead=document.getElementById("phead"), pbody=document.getElementById("pbody");
+function esc(s){ return String(s ?? "").replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+function listHTML(arr,ind){ return "<ul>"+arr.map(([t,d])=>`<li><span class="tk${ind?' ind':''}">${esc(swText(t))}</span><span>${esc(swText(d))}</span></li>`).join("")+"</ul>"; }
+function driverChips(id){
+  const out=[]; EDGES.forEach(e=>{ if(e.kind!=="drv"||e.pending) return; const other = e.a===id ? e.B : (e.b===id ? e.A : null);
+    if(other && other.type==="hub") out.push({ d:other.driver, sec:!!e.sec }); });
+  out.sort((x,y)=>x.sec-y.sec);
+  return out.length ? `<div class="drivers">`+out.map(c=>`<span class="chip${c.sec?' sec':''}" style="${c.sec?'border-color':'background'}:var(--d-${c.d})">${esc(swText(c.sec?'次':'主'))} · ${esc(swText(DRIVER_NAME[c.d]))}</span>`).join("")+`</div>` : "";
+}
+function select(id){
+  selected=id; const n=nodeMap[id], d=DETAIL[id]||{};
+  const typeLabel = swText(n.type==="hub" ? "驱动力" : n.type==="cross" ? "跨图节点 · AI 半导体图" : n.private ? "关联实体 · 未上市 (PRIVATE)" : "公司");
+  const colorVar = n.type==="cross" ? "--cross" : "--d-"+n.driver;
+  const bigLine = n.type==="hub" ? swText(n.name) : n.id;
+  const smallLine = n.type==="hub" ? swText(n.sub) : swText(n.name);
+  phead.innerHTML = `<div class="ptype" style="color:var(${colorVar})">${esc(typeLabel)}${n.type==="pending"?' · '+esc(swText('待补')):''}</div>`+
+    `<div class="ticker">${esc(bigLine)}</div>`+`<div class="cn">${esc(smallLine)}</div>`+
+    (n.type==="stock" ? driverChips(id) : "")+
+    (d.move ? `<div class="move">${d.move.map(([k,v])=>`<span>${esc(swText(k))} <b>${esc(swText(v))}</b></span>`).join("")}</div>` : "");
+  let html="";
+  if(n.type==="pending"){ html=`<div class="pending-note">${esc(swText(d.pending))}</div>`; }
+  else if(n.type==="hub"){ html+=`<p class="lead">${esc(swText(d.lead))}</p>`; html+=`<h4>${esc(swText('成员 / 要点'))}</h4>`+listHTML(d.members); html+=`<h4>${esc(swText('待补'))}</h4><p class="src">${esc(swText(d.todo))}</p>`; }
+  else if(n.type==="cross"){ html+=`<p class="lead">${esc(swText(d.lead))}</p>`; html+=`<h4>${esc(swText('与中国链的接口'))}</h4>`+listHTML(d.links);
+    html+=`<p><a class="golink" href="${AI_MAP}" target="_blank" rel="noopener">${esc(swText('在 AI 半导体图里查看'))} ↗</a></p>`; }
+  else { html+=`<p class="lead">${esc(swText(d.lead))}</p>`; html+=`<h4>${esc(swText('因果链'))}</h4><ul class="chain">`+d.chain.map(c=>`<li>${esc(swText(c))}</li>`).join("")+`</ul>`;
+    html+=`<h4>${esc(swText('上游 · 谁影响它'))}</h4>`+listHTML(d.up); html+=`<h4>${esc(swText('下游 · 它影响谁'))}</h4>`+listHTML(d.down);
+    html+=`<h4>${esc(swText('来源'))}</h4><p class="src">`+d.src.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(swText(t))}</a>`).join(" · ")+`</p>`; }
+  pbody.innerHTML=html; panel.classList.add("open");
+  document.body.classList.add("panel-open");
+  requestAnimationFrame(()=>{ resize(); settle=Math.max(settle,90); });
+}
+function closePanel(){ panel.classList.remove("open"); document.body.classList.remove("panel-open"); selected=null; requestAnimationFrame(()=>{ resize(); settle=Math.max(settle,90); }); }
+document.getElementById("closeBtn").addEventListener("click",closePanel);
+const overlay=document.getElementById("overlay");
+function closeGuide(){ overlay.classList.remove("open"); }
+document.getElementById("guideBtn").addEventListener("click",()=>overlay.classList.add("open"));
+document.getElementById("gclose").addEventListener("click",closeGuide);
+overlay.addEventListener("click",e=>{ if(e.target===overlay) closeGuide(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ closeGuide(); closePanel(); } });
+const themeBtn=document.getElementById("themeBtn");
+themeBtn.addEventListener("click",()=>{ const cur=document.documentElement.getAttribute("data-theme"); const dark=cur?cur==="dark":matchMedia("(prefers-color-scheme: dark)").matches; document.documentElement.setAttribute("data-theme",dark?"light":"dark"); readColors(); });
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",readColors);
+(function(){
+  const nav=document.getElementById("mapnav"), btn=document.getElementById("mapbtn");
+  if(!nav||!btn) return;
+  btn.addEventListener("click", e=>{ e.stopPropagation(); const o=nav.classList.toggle("open"); btn.setAttribute("aria-expanded", o?"true":"false"); });
+  document.addEventListener("click", e=>{ if(!nav.contains(e.target)) nav.classList.remove("open"); });
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape") nav.classList.remove("open"); });
+})();
+
+(function(){
+  const lg=document.getElementById("legend"); if(!lg) return;
+  let dragging=false,ox=0,oy=0;
+  lg.addEventListener("pointerdown",e=>{ dragging=true; const r=lg.getBoundingClientRect(); ox=e.clientX-r.left; oy=e.clientY-r.top;
+    lg.style.left=r.left+"px"; lg.style.top=r.top+"px"; lg.style.bottom="auto"; lg.style.right="auto"; lg.setPointerCapture(e.pointerId); e.preventDefault(); });
+  lg.addEventListener("pointermove",e=>{ if(!dragging)return; let x=Math.max(4,Math.min(innerWidth-lg.offsetWidth-4,e.clientX-ox)),y=Math.max(4,Math.min(innerHeight-lg.offsetHeight-4,e.clientY-oy)); lg.style.left=x+"px"; lg.style.top=y+"px"; });
+  lg.addEventListener("pointerup",()=>{ dragging=false; });
+})();
+
+function boot(){ resize(); readColors(); }
+window.addEventListener("resize",()=>{ resize(); });
+boot(); loop();
+window.addEventListener("stockwhy:languagechange",()=>{ if(selected) select(selected); draw(); });
+swInitI18n();
+setTimeout(()=>{ select("688981.SS"); }, 600);
+</script>
+
+</body>
+</html>

@@ -27,7 +27,9 @@ _给小缪 · 由小德(Claude)整理 · 2026-09-16_
 ├── stocks/<TICKER>.md          # 每个标的一份(NVDA/AAPL/ORCL...)
 ├── industries/<slug>.md        # 每个行业/主题一份(ai-infrastructure, macro-rates...)
 ├── graph.html                  # AI 关系图 ← 别碰!见第 5 节
-└── graph-biotech.html          # 医药关系图 ← 别碰!见第 5 节
+├── graph-biotech.html          # 医药关系图 ← 别碰!见第 5 节
+├── graph-china.html            # 中国 AI 全栈关系图 ← 别碰!见第 5 节
+└── china-overview.md           # 中国 AI 全栈导览(按三类驱动分层)
 ```
 
 - **Mac 本地**有自动推送钩子——存盘后看到自动 commit/push 是**预期行为**,别慌。Mac 隔了一段时间再打开,**先 `git pull` 再动手**,否则旧版本一推就会和云端的改动冲突。
@@ -148,7 +150,7 @@ _Asset type: stock/ETF/crypto/commodity · Last updated: <YYYY-MM-DD>_
 
 ## 5. ⚠️ 关系图:别直接手改!(最重要的一条)
 
-`graph.html` 和 `graph-biotech.html` **你不要直接编辑**。图由专门的**图维护窗口**负责(见手册②)。你只需把"**要改什么**"发给它(建图提示)。
+`graph.html`、`graph-biotech.html` 和 `graph-china.html` **你不要直接编辑**。图由专门的**图维护窗口**负责(见手册②)。你只需把"**要改什么**"发给它(建图提示)。
 
 万一哪天真要动 HTML:
 1. **别调用未定义的函数**——`swText()` 曾被只调用未定义,直接把两张图画成**白屏**;它现已定义在引擎开头,**别删**。
