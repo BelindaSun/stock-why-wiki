@@ -96,7 +96,7 @@
   .legend .dot.local { background: var(--d-local); }
   .legend .dot.global { background: var(--d-global); }
   .legend .dot.cross { background: var(--surface); border: 2px solid var(--cross); }
-  .legend .dot.ghost { background: transparent; border: 1.5px dashed var(--edge); }
+  .legend .dot.ghost { background: var(--d-sub); outline: 1.5px dashed var(--ink); outline-offset: 2px; }
   .legend .ln { width: 20px; flex: none; border-top: 2px solid var(--edge); }
   .legend .ln.drv { border-top: 2px solid var(--muted); }
   .legend .ln.sec { border-top: 2px dashed var(--muted); }
@@ -254,7 +254,7 @@
   <div class="guide-card">
     <button class="gclose" id="gclose" aria-label="关闭导览">×</button>
     <h2>中国 AI 全栈 · 导览</h2>
-    <div class="gsub">5 家公司 + 3 类驱动 · 2026-09-28 · 与 AI 半导体图平行</div>
+    <div class="gsub">9 家公司 + 1 个关联实体 + 3 类驱动 · 2026-09-28 · 与 AI 半导体图平行</div>
     <p class="thesis">同样是“中国科技股涨了”，背后可能是<b>三件完全不同的事</b>。先分清是哪一类驱动在动，再讲因果链。</p>
 
     <div class="cluster sub">
@@ -262,15 +262,19 @@
       <div class="litem"><b>北方华创</b> <span class="st">设备平台龙头；9/7 3D DRAM 刻蚀论文带动设备板块</span></div>
       <div class="litem"><b>中芯国际</b> <span class="st">制造枢纽；Q2 营收和毛利率双超指引，8/14 H 股 +4.81%</span></div>
       <div class="litem"><b>寒武纪</b> <span class="st">国产 AI 芯片龙头；半年报翻倍，8/10 却反跌 6.33%</span></div>
+      <div class="litem"><b>中微公司</b> <span class="st">刻蚀设备龙头；净利 +300% 但扣非仅 +108%，半年报后大跌约 10%</span></div>
+      <div class="litem"><b>海光信息</b> <span class="st">国产 CPU + DCU；营收 +66.5%，存货和预付款高企</span></div>
+      <div class="litem"><b>华为昇腾</b> <span class="st">未上市；9/17 昇腾 960 提前三个季度，带动 A 股算力链</span></div>
     </div>
     <div class="cluster local">
       <div class="cname"><i></i>本土 AI 需求</div>
       <div class="litem"><b>腾讯</b> <span class="st">最大买家之一；9/22 Muse 读穿，收涨 5.02%</span></div>
       <div class="litem"><b>阿里巴巴</b> <span class="st">芯片-模型-云全栈；9/22 云栖大会发布真武 V900</span></div>
+      <div class="litem"><b>百度</b> <span class="st">GPU 云 +283%，但广告下滑、Q2 不及预期</span></div>
     </div>
     <div class="cluster global">
       <div class="cname"><i></i>全球 AI capex</div>
-      <div class="litem"><b>中际旭创</b> <span class="st">光模块，卖给海外 AI 数据中心；第二批建档</span></div>
+      <div class="litem"><b>中际旭创</b> <span class="st">光模块，卖给海外 AI 数据中心；净利 +242%，8/24 却跌 7.72%</span></div>
     </div>
 
     <div class="takeaways">
@@ -303,7 +307,7 @@
   <div class="row"><span class="dot local"></span> 本土 AI 需求</div>
   <div class="row"><span class="dot global"></span> 全球 AI capex</div>
   <div class="row"><span class="dot cross"></span> 跨图节点（AI 半导体图）</div>
-  <div class="row"><span class="dot ghost"></span> 待补（第二批建档）</div>
+  <div class="row"><span class="dot ghost"></span> 未上市（关联实体）</div>
   <div class="sep"></div>
   <div class="row"><span class="ln drv"></span> 主驱动</div>
   <div class="row"><span class="ln sec"></span> 次驱动</div>
@@ -332,12 +336,12 @@ const NODES = [
   { id:"ASML", name:"阿斯麦", type:"cross" },
   { id:"META", name:"Meta",   type:"cross" },
 
-  // 待补 —— 第二批建档
-  { id:"688012.SS", name:"中微公司", type:"pending", driver:"sub" },
-  { id:"688041.SS", name:"海光信息", type:"pending", driver:"sub" },
-  { id:"HUAWEI",    name:"华为昇腾", type:"pending", driver:"sub", private:true },
-  { id:"BIDU",      name:"百度",     type:"pending", driver:"local" },
-  { id:"300308.SZ", name:"中际旭创", type:"pending", driver:"global" },
+  // 第二批建档（2026-09-28）
+  { id:"688012.SS", name:"中微公司", type:"stock", driver:"sub" },
+  { id:"688041.SS", name:"海光信息", type:"stock", driver:"sub" },
+  { id:"HUAWEI",    name:"华为昇腾", type:"stock", driver:"sub", private:true },
+  { id:"BIDU",      name:"百度",     type:"stock", driver:"local" },
+  { id:"300308.SZ", name:"中际旭创", type:"stock", driver:"global" },
 ];
 
 // kind: drv = 公司 → 驱动（sec:true 为次驱动）; peer = 竞争 / 同类; cross = 跨图接口; 默认 = 产业链关系
@@ -362,13 +366,19 @@ const EDGES = [
   { a:"ASML", b:"688981.SS", kind:"cross", label:"DUV 出货（EUV 被禁）" },
   { a:"META", b:"0700.HK",   kind:"cross", label:"9/22 Muse 读穿" },
 
-  { a:"688012.SS", b:"SUB",       kind:"drv", pending:true, label:"刻蚀设备" },
-  { a:"688012.SS", b:"002371.SZ", kind:"peer", pending:true, label:"设备同行" },
-  { a:"688041.SS", b:"SUB",       kind:"drv", pending:true, label:"国产 CPU / DCU" },
-  { a:"HUAWEI",    b:"688256.SS", kind:"peer", pending:true, label:"国产 AI 芯片两极" },
-  { a:"HUAWEI",    b:"SUB",       kind:"drv", pending:true, label:"未上市" },
-  { a:"BIDU",      b:"LOCAL",     kind:"drv", pending:true, label:"文心 + 智能云 + 昆仑芯" },
-  { a:"300308.SZ", b:"GLOBAL",    kind:"drv", pending:true, label:"光模块卖给海外 AI 数据中心" },
+  { a:"688012.SS", b:"SUB",       kind:"drv", label:"主驱动：国产刻蚀设备" },
+  { a:"688012.SS", b:"002371.SZ", kind:"peer", label:"刻蚀设备同行" },
+  { a:"688012.SS", b:"688981.SS", label:"刻蚀设备 → 代工" },
+  { a:"688041.SS", b:"SUB",       kind:"drv", label:"主驱动：国产 CPU / DCU" },
+  { a:"688041.SS", b:"LOCAL",     kind:"drv", sec:true, label:"次驱动：国内 AI 服务器需求" },
+  { a:"688041.SS", b:"688256.SS", kind:"peer", label:"国产算力芯片同行" },
+  { a:"HUAWEI",    b:"688256.SS", kind:"peer", label:"国产 AI 芯片两极" },
+  { a:"HUAWEI",    b:"SUB",       kind:"drv", label:"主驱动：昇腾自主算力" },
+  { a:"HUAWEI",    b:"688981.SS", label:"国内代工" },
+  { a:"BIDU",      b:"LOCAL",     kind:"drv", label:"主驱动：AI 云 + 文心" },
+  { a:"BIDU",      b:"SUB",       kind:"drv", sec:true, label:"次驱动：昆仑芯自研" },
+  { a:"BIDU",      b:"BABA",      kind:"peer", label:"模型 / 云竞争" },
+  { a:"300308.SZ", b:"GLOBAL",    kind:"drv", label:"主驱动：光模块卖给海外 AI 数据中心" },
 ];
 
 const DRIVER_NAME = { sub:"国产替代", local:"本土 AI 需求", global:"全球 AI capex" };
@@ -377,18 +387,18 @@ const AI_MAP = "https://belindasun.github.io/stock-why-wiki/";
 const DETAIL = {
   SUB: {
     lead: "出口管制把原本属于海外供应商的份额，留给了国产设备、代工和 AI 芯片。管得越紧，这一列越受益；一旦放松，替代的紧迫性就下降。",
-    members: [["北方华创","设备 · 主驱动"],["中芯国际","代工 · 主驱动"],["寒武纪","AI 芯片 · 主驱动"],["阿里巴巴","自研真武芯片 · 次驱动"],["盯什么","美方管制松紧、国内晶圆厂扩产、国产设备和芯片的验证进度"]],
-    todo: "待补：中微公司、海光信息、华为昇腾（未上市）。",
+    members: [["北方华创","设备 · 主驱动"],["中微公司","刻蚀设备 · 主驱动"],["中芯国际","代工 · 主驱动"],["寒武纪","AI 芯片 · 主驱动"],["海光信息","CPU / DCU · 主驱动"],["华为昇腾","未上市 · 主驱动"],["阿里巴巴","自研真武芯片 · 次驱动"],["百度","昆仑芯自研 · 次驱动"],["盯什么","美方管制松紧、国内晶圆厂扩产、国产设备和芯片的验证进度"]],
+    todo: "待补：华虹（特色工艺代工）。",
   },
   LOCAL: {
     lead: "中国自己的模型、云和应用在花钱买算力。钱从腾讯、阿里、字节的资本开支里来，流向国产卡、服务器和数据中心。",
-    members: [["腾讯","最大买家之一 · Q2 资本开支 +176%"],["阿里巴巴","芯片-模型-云全栈 · 20GW 数据中心目标"],["中芯国际","AI 需求外溢到成熟制程 · 次驱动"],["寒武纪","订单来自国内大厂 · 次驱动"],["盯什么","大厂资本开支指引、模型和智能体的用户与变现"]],
-    todo: "待补：百度；字节跳动、DeepSeek（未上市）。",
+    members: [["腾讯","最大买家之一 · Q2 资本开支 +176%"],["阿里巴巴","芯片-模型-云全栈 · 20GW 数据中心目标"],["中芯国际","AI 需求外溢到成熟制程 · 次驱动"],["寒武纪","订单来自国内大厂 · 次驱动"],["百度","AI 云 + 文心 · 主驱动"],["海光信息","国内 AI 服务器需求 · 次驱动"],["盯什么","大厂资本开支指引、模型和智能体的用户与变现"]],
+    todo: "待补：浪潮信息；字节跳动、DeepSeek（未上市）。",
   },
   GLOBAL: {
     lead: "卖给海外 AI 基建的中国公司：光模块、PCB、服务器代工。它们跟的是 NVDA 和美国云厂商的周期，不是国产替代的周期。",
-    members: [["中际旭创","高速光模块 · 第二批建档"],["NVDA","周期锚：美国 AI 资本开支的温度计"],["盯什么","美国云厂商资本开支指引、NVDA 财报、海外订单"]],
-    todo: "这一列目前是空的，是第二批建档的重点。",
+    members: [["中际旭创","高速光模块 · 主驱动 · 8/24 业绩大增却跌 7.72%"],["NVDA","周期锚：美国 AI 资本开支的温度计"],["盯什么","美国云厂商资本开支指引、NVDA 财报、海外订单"]],
+    todo: "待补：再补一家光模块（如新易盛），看它和中际旭创是否同步。",
   },
 
   "002371.SZ": {
@@ -445,11 +455,46 @@ const DETAIL = {
     links: [["腾讯","微信内测的“小微”被看作中国版 Muse"]],
   },
 
-  "688012.SS": { pending:"中微公司：刻蚀设备龙头，北方华创的同行。第二批建档，接到“国产替代”。" },
-  "688041.SS": { pending:"海光信息：国产 CPU 和 DCU。第二批建档，接到“国产替代”。" },
-  HUAWEI:      { pending:"华为昇腾：国产 AI 芯片的另一极。华为未上市，按关联实体建档（待建）。" },
-  BIDU:        { pending:"百度：文心模型 + 百度智能云 + 自研昆仑芯。第二批建档，接到“本土 AI 需求”。" },
-  "300308.SZ": { pending:"中际旭创：高速光模块，主要卖给海外 AI 数据中心，跟的是 NVDA 周期。第二批建档，是“全球 AI capex”这一列的第一家。" },
+  "688012.SS": {
+    lead: "国产刻蚀设备龙头，与北方华创并列为国产设备替代的两大主力。2026 年收购众硅补上 CMP，从“干法”走向“干法 + 湿法”。",
+    move: [["异动","半年报后大跌约 10% · ¥309.85"],["催化剂","半年报 · 业绩 confirmed，下跌原因 likely"]],
+    chain: ["净利 +300% 在 8/3 业绩预告时已公布，正式半年报没有新惊喜","扣非净利只 +108%，利润里很大一块是非经常性收益","市场按核心盈利重新定价，利好兑现后获利了结","科创板 ±20% 加巨量成交，放大单日跌幅"],
+    up: [["国内晶圆厂资本开支","中芯、华虹、长存、长鑫扩产就是订单"],["设备管制","管得越紧，国产刻蚀越被需要"],["研发投入","上半年约 20.41 亿元，占营收约 30.5%"]],
+    down: [["中芯国际等晶圆厂","国产刻蚀能力决定扩产能否摆脱海外"],["北方华创","刻蚀领域的直接同行"],["美系刻蚀设备商","在华份额被替代的另一面"]],
+    src: [["IT 之家：半年报净利 +300%","https://www.ithome.com/0/991/777.htm"],["新浪科技：披露半年报","https://finance.sina.com.cn/tech/roll/2026-08-19/doc-ininwien2491780.shtml"]],
+  },
+  "688041.SS": {
+    lead: "国产 x86 服务器 CPU 和 DCU 加速卡的供应商。和寒武纪一样站在国产算力供给侧，但同时卖 CPU 和加速卡，客户以国内服务器厂和信创项目为主。",
+    move: [["异动","8/14 反应日涨跌未核到"],["催化剂","半年报 · confirmed"]],
+    chain: ["国产替代 + 国内 AI 服务器需求，营收 +66.5%","净利增速（+49.7%）低于营收，成本和毛利承压","存货约 75 亿元、预付款高企：锁上游产能，也占用现金","和寒武纪一样，“囤货”成为利润质量的新看点"],
+    up: [["国内信创采购","政企和运营商服务器国产化，是 CPU 的主要推力"],["NVDA 对华出口管制","给海光 DCU 创造替代空间"],["代工与 HBM 供给","同样受管制约束，是出货天花板"]],
+    down: [["国内服务器整机厂","CPU 和 DCU 出货带动整机"],["寒武纪等国产 AI 芯片","同一赛道的同行"],["NVDA / AMD 在华份额","被替代的另一面"]],
+    src: [["新浪科技：营收 +66.52%","https://finance.sina.com.cn/tech/roll/2026-08-17/doc-ininruyf6769682.shtml"],["新浪科技：存货 75 亿、预付款高企","https://finance.sina.com.cn/tech/roll/2026-08-14/doc-ininhnxq2581525.shtml"]],
+  },
+  HUAWEI: {
+    lead: "国产 AI 算力供给侧的另一极：昇腾芯片 + 超节点集群 + 全栈软件。未上市，按关联实体建档，看的是芯片路线图和超节点进度如何传导到 A 股国产算力链。",
+    move: [["事件","9/17 全联接大会"],["催化剂","发布会口径 · confirmed"]],
+    chain: ["单卡受先进制程限制，用“更多卡 + 更强互联”的超节点补差距","昇腾 960 提前三个季度，此后一年一代","国产算力“有持续替代路径”的叙事被强化","超节点需要互联、光模块、液冷，9/18 A 股算力链跟涨"],
+    up: [["出口管制与实体清单","决定先进制程和 HBM 的天花板"],["国内代工","中芯国际等是制造基础"],["国内大模型算力需求","超节点的主要买家"]],
+    down: [["寒武纪、海光","国产 AI 芯片赛道的竞争者"],["A 股国产算力链","服务器、光互联、液冷跟着华为发布会走"],["NVDA 在华份额","被替代的另一面"]],
+    src: [["新浪科技：华为公布昇腾最新时间表","https://finance.sina.com.cn/tech/roll/2026-09-17/doc-iniscqxz3568530.shtml"],["腾讯新闻：全联接大会重磅信息","https://news.qq.com/rain/a/20260918A02ZH000"]],
+  },
+  BIDU: {
+    lead: "搜索起家，正在转型为“AI 云 + 模型 + 自研芯片”：文心、百度智能云、昆仑芯。AI 业务收入已连续两季过半，但传统广告在下滑。",
+    move: [["异动","8/18 美股盘初跌超 7%"],["催化剂","Q2 不及预期 · confirmed"]],
+    chain: ["搜索广告被 AI 助手分流，广告收入下滑","AI 云基础设施 +50%、GPU 云 +283%，增长引擎在换","但新引擎体量还补不上旧引擎的缺口，总营收 −4%","营收和利润不及预期，市场按总账定价"],
+    up: [["国内 AI 算力需求","GPU 云靠国内客户租算力"],["NVDA 对华出口管制","限制外购 GPU，也给昆仑芯替代空间"],["广告大盘","转型的资金来源，也是拖累"]],
+    down: [["国内 AI 云客户","GPU 云、模型调用"],["昆仑芯","三代芯片已商业化，计划独立上市"],["阿里、腾讯","模型和云的直接竞争者"]],
+    src: [["Baidu IR：Q2 2026 业绩","https://ir.baidu.com/news-releases/news-release-details/baidu-announces-second-quarter-2026-results"],["Yahoo Finance：Q2 不及预期","https://finance.yahoo.com/technology/ai/articles/baidu-slips-q2-results-miss-094048604.html"]],
+  },
+  "300308.SZ": {
+    lead: "全球领先的高速光模块厂商（800G、1.6T），主要卖给海外 AI 数据中心。它跟的是 NVDA 和美国云厂商的资本开支周期，是“全球 AI capex”这一列的第一家。",
+    move: [["异动","8/24 −7.72% · ¥870.22"],["催化剂","半年报 · 业绩 confirmed，下跌原因 likely"]],
+    chain: ["上半年净利 +242%，已超过去年全年","但市值已近万亿，高增长早被 price in","市场转而追问现金流和客户集中度","只要担心美国云厂商资本开支见顶，它就先跌"],
+    up: [["海外云厂商资本开支","AI 集群越大，光模块用量越大"],["NVDA 产品节奏","800G → 1.6T → CPO / NPO，决定换代窗口"],["光芯片和元器件成本","影响毛利"]],
+    down: [["海外 AI 数据中心","集群互联的必需品"],["A 股光模块板块","板块权重和情绪锚"],["国内算力链","华为 NPO 等是潜在的第二市场"]],
+    src: [["央广网：半年报净利 +241.7%","https://finance.cnr.cn/ycbd/20260821/t20260821_527786020.shtml"],["21 经济网：市值跌破 1 万亿元","https://www.21jingji.com/article/20260824/herald/aaa51ed00a58bfd31f5416c2933d3097.html"]],
+  },
 };
 
 // ---------- engine ----------
@@ -521,6 +566,18 @@ function step(){
     n.vx+=(0.5-n.x)*CENTER; n.vy+=(0.5-n.y)*CENTER; n.vx*=DAMP; n.vy*=DAMP; n.x+=n.vx; n.y+=n.vy;
     const mx=(n.r+6)/W, my=(n.r+6)/H; n.x=Math.max(mx,Math.min(1-mx,n.x)); n.y=Math.max(Math.max(0.10,my),Math.min(1-my,n.y));
     avoid(n, rects); });
+  separate();
+}
+// Hard collision pass in pixels: no two circles may overlap (crowded phone screens need this).
+function separate(){
+  for(let k=0;k<3;k++) for(let i=0;i<NODES.length;i++) for(let j=i+1;j<NODES.length;j++){
+    const a=NODES[i], b=NODES[j]; let dx=(b.x-a.x)*W, dy=(b.y-a.y)*H, d=Math.hypot(dx,dy), need=a.r+b.r+6;
+    if(d>=need) continue; if(d<0.01){ dx=1; dy=0; d=1; }
+    const push=(need-d)/2, ux=dx/d, uy=dy/d;
+    const fa = a.type==="hub"||a===drag ? 0 : 1, fb = b.type==="hub"||b===drag ? 0 : 1, tot=fa+fb; if(!tot) continue;
+    a.x-=ux*push*2*fa/tot/W; a.y-=uy*push*2*fa/tot/H; b.x+=ux*push*2*fb/tot/W; b.y+=uy*push*2*fb/tot/H;
+    [a,b].forEach(n=>{ const mx=(n.r+6)/W, my=(n.r+6)/H; n.x=Math.max(mx,Math.min(1-mx,n.x)); n.y=Math.max(Math.max(0.10,my),Math.min(1-my,n.y)); });
+  }
 }
 function edgeStyle(e, active){
   if(e.kind==="drv"){ const hub = e.B.type==="hub" ? e.B : e.A;
@@ -547,12 +604,13 @@ function draw(){
     if(n.type==="pending"){ ctx.fillStyle=COL.surface; ctx.fill(); ctx.lineWidth=1.6; ctx.setLineDash(n.private?[2,3]:[4,4]); ctx.strokeStyle=base; ctx.stroke(); ctx.setLineDash([]); ink=COL.ink; }
     else if(n.type==="cross"){ ctx.fillStyle=COL.surface; ctx.fill(); ctx.lineWidth=2.6; ctx.strokeStyle=base; ctx.stroke(); ink=COL.ink; }
     else { ctx.fillStyle=base; ctx.fill(); if(n.type==="hub"){ ctx.lineWidth=3; ctx.strokeStyle=COL.surface; ctx.globalAlpha=0.7; ctx.beginPath(); ctx.arc(p.x,p.y,n.r-5,0,7); ctx.stroke(); ctx.globalAlpha=1; }
+      if(n.private){ ctx.beginPath(); ctx.arc(p.x,p.y,n.r+4,0,7); ctx.lineWidth=1.6; ctx.setLineDash([3,3]); ctx.strokeStyle=COL.ink; ctx.globalAlpha=0.7; ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha=1; }
       if(isSel){ ctx.beginPath(); ctx.arc(p.x,p.y,n.r,0,7); ctx.lineWidth=3; ctx.strokeStyle=COL.ink; ctx.stroke(); } }
     ctx.textAlign="center"; ctx.textBaseline="middle"; ctx.fillStyle=ink;
     const maxW = 2*n.r-8;
     if(n.type==="pending"){ fitFont(swText(n.name),maxW,"600",11,"'Libre Franklin',sans-serif"); ctx.globalAlpha=0.9; ctx.fillText(swText(n.name),p.x,p.y); ctx.globalAlpha=1; return; }
     const top = n.type==="cross" ? n.id : swText(n.name);
-    const bottom = n.type==="cross" ? "↗ "+swText("AI 图") : (n.type==="hub" ? swText(n.sub) : n.id);
+    const bottom = n.type==="cross" ? "↗ "+swText("AI 图") : (n.type==="hub" ? swText(n.sub) : (n.private ? swText("未上市") : n.id));
     fitFont(top,maxW,"700", n.type==="cross"?12:13, n.type==="cross"?"'JetBrains Mono',monospace":"'Libre Franklin',sans-serif");
     ctx.fillText(top,p.x,p.y-6);
     fitFont(bottom,maxW, n.type==="stock"?"700":"600", n.type==="stock"?9.5:10, n.type==="stock"?"'JetBrains Mono',monospace":"'Libre Franklin',sans-serif");

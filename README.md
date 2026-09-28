@@ -48,7 +48,7 @@ _每张图各管一个行业世界；中国图通过“跨图节点”（NVDA、
 发电(GEV) → 供电散热(VRT) → 服务器(SMCI/DELL) → 芯片(NVDA/AMD/CBRS) ← HBM 内存(MU/SKHY/SSNLF) ← 代工(TSM) ← 光刻设备(ASML)，外加板块 ETF(SMH)。
 另有一颗生物医药的种子：Moderna(MRNA)。
 
-**中国 AI 全栈**（第一批，2026-09-28）：寒武纪、中芯国际、北方华创、腾讯、阿里。先按三类驱动（国产替代 / 本土 AI 需求 / 全球 AI capex）区分，再按产业链分层，见 [china-overview.md](china-overview.md)。
+**中国 AI 全栈**（第一、二批，2026-09-28）：寒武纪、中芯国际、北方华创、中微公司、海光信息、中际旭创、腾讯、阿里、百度，外加关联实体华为昇腾。先按三类驱动（国产替代 / 本土 AI 需求 / 全球 AI capex）区分，再按产业链分层，见 [china-overview.md](china-overview.md)。
 
 ## 它是怎么长大的
 
