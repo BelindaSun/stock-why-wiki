@@ -87,6 +87,15 @@ _Asset type: <stock / ETF / crypto / commodity>_ · _Last updated: <YYYY-MM-DD>_
 
 Keep the header maps (Upstream/Downstream/Industries) current: when a new event reveals a new dependency, update those lists too — that is how the map sharpens over time.
 
+## China A-share / Hong Kong listings
+
+Full rules (with tables and examples) are in `handbooks/HANDOFF-1-wiki维护.md` §4.1. Essentials:
+- **Ticker = Yahoo symbol**, used for the file name, `[[links]]` and the Investment Book's `quoteSymbol`: Shanghai `688256.SS`, Shenzhen `002371.SZ`, Hong Kong `0700.HK` (4 digits, keep the leading zero). Names with a US primary listing or ADR keep the US ticker (`BABA`, `BIDU`). A+H dual listings: file under the A-share code and note the H-share code in the header.
+- **Driver tag** on every China tech entry, directly under the one-line positioning: `国产替代` (import substitution under export controls), `本土 AI 需求` (China's own model/cloud/app spend), `全球 AI capex` (selling into global AI build-out, e.g. optical modules). Mark primary vs secondary. The first link of every causal chain says which driver moved the stock.
+- **Primary sources first:** cninfo / SSE / SZSE / HKEXnews filings, prospectuses, periodic reports, company IR, investor-relations activity records, and the original policy documents (State Council, MIIT, NDRC, CAC; BIS / Federal Register for US controls). Then quality media (财联社, 证券时报, 第一财经, 财新, Reuters, Bloomberg). Xueqiu, stock forums and self-media are sentiment, never FACT. "Policy tailwind" is not a catalyst until it is pinned to a named document, meeting or date.
+- **Price anchor:** name the market and currency (¥ / HK$ / $). Date by the Beijing-time trading day. Around Lunar New Year and National Day, the reaction day is the first trading day after the holiday.
+- **Daily price limits are part of the mechanism:** ±10% main board, ±20% STAR (688) and ChiNext (300/301), ±30% Beijing exchange; no limit in Hong Kong. A limit-locked close is truncated, so the next day's move can still be the same event. Northbound flows, margin data and 龙虎榜 are flows/sentiment: tag them `likely`, never the fundamental catalyst.
+
 ## Style rules
 - Explain the WHY, not the WHAT. No hedging filler.
 - Never fabricate a catalyst or a source. Unknown is a valid, useful answer.
