@@ -1,5 +1,5 @@
 # industry: macro-rates — 宏观利率 / 无风险利率
-_Last updated: 2026-09-23_ · _趋势："加息周期中段"成基准预期,但油价五连跌对冲,分母与分子拔河_
+_Last updated: 2026-10-01_ · _趋势:8 月 PCE 低于预期(核心环比 +0.2%,同比 3.0%,大半来自 BEA 口径修订)把 10 月加息定价分两步砍到 ~35%(9/29 Williams 先砍到 44-50%,9/30 PCE 再砍);"跳过一次,12 月再议"成基准;但 10Y 盘中越过 2007 峰值(5.304%,按 Dow Jones 口径),30Y 盘中 5.651% 刷新 2002 年 6 月以来高点,ADP/PMI/GDP/消费全线火热,2Y 收盘回吐;分母"降温但不松绑",盯周五非农_
 
 一句话：美债收益率 + Fed 政策预期,是所有资产的"**分母**"。它不是某个行业,而是贯穿整张图的**宏观驱动因子**——尤其决定高估值成长股(AI 板块)的估值水位。这是本 wiki 里之前反复被引用、但一直缺一个专门节点的"隐形变量"。
 
@@ -27,6 +27,109 @@ _Last updated: 2026-09-23_ · _趋势："加息周期中段"成基准预期,但�
 
 ---
 ## Timeline (newest first)
+
+## 2026-10-01 — PCE 低于预期(大半是 BEA 口径修订的功劳),10Y 盘中越过 2007 峰值 5.304%:加息定价两步砍到 ~35%,分母降温但不松绑
+**Move:** 8 月核心 PCE 环比 +0.2%(预期 +0.3%),同比 3.0%(预期 3.3%,7 月被下修 3.3%→3.0%);整体 PCE 环比 +0.3%(大致符合预期),同比 3.4%(预期 3.7%,7 月被下修 3.7%→3.4%).低于预期的部分大半来自 BEA 年度口径修订(组合管理费,软件,法律服务三项子指数核算方法变更,回溯至 2021 年).10 月加息定价分两步走:9/29 Williams"不必急"之后从 ~70% 降到 44-50%(不到抛硬币的概率),9/30 PCE 公布后再降到 ~35%(FedWatch 34.87%)."跳过一次,12 月再议"成新基准.但长端不理:10Y 周三(美东 9/30)盘中 5.304%,越过 2007 年峰值 5.303%(按 Dow Jones Market Data 口径,下同),只超了 0.1bp,为 2002 年 5 月以来最高盘中水平;收 5.292%,仍在峰值下方.30Y 盘中 5.651%(Dow Jones),收 5.638%,均为 2002 年 6 月以来最高水平.2Y 盘中一度回落到 4.84%,收盘回吐到 4.90%,反而高于 9/29 的 4.88%.Dow -0.86% 收 50,906.05,S&P -0.25% 收 7,651.54,Nasdaq +0.24% 收 26,861.06  ·  **Catalyst confidence:** confirmed(BEA 官方发布 via Reuters/CNBC;收益率 Dow Jones 市场数据 via Morningstar;ADP 官方报告 via CNBC;Chicago PMI 58.8 vs 预期 51.2 via Newsquawk;Q2 GDP 三读 2.2% BEA via Dow Jones;Williams 发言 via WSJ;Barr 发言 via Fed 官网;10 月加息定价 FedWatch via Phemex/24/7 Wall St) + 据报道(德银 5Y 拆解 72/66/6bp,据 KuCoin 转述德银分析)
+
+**What happened:**
+9/30 条盯的"周三 8 月 PCE"给了低于预期的答案——但先说清楚,这个"低于预期"大半是口径红利:BEA 这次年度修订改了三个子指数的核算方法(组合管理费改按工时和时薪而非资产价格,软件补了游戏软件和服务器租赁价格,法律服务改用 PPI),回溯到 2021 年.Pantheon 的 Samuel Tombs 测算,仅组合管理费一项,新口径就把该分项同比从约 21% 砍到约 16%.7 月核心同比也被下修 3.3%→3.0%,等于说"3.3% 的预期"锚的是旧口径.真降温也有:核心环比 0.2% 确实低于 0.3% 的预期.
+数据一出来,短端先反应:2Y 盘中跌到 4.84%,10 月加息定价从 44-50% 再砍到 ~35%,NY Post 写"再加息可能推迟到 12 月".但好景不长,同一天的实体数据全线火热:ADP 9 月 +9 万(预期 6.8-7 万,8 月下修到 3.6 万),结束三个月招聘低迷;芝加哥 PMI 58.8(预期 51.2,上月 47.1),5 月以来最高;Q2 GDP 三读 2.2%,较二读 1.5% 上修 0.7pp;个人消费名义 +0.9%,实际 +0.6%(BEA 已核实),家庭还在花钱.午盘后抛售卷土重来:10Y 反手越过 2007 峰值(盘中 5.304%),30Y 盘中 5.651% 刷新 2002 年 6 月以来高点.2Y 收盘回吐到 4.90%,连"短端松"都没保住.
+最值得记的一句是德银的拆解(据 KuCoin 转述德银分析):9 月以来 5Y 名义收益率涨约 72bp,其中实际利率贡献约 66bp,通胀预期只贡献约 6bp——这一轮逼空的主要矛盾不是"通胀恐慌",是"名义增长太强,资本实际回报被重定价".PCE 的口径红利只能压短端,长端卖的是增长.
+还要补一笔 9/29 的拼图:Barr 当天在底特律经济俱乐部放鹰,"further policy adjustments are likely to be needed"(详见 9/30 条)——同一天 Williams 偏鸽,Barr 偏鹰,正好解释"短端松,长端紧"的撕裂.
+
+**Causal chain:**
+1. BEA 口径修订 + 真实降温 → 8 月核心 PCE 同环比低于预期,7 月还被下修 → 但"预期 3.3%"锚的是旧口径,降温含金量打折 → 市场仍把 10 月加息从 44-50% 砍到 ~35%,"跳过一次,12 月再议"成新基准
+2. 注意这个 70→35 是两步:9/29 Williams"不必急"先砍到 44-50%,9/30 PCE 再砍到 ~35%——不能把功劳全记在 PCE 头上
+3. ADP 反弹(+9 万)+芝加哥 PMI 58.8+Q2 GDP 上修到 2.2%+消费实际 +0.6% → "可以不加"没有滑向"加息结束",只是把加息从 10 月往后挪;Barr 9/29 放鹰佐证
+4. 德银拆解(据报道:实际利率贡献 66/72bp) → 长端卖的是"增长太好,实际回报重定价",不是通胀恐慌 → PCE 的口径红利压不住长端,10Y 盘中越过 2007 峰值,30Y 刷新 2002 年 6 月以来高点;2Y 收盘回吐,当天连短端都没守住
+
+**双向看(本节点惯例):** 9/30 那条写的两个方向里,市场选了"降温但不松绑".盯周五 10/2 非农(预期 8.4-9 万,失业率 4.1%)和周四初请(预期 20 万):若非农也转弱,失业率跳升,10 月跳过就坐实,长端逼空可能降温;若非农强(ADP 已给 9 万垫底),且 9 月 CPI/PPI(10 月中旬发布)火热,5.3% 的 10Y 只是中场,10 月加息定价会从 35% 弹回去.地缘尾部:霍尔木兹仍封,油价 $100+,欧洲通胀创多年新高——Fed 不敢松口的心病一个没少.
+
+**日期说明:** 市场反应发生在美东 9/30 交易时段(北京 10/1 凌晨收盘);本条沿用本档北京日历口径记 2026-10-01(同 9/17,9/29,9/30 条先例).
+
+**盯的变量:** 周五 10/2 非农(预期 8.4-9 万,失业率 4.1%),周四初请(预期 20 万),9 月 CPI/PPI(10 月中旬发布,10/28 FOMC 前最后两份通胀报告),10Y 能否站稳 5.3% 上方,30Y 5.65% 一线,10 月加息定价(现 ~35%),Brent $100-$110 区间,霍尔木兹/伊朗动向.
+
+**Sources:**
+- [BEA: Personal Income and Outlays, August 2026](https://www.bea.gov/news/2026/personal-income-and-outlays-august-2026)
+- [BEA: GDP third estimate Q2 2026](https://www.bea.gov/news/2026/gdp-third-estimate-industries-corporate-profits-state-gdp-and-state-personal-income-2nd)
+- [Reuters: US inflation rises less than expected in August](https://www.tbsnews.net/world/global-economy/us-inflation-rises-less-expected-august-consumer-spending-surges-1558886)
+- [CNBC: Core PCE 3.0% in August](https://www.cnbc.com/2026/09/30/feds-preferred-gauge-showed-core-inflation-at-3point0percent-in-august-much-lighter-than-expected.html)
+- [Investors.com: Key Fed Inflation Rate Slides, But Was It A Mirage?](https://www.investors.com/news/federal-reserve-core-pce-inflation-rate-adp-jobs-report-sp-500/)
+- [Dow Jones/Morningstar: Ten-Year Treasury Yield Hits Fresh 24-Year High](https://www.morningstar.com/news/dow-jones/202609306772/ten-year-treasury-yield-hits-fresh-24-year-high)
+- [MarketWatch/Morningstar: U.S. bond yields head for biggest jump in a generation](https://www.morningstar.com/news/marketwatch/20260930163/us-bond-yields-head-for-biggest-jump-in-a-generation-as-global-rout-rattles-investors)
+- [Seeking Alpha: 30-Year Goes For Six](https://seekingalpha.com/article/4950873-30-year-goes-for-six)
+- [CNBC: ADP +90k](https://www.cnbc.com/2026/09/30/private-sector-jobs-rose-by-90000-in-september-better-than-expected-adp-reports.html)
+- [Newsquawk: Chicago PMI 58.8 vs exp 51.2](https://www.newsquawk.com/headlines/us-chicago-pmi-sep-588-vs-exp-512-prev-471)
+- [Newsquawk: US Market Wrap - Stocks mixed and yields rise despite soft PCE](https://www.newsquawk.com/headlines/newsquawk-us-market-wrap---stocks-mixed-and-yields-rise-despite-soft-pce)
+- [Federal Reserve: Barr speech 2026-09-29](https://www.federalreserve.gov/newsevents/speech/barr20260929a.htm)
+- [24/7 Wall St: Williams says the Fed has time, October odds below a coin flip](https://247wallst.com/investing/2026/09/30/williams-says-the-fed-has-time-october-rate-hike-odds-fell-below-a-coin-flip/)
+- [Phemex: October hike odds drop to 33% after core PCE](https://phemex.com/news/article/october-fed-hike-odds-plunge-to-33-following-weaker-core-pce-data-98367)
+- [KuCoin: U.S. 10-Year Treasury Yield Reaches 20-Year High](https://www.kucoin.com/news/flash/u-s-10-year-treasury-yield-hits-20-year-high-s-p-500-maintains-gains)
+- [en.sedaily: Treasury Yields Hit 21st-Century Highs](https://en.sedaily.com/international/2026/10/01/treasury-yields-hit-21st-century-highs-as-us-economy-holds)
+- [AP: How major US stock indexes fared 9/30/2026](https://abcnews.com/Business/wireStory/major-us-stock-indexes-fared-wednesday-9302026-136901112)
+
+## 2026-09-30 — 30Y 收创 24 年新高 5.594%,油价回落至 $103:Williams"不必急"把 10 月加息定价砍到五成以下,Barr 同日放鹰,分母短松长紧
+**Move:** 30Y 美债周二(美东 9/29)收 5.594%,2002 年 6 月以来最高收盘;盘中最高约 5.621%.10Y 盘中再破 5.29%(本月第 7 次刷新 19 年高点),收 5.256%,仍未越过 2007 年峰值 5.303%(按 Dow Jones Market Data 口径).2Y 回落 5bp 至 4.88%.Brent -2.6% 收 ~$102.6,WTI -3.5% 收 ~$89.4.纽联储主席 Williams 当天放话联储"不必急于继续加息"("there is no need for urgency"),市场计价 10/27-28 再加息的概率从 ~70% 跌到 44-50%(不到抛硬币的概率)——这是当天短端行情的主线.但理事 Barr 同日在底特律经济俱乐部放鹰:"further policy adjustments are likely to be needed"  ·  **Catalyst confidence:** confirmed(Tradeweb/道琼斯市场数据 via WSJ 与 Morningstar;Williams 发言 via WSJ;Barr 发言 via Fed 官网;消费者信心 Conference Board 官方数据 via Reuters/Bloomberg;RBA 加息 via ABC AU) + 据报道(沙特管道恢复细节 via WSJ 引 BOK Financial 笔记)
+
+**What happened:**
+长端抛售继续,把 30Y 推到 24 年来最高收盘.新增卖压之一:Paramount Skydance 为收购 Warner Bros. Discovery 的发债,投资级部分最终定价约 $300 亿(订单超 $1,090 亿),整套融资约 $440 亿以上(另有约 $124 亿高收益债和 $75 亿定期贷款)——长端供给再压价格;油价虽回落但绝对值仍在 $100 上方,通胀粘性叙事不散,债市不为所动.油价则是真逆转:Brent 从周一约 $107 回落至 ~$102.6,导火索是沙特 East-West 管道恢复超预期——已回到常态流量的约 50%(约 350 万桶/日;满负荷约 700 万桶/日),这条绕过霍尔木兹的出口线重新分流红海方向原油;11 月 Brent 合约周二到期,换仓也放大了波动.Williams 放出缓和信号:联储"不必急于继续加息",但"今年晚些时候"再加一次可能是合适的——2Y 应声回落 5bp 到 4.88%,股市跌幅收窄(Dow -0.3%),出现"短端松,长端紧"的撕裂.但同一天 Barr 在底特律放鹰,称可能需要进一步的政策调整——鸽鹰同日,正好解释了为什么短端松了,长端照抛不误.同一天,Conference Board 9 月消费者信心暴跌 6.7 点至 81.9(路透调查预期 89.2),为 2014 年以来最低;现状指数 -7.9 至 109.3,预期指数 -5.9 至 63.6.受访者自由填写的回答里"物价贵/油价贵"提到历史新高——高油价正在从通胀端和情绪端双杀家庭.RBA 9/29(北京时间下午)已加息至 4.60%,2011 年 11 月以来最高,兑现 9/29 条的预期.
+
+**Causal chain:**
+1. 沙特管道恢复超预期 → 霍尔木兹封锁筹码贬值 → 地缘溢价退潮,油价从 $107 回落 $102.6
+2. 但供给只是"局部缓解":霍尔木兹仍封着,伊朗的筹码消失后,WSJ 警告德黑兰可能军事升级对冲 → 油价反弹风险变成随时回摆的尾部事件
+3. Williams"不必急" → 10 月加息定价从 ~70% 跌到 44-50%,2Y 回落,股市跌幅收窄;但 Barr 同日放鹰 + 长端继续抛售(30Y 24 年来最高收盘) → 市场在同时定价"加息节奏慢一点"和"高利率持续更久"两件事
+4. 消费者信心崩到 2014 年以来最低 → 家庭部门先认怂;若周五非农也转弱,10 月加息定价可能继续回摆——反之若周三 PCE 火热,短端刚松的那点空间会被收回
+
+**双向看(本节点惯例):** 盯周三 8 月 PCE(核心环比预期 +0.3%,JPMorgan 看 +0.2%):若降温且油价守住 $105 下方,分母端能喘口气,"10 月加息一次就收"的悬念回来;若 PCE 火热,非农(周五)也强,"加息周期中段"坐实成"被迫加速",10Y 摸 5.303% 的 2007 峰值就只是时间问题.地缘尾部:伊朗若军事升级对冲管道复苏,油价一日回 $110 不是梦.
+
+**日期说明:** 市场反应发生在美东 9/29 交易时段(北京 9/30 凌晨收盘);本条沿用本档北京日历口径记 2026-09-30(同 9/29,9/17 条先例).
+
+**盯的变量:** 周三 8 月 PCE(核心环比预期 +0.3%),周五 10/2 非农(预期 9-10 万),10Y 能否站上 5.303%(2007 峰值,按 Dow Jones Market Data 口径),Brent $105-$110 区间,10/27-28 FOMC 前 10 月加息定价(现 44-50%),RBA 9/29 已加息至 4.60%(兑现 9/29 条预期).
+
+**Sources:**
+- [WSJ: Stock Market Today 09-29-2026](https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-29-2026)
+- [WSJ: Bond Yields Keep Rising Despite Drop in Oil Price, Dovish Fed Speech](https://www.wsj.com/finance/investing/bond-yields-keep-rising-despite-drop-in-oil-price-dovish-fed-speech-49aeab91)
+- [Morningstar/Dow Jones: U.S. 30-Year Treasury Yield Sets New 24-Year High](https://www.morningstar.com/news/dow-jones/202609295962/us-30-year-treasury-yield-sets-new-24-year-high)
+- [Federal Reserve: Barr speech 2026-09-29](https://www.federalreserve.gov/newsevents/speech/barr20260929a.htm)
+- [24/7 Wall St: Williams says the Fed has time, October odds below a coin flip](https://247wallst.com/investing/2026/09/30/williams-says-the-fed-has-time-october-rate-hike-odds-fell-below-a-coin-flip/)
+- [Investopedia: Stock Market Today 09-29-2026](https://www.investopedia.com/stock-market-today-dow-jones-s-and-p-500-09292026-12146739)
+- [Reuters: US consumer confidence dives to more than 12-year low](https://www.reuters.com/business/us-consumer-confidence-dives-more-than-12-year-low-september-2026-09-29/)
+- [Bloomberg: Consumer confidence lowest since 2014](https://www.bloomberg.com/news/articles/2026-09-29/us-consumer-confidence-plunges-to-lowest-level-since-2014)
+- [ABC AU: RBA lifts rates to 15-year high](https://www.abc.net.au/news/2026-09-29/rba-lifts-rates-highest-level-in-15-years-september-2026/107206640)
+- [Bloomberg: Paramount cuts pricing on $30B bond sale](https://www.bloomberg.com/news/articles/2026-09-30/paramount-cuts-pricing-on-30-billion-high-grade-bond-sale)
+- [Nation Thailand: Brent -2.6% to $102.59](https://www.nationthailand.com/news/world/40071680)
+- [WSJ: Oil Prices Fall as Gulf Crude Exports Recover](https://www.wsj.com/business/energy-oil/oil-prices-rise-as-u-s-iran-talks-remain-uncertain-1a33ff00)
+
+## 2026-09-29 — 10Y 盘中刷新 19 年高点 5.28%,油价重返 $107:分母与分子的拔河向分母倾斜
+**Move:** 10Y 美债周一(美东 9/28)+6.9bp 收 5.230%,盘中一度冲高 5.28%(XTB 引)/5.272%(Barchart),均为 2007 年来最高(按 Dow Jones Market Data 口径,2007 峰值 5.303%);30Y 收 5.58%,逼近 2002 年来高位;3Y 及以上期限站上 5%.市场计价 10/27-28 再加息 25bp 的概率升至约 70-75%(上周五仅 ~52%);12 月第三次加息也被计入大概率  ·  **Catalyst confidence:** confirmed(收益率市场数据 XTB/Barchart;Cook 发言 Reuters 原文/Fed 官网;WSJ:特朗普拒绝伊朗七天停火方案,私下告诉幕僚选举后恢复轰炸) + 据报道(Brent ~$107,胡塞袭沙特)
+
+**What happened:**
+特朗普 9/26 公开拒绝了伊朗"7 天停火+重开霍尔木兹"的方案——正是 9/23 条里记成"真假未定"的那个提议(共同社爆料,德黑兰当时否认谈判).据 WSJ 报道,特朗普私下告诉幕僚,预计中期选举(11/3)后恢复对伊轰炸.霍尔木兹海峡重开无望;胡塞武装在周末对沙特发动无人机/导弹袭击——地缘溢价重新灌回油价,Brent 周一回冲至约 $107,周线连续第三周收在 $100 上方,9 月累计涨约 17%.同一天,Fed 理事 Cook 在奥克兰 AI 会议上明确放鹰:她说美国劳动力市场 "well positioned to handle an increase in rates",预期 AI 需求 + 高油价会带来持续通胀压力(她引用的是 9/28 口径;9/30 BEA 修订后 8 月整体 PCE 为 3.4%);她没明说还要加几次,但市场把"可能还加"的门开大了.债市周一全线抛售,股市,黄金跟着走低.同时 S&P 9 月 PMI 初值 58.4(2021 年 7 月以来最快扩张),亚特兰大联储 GDPNow 预测 Q3 年化 5.0%——强经济进一步压缩了"不加息"的理由.
+
+**Causal chain:**
+1. 伊朗"7 天重开霍尔木兹"方案被拒(9/26,给 9/23 条的悬念收尾)+ 胡塞袭沙特 + 特朗普告诉幕僚选举后恢复轰炸(WSJ) → 霍尔木兹短期无望重开 → 地缘溢价回流,油价重返 $107
+2. 油价↑(通胀预期↑) + Cook 鹰派发言("劳动力市场撑得住加息")→ 10 月加息概率从上周的 ~52% 跳到 ~70-75%,分母压力不减反增
+3. 10Y 盘中刷新 19 年高点,30Y 逼近 2002 年来高位 → 无风险利率越贵,高估值/长久期 AI 资产的估值逆风越重
+4. 强经济(PMI/GDPNow 5.0%)与紧通胀同时成立 → Fed 进入"不能停"的处境;"加息周期中段"正滑向 9/23 那条警示的"被迫加速"方向
+
+**双向看(本节点惯例):** 9/23 那条写了两个触发条件——油价一周内重返 $110,或 9/30 的 8 月 PCE 大超预期.现在油价 $107(距 $110 一步之遥),10 月加息概率已到七成以上.如果周三 PCE 降温(市场预期核心环比 +0.3%,JPMorgan 看 +0.2%),或伊朗地缘降温,分母还能喘口气.反之,PCE 若确认通胀重新加速,10 月 FOMC 的加息将从"概率"变成"几乎确定",12 月第三次加息也会上桌.
+
+**日期说明:** 市场反应发生在美东 9/28 交易时段(北京 9/29 凌晨收盘);本条沿用本档北京日历口径记 2026-09-29(同 9/16,9/17 条先例).
+
+**盯的变量:** 9/30(周三) 8 月 PCE(核心环比预期 +0.3%),10/2 非农(预期 9-10 万),RBA 9/29 议息(已加息至 4.60%,2011 年 11 月以来最高),10/27-28 FOMC 前 10 月加息定价,10Y 能否守住 5.2% 上方.
+
+**Sources:**
+- [XTB: Daily Summary 28.09.2026](https://www.xtb.com/int/market-analysis/news-and-research/daily-summary-lack-of-progress-in-negotiations-weighs-on-wall-street-and-precious-metals-28-09-2026)
+- [Barchart: Stocks Settle Lower on Rising Bond Yields](https://www.barchart.com/story/news/4840558/stocks-settle-lower-on-rising-bond-yields)
+- [WSJ: Trump Rejects Iran Ceasefire, Expects Renewed Bombing After Midterms](https://www.wsj.com/world/middle-east/trump-rejects-iran-ceasefire-expects-renewed-bombing-after-midterms-5982ee50)
+- [CNN: Trump rejects Iran proposal (9/26)](https://www.cnn.com/2026/09/26/middleeast/trump-rejects-iran-proposal-hormuz-intl)
+- [Reuters: Fed's Cook sees further inflationary pressures ahead](https://www.reuters.com/business/feds-cook-sees-further-inflationary-pressures-ahead-2026-09-28/)
+- [Federal Reserve: Cook speech 2026-09-28](https://www.federalreserve.gov/newsevents/speech/cook20260928a.htm)
+- [Reuters: Global markets view — Europe](https://www.reuters.com/markets/europe/global-markets-view-europe-2026-09-28/)
+- [Babypips: US Treasury Yields Hit Near 20-Year High](https://www.babypips.com/news/headline-us-treasury-yields-september-28-2026-selloff-iran-fed-hike)
+- [S&P Global: US flash PMI September](https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/09/us-flash-pmi-signals-fastest-growth-for-over-five-years-in-september)
+- [Morningstar/Dow Jones: Week Ahead — U.S. Jobs Data](https://www.morningstar.com/news/dow-jones/20260927556/week-ahead-for-fx-bonds-us-jobs-data-in-focus-as-another-fed-rate-hike-looks-possible)
+- [Seeking Alpha: Key economic data this week](http://seekingalpha.com/article/4950112-key-economic-data-treasury-10-year-yield-bias-still-higher)
 
 ## 2026-09-23 — 加息预期走强,但油价五连跌对冲:分母与分子的拔河
 **Move:** CME 计价 10/27-28 再加息约 52-53%,12 月累计约 81%;"加息周期中段"取代"一次性加息"成基准预期。10Y 摸 5.04% 后回落至 5% 下方;2Y 约 4.76%(两年高点)。Brent $99.25(-1.1%,五连跌,9/8 以来首次收 $100 下方),WTI $94.59

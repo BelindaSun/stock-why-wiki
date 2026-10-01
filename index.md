@@ -16,12 +16,12 @@
 
 ## 条目（最新在上）
 
+- **2026-10-01** · [[industry:macro-rates]] 宏观利率 — 8月核心PCE环比+0.2%/同比3.0%低于预期(大半来自BEA口径修订),10月加息定价分两步砍到~35%(9/29 Williams先到44-50%,9/30 PCE再到~35%);但10Y盘中越过2007峰值5.304%,30Y盘中5.651%刷新2002年6月以来高点,ADP+9万/芝加哥PMI 58.8/Q2 GDP上修到2.2%全线火热,2Y收盘回吐;分母"降温但不松绑",盯周五非农 → [industries/macro-rates.md](industries/macro-rates.md)
 - **2026-09-28** · [[industry:china-tech]] 中国科技 — 新导览《中国 AI 全栈谱系》:先分国产替代/本土 AI 需求/全球 AI capex 三类驱动再分层;第一批建档寒武纪、中芯国际、北方华创、腾讯 → [industries/china-tech.md](industries/china-tech.md)
 - **2026-09-28** · [[0700.HK]] 腾讯控股 — 新建档:9/22 Meta Muse 登顶后微信智能体"小微"被对标重估,收涨5.02%报HK$451.6;Q2资本开支同比+176% → [stocks/0700.HK.md](stocks/0700.HK.md)
 - **2026-09-28** · [[002371.SZ]] 北方华创 — 新建档:9/7 IEEE论文披露3D DRAM两步循环刻蚀,设备板块拉升;上半年营收+25%但净利仅+5% → [stocks/002371.SZ.md](stocks/002371.SZ.md)
 - **2026-09-28** · [[688981.SS]] 中芯国际 — 新建档:Q2营收首破30亿美元、毛利率25.3%双超指引,AI需求外溢到成熟制程;8/14 H股+4.81% → [stocks/688981.SS.md](stocks/688981.SS.md)
 - **2026-09-28** · [[688256.SS]] 寒武纪 — 新建档:上半年营收翻倍、净利+123%,8/10却反跌6.33%;高增长已price in,存货预付激增引发分歧 → [stocks/688256.SS.md](stocks/688256.SS.md)
-- **2026-09-23** · [[industry:macro-rates]] 宏观利率 — 加息预期走强(10月~52%、12月累计~81%)但油价五连跌破$100对冲,10Y回落5%下方;分母分子拔河,科技新高金融被修理 → [industries/macro-rates.md](industries/macro-rates.md)
 - **2026-09-22** · [[AMD]] 超微 — 首破万亿:+10%收$615.52,第四家美国万亿芯片公司;Muse引爆的agent算力叙事→AI硬件全线重估 → [stocks/AMD.md](stocks/AMD.md)
 - **2026-09-23** · [[industry:semiconductors]] 半导体 — 阿里真武V900(国产最强AI芯片)+新行业档 [[industry:china-tech]] 中国科技:国产替代与美国链分叉 → [industries/semiconductors.md](industries/semiconductors.md)
 - **2026-09-22** · [[BABA]] 阿里巴巴 — 云栖大会发布真武V900(2027年Q1量产)+20GW数据中心目标;港股收涨近2%创一月新高 → [stocks/BABA.md](stocks/BABA.md)
