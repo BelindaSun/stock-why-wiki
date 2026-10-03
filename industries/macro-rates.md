@@ -1,5 +1,5 @@
 # industry: macro-rates — 宏观利率 / 无风险利率
-_Last updated: 2026-10-01_ · _趋势:8 月 PCE 低于预期(核心环比 +0.2%,同比 3.0%,大半来自 BEA 口径修订)把 10 月加息定价分两步砍到 ~35%(9/29 Williams 先砍到 44-50%,9/30 PCE 再砍);"跳过一次,12 月再议"成基准;但 10Y 盘中越过 2007 峰值(5.304%,按 Dow Jones 口径),30Y 盘中 5.651% 刷新 2002 年 6 月以来高点,ADP/PMI/GDP/消费全线火热,2Y 收盘回吐;分母"降温但不松绑",盯周五非农_
+_Last updated: 2026-10-03_ · _趋势:9 月非农大爆冷(+2.9 万 vs 预期 9 万,7-8 月合计下修 6 万,失业率 4.2% 主因劳动力流入),10 月加息定价五步走约 70%→17% 基本出局,Jefferson/Williams/Bowman 联手"没必要急",高盛基准情形 12 月再加一次;10Y 非农后一度 -6bp 尾盘反转收 5.276%(+4.3bp),长端未反转.周四 Brent +4.4% 收 $102.31(中国暂停成品油出口,据报道),周五回吐逾 3%.盯 10/28 FOMC 前的 9 月 CPI/PPI_
 
 一句话：美债收益率 + Fed 政策预期,是所有资产的"**分母**"。它不是某个行业,而是贯穿整张图的**宏观驱动因子**——尤其决定高估值成长股(AI 板块)的估值水位。这是本 wiki 里之前反复被引用、但一直缺一个专门节点的"隐形变量"。
 
@@ -27,6 +27,43 @@ _Last updated: 2026-10-01_ · _趋势:8 月 PCE 低于预期(核心环比 +0.2%,
 
 ---
 ## Timeline (newest first)
+
+## 2026-10-03 — 9 月非农大爆冷(+2.9 万 vs 预期 9 万,7-8 月合计下修 6 万,失业率 4.2%):10 月加息基本出局,分母喘口气,长端未反转
+**Move:** 9 月非农 +2.9 万(预期约 9 万,路透/Bloomberg;道琼斯调查 8.4 万),7 月从 +2.1 万下修到 **-1 万**,8 月从 16.2 万下修到 13.3 万——两月合计少 6 万.过去 12 个月月均 +4.5 万(BLS 9 月就业报告摘要 via PYMNTS).失业率 4.2%(预期 4.1%),仍在 3 月以来 4.1-4.3% 窄区间(BLS 摘要 via PYMNTS).平均时薪环比 +0.1%(预期 +0.3%),同比 +3.0%,为 2021 年 5 月以来最低(WSJ).初请 19.7 万(9/26 当周,预期 20 万),接近 57 年低位——7 月 18.9 万为 1969 年来最低(Bloomberg).10 月加息定价走出五步(FedWatch 主口径,快照时点有差异):约 70% → 44-50%(9/29 Williams) → 约 35%(9/30 PCE) → 约 25%(10/1 Jefferson/Bowman,非农前) → 约 17%(10/2 非农后,CNBC;Reuters 口径约 23.8%).12 月加息基本被完全计入:高盛"把第二次加息预测推到 12 月"(Reuters 引高盛报告原文),高盛资管 Lindsay Rosner 称"12 月再加一次仍是基准情形"(CNBC).收益率:非农后 10Y 一度跌约 6bp 至 ~5.18%(CNBC 盘中口径),尾盘在伊朗局势下反转,收 5.276%(+4.3bp,Dow Jones);2Y 收 4.823%(+3.7bp,Dow Jones).周四(美东 10/1)盘中高点 5.342% 为 2002 年以来最高(CNBC).股指(AP 收盘):S&P +0.7% 收 7,722.72,Dow +0.5% 收 51,176.96,Nasdaq +1.2% 收 27,190.86(盘中创纪录).对冲面(均为周四,美东 10/1):中国通知炼厂暂停成品油出口(港澳除外,10 月配额取消,路透引 4 名知情人,据报道),Brent +4.4% 收 $102.31,WTI +2.7% 收 $92.87;第三艘美航母携至多 1 万增援开往中东(WSJ).周五油价回吐逾 3% 跌回 $100 下方(欧洲拟释放柴油库存消息,Kalkine).  ·  **Catalyst confidence:** confirmed(BLS 9 月就业报告;Fed 官网 Jefferson 演讲全文;10Y/2Y 收盘 Dow Jones Newswires;股指 AP 收盘;初请 Bloomberg;时薪 WSJ;油价周四收盘 FinanceFeeds/Kalkine) + 据报道(中国暂停成品油出口 via Reuters 引 4 名匿名知情人;加息定价各家快照 16-24% 口径时点差异)
+
+**What happened:**
+这就是 9/30 和 10/1 两条结尾反复盯的"周五非农"——而且是往弱的方向爆的.非农只加了 2.9 万,不到预期 9 万的三分之一,更扎眼的是下修:7 月从 +2.1 万变成 **-1 万**(直接转负),8 月从 16.2 万砍到 13.3 万,两个月合计比之前说的少了 6 万.过去 12 个月月均 +4.5 万(BLS 摘要),招聘引擎基本熄火.但要诚实地说,这不是"衰退式失业":失业率只从 4.1% 挪到 4.2%,仍在 3 月以来 4.1-4.3% 的窄区间里(BLS 摘要);初请 19.7 万(9/26 当周,预期 20 万),接近 57 年低位(7 月 18.9 万是 1969 年来最低,Bloomberg)——这正好回答了 10/01 条"盯的变量"里的周四初请:裁员并没有起来.WSJ/Reuters/Bloomberg 三家用的同一个词:"low hire, low fire"(不招也不裁).另外一个技术细节:路透引经济学家说,劳工节假期落在 9 月偏晚,季节性调整模型容易把 9 月非农系统性压低——所以这 2.9 万可能被季节因素夸大了"弱".
+Fed 领导层这周是"组合拳式"放鸽,时间线要理清楚:9/29 周二 Williams 先说"不必急"(10/1 条里已经记了);10/1 周四副主席 Jefferson 在弗吉尼亚大学 Darden 商学院发表演讲(全文经 Fed 官网发布):"未来的政策调整需要看数据趋势、前景演变和风险平衡,我的同事们需要形成自己的判断,可能需要更多时间".他承认通胀风险上倾、经济面临"一连串冲击"(能源、AI 基建潮、贸易政策),但结论是"没必要急".同日理事 Bowman 也说"目前看不到采取进一步行动的紧迫性".Bloomberg 把 Jefferson 与 Williams 称为 Warsh 的非正式"领导三人组"(troika),但也注明无证据显示两人讲话经过协调——所以这是"市场解读为领导层纠偏",不是坐实的集体行动.定价走势印证了这点:Bloomberg 统计,Williams 讲话前 10 月加息定价约 70%,到 Jefferson 讲完(非农公布前)已降到约 25%;非农只补了最后一刀(约 25%→约 17%).高盛"把第二次加息预测推到 12 月"(Reuters 引高盛报告原文:"We are pushing back the second hike in our forecast to December"),高盛资管 Lindsay Rosner 对 CNBC 说"12 月再加一次仍是基准情形".
+但当天也不是单边松:周四(美东 10/1)路透爆出中国通知炼厂暂停成品油出口(港澳除外,10 月配额全部取消,国庆假期后是否恢复未知),Brent 当天 +4.4% 收 $102.31,WTI +2.7% 收 $92.87;WSJ 同时报道第三艘美国航母带着最多 1 万增援开往中东,特朗普还威胁欧洲:要么释放紧急柴油库存,要么美国可能禁柴油出口.油价一头,通胀尾部就没法散——这就是 Jefferson 不敢把话说死的原因.周五欧洲传出拟释放柴油库存的消息,油价又回吐逾 3% 跌回 $100 下方,一天的涨幅基本被"借"走了(Kalkine).
+
+**Causal chain:**
+1. 非农 +2.9 万(vs 预期 9 万)+ 7-8 月合计下修 6 万 + 失业率 4.2% → 10 月加息定价走完五步(约 70%→约 17%),10 月加息基本出局.注意功劳分配:70%→25% 的大头发生在非农公布前(Williams/Jefferson 讲话+PCE),非农只贡献了最后一棒(约 25%→约 17%)——"非农把 35% 砍到 23%"的说法是错的,按小德终审意见纠正
+2. 但 Fed 说的是"没必要急",不是"不用加了":12 月加息基本被完全计入(高盛基准情形仍是 12 月再加一次),点阵图的"16:2 年内再加"还在生效;失业率 4.2% 主因是劳动力流入(CNN/NPR/Barron's),不是"跳升",初请 19.7 万接近历史低位——这给了 Fed"不急"的底气,也给了市场"不慌"的理由
+3. 时薪同比 3.0%(2021 年 5 月以来最低,WSJ)是降温的,不是反弹的 → 工资-通胀螺旋这条线没走坏;但周四油价 +4.4% → 通胀上行尾部没走,这是 Jefferson 留白的原因,也是长端不敢松的枷锁
+4. 收益率走出了"V"形:非农后一度 -6bp(10Y ~5.18%,CNBC 盘中口径),尾盘在伊朗局势下反转,收 5.276%(+4.3bp,Dow Jones),2Y 收 4.823%(+3.7bp).结论:长端不是趋势反转,只是"从高点下来又爬回去"——10Y 收盘仍在 5.27% 之上,周四 5.342% 的 2002 年以来高点还在那里.分母喘的是"加息定价"这口气,收益率一分没让
+
+**双向看(本节点惯例):** 10/1 那条写的条件句只兑现了一半:10 月跳过加息基本坐实,但失业率并没有"跳升"——4.2% 主因是劳动力流入(CNN:"ticked up in part because more people entered or re-entered the labor force").现在看下半句:10 月中旬还有 9 月 CPI/PPI(10/28 FOMC 前最后两份通胀报告).如果通胀也降温,"年内再加一次"会被市场质疑,"加息周期中段"这个叙事可能反转成"紧缩结束";如果 CPI/PPI 火热(油价 $100+ 的背景),10 月只是"跳过一次"后挪,12 月加息会重新上桌,10Y 的 5.342% 就是中场不是顶部.
+
+**日期说明:** 非农北京时间 10/2 20:30 发布,主要市场反应在美东 10/2 交易时段(北京 10/3 凌晨收盘);本条沿用本档北京日历口径记 2026-10-03(同 10/1,9/30 条先例).锚点 #2026-10-03 在本档唯一.
+
+**盯的变量:** 9 月 CPI/PPI(10 月中旬,10/28 FOMC 前最后两份通胀报告),10Y 能否站回 5.3% 还是继续回落,10 月加息定价(现约 17-24%,快照口径差异),12 月加息定价,Brent $98-$107 区间,中国成品油出口 10 月配额(国庆后是否恢复),欧洲柴油库存释放,霍尔木兹/伊朗动向,美国柴油出口禁令威胁的后续.
+
+**Sources:**
+- [BLS: Employment Situation — September 2026](https://www.bls.gov/news.release/empsit.nr0.htm)
+- [Fed: Jefferson speech at UVA Darden, Oct 1 2026 (full text)](https://www.federalreserve.gov/newsevents/speech/jefferson20261001a.htm)
+- [PYMNTS: Job Growth Moderates as Labor Market Remains Stable (BLS 摘要)](https://www.pymnts.com/economy/2026/job-growth-moderates-as-labor-market-remains-stable/)
+- [IndexBox 引 CNBC: Treasury Yields Drop as Weak Jobs Report Eases October Fed Rate Hike Odds](https://www.indexbox.io/blog/treasury-yields-fall-after-weak-september-jobs-report-cuts-odds-of-october-fed-rate-hike/)
+- [Dow Jones Newswires via TradingView: U.S. stocks end week higher](https://www.tradingview.com/news/DJN_DN20261002006645:0/)
+- [WSJ: U.S. Stocks Rise as Jobs Report Tempers Rate Outlook](https://www.wsj.com/finance/stocks/u-s-stocks-rise-as-jobs-report-tempers-rate-outlook-fde051d1)
+- [WSJ: Another Fed Official Suggests Next Rate Increase Can Wait](https://www.wsj.com/economy/central-banking/another-fed-leader-suggests-next-rate-increase-can-wait-9e46d4f9)
+- [Bloomberg via fa-mag 转载: Warsh's Top Fed Deputies Step In To Give Markets A Clear Message](https://www.fa-mag.com/news/warsh-s-top-fed-deputies-step-in-to-give-markets-a-clear-message-88694.html)
+- [Reuters: Fed may take time to make next interest rate move, Jefferson says](https://www.reuters.com/business/fed-may-take-time-make-next-interest-rate-move-jefferson-says-2026-10-01/)
+- [Bloomberg Law: US Initial Jobless Claims Slip to 197,000](https://news.bloomberglaw.com/daily-labor-report/us-initial-jobless-claims-slip-to-197-000-lowest-since-july-2)
+- [Barron's: Disappointing Jobs Data Ease Pressure on the Fed and Bonds](https://www.barrons.com/livecoverage/jobs-report-september-data-today/card/disappointing-jobs-data-ease-pressure-on-the-fed-and-bonds-B9dU5B7BDsB0bZFVTXSI)
+- [Barron's: Review & Preview: Jobs Jolt](https://www.barrons.com/articles/review-preview-stocks-today-jobs-report-c53f8ba)
+- [FinanceFeeds: Brent Crude at $102 After China Halts Fuel Exports and a Third US Carrier Heads to the Gulf](https://financefeeds.com/brent-crude-oil-price-102-china-halts-fuel-exports-third-carrier-bull-107-bear-98/)
+- [Kalkine: Brent's 4.4% jump to $102.31 and the sub-$100 reversal](https://kalkine.com/news/energy/how-did-brent-crude-swing-from-a-44-percent-jump-to-below-usd-100-a-barrel-in-under-24-hours)
+- [OilPrice.com: Dated Brent Above $120 Signals a Serious Oil Squeeze](https://oilprice.com/Energy/Crude-Oil/Dated-Brent-Above-120-Signals-a-Serious-Oil-Squeeze.html)
 
 ## 2026-10-01 — PCE 低于预期(大半是 BEA 口径修订的功劳),10Y 盘中越过 2007 峰值 5.304%:加息定价两步砍到 ~35%,分母降温但不松绑
 **Move:** 8 月核心 PCE 环比 +0.2%(预期 +0.3%),同比 3.0%(预期 3.3%,7 月被下修 3.3%→3.0%);整体 PCE 环比 +0.3%(大致符合预期),同比 3.4%(预期 3.7%,7 月被下修 3.7%→3.4%).低于预期的部分大半来自 BEA 年度口径修订(组合管理费,软件,法律服务三项子指数核算方法变更,回溯至 2021 年).10 月加息定价分两步走:9/29 Williams"不必急"之后从 ~70% 降到 44-50%(不到抛硬币的概率),9/30 PCE 公布后再降到 ~35%(FedWatch 34.87%)."跳过一次,12 月再议"成新基准.但长端不理:10Y 周三(美东 9/30)盘中 5.304%,越过 2007 年峰值 5.303%(按 Dow Jones Market Data 口径,下同),只超了 0.1bp,为 2002 年 5 月以来最高盘中水平;收 5.292%,仍在峰值下方.30Y 盘中 5.651%(Dow Jones),收 5.638%,均为 2002 年 6 月以来最高水平.2Y 盘中一度回落到 4.84%,收盘回吐到 4.90%,反而高于 9/29 的 4.88%.Dow -0.86% 收 50,906.05,S&P -0.25% 收 7,651.54,Nasdaq +0.24% 收 26,861.06  ·  **Catalyst confidence:** confirmed(BEA 官方发布 via Reuters/CNBC;收益率 Dow Jones 市场数据 via Morningstar;ADP 官方报告 via CNBC;Chicago PMI 58.8 vs 预期 51.2 via Newsquawk;Q2 GDP 三读 2.2% BEA via Dow Jones;Williams 发言 via WSJ;Barr 发言 via Fed 官网;10 月加息定价 FedWatch via Phemex/24/7 Wall St) + 据报道(德银 5Y 拆解 72/66/6bp,据 KuCoin 转述德银分析)
