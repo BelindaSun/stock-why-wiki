@@ -16,7 +16,7 @@
 
 ## 条目（最新在上）
 
-- **2026-10-03** · [[industry:macro-rates]] 宏观利率 — 9月非农大爆冷(+2.9万 vs 预期9万,7-8月合计下修6万,失业率4.2%),10月加息定价五步走约70%→17%基本出局,高盛基准情形12月再加一次;10Y非农后一度-6bp尾盘反转收5.276%(+4.3bp),长端未反转;周四Brent+4.4%收$102.31(中国暂停成品油出口,据报道),周五回吐逾3% → [industries/macro-rates.md](industries/macro-rates.md)
+- **2026-10-06** · [[industry:macro-rates]] 宏观利率 — 霍尔木兹实船流量回到战前水平之上(Kpler/Reuters:中东原油出口 9 月底四天 19.5-22.5 vs 均值 18 mb/d,沙特经海峡出货回升至 ~4.1 mb/d);Brent -1.5% 至 $100.7;两周 9 艘船遇袭风险溢价未散,ISM 价格 74(2022.7 来最高)钉住通胀黏性,周一 10Y 盘中约 5.31% 再刷 2002 年来最高 → [industries/macro-rates.md](industries/macro-rates.md)
 - **2026-09-28** · [[industry:china-tech]] 中国科技 — 新导览《中国 AI 全栈谱系》:先分国产替代/本土 AI 需求/全球 AI capex 三类驱动再分层;第一批建档寒武纪、中芯国际、北方华创、腾讯 → [industries/china-tech.md](industries/china-tech.md)
 - **2026-09-28** · [[0700.HK]] 腾讯控股 — 新建档:9/22 Meta Muse 登顶后微信智能体"小微"被对标重估,收涨5.02%报HK$451.6;Q2资本开支同比+176% → [stocks/0700.HK.md](stocks/0700.HK.md)
 - **2026-09-28** · [[002371.SZ]] 北方华创 — 新建档:9/7 IEEE论文披露3D DRAM两步循环刻蚀,设备板块拉升;上半年营收+25%但净利仅+5% → [stocks/002371.SZ.md](stocks/002371.SZ.md)
