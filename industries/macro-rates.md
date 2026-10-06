@@ -1,5 +1,5 @@
 # industry: macro-rates — 宏观利率 / 无风险利率
-_Last updated: 2026-10-06_ · _趋势:9 月非农大爆冷后 10 月加息基本出局(定价约 17-25%),高盛基准情形仍是 12 月再加一次;周一 Kpler 实物数据(Reuters):中东原油出口(除伊朗外)9 月底四天超战前水平(19.5-22.5 vs 均值 18 mb/d),沙特经海峡出货回升至 ~4.1 mb/d,东西管道恢复至 ~5.5 mb/d,Brent -1.5% 至 $100.7;但两周 9 艘船遇袭(2 伤 1 死)风险溢价未散,ISM 服务业价格 74(2022 年 7 月来最高)钉住通胀黏性,周一 10Y 盘中约 5.31% 再刷 2002 年来最高、分母更紧.盯 FOMC 纪要(周三)、9 月 CPI(10/14)、Kpler 实船流量周更_
+_Last updated: 2026-10-06_ · _趋势:9 月非农大爆冷后 10 月加息基本出局(定价约 17–24%),高盛基准情形仍是 12 月再加一次;周一 Kpler 实物数据(Reuters):中东原油出口(除伊朗外)9 月底四天超战前水平(19.5-22.5 vs 均值 18 mb/d),沙特经海峡出货回升至 ~4.1 mb/d,东西管道恢复至 ~5.5 mb/d,Brent -1.5% 至 $100.7;但两周 9 艘船遇袭(2 伤 1 死)风险溢价未散,ISM 服务业价格 74(2022 年 7 月来最高)钉住通胀黏性,周一 10Y 盘中约 5.31%、逼近但未破周四盘中 5.342%(2002 年来最高),分母更紧.盯 FOMC 纪要(周三)、9 月 CPI(10/14)、Kpler 实船流量周更_
 
 一句话：美债收益率 + Fed 政策预期,是所有资产的"**分母**"。它不是某个行业,而是贯穿整张图的**宏观驱动因子**——尤其决定高估值成长股(AI 板块)的估值水位。这是本 wiki 里之前反复被引用、但一直缺一个专门节点的"隐形变量"。
 
@@ -37,14 +37,14 @@ _Last updated: 2026-10-06_ · _趋势:9 月非农大爆冷后 10 月加息基本
 **Causal chain:**
 1. Kpler 实物数据是本周第一个硬核验证:出口量回到战前水平之上 + 沙特管道绕行满负荷 → 供应恐慌缓和.周一 Brent -1.5% 与数据同日,将其归因于数据驱动为 likely 推断(数据本身 confirmed,归因非 confirmed).10-04 条设的开关("切换开关在实船流量,不在声明")今天第一次被数据拨动,拨向降温侧——但只拨了一格:Brent 仍守在 $100 上方,$100 风险溢价没散
 2. 风险溢价没散是因为"实物恢复"的代价写在 WSJ 的另一半报道里:船员 $25,000/趟的卖命钱、VLCC"shuttle run"(进海峡装货、出海峡倒驳)——运费和保险溢价被抬到天上,油价里剩下的 $100 是恐惧不是供需.这就是为什么"出口量回到战前"和"油价还贴在 $100"能同时成立:量回来了,价没回来,差的那块是战争保险费
-3. 对分母:油价软一点 + 10 月加息基本出局(定价约 17–24%,沿用 10-03 条口径) → 12 月加息的"保险单"暂时没那么贵.但 ISM 服务业周一同日发布价格指数 74.0(前值 72.6,2022 年 7 月来最高,ISM 官方稿 via PR Newswire)——服务业通胀黏性钉在原地;周一 10Y 盘中约 5.31%,CNBC 称刷新 2002 年来盘中最高(本档 10-03 条记周四盘中 5.342%;收盘口径以 Dow Jones 为准,周四收 5.276%,周一收盘待确认),分母没松反而更紧.这正是本档的长期口径:油是通胀尾部,服务价格是通胀本体
-4. 可持续性是下一周的问题:Kpler 数据是 provisional(关 AIS 躲避袭击的船没计入);沙特输量恢复依赖东西管道和红海路线,但胡塞对沙特西岸设施的袭击(WSJ/Dow Jones)是新的不确定;Trump 在权衡 renewed military action——任何一根再断,19.5–22.5 mb/d 就回得去
+3. 对分母:油价软一点 + 10 月加息基本出局(定价约 17–24%,沿用 10-03 条口径) → 12 月加息的"保险单"暂时没那么贵.但 ISM 服务业周一同日发布价格指数 74.0(前值 72.6,2022 年 7 月来最高,ISM 官方稿 via PR Newswire)——服务业通胀黏性钉在原地;周一 10Y 盘中约 5.31%,逼近但未破周四盘中 5.342%(2002 年来最高,Irish Times/Yahoo/Fox Business 均确认;收盘口径以 Dow Jones 为准,周四收 5.276%,周一收盘待确认),分母没松反而更紧.这正是本档的长期口径:油是通胀尾部,服务价格是通胀本体
+4. 可持续性是下一周的问题:Kpler 数据是 provisional(关 AIS 躲避袭击的船没计入);沙特输量恢复依赖东西管道和红海路线,但胡塞对沙特西岸设施的袭击(WSJ/Dow Jones)是新的不确定;Trump 在权衡下一步军事选项(10/2 对记者称"现在我得做决定",Reuters)——任何一根再断,19.5–22.5 mb/d 就回得去
 
 **双向看(本节点惯例):** 10-04 条的双向开关现在有数据了:实物站在降温侧,袭击站在升级侧.短线 Brent 卡在 $100 上方进退两难——跌破 $100 = 谈判占上风(10-04 条的"7 天复航"价码),重返 $105+ = 袭击升级(Trump 军事选项).Capital Economics 9 月中旬的判断(若冲突拖延、流量年底前不恢复,油价维持三位数到明年,Dow Jones Newswires/WSJ 记者)正好就是这个"谁也吃不掉谁"的均衡价.
 
 **日期说明:** 市场反应在美东 10/5 交易时段(北京 10/6 凌晨收盘);本条沿用本档北京日历口径记 2026-10-06(同 10-01、10-03 条先例).Kpler 数据本身覆盖 9/24–10/1 的船运,Reuters(新加坡时间 10/5,早于美东盘)报道、市场 10/5(美东)定价——反应日取 10/5 的交易时段,不是数据窗口.锚点 #2026-10-06 在本档唯一.
 
-**盯的变量:** Brent $100 一线(跌破=谈判占上风,重返 $105+=升级占上风),Kpler 实船流量周更数据(能否站稳 18 mb/d+),海峡袭击是否升级(美方对伊朗油轮动武威胁、Trump 军事选项),沙特东西管道与 Yanbu 装船量(11 月能否回到袭击前水平),胡塞对沙特西岸设施袭击,FOMC 纪要(周三),9 月 CPI(10/14,10/28 FOMC 前最后两份通胀报告之一).
+**盯的变量:** Brent $100 一线(跌破=谈判占上风,重返 $105+=升级占上风),Kpler 实船流量周更数据(能否站稳 18 mb/d+),海峡袭击是否升级(Trump 军事选项),沙特东西管道与 Yanbu 装船量(11 月能否回到袭击前水平),胡塞对沙特西岸设施袭击,FOMC 纪要(周三),9 月 CPI(10/14,10/28 FOMC 前最后两份通胀报告之一).
 
 **Sources:**
 - [Reuters: Middle East crude oil exports exceed pre-war levels but tanker attacks increase (Florence Tan, 新加坡时间 Oct 5)](https://www.reuters.com/business/energy/middle-east-crude-oil-exports-exceed-pre-war-levels-tanker-attacks-increase-2026-10-05/)
@@ -54,13 +54,14 @@ _Last updated: 2026-10-06_ · _趋势:9 月非农大爆冷后 10 月加息基本
 - [Dow Jones Newswires via TradingView: Capital Economics — oil could remain above $100 well into next year if conflict drags on (Sep 18)](https://www.tradingview.com/news/DJN_DN20260918003107:0/)
 - [OilPrice.com: Oil Prices Fall as Reports Say Hormuz Crude Flows Top Pre-War Levels (Kpler provisional data)](https://oilprice.com/Latest-Energy-News/World-News/Oil-Prices-Fall-as-Hormuz-Crude-Flows-Top-Pre-War-Levels.html)
 - [Reuters: Trump blames Ukraine refinery attacks, Democrats for high gasoline prices (Truth Social post, Oct 5)](https://www.reuters.com/business/energy/iran-war-drives-up-gasoline-prices-us-trump-blames-ukraine-democrats-2026-10-05/)
+- [Reuters: Oil rises slightly as market weighs mixed supply signals; Trump "now I have to make a decision" (Oct 2)](https://www.reuters.com/business/energy/oil-rises-slightly-market-weighs-mixed-supply-signals-2026-10-02/)
 - [ISM Services PMI Sep, official via PR Newswire: headline 54.9 (Aug 55.4), prices 74.0 (Aug 72.6, highest since Jul 2022), employment 50.1 (Aug 47.8)](https://www.prnewswire.com/news-releases/services-pmi-at-54-9-september-2026-ism-services-pmi-report-302898421.html)
 
 ## 2026-10-04 — 伊朗霍尔木兹周末双线:5 天袭击 7 艘油轮(据报道) + 公开 7 项复航条件、外长称接受则 7 天复航:油价尾部再起,分母枷锁未松
-**Move:** 非价格事件(声明都在周日,市场周一开盘才反应);Brent 周五收约 $102.25(-0.06%,搜索摘要口径,原始结算价待核),仍处 $100 上方——海峡名义未重开、实际部分通行,风险溢价未散;周末市场休市,无盘中价格可对冲  ·  **Catalyst confidence:** confirmed(Reuters 引 Nournews:Qalibaf 7 项复航条件;Reuters:Araqchi 重提 7 天复航方案——9/25 经卡塔尔递出、9/26 被特朗普公开拒绝,见 #2026-09-29;Pentagon 确认 B-1 机队全部撤回本土,Axios/Al Jazeera/Air & Space Forces 引美方官员称系因伊朗无人机袭击 Fairford 的情报,英国首相称有"strong indications"伊朗涉入、伊朗否认) + 据报道(5 天 7 艘油轮被袭,半官方 Fars via IANS)
+**Move:** 非价格事件(声明都在周日,市场周一开盘才反应);Brent 周五收 $102.25(-0.06%,Dow Jones Market Data via Morningstar),仍处 $100 上方——海峡名义未重开、实际部分通行,风险溢价未散;周末市场休市,无盘中价格可对冲  ·  **Catalyst confidence:** confirmed(Reuters 引 Nournews:Qalibaf 7 项复航条件;Reuters:Araqchi 重提 7 天复航方案——9/25 经卡塔尔递出、9/26 被特朗普公开拒绝(NPR),见 #2026-09-29;Pentagon 确认 B-1 机队全部撤回本土) + 据报道(5 天 7 艘油轮被袭,半官方 Fars via IANS;Axios/Al Jazeera/Air & Space Forces 引匿名美方官员称撤离系因伊朗无人机袭击 Fairford 的情报,英国首相称有"strong indications"伊朗涉入、伊朗否认)
 
 **What happened:**
-周日(10/4)伊朗同时打出"升级 + 谈判"两张牌.一面,革命卫队海军 5 天内在霍尔木兹袭击了至少 7 艘"违规"油轮——半官方 Fars via IANS(据报道),其中周五 2 艘爆炸,另有科威特 2 艘与阿联酋 3 艘在之前 4 天被袭.另一面,议长兼最高谈判代表 Qalibaf 公开开出价码:美国兑现 6 月《伊斯兰堡谅解备忘录》里的伊方 7 项条件之前,海峡不重开(Reuters 引 Nournews);外长 Araqchi 同日重提 7 天复航方案,称若美方接受伊方方案海峡可在 7 天内重开——但这不是新牌:该方案 9/25 已由 Araqchi 经卡塔尔递出,9/26 被特朗普公开拒绝(NPR/PBS/NBC;本档 #2026-09-29 已记),美方上周经卡塔尔回复(有说法称附带反提案,原文未见,性质待核).Araqchi 同时警告若美再动武"我们准备得更充分了"(Reuters).特朗普放话战争会"很快结束"、结束后油价"像石头一样掉下来"(IANS).同日 Pentagon 确认驻英 Fairford 的 B-1 机队全部撤回本土;Axios/Al Jazeera/Air & Space Forces 引美方官员称,撤离系因收到伊朗可能用无人机袭击 Fairford 的情报,英国首相称有"strong indications"显示伊朗涉入,伊朗否认——这是安全威胁下的撤离,偏升级侧.声明都在周日,价格反应见周一开盘后的 #2026-10-06.
+周日(10/4)伊朗同时打出"升级 + 谈判"两张牌.一面,革命卫队海军 5 天内在霍尔木兹袭击了至少 7 艘"违规"油轮——半官方 Fars via IANS(据报道),其中周五 2 艘爆炸,另有科威特 2 艘与阿联酋 3 艘在之前 4 天被袭.另一面,议长兼最高谈判代表 Qalibaf 公开开出价码:美国兑现 6 月《伊斯兰堡谅解备忘录》里的伊方 7 项条件之前,海峡不重开(Reuters 引 Nournews);外长 Araqchi 同日重提 7 天复航方案,称若美方接受伊方方案海峡可在 7 天内重开——但这不是新牌:该方案 9/25 已由 Araqchi 经卡塔尔递出,9/26 被特朗普公开拒绝(NPR/PBS/NBC;本档 #2026-09-29 已记),美方上周经卡塔尔回复(有说法称附带反提案,原文未见,性质待核).Araqchi 同时警告若美再动武"我们准备得更充分了"(Reuters).特朗普放话战争会"很快结束"(IANS).同日 Pentagon 确认驻英 Fairford 的 B-1 机队全部撤回本土;Axios/Al Jazeera/Air & Space Forces 引美方官员称,撤离系因收到伊朗可能用无人机袭击 Fairford 的情报,英国首相称有"strong indications"显示伊朗涉入,伊朗否认——这是安全威胁下的撤离,偏升级侧.声明都在周日,价格反应见周一开盘后的 #2026-10-06.
 
 **Causal chain:**
 1. 7 艘油轮 5 天被袭(升级的事实) + 7 项复航条件(谈判的价码)同时落地 → 市场没法只定价其中一边:谈判口径(7 天复航)压住油价上行空间,袭击事实(运费/保险溢价 + 实物风险)托住油价下限 → Brent 困在 $100 上下(约 $102),油价波动率还在
@@ -68,7 +69,7 @@ _Last updated: 2026-10-06_ · _趋势:9 月非农大爆冷后 10 月加息基本
 3. 真正要盯的分水岭不是声明,是实物:霍尔木兹 LNG/油轮实船流量、Dated Brent 贴水(10-03 条已记 OilPrice 提示 Dated Brent 高于 $120 是挤压信号)、欧洲柴油库存释放的落地节奏.声明是 headline,船数才是真相(延续本档"看实物流量"的口径)
 4. 升级侧也有信号:美军 B-1 在伊朗无人机袭击威胁情报下撤出 Fairford(伊方否认涉入),说明美方评估当地安全风险在上升而非下降.谈判通道(卡塔尔中介)还在走——伊朗第一次公开开出"7 项条件"的完整价码,但 7 天时间表是 9/25 已递交、9/26 已被拒的旧案重提(见 #2026-09-29),不是新的让步.这条线的方向未定,两边都可能在本周被证伪
 
-**双向看(本节点惯例):** 现在霍尔木兹是"升级的事实 vs 降级的承诺"并存:如果本周谈判真往 7 天复航走,Brent 跌破 $100、通胀尾部散掉,10Y 盘中高点 5.342%(周四,本档盘中口径)暂为顶部,12 月加息定价会被重估;如果袭击继续、条件谈崩,Brent 重返 $105+,Fed 12 月加息的"保险单"就更贵,分母继续紧.切换开关在实船流量,不在声明.(注:10-03 条"周五回吐逾 3% 跌回 $100 下方"为盘中表述,周五收盘约 $102.25,是否勘误等小德定)
+**双向看(本节点惯例):** 现在霍尔木兹是"升级的事实 vs 降级的承诺"并存:如果本周谈判真往 7 天复航走,Brent 跌破 $100、通胀尾部散掉,10Y 盘中高点 5.342%(周四,本档盘中口径)暂为顶部,12 月加息定价会被重估;如果袭击继续、条件谈崩,Brent 重返 $105+,Fed 12 月加息的"保险单"就更贵,分母继续紧.切换开关在实船流量,不在声明.(注:10-03 条"周五回吐逾 3% 跌回 $100 下方"为盘中表述,周五收盘 $102.25(Dow Jones Market Data),是否勘误等小德定)
 
 **日期说明:** 声明/报道均在周日 10/4(美东/德黑兰时间),全球市场闭市;本条按本档北京日历口径记 2026-10-04(同 10-03 条先例的"北京日历"逻辑).价格反应在周一(10/5)开盘后落地,见 #2026-10-06(实船流量验证).锚点 #2026-10-04 在本档唯一.
 
@@ -78,6 +79,10 @@ _Last updated: 2026-10-06_ · _趋势:9 月非农大爆冷后 10 月加息基本
 - [Reuters: Iran says Strait of Hormuz will not reopen until conditions are met (Qalibaf via Nournews; Araqchi 7-day plan), Oct 4](https://www.reuters.com/world/middle-east/iran-says-strait-hormuz-will-not-reopen-until-conditions-are-met-2026-10-04/)
 - [IANS: Iran's IRGC hit 7 'violating' oilers in Hormuz Strait in 5 days, Oct 4 (via Fars)](https://ianslive.in/irans-irgc-hit-7-violating-oilers-in-hormuz-strait-in-5-days--20261004061830)
 - [Reuters: US removes B-1 bombers from UK base amid security concerns, Oct 4](https://www.reuters.com/world/uk/us-removes-b-1-bombers-uk-base-amid-security-concerns-2026-10-04/)
+- [Air & Space Forces: All US B-1 Bombers Leave RAF Fairford in Hasty Departure, Oct 4](https://www.airandspaceforces.com/us-b-1-bombers-leave-raf-fairford-uk-base/)
+- [WSJ: Threat of Iranian Drone Attack Prompted U.S. to Pull Bombers From U.K. Base (US/European officials), Oct 5](https://www.wsj.com/politics/national-security/uk-us-bomber-move-iran-drone-threat-5097f827)
+- [NPR: Trump calls Iranian plan to reopen Strait of Hormuz not 'acceptable' (Sep 26)](https://www.wamc.org/2026-09-26/trump-calls-iranian-plan-to-reopen-strait-of-hormuz-not-acceptable)
+- [Dow Jones Newswires via Morningstar: Front-month ICE Brent settled $102.25 on Oct 2 (-0.06%)](https://www.morningstar.com/news/dow-jones/202610025482/front-month-ice-brent-crude-rose-494-this-week-to-settle-at-10225-data-talk)
 
 ## 2026-10-03 — 9 月非农大爆冷(+2.9 万 vs 预期 9 万,7-8 月合计下修 6 万,失业率 4.2%):10 月加息基本出局,分母喘口气,长端未反转
 **Move:** 9 月非农 +2.9 万(预期约 9 万,路透/Bloomberg;道琼斯调查 8.4 万),7 月从 +2.1 万下修到 **-1 万**,8 月从 16.2 万下修到 13.3 万——两月合计少 6 万.过去 12 个月月均 +4.5 万(BLS 9 月就业报告摘要 via PYMNTS).失业率 4.2%(预期 4.1%),仍在 3 月以来 4.1-4.3% 窄区间(BLS 摘要 via PYMNTS).平均时薪环比 +0.1%(预期 +0.3%),同比 +3.0%,为 2021 年 5 月以来最低(WSJ).初请 19.7 万(9/26 当周,预期 20 万),接近 57 年低位——7 月 18.9 万为 1969 年来最低(Bloomberg).10 月加息定价走出五步(FedWatch 主口径,快照时点有差异):约 70% → 44-50%(9/29 Williams) → 约 35%(9/30 PCE) → 约 25%(10/1 Jefferson/Bowman,非农前) → 约 17%(10/2 非农后,CNBC;Reuters 口径约 23.8%).12 月加息基本被完全计入:高盛"把第二次加息预测推到 12 月"(Reuters 引高盛报告原文),高盛资管 Lindsay Rosner 称"12 月再加一次仍是基准情形"(CNBC).收益率:非农后 10Y 一度跌约 6bp 至 ~5.18%(CNBC 盘中口径),尾盘在伊朗局势下反转,收 5.276%(+4.3bp,Dow Jones);2Y 收 4.823%(+3.7bp,Dow Jones).周四(美东 10/1)盘中高点 5.342% 为 2002 年以来最高(CNBC).股指(AP 收盘):S&P +0.7% 收 7,722.72,Dow +0.5% 收 51,176.96,Nasdaq +1.2% 收 27,190.86(盘中创纪录).对冲面(均为周四,美东 10/1):中国通知炼厂暂停成品油出口(港澳除外,10 月配额取消,路透引 4 名知情人,据报道),Brent +4.4% 收 $102.31,WTI +2.7% 收 $92.87;第三艘美航母携至多 1 万增援开往中东(WSJ).周五油价回吐逾 3% 跌回 $100 下方(欧洲拟释放柴油库存消息,Kalkine).  ·  **Catalyst confidence:** confirmed(BLS 9 月就业报告;Fed 官网 Jefferson 演讲全文;10Y/2Y 收盘 Dow Jones Newswires;股指 AP 收盘;初请 Bloomberg;时薪 WSJ;油价周四收盘 FinanceFeeds/Kalkine) + 据报道(中国暂停成品油出口 via Reuters 引 4 名匿名知情人;加息定价各家快照 16-24% 口径时点差异)
