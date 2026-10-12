@@ -335,7 +335,7 @@ const NODES = [
   // 待补 —— 第二批建档
   { id:"688012.SS", name:"中微公司", type:"pending", driver:"sub" },
   { id:"688041.SS", name:"海光信息", type:"pending", driver:"sub" },
-  { id:"HUAWEI",    name:"华为昇腾", type:"pending", driver:"sub", private:true },
+  { id:"HUAWEI",    name:"华为昇腾", type:"stock", driver:"sub", private:true },
   { id:"BIDU",      name:"百度",     type:"pending", driver:"local" },
   { id:"300308.SZ", name:"中际旭创", type:"pending", driver:"global" },
 ];
@@ -365,8 +365,11 @@ const EDGES = [
   { a:"688012.SS", b:"SUB",       kind:"drv", pending:true, label:"刻蚀设备" },
   { a:"688012.SS", b:"002371.SZ", kind:"peer", pending:true, label:"设备同行" },
   { a:"688041.SS", b:"SUB",       kind:"drv", pending:true, label:"国产 CPU / DCU" },
-  { a:"HUAWEI",    b:"688256.SS", kind:"peer", pending:true, label:"国产 AI 芯片两极" },
-  { a:"HUAWEI",    b:"SUB",       kind:"drv", pending:true, label:"未上市" },
+  { a:"HUAWEI",    b:"688256.SS", kind:"peer", label:"国产 AI 芯片两极" },
+  { a:"HUAWEI",    b:"SUB",       kind:"drv", label:"主驱动：国产 AI 算力替代" },
+  { a:"HUAWEI",    b:"LOCAL",     kind:"drv", sec:true, label:"次驱动：DeepSeek 推理需求（据报道）" },
+  { a:"688981.SS", b:"HUAWEI",    label:"代工 → AI 芯片（据报道）" },
+  { a:"HUAWEI",    b:"NVDA",      kind:"cross", label:"在华份额竞争（华为口径，未独立核实）" },
   { a:"BIDU",      b:"LOCAL",     kind:"drv", pending:true, label:"文心 + 智能云 + 昆仑芯" },
   { a:"300308.SZ", b:"GLOBAL",    kind:"drv", pending:true, label:"光模块卖给海外 AI 数据中心" },
 ];
@@ -447,7 +450,14 @@ const DETAIL = {
 
   "688012.SS": { pending:"中微公司：刻蚀设备龙头，北方华创的同行。第二批建档，接到“国产替代”。" },
   "688041.SS": { pending:"海光信息：国产 CPU 和 DCU。第二批建档，接到“国产替代”。" },
-  HUAWEI:      { pending:"华为昇腾：国产 AI 芯片的另一极。华为未上市，按关联实体建档（待建）。" },
+  HUAWEI: {
+    lead: "华为昇腾：国产 AI 芯片“两极”的另一极。华为未上市（员工持股会控股），按关联实体建档。在华份额竞争（华为口径，未独立核实）+ DeepSeek 推理需求（据报道），是国产替代链条的 AI 芯片供给侧。",
+    move: [["上市状态","未上市"],["口径","公司声明 / 据报道，无独立来源"]],
+    chain: ["美国出口管制卡住英伟达高端卡 → 国内买家转向国产算力（国产替代，主驱动）","华为称昇腾在华已超过英伟达（公司声明，未独立核实）","供给受先进制程和 HBM 短缺约束，950DT 涨价（据报道），Q4 才开始供货","DeepSeek 规划 ≥16 万片 950DT 用于推理（据报道），训练据报道仍在英伟达"],
+    up: [["中芯国际代工","据报道 Ascend 950 系列用 N+3 工艺；产能与良率是出货上限"],["HBM 供给","HBM 短缺是 950DT 涨价主因（据报道），也是交付约束"],["美国出口管制","实体清单下国产替代需求的来源"]],
+    down: [["寒武纪","国产 AI 芯片两极的另一极"],["英伟达","在华份额竞争（华为口径）"],["本土 AI 产业链","国产算力供给侧（推理为主）"]],
+    src: [["The Register 2026-09-30：徐直军实录原话","https://www.theregister.com/systems/2026/09/30/huawei-boss-claims-homegrown-ai-chip-sales-top-nvidia-in-china/5300266"],["Reuters 2026-09-10 via srnnews：950DT 涨价","https://srnnews.com/exclusive-chinas-ai-chipmakers-raise-prices-as-high-bandwidth-memory-shortage-bites/"],["TechTimes 2026-09-05（via Bloomberg）：DeepSeek 16 万片","https://www.techtimes.com/articles/326755/20260905/deepseeks-160000-chip-huawei-order-puts-prc-law-over-every-api-query.htm"]],
+  },
   BIDU:        { pending:"百度：文心模型 + 百度智能云 + 自研昆仑芯。第二批建档，接到“本土 AI 需求”。" },
   "300308.SZ": { pending:"中际旭创：高速光模块，主要卖给海外 AI 数据中心，跟的是 NVDA 周期。第二批建档，是“全球 AI capex”这一列的第一家。" },
 };
