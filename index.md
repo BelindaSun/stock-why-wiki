@@ -16,6 +16,7 @@
 
 ## 条目（最新在上）
 
+- **2026-10-12** · [[HUAWEI]] 华为昇腾 — 昇腾 stub 升实心：中国 AI 芯片"两极"的另一极（未上市，关联实体口径）；驱动：国产替代(主)·本土 AI 需求(次) → [stocks/HUAWEI.md](stocks/HUAWEI.md)
 - **2026-10-06** · [[industry:macro-rates]] 宏观利率 — 霍尔木兹实船流量回到战前水平之上(Kpler/Reuters:中东原油出口 9 月底四天 19.5-22.5 vs 均值 18 mb/d,沙特经海峡出货回升至 ~4.1 mb/d);Brent -1.5% 至 $100.7;两周 9 艘船遇袭风险溢价未散,ISM 价格 74(2022.7 来最高)钉住通胀黏性,周一 10Y 盘中约 5.31%,逼近周四盘中 5.342%(2002 年来最高)但未破 → [industries/macro-rates.md](industries/macro-rates.md)
 - **2026-09-28** · [[industry:china-tech]] 中国科技 — 新导览《中国 AI 全栈谱系》:先分国产替代/本土 AI 需求/全球 AI capex 三类驱动再分层;第一批建档寒武纪、中芯国际、北方华创、腾讯 → [industries/china-tech.md](industries/china-tech.md)
 - **2026-09-28** · [[0700.HK]] 腾讯控股 — 新建档:9/22 Meta Muse 登顶后微信智能体"小微"被对标重估,收涨5.02%报HK$451.6;Q2资本开支同比+176% → [stocks/0700.HK.md](stocks/0700.HK.md)
