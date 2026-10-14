@@ -16,8 +16,9 @@
 
 ## 条目（最新在上）
 
-- **2026-10-13** · [[industry:macro-rates]] 宏观利率 — 能源→CPI 双向 B 观察（#2026-10-08 霍尔木兹风险↑ + #2026-10-13 俄柴油缓解↓ + #2026-10-07 FOMC 纪要理由分歧作政策反应函数），review 10/14–15 → [industries/macro-rates.md](industries/macro-rates.md)
-- **2026-10-12** · [[industry:macro-rates]] 宏观利率 — 胡塞导弹袭利雅得机场(周六 10/10)：**Class C 观察**，Brent 周末基本持平 → [industries/macro-rates.md](industries/macro-rates.md)
+- **2026-10-14** · [[industry:macro-rates]] 宏观利率 — 9 月 CPI 双超预期(3.7%/2.6%)：**Class A**，10 月加息定价 22%→~44–49%，2Y +14bp 至 4.93%，10Y +10bp 至 5.31%，DXY 18 个月新高 → [industries/macro-rates.md](industries/macro-rates.md)
+- **2026-10-14** · [[industry:macro-rates]] 宏观利率 — B 节点 10/14 强制复核：柴油缓解线关闭（证伪）、政策反应函数验证退役（并入 A 条目）、沙特本土/Aramco 遇袭由 C 升级为 B（驱动三，review 10/19）、霍尔木兹维持 B（review 10/15） → [industries/macro-rates.md](industries/macro-rates.md)
+- **2026-10-12** · [[industry:macro-rates]] 宏观利率 — 胡塞导弹袭利雅得机场(周六 10/10)：**10/14 由 C 升级为 B**（并入 B 节点驱动三：沙特本土/Aramco↑；周二晚 Aramco 总部遇袭、Houthis 威胁继续打击石油设施），review 10/19 → [industries/macro-rates.md](industries/macro-rates.md)
 - **2026-10-12** · [[HUAWEI]] 华为昇腾 — 昇腾 stub 升实心：中国 AI 芯片"两极"的另一极（未上市，关联实体口径）；驱动：国产替代(主)·本土 AI 需求(次) → [stocks/HUAWEI.md](stocks/HUAWEI.md)
 - **2026-09-28** · [[industry:china-tech]] 中国科技 — 新导览《中国 AI 全栈谱系》:先分国产替代/本土 AI 需求/全球 AI capex 三类驱动再分层;第一批建档寒武纪、中芯国际、北方华创、腾讯 → [industries/china-tech.md](industries/china-tech.md)
 - **2026-09-28** · [[0700.HK]] 腾讯控股 — 新建档:9/22 Meta Muse 登顶后微信智能体"小微"被对标重估,收涨5.02%报HK$451.6;Q2资本开支同比+176% → [stocks/0700.HK.md](stocks/0700.HK.md)

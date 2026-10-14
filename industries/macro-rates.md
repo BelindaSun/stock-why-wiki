@@ -1,5 +1,5 @@
 # industry: macro-rates — 宏观利率 / 无风险利率
-_Last updated: 2026-10-13_ · _趋势:入库政策 v1.1 + 小德终审 round 3——FOMC 纪要条并入「能源→CPI」节点作**政策反应函数**（理由分歧定 CPI 解读框架，升级线：10 月加息定价 22%→>50%/<10%）、霍尔木兹↑与柴油↓双向 B(review 10/14–15)、利雅得条 **C 观察**;Brent 周一收 $106.65(+1.84%)已上破 $105 升级线（复查确认是否站稳）;10Y 5.244% 高位区.盯:9 月 CPI(10/14,周三)、10/27-28 FOMC、11/3 承诺红线、美是否参战也门_
+_Last updated: 2026-10-14_ · _趋势:入库政策 v1.1 + 10/14 强制复核——B 节点重组:柴油缓解线关闭(未证实+失效触发)、政策反应函数验证退役并入 #2026-10-14 A 条目、沙特本土/Aramco↑ 由 C 升级为 B(驱动三,review 10/19)、霍尔木兹维持 B 待 10/15 Kpler;9 月 CPI 双超预期(3.7%/2.6%)→10 月加息定价 22.1%→43.7%(CME FedWatch),2Y 4.93%/10Y 5.31%/DXY 18 个月新高.盯:9 月 PPI(10/15)、10/27-28 FOMC、Aramco 损失核实、Kpler 实船流量、11/3 承诺红线、美是否参战也门_
 
 一句话：美债收益率 + Fed 政策预期,是所有资产的"**分母**"。它不是某个行业,而是贯穿整张图的**宏观驱动因子**——尤其决定高估值成长股(AI 板块)的估值水位。这是本 wiki 里之前反复被引用、但一直缺一个专门节点的"隐形变量"。
 
@@ -32,9 +32,16 @@ _入库政策 v1.1：B = 待证据观察（强制复核重分类），C = 仅观
 
 ### B — Watch pending evidence
 
-## 能源→CPI 双向驱动 + 政策反应函数（B 观察，锚点 #2026-10-08 / #2026-10-13 / #2026-10-07）：霍尔木兹供应风险↑ vs 俄柴油+OFAC 供应缓解↓；FOMC 纪要理由分歧定 CPI 解读框架
-**Class: B — Watch pending evidence**（入库政策 v1.1） · **Status:** 混合——驱动一多源报道部分核实，驱动二 announced（俄交付未验证、停火未获双方确认）
-**一句话：** 同一条链（油价/柴油 → 能源 CPI → headline CPI → 政策预期），两个方向相反的驱动。Brent 周五（10/9）收 $104.72，周一（10/12）收 $106.65（+1.84%）已上破驱动一设定的 $105 升级线——复查时确认是否站稳及 breakeven/Fed 定价是否跟动。
+## 能源→CPI 供应风险（B 观察，锚点 #2026-10-08 / #2026-10-12）：霍尔木兹↑ + 沙特本土/Aramco↑；#2026-10-13 柴油缓解线 10/14 关闭（未证实 + 失效条件触发），#2026-10-07 政策反应函数已验证并入 #2026-10-14 A 条目
+**Class: B — Watch pending evidence**（入库政策 v1.1） · **Status:** 混合——驱动一多源报道部分核实，驱动三袭击 confirmed/损失程度待核实；驱动二 10/14 关闭（未证实 + 失效条件触发），政策反应函数 10/14 验证退役（见复核结论）
+**一句话：** 同一条链（油价 → 能源 CPI → headline CPI → 政策预期），现在只剩供应风险一侧：霍尔木兹（海运）+ 沙特本土（产油设施）双线。Brent 守住 $105+ 第三天（周三 ~$106.2–106.6）；9 月 CPI 热（3.7%/2.6%）验证了政策反应函数，见 #2026-10-14 A 条目。
+
+### 10/14 强制复核结论（review date 2026-10-14）
+- **驱动二（俄柴油缓解↓）：关闭（未证实 + 失效条件触发）。** 证据：① 俄方实际交付仍无任何独立证实（仅宣布 + OFAC 许可证），美国柴油价格仍处高位（~$6.20/加仑）；② Trump 的俄乌"能源停火"：Kremlin 拒绝确认/给细节（"contacts…were continuing, but that it had nothing more to say on the matter for now"，Reuters 10/13）——未证实 + 俄方不认领；Zelenskyy 称俄方在宣布后仍打击了哈尔科夫等地能源设施。**更正（小德终审）：此前所列"9 月 CPI 能源环比 +5.2%"有时序问题——9 月 CPI 衡量的是 9 月价格，不能证伪 10 月才宣布的缓解措施，已删除；与霍尔木兹条"归因先看时序"的标准统一。** 升级条件（交付证实 + 柴油持续走弱）一条未满足；失效条件（交付爽约）实质触发。措辞从"证伪"改为"未证实 + 失效条件触发"。保留最小记录，本驱动关闭。
+- **政策反应函数（#2026-10-07）：验证，退役并入 #2026-10-14 A 条目。** 9 月 CPI 热（3.7%/2.6% 双超预期）→ 10 月加息定价 22.1%→43.7%（CME FedWatch Tool，10/14 CPI 发布后即刻；媒体引用 44–49% 不等），方向与框架一致（热→鹰派占上风）。诚实注：未过自设的 >50% 升级线（43.7% 接近但未达），故记"验证"而非"超预期验证"；机制本身已由 A 条目承接，本腿退役。
+- **驱动一（霍尔木兹↑）：维持 B，review 延至 10/15（等 Kpler 周更 + 9 月 PPI）。** Brent 周一收 $106.65、周二 -0.9%、周三 ~$106.2–106.6，$105 关口守了三天；但今日利率端重定价（2Y/10Y/DXY）的时序归因指向 CPI（8:30 ET 数据后即刻反应），不计为驱动一的升级证据——归因先看时序。过去 24h 霍尔木兹无新袭击报道，焦点转向沙特本土（见驱动三）。
+- **新增驱动三（沙特本土/Aramco↑，B）：见下。原 #2026-10-12 C 条目同步升级。** 升级依据说明（防误读）：**升级的理由是出现了原 C 条目入库时不存在的新事实**（周二晚 Aramco 总部遇袭 + Houthis 威胁继续打击石油设施），用入库政策 B-vs-C 测试重估（链可写具体步骤 + 首环有证据）后定为 B——**不是**原 C 条目自设的"传进 breakeven/Fed 定价"触发条件达标了（今日利率端重定价归因于 CPI，该条件未满足）。正因为触发条件未达标，本次升级记为 borderline，升级/失效条件已收紧，review 2026-10-19。
+**复核结论 Sources:** [Reuters: Kremlin says contacts on Trump's Russia-Ukraine energy ceasefire are continuing (Oct 13)](https://www.reuters.com/world/kremlin-says-contacts-trumps-russia-ukraine-energy-ceasefire-are-continuing-2026-10-13/) · [Reuters: Aramco's Dhahran HQ suffered extensive damage (Oct 14)](https://www.reuters.com/world/middle-east/aramcos-dhahran-hq-suffered-extensive-damage-tuesdays-attack-sources-say-2026-10-14/) · [Reuters: Houthis vow more attacks on Saudi airports, oil facilities (Oct 14)](https://www.reuters.com/business/energy/yemens-houthis-vow-more-attacks-saudi-airports-oil-facilities-after-aramco-hq-2026-10-14/) · [CME FedWatch via Barron's: October hike odds 43.7% vs 22.1% Tuesday (Oct 14)](https://www.barrons.com/livecoverage/stock-market-news-today-101426/card/stocks-fall-after-hot-inflation-report-sends-rate-hike-odds-flying-urdVXbOKnGc9PCAGiU9X)
 
 ### 驱动一：供应风险↑ —— 霍尔木兹单周至少 12 起（锚点 #2026-10-08）
 **Class: B — Watch pending evidence**（入库政策 v1.1） · **Status:** 多源报道，部分核实（Reuters 10/7 引三家海事安全来源（匿名）；IMO 官方核实 9 起；On Peace 12 伤经印度外交部确认）/部分据报道（WSJ 匿名官员、AFP 派兵）
@@ -62,7 +69,7 @@ Reuters 10/7(London,Jonathan Saul)报道:9/28–10/5 单周,霍尔木兹及周�
 - [WSJ via Jalopnik: 7 tankers attacked since Sep 28, IRGC corridor warning, targeting improving (Oct 6)](https://www.jalopnik.com/2277511/strait-hormuz-u-s-official-admits-iran-targeting-abilities-keep-improving/)
 - [Euronews (AFP-credited, Oct 6): Turkey and Pakistan to send troops to Saudi Arabia under defence pact — t-online 原文未找到，以 AFP 标注的 Euronews 替代](https://dailyguardian.eu/turkey-and-pakistan-to-send-troops-to-saudi-arabia-under-defence-pact/)
 
-### 驱动二：供应缓解↓ —— 俄柴油 30/50/100 万吨 + OFAC + 能源停火宣布（锚点 #2026-10-13）
+### 驱动二：供应缓解↓ —— 俄柴油 30/50/100 万吨 + OFAC + 能源停火宣布（锚点 #2026-10-13） **[已关闭——2026-10-14 复核：未证实 + 失效条件触发，保留最小记录]**
 **Class: B — Watch pending evidence**（入库政策 v1.1） · **Status:** 混合——美方侧已实施（OFAC 通用许可证 135，2026-10-09，OFAC 原文）；俄方交付未验证（仅宣布）；10/11 能源停火为 Trump 单方宣布，俄乌双方均未确认
 **Move:** Brent 周一亚洲盘 -1.47% 至 $103.18（0154 GMT, Reuters），市场先交易柴油/停火的供给缓解；但美股时段中东升级（利雅得周日再袭、霍尔木兹实船偏紧）扭转走势，全天反涨 +1.84% **收 $106.65**（9/15 来最高收盘，Dow Jones Data Talk）——对比周五收 $104.72。**原'基本持平、被对冲'的写法只覆盖了亚洲盘，已按全天修正。** WTI 收 $93.74（约 +2%）；**ICE 柴油期货一度 -4.6% 至 $1,415/吨**（Reuters），成品油端反应大于原油  ·  **Catalyst confidence:** confirmed(Trump 周五宣布柴油供应的原话与数量,Reuters 10/12 多稿引述;ICE 期货跌幅)+ likely(俄实际交付能力:莫斯科部分解除柴油出口禁令、约 50 万吨待释出,PVM 经 Reuters 引述;俄炼油产能在乌无人机打击下严重受损)+ 据报道(俄乌"能源停火"仅 Trump 周日单方宣布:Zelenskyy 称"还在等细节",俄方无评论,双方均未确认)
 
@@ -101,9 +108,9 @@ Trump 周五(10/9,美东,Truth Social)宣布:俄罗斯将**立即**向美国及�
 - **Confidence:** 低-中。
 - **Upgrade criteria:** 任一方向坐实——(a) Kpler 实船流量掉下 18 mb/d 或 Brent **站稳** $105 之上（周一已收 $106.65 上破，复查确认是否站稳）且 breakeven/Fed 定价跟动（风险↑侧）；(b) 俄交付获独立证实 + 柴油持续走弱 + breakeven/Fed 定价对应移动（缓解↓侧）。
 - **Invalidation criteria:** 两边都落空——交付爽约且袭击频率回落、Kpler 站稳 18+。
-- **Review date: 2026-10-14–15（9 月 CPI 发布后 + Kpler 周更，强制重分类：升 A / 维持 B 并给新证据和新日期 / 关闭）。
+- **Review date: 2026-10-14–15（9 月 CPI 发布后 + Kpler 周更，强制重分类：升 A / 维持 B 并给新证据和新日期 / 关闭）。10/14 已执行，见本节点顶部「10/14 强制复核结论」；驱动一新 review 10/15（Kpler 周更 + 9 月 PPI），驱动三 review 10/19。**
 
-### 政策反应函数：FOMC 纪要的理由分歧（锚点 #2026-10-07，Class B）
+### 政策反应函数：FOMC 纪要的理由分歧（锚点 #2026-10-07） **[已验证——2026-10-14 退役，机制由 #2026-10-14 A 条目承接]**
 **Class: B — Watch pending evidence**（入库政策 v1.1） · **Status:** verified（纪要原文；"most participants"措辞经 Fed 原文核实无误）/ 部分为 9/16 已公开信息（点阵图）
 **一句话：** 纪要真正的增量不是鹰鸽，而是理由分歧的文档化——它决定了 10/14 CPI 的解读框架，进而决定能源冲击传导到政策预期的那一环走不走得通。
 **事实：** 19 位官员全票支持 9 月加息 25bp 至 3.75%–4.00%，"most participants assessed that another increase in the target range for the federal funds rate would likely be appropriate by year end"（Fed 原文，"most"核实无误）。分歧：预防性能源派（防能源冲击扩散）vs 需求派（防需求驱动通胀）vs 上调中性利率估计的少数人（Reuters 引纪要原文）。**更正：中性利率中值 3.06%→3.25% 上修是 9/16 点阵图已公开信息，非纪要新增。**
@@ -111,10 +118,42 @@ Trump 周五(10/9,美东,Truth Social)宣布:俄罗斯将**立即**向美国及�
 **驱动拆解（FRED 日数据证实）：** 10/5–7 breakeven 钉在 2.36%（T10YIE），实际利率 2.95→2.91→2.92（DFII10），名义 10Y 5.31→5.27→5.28——波动是实际收益率驱动的；期限溢价贡献无 ACM 数据，记假说。纪要原文的"实际收益率驱动长端"句（Staff Review of the Financial Situation）描述的是会议间期（7 月–9/16），仅作长期背景引用。
 **Admission（政策 v1.1）:** Q1 可写链：纪要理由分歧 → 10/14 CPI 解读框架 → 政策路径预期（后环待 CPI 验证）；Q2 不成立（10Y 高点在纪要发布前数小时，无纪要驱动的重定价）；Q3 理由分歧的文档化影响 10/14 CPI 解读及 10/27-28 会议框架，持续 1–2 周以上。**Upgrade:** 10/14 CPI 后 10 月加息定价从约 22% 移到 >50% 或 <10%，且方向与理由分歧框架一致（CPI 热→需求派占上风→>50%；CPI 冷→预防派理由被削弱→<10%）→ 升 A。**Invalidation:** CPI 降温且 12 月加息定价回落。**Review: 2026-10-14（与本节点共用）。**
 **Sources:** [Fed 纪要原文](https://www.federalreserve.gov/monetarypolicy/fomcminutes20260916.htm) · [Reuters: minutes show divided rate-hike logic](https://www.reuters.com/business/fed-policymakers-divided-over-rate-hike-logic-september-minutes-show-2026-10-07/) · [Barron's: 10Y auction](https://www.barrons.com/articles/strong-auction-shows-high-demand-for-10-year-treasuries-after-yield-surge-1d561135) · [FRED DFII10](https://fred.stlouisfed.org/series/DFII10) · [FRED T10YIE](https://fred.stlouisfed.org/series/T10YIE)
+**Resolution note（2026-10-14，小德终审）：** 10/14 CPI（3.7%/2.6% 双超预期）后，10 月加息定价 22.1%→43.7%（CME FedWatch Tool，CPI 发布后即刻），方向与理由分歧框架一致（热→鹰派占上风），但未过 round-3 自设的 >50% 升级线。按"验证"（非"超预期验证"）退役，机制由 #2026-10-14 A 条目承接。round-3 正文保持原样，此 note 为带日期的决议记录。
+
+### 驱动三：供应风险↑ —— 沙特本土/Aramco 遇袭（锚点 #2026-10-12 升级，Class B）
+**Class: B — Watch pending evidence**（入库政策 v1.1，2026-10-14 由 C 升级） · **Status:** confirmed（沙特能源部声明 Aramco 建筑遇袭；Reuters 引消息人士；Houthis 公开宣称）/ 据报道（损失程度：官方称"limited fire"，Reuters 引三名消息人士称火势蔓延数层、损失严重——口径冲突，待核实）
+**Move:** Brent 周三 +0.5–0.9% 至 ~$106.2–106.6（周一收 $106.65、周二 -0.9% 后回升），守住 $105 关口第三天；WTI ~$94.7–95.4  ·  **Catalyst confidence:** confirmed（沙特能源部：周二晚 Dhahran 的 Aramco 行政楼遇袭、有限火灾、无伤亡；联军称周二晚拦截多枚导弹、周三再拦截一枚射向利雅得的弹道导弹；Houthis 周三公开宣称对 Aramco 总部/利雅得机场/利雅得炼厂发动导弹无人机袭击，并威胁继续）+ 据报道（Reuters 引消息人士称 Aramco 大楼火势蔓延数层、损失严重，与官方"limited fire"口径冲突）
+**What happened:**
+升级阶梯又爬一格：从"首都机场"爬到"产油设施"。周二（10/13）晚，Houthis 袭击了 Dhahran 的沙特阿美（Saudi Aramco）总部行政楼，沙特能源部称引发有限火灾、无人员伤亡；但 Reuters 引三名知情人士称火势蔓延数层、损失严重（口径冲突，待核实）。此前周二白天，沙特联军空袭了也门境内多处 Houthi 石油设施（Sanaa、Dhamar、Saada），系联军首次对也门首都发布撤离令后动手。周三 Houthis 公开宣称对 Aramco 设施、利雅得国际机场、利雅得炼厂发动了弹道/巡航导弹+无人机打击，并威胁将继续袭击沙特机场与石油设施、要求"国际航运公司"撤离相关区域——把能源基础设施列为"合法目标"。联军称周二晚拦截多枚导弹（含射向利雅得的）、周三再拦截一枚射向利雅得的弹道导弹；周三沙特民防称拦截碎片致利雅得 4 人受伤、15 所房屋受损。沙特内阁周二警告 Houthis 若继续袭击将面临"consequences"。
+**Transmission（Q1，可写链）:** Houthis 袭击沙特产油设施 → 沙特供应中断风险（全球最大出口国）→ Brent 供应风险溢价 → 能源 CPI → headline CPI → 政策预期。前两环有证据（袭击真实发生、Brent 守住 $105+）；"实际供应中断"尚未发生，是关键假设。
+**Causal chain:**
+1. 这是第一次：Aramco——全球最重要的石油公司——本土总部遇袭。此前市场的定心丸是"实船流量还在战前之上"（#2026-10-06 Kpler），压的是"海运风险"；现在风险传到了产油国本土的生产设施，溢价结构变了：保险对冲不了炼厂/总部被炸
+2. 但"limited fire vs extensive damage"口径冲突 + 无生产中断证实 → 市场只给了温和定价：Brent 周三 +0.5–0.9% 回到 ~$106.2–106.6，基本是周一 $106.65 的平盘延续。价格信"实际中断"，不信"宣称"——和柴油那条线的教训一样
+3. 对分母：今日 2Y/10Y/DXY 的重定价时序归因指向 CPI（8:30 ET 数据后即刻反应），不计入本驱动。油价这条线若要传进分母，需要看到：实际生产/出口中断，或 Brent 有效突破 $107–110 且 breakeven/Fed 定价跟动
+**双向看：** 升级侧——Houthis 明确把石油设施列为持续打击目标、联军已开始炸也门石油设施（报复循环启动）、沙特内阁放话"consequences"；降温侧——Aramco 运营据报正常（员工居家办公）、无生产中断证实、11/3 中期选举红线仍在、Trump 尚未决定是否参战也门。
+**Admission（政策 v1.1）:**
+- Q1: 可写链（见上），前两环有证据
+- Q2: Brent 有反应（守住 $105+、周三 +0.5–0.9%）；利率端今日重定价归因于 CPI，不计入
+- Q3: 冲突已持续 4 天且升级（机场→Aramco），报复循环已启动，持续 1–2 周以上概率高
+- **Upgrade:** 实际生产/出口中断获证实，或 Brent 有效突破 $107–110 且 breakeven/Fed 定价跟动 → 升 A
+- **Invalidation:** 袭击停止、Brent 回落至 $100 下方 → 关闭
+- **Review date:** 2026-10-19（与原 C 条目 review 对齐；或袭击/中断证据出现时提前）
+- **Counterfactual:** 若排除本条目，会丢失"能源供应风险从海运（霍尔木兹）传到产油国本土生产设施"这一关键变量变化——正是 Brent 守住 $105+ 而非回落的核心解释
+- **Confidence:** 中（袭击 confirmed，损失程度与持续性待验证）
+**盯的变量:** Aramco 损失核实（limited vs extensive）、Houthis 是否继续袭击石油设施、沙特联军报复烈度、Trump 是否决定参战也门、Kpler 实船流量、Brent $105/$107–110 关口、11/3 红线
+**Sources:**
+- [Reuters: Aramco's Dhahran HQ suffered extensive damage in Tuesday's attack, sources say (Oct 14) — 一手](https://www.reuters.com/world/middle-east/aramcos-dhahran-hq-suffered-extensive-damage-tuesdays-attack-sources-say-2026-10-14/)
+- [Reuters: Yemen's Houthis vow more attacks on Saudi airports, oil facilities after Aramco HQ (Oct 14) — 一手](https://www.reuters.com/business/energy/yemens-houthis-vow-more-attacks-saudi-airports-oil-facilities-after-aramco-hq-2026-10-14/)
+- [The Hindu: Yemen's Houthis vow more attacks on Saudi airports, oil facilities after Aramco HQ hit (Oct 14)](https://www.thehindu.com/news/international/yemens-houthis-vow-more-attacks-on-saudi-airports-oil-facilities-after-aramco-hq-hit/article71583859.ece)
+- [The Hindu: Saudi says Houthi attacks sparked Aramco fire, wounded 4 in Riyadh (Oct 14)](https://www.thehindu.com/news/international/saudi-says-houthi-attacks-sparked-aramco-fire-wounded-4-in-riyadh/article71582466.ece)
+- [Indian Express: Fire at Aramco headquarters after Houthi strike (Oct 14)](https://indianexpress.com/article/world/aramco-headquarters-fire-saudi-arabia-houthi-strike-10920996/)
+- [JPost/Reuters: Yemen's Houthis say they targeted Saudi Aramco facilities, Riyadh airport (Oct 14)](https://www.jpost.com/middle-east/article-911660)
+- [HDFC Sky: Oil Prices Rise on Saudi Supply Risks; Brent at $106.2 (Oct 14)](https://hdfcsky.com/news/brent-crude-oil-price-today-october-14-2026-brent-rises-0-5percent-to-106-2-wti-gains-0-6percent-to-94-7-amid-saudi-supply-risks)
 
 ### C — Observe only
 
 ## 2026-10-12 — 胡塞导弹直击利雅得哈立德国王机场(周六):12 死 309 伤、机场关闭 600+ 航班取消,Trump 称美国可能参战也门:沙特 10 年来最致命袭击,地缘溢价周一重定价
+**10/14 更新：已升级为 B（并入 B 节点「驱动三：沙特本土/Aramco↑」）。本条目保留为历史记录。Review 2026-10-19 继续适用（现为 B 的 review）。**
 **Class: C — Observe only**（入库政策 v1.1） · **未达标原因:** Q2 未过——Brent 周末基本持平（周五 ~$104.5 → 周一 ~$104.50），未见利率端（2Y/10Y、breakeven、Fed futures）重定价；所谓通胀→Fed链全靠未验证假设。**Review:** 约 2026-10-19，默认关闭，除非出现新证据。
 **Move:** 美股/美债周末休市,无即时反应;Brent 周五(10/9)收 ~$104.5,周末指示价约 $103.53;周一(10/12)亚洲盘 -1.47% 至 $103.18,后回吐至 -0.2% 收 $104.50——Trump 的柴油供应/俄乌能源停火宣布(见 #2026-10-13)对冲了袭击的地缘溢价,Brent 基本回到周五收盘水平;10Y 5.244% 高位区  ·  **Catalyst confidence:** confirmed(沙特民航总局 GACA 周日官方声明伤亡数字;CNN、Le Monde、AAP 系多家交叉报道;Trump 表态多家引述原话)+ confirmed(Reuters 10/11:周日跟进袭击致 1 死 11 伤;美国驻沙特使团周日安全警报)
 
@@ -141,6 +180,40 @@ A Houthi missile struck a terminal building at King Khalid International Airport
 - [Devdiscourse: UN chief Guterres condemns Houthi strike on Saudi Arabia's Riyadh airport (Oct 11)](https://www.devdiscourse.com/article/international/3990257-un-chief-guterres-condemns-houthi-strike-on-saudi-arabias-riyadh-airport)
 
 ## Timeline (newest first)
+
+## 2026-10-14 — 9 月 CPI 双超预期(headline 3.7% vs 预期 3.6%,核心 2.6% vs 预期 2.5%):10 月加息定价 22.1%→43.7%(CME FedWatch,10/14 CPI 发布后即刻),2Y +14bp 至 4.93%,10Y +10bp 至 5.31%,DXY 18 个月新高
+**Class: A — Admit to main timeline**（入库政策 v1.1） · **Status:** verified（BLS 官方发布）
+**Move:** 非价格事件（数据发布）——但市场反应剧烈：2Y +14bp 至 ~4.93%，10Y +10bp 至 ~5.31%（盘中一度 5.33%），DXY +0.55% 至 102.75（18 个月新高），黄金 -1.6% 至 $4,088；10 月 FOMC 加息定价 22.1%→43.7%（CME FedWatch Tool，10/14 CPI 发布后即刻；各媒体引用 44–49% 不等），12 月至少加息一次定价 ~93%  ·  **Catalyst confidence:** confirmed（BLS 10/14 美东 8:30 发布；Reuters/Barron's/Investopedia 交叉）
+**What happened:**
+BLS 周三（10/14，美东 8:30）发布 9 月 CPI：headline 环比 +0.6%（符合预期的 0.6%，8 月 +0.4%），同比 **3.7%**（预期 3.6%，8 月 3.4%）；核心环比 **+0.3%**（预期 0.2%，连续第二个月 0.3%），同比 **2.6%**（预期 2.5%，8 月 2.4%）。能源是 headline 的主要推手：能源环比 +5.2%（8 月 +2.1%），其中汽油 +9.1%（BLS CPI 分项口径；Reuters 另引 EIA 零售价口径 +7.1%，口径不同，非数据冲突），燃料油 +15.3%；食品持平。但核心的加速不能全怪能源：shelter 环比 +0.4%（8 月 +0.3%）、同比 +3.2%，连续第二个月 0.3% 的核心环比说明压力在向更广的篮子扩散。
+**Causal chain:**
+1. 双超预期（年度 headline + 年度核心）直接改写政策路径预期：10 月加息定价从 22.1% 翻倍到 43.7%（CME FedWatch Tool，10/14 CPI 发布后即刻），12 月至少加一次定价升至 ~93%——9 月 CPI 是 10/27–28 FOMC 前最后一份重磅通胀数据，"last mile" 回去的路看起来更难走了
+2. 前端领涨是典型的"热 CPI"定价：2Y +14bp（对 Fed 未来决议最敏感），10Y +10bp 至 5.31%，DXY 冲 18 个月新高，黄金 -1.6%——市场在交易"higher for longer"加码
+3. 对分母：10Y 重新站上 5.3% 关口，长端分母再紧一扣；高估值 AI/成长股的贴现率逆风确认加剧。这正是 #2026-10-07 政策反应函数等待的裁判：纪要里"most"年内再加一次的框架 + 热 CPI = 10 月加息选项回到桌面
+4. 双向看：降温侧——Bowman（美联储监管副主席，CPI 发布前讲话）称"no urgent need"，主张先评估 9 月加息效果；能源驱动的 headline 部分 Fed 历史上愿意"look through"；Williams 仍称年内再加一次"may be appropriate"。升级侧——核心连续两个月 0.3% 环比，shelter 反而加速，能源/关税的 pass-through 正在向广义篮子渗透。下一裁判：10/15 的 9 月 PPI，随后是 10/27–28 FOMC
+**Admission record（政策 v1.1）:**
+- **Event:** 9 月 CPI 双超预期（3.7%/2.6% vs 预期 3.6%/2.5%）
+- **Status:** verified（BLS 官方）
+- **Known facts:** 见上。市场反应发生在数据发布后数分钟内，时序干净
+- **Transmission:** CPI 超预期 → 预期 Fed 路径重定价 → 2Y/10Y/DXY 即刻重定价。链的每一步都有同时段市场证据支撑
+- **Market evidence:** 2Y +14bp→~4.93%，10Y +10bp→~5.31%，DXY +0.55%→102.75（18 个月新高），10 月加息定价 22.1%→43.7%（CME FedWatch Tool，10/14 CPI 发布后即刻；媒体引用 44–49% 不等），12 月 ~93%；黄金 -1.6%
+- **Expectation vs outcome:** 市场预期 headline 3.6%/核心 2.5%（核心环比 0.2%），实际 3.7%/2.6%（核心环比 0.3%）；headline 环比符合预期，同比与核心双双超预期
+- **Alternative explanations:** 仓位/技术性抛售可能放大了收益率上行；但前端领涨 + DXY 走强 + 加息定价翻倍的组合是标准的政策预期重定价，单一技术因素解释不了
+- **Assessment:** 实质改变政策预期（10 月加息从"基本出局"回到"接近抛硬币"），"last mile" 通胀黏性得到新证据；分母端 10Y 重返 5.3%+
+- **Confidence:** 高（BLS 一手 + 发布后即刻的市场反应，归因时序无争议）
+- **强化条件:** 10/15 PPI 同样热、或 10 月加息定价突破 50% → 鹰派路径坐实
+- **削弱条件:** 后续数据（PPI/就业）明显降温、10 月加息定价回落至 20% 以下
+- **Review date:** 10/27–28 FOMC（下一次政策决议）
+- **Counterfactual:** 若排除本条目，会丢失"10 月加息定价 22.1%→43.7% 翻倍"这一政策预期的实质变化，以及"核心通胀连续第二个月 0.3%、压力向广义篮子扩散"的关键证据——正是 #2026-10-07 政策反应函数等待的裁判
+**盯的变量:** 10/15 9 月 PPI、10/27–28 FOMC、官员后续表态（Bowman/Williams）、10Y 5.3% 关口与 2Y 5% 关口、DXY 强势对新兴市场的传导
+**Sources:**
+- [BLS: Consumer Price Index — September 2026 (USDL-26-1574, embargoed 8:30am ET Oct 14, 2026) — 官方发布](https://www.bls.gov/news.release/archives/cpi_10142026.htm)
+- [Reuters: Hot September CPI sends rate-hike bets soaring (Oct 14)](https://www.reuters.com/business/view-hot-september-cpi-sends-rate-hike-bets-soaring-2026-10-14/)
+- [Barron's: Stocks Drop and Yields Pop After Hot CPI](https://www.barrons.com/livecoverage/stock-market-news-today-101426/card/stocks-drop-and-yields-pop-after-hot-cpi-LCzp7ZNQSI1QQni2Rk1R)
+- [Investopedia: Stock Market Today — Nasdaq, S&P 500 Drop, Treasury Yields Jump](https://www.investopedia.com/stock-market-today-dow-jones-s-and-p-500-10142026-12173010)
+- [Zacks: Core Inflation Just Accelerated. The Fed Is Listening.](https://www.zacks.com/commentary/3007152/core-inflation-just-accelerated-the-fed-is-listening)
+- [MarketBriefer: CPI Reaction — September 2026 Inflation Rose to 3.7%](https://marketbriefer.com/cpi-reaction-september-2026/)
+- [Barchart: Dollar Advances and Gold Falls on a Hot US CPI Report](https://www.barchart.com/story/news/7620165/dollar-advances-and-gold-falls-on-a-hot-us-cpi-report)
 
 ## 2026-10-09 — 白宫对伊朗开战选项曝光(据报道)+Trump 承诺 11/3 前不动武:油市押升级,Brent 单日 +4% 冲上 $105
 **Move:** Brent 周四(美东) +4% 收 $105.10(TradingNews;Reuters Trading Day 称月内最佳单日),盘中突破 $105;WTI +5.15% 收 $92.83;Brent-WTI 价差约 $12.3,战争溢价再扩大  ·  **Catalyst confidence:** 据报道(The Atlantic 10/7 引两名美方官员:白宫要求五角大楼制定中期选举前可执行的对伊打击选项;Axios、NBC 有同类报道)+ confirmed(Trump 10/8 Truth Social 帖文被 USA Today 全文引用:"we will not be attacking Iran at any time prior to the Midterm Elections…November 3rd")
