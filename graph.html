@@ -463,7 +463,7 @@ const NODES = [
   { id:"MSFT", cn:"微软", type:"stock" },
   { id:"ORCL", cn:"甲骨文", type:"stock" },
   { id:"OPENAI",cn:"OpenAI", label:"OPENAI", type:"stock", private:true, tag:"拟上市" },
-  { id:"ANTHROPIC",cn:"Anthropic", label:"ANTHROPIC", type:"stock", private:true, tag:"拟上市" },
+  { id:"ANTHROPIC",cn:"Anthropic", label:"ANTHROPIC", type:"stock", private:true, tag:"S-1已递交·ANT" },
   { id:"HF",   cn:"Hugging Face", label:"HUG·FACE", type:"stock", private:true, tag:"拟被 NVDA 收购" },
 ];
 
@@ -760,12 +760,12 @@ const DETAIL = {
     src: [["估值 $8520 亿收官融资","https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html"],["$1 万亿+ 基建开支","https://tomtunguz.com/openai-hardware-spending-2025-2035/"]],
   },
   ANTHROPIC: {
-    lead: "Claude 的缔造者，企业级 AI 龙头，全图另一个引力中心。9/1 大事：Q2 收入 $115 亿(+14 倍)转经营盈利，收入反超 OpenAI 成全球最贵 AI 初创，引入高盛推进 IPO 提速。从纯私有走向拟上市，估值传闻 targeting $2 万亿——是「AI 变现」最硬的样本。",
-    move: [["性质","拟上市(IPO 提速) · 估值 ~$9650 亿"],["收入","Q2 $115 亿(+14 倍)，反超 OpenAI"]],
+    lead: "Claude 的缔造者，企业级 AI 龙头，全图另一个引力中心。10/26 大事：S-1 公开递交（代码 ANT，预计 11 月中旬挂牌）——H1 收入 $163 亿（同比约 14 倍）第一次以审计口径落地，Q2 单季 $115.6 亿且经营利润转正；$807 亿净亏损里 $724 亿是非现金公允价值变动，经营亏损仅 $6.93 亿。从私有传闻正式走向公开文件。",
+    move: [["性质","S-1 已递交(代码 ANT) · 待定价挂牌"],["收入","H1 $163 亿(+14 倍)，Q2 单季 $115.6 亿"]],
     up: [["AMZN","投至多 $250 亿 + 5GW 算力"],["GOOGL","投至多 $400 亿 + 5GW TPU"],["AVGO/TSM","算力硬件更上游"]],
     down: [["AMZN AWS","承诺十年 $1000 亿+ 采购→撑起 AWS 利润率"],["GOOGL Cloud","大额 TPU 订单"],["企业 AI","财富10强中8家是客户"]],
-    chain: ["Claude 企业采用爆发→收入 80x，现金流验证真实需求","承诺十年 $1000 亿采购 AWS→直接撑起 AMZN 的 ROI","亚马逊/谷歌各押数百亿→投资+卖算力双向绑定","但 $2 万亿 IPO 估值 vs 当前收入→能否兑现是问号"],
-    src: [["$650 亿 H 轮，估值 $9650 亿","https://www.anthropic.com/news/series-h"],["$2 万亿估值 vs 收入之争","https://fortune.com/2026/08/14/anthropic-valuation-ipo-amazon-trillion-openai/"]],
+    chain: ["Claude 企业采用爆发→H1 收入 $163 亿(+14 倍)，S-1 审计口径坐实","算力义务约 $4,170 亿(据 Skimwire 梳理 S-1)→长约需求从传闻变文件","亚马逊/谷歌各押数百亿→投资+卖算力双向绑定","但 IPO 估值讨论 $1.5–2 万亿 vs H1 年化约 $326 亿收入→定价待路演与 Q3 裁判"],
+    src: [["S-1 公开递交(Decrypt 梳理)","https://decrypt.co/381818/anthropic-makes-ipo-filing-public-plans-nasdaq-listing-under-ant"],["$650 亿 H 轮，估值 $9650 亿","https://www.anthropic.com/news/series-h"],["$2 万亿估值 vs 收入之争","https://fortune.com/2026/08/14/anthropic-valuation-ipo-amazon-trillion-openai/"]],
   },
   HF: {
     lead: "全球最大的开源 AI 模型/数据集社区（1800 万+ 开发者、300 万+ 模型），开源模型事实上的「应用商店」。9/3：NVDA 拟以 ~$130 亿收购它——「卖铲子」的向上吃到「开发者入口/模型分发」层，CUDA(底层)+ Hugging Face(分发) 双护城河。2027 上半年完成。",

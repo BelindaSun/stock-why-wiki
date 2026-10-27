@@ -16,6 +16,7 @@
 
 ## 条目（最新在上）
 
+- **2026-10-26** · [[ANTHROPIC]] Anthropic — S-1 公开递交(代码 ANT,预计 11 月中旬挂牌):H1 收入 $163 亿(同比约 14 倍,审计口径首落地),净亏损 $807 亿里 $724 亿是非现金公允价值变动、经营亏损仅 $6.93 亿且 Q2 单季转正;算力义务约 $4,170 亿落纸;创始人一股 Class F 握 50.1% 表决权 + 信托选董事会多数 → [stocks/ANTHROPIC.md](stocks/ANTHROPIC.md)
 - **2026-10-14** · [[industry:macro-rates]] 宏观利率 — 9 月 CPI 双超预期(3.7%/2.6%)：**Class A**，10 月加息定价 22%→~44–49%，2Y +14bp 至 4.93%，10Y +10bp 至 5.31%，DXY 18 个月新高 → [industries/macro-rates.md](industries/macro-rates.md)
 - **2026-10-14** · [[industry:macro-rates]] 宏观利率 — B 节点 10/14 强制复核：柴油缓解线关闭（证伪）、政策反应函数验证退役（并入 A 条目）、沙特本土/Aramco 遇袭由 C 升级为 B（驱动三，review 10/19）、霍尔木兹维持 B（review 10/15） → [industries/macro-rates.md](industries/macro-rates.md)
 - **2026-10-12** · [[industry:macro-rates]] 宏观利率 — 胡塞导弹袭利雅得机场(周六 10/10)：**10/14 由 C 升级为 B**（并入 B 节点驱动三：沙特本土/Aramco↑；周二晚 Aramco 总部遇袭、Houthis 威胁继续打击石油设施），review 10/19 → [industries/macro-rates.md](industries/macro-rates.md)
