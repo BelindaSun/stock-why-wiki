@@ -463,7 +463,7 @@ const NODES = [
   { id:"MSFT", cn:"微软", type:"stock" },
   { id:"ORCL", cn:"甲骨文", type:"stock" },
   { id:"OPENAI",cn:"OpenAI", label:"OPENAI", type:"stock", private:true, tag:"拟上市" },
-  { id:"ANTHROPIC",cn:"Anthropic", label:"ANTHROPIC", type:"stock", private:true, tag:"S-1已递交·ANT" },
+  { id:"ANTHROPIC",cn:"Anthropic", label:"ANTHROPIC", type:"stock", tag:"已上市·ANT" },
   { id:"HF",   cn:"Hugging Face", label:"HUG·FACE", type:"stock", private:true, tag:"拟被 NVDA 收购" },
 ];
 
@@ -541,6 +541,7 @@ const EDGES = [
   { a:"AMZN", b:"OPENAI",label:"投至多$500亿" },
   { a:"AMZN", b:"ANTHROPIC",label:"投$250亿⇄回购$1000亿AWS(ROI实证)" },
   { a:"GOOGL",b:"ANTHROPIC",label:"投$400亿⇄5GW TPU" },
+  { a:"AMD",  b:"ANTHROPIC",label:"投至多$50亿⇄2GW MI450(采购>$200亿)" },
   { a:"OPENAI",b:"AMD", label:"$900亿算力合约" },
   { a:"CBRS", b:"OPENAI",label:"80% backlog 依赖" },
   { a:"ORCL", b:"OPENAI",label:"约50% backlog绑定·$3000亿基建" },
@@ -587,12 +588,12 @@ const EDGES = [
 
 const DETAIL = {
   NVDA: {
-    lead: "9/3 战略大动作：拟以 ~$130 亿收购 Hugging Face——从「卖铲子」向上吃到「开发者入口/模型分发」层，CUDA(底层)+ Hugging Face(分发) 双护城河。(此前 8/26 财报炸裂、2027 +70% 增长指引已破「财报后即跌」魔咒。) 作为全图中心节点，它的每一步都牵动整条 AI 链。",
-    move: [["最新","拟收购 Hugging Face ~$130亿"],["近因","财报后 +6% · 2027 +70% 指引"]],
+    lead: "全图中心节点经历 33 年来最大人事地震：11/12 黄仁勋辞职（董事会 11/11 接受、8-K 未给理由；背景是婚外情指控＋Megaspeed 国家安全调查），CFO Colette Kress 任临时 CEO 并兼 CFO，Harvey Jones 任首位董事会主席，永久 CEO 遴选中。股价自 10/6 高点 $239 六周回落约 35%。11/17 无黄首份财报全面超预期（营收 $1,158 亿 +103%、Q4 指引 $1,300 亿、FY28 增速目标上调至 75%），董事会同日明确拒绝黄回归；SEC 据报正调查其披露。",
+    move: [["最新","黄仁勋辞职 · Kress 临时 CEO · 董事会拒绝其回归"],["财报","Q3 营收 $1,158 亿超预期，盘后 +4.4%"]],
     up: [["TSM","独家代工，产能决定供给"],["MU/SKHY","HBM 内存是 AI 芯片瓶颈"],["MSFT/GOOGL/AMZN/META","云厂 capex = 订单簿"]],
     down: [["HF","拟收购，向上吃开发者入口/分发层"],["SMH","中心节点，牵动整个板块情绪"],["AVGO/AMD","路线之争的另一极/竞争"]],
-    chain: ["财报炸裂 + 70% 指引→需求可见度拉长，中心地位稳固","下一层竞争是「开发者心智 + 模型分发」，非只算力","收购 Hugging Face→CUDA+分发双护城河，把生态锁更深","但引来中立性顾虑 + 反垄断审查 + 与模型层竞合模糊"],
-    src: [["NVIDIA 官宣收购 Hugging Face","https://blogs.nvidia.com/blog/nvidia-to-acquire-hugging-face/"],["CNBC：约 $130 亿收购","https://www.cnbc.com/2026/09/03/nvidia-agrees-to-buy-hugging-face-for-almost-13-billion-ai-expansion.html"]],
+    chain: ["创始人治理风险从 0 变主线：调查未结、SEC 据报查披露、12/1 国会听证","数字面未伤：营收 +103%、指引超预期、FY28 目标反上调至 75%","董事会用财报会第一句关门：不打算请黄回归","裁判：永久 CEO 人选 + 调查结论 + Rubin 量产与毛利率"],
+    src: [["NVIDIA 官方：CEO Transition","https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-CEO-Transition/"],["TheStreet：财报日综述","https://pro.thestreet.com/stock-market-today/2026-11-17"],["AInvest：六周 −35% 复盘","https://www.ainvest.com/news/239-156-weeks-nvidia-problem-jensen-huang-2611/"]],
   },
   TSM: {
     lead: "9/12 强验证：Apple A20 Pro 成全球首款 2nm(TSMC N2)手机芯片，把 TSM 的「2nm 商业化」从路线图变成实际出货——技术领先 + 定价权直接兑现。与 Apple 9/9 那条互为印证(苹果端是换机催化，台积电端是 2nm 放量)。(此前 8/23：财报超预期却因高 capex 回调。)",
@@ -629,12 +630,12 @@ const DETAIL = {
     src: [["ts2.tech：单周 −4.4%","https://ts2.tech/en/asml-slides-4-4-in-a-week-as-thin-friday-bounce-tests-ai-capex-premium/"],["出口管制法案推进","https://coincentral.com/asml-stock-falls-8-as-china-export-control-bill-advances-analysts-weigh-in/"]],
   },
   AMD:  {
-    lead: "不是暴雷，是「涨太多 + 预期太满」后的均值回归。年内一度 +126%、TTM 市盈率 ~123x（行业均值 ~35），把增长完美定价。Q2 营收 +50% 到 $11.5B 超预期仍被砸盘。",
-    move: [["异动","7 月 −18% · 8 月跌破 $500"],["催化剂","confirmed + likely"]],
+    lead: "11/19 做空狙击日：Hunterbrook 指控 AMD 固件持续流入实体清单企业浪潮 IEIT 及三家关联销售商，盘中一度 −11.2%（高点 $555→$470.56），收盘 −7.7%。指控未坐实——报告方自认不知代码来源与许可情况、且已公开做空；但它打破了 AMD「相对 NVDA 更干净」的替代叙事。此前 11 月借黄仁勋离职轮动 + Anthropic 代理票叙事大涨，位置极高、容错极低。",
+    move: [["异动","11/19 盘中 −11.2% · 收盘 −7.7%"],["催化剂","做空报告(指控未证实)"]],
     up: [["TSM","MI/EPYC/Ryzen 全靠台积电代工"],["HBM","AI 加速器关键瓶颈"],["CoWoS 封装","与 NVDA 抢同一批封装产能"]],
-    down: [["NVDA","直接竞争，同涨同跌但份额此消彼长"],["CBRS","同抢推理市场，收购 Taalas 强化推理"],["云厂商","MSFT/Meta/OpenAI/Oracle 采用 Helios 机架"]],
-    chain: ["年内 +126%、~123x：完美定价容不下瑕疵","AI 超支担忧 + 收益率上行，板块杀估值","SpaceX 只买 NVDA + DeepSeek 传自研芯片，客户叙事受打击","大会利好不及预期 + 财报超预期仍跌：买预期卖事实","费半三日暴跌，高 beta 龙头跌幅放大"],
-    src: [["Motley Fool：7 月跌 18%","https://www.fool.com/investing/2026/08/10/why-amd-stock-tumbled-18-in-july/"],["客户转向对手","https://intellectia.ai/news/stock/amd-shares-drop-as-major-customer-shifts-to-rival-for-ai-chips"]],
+    down: [["NVDA","直接竞争，同涨同跌但份额此消彼长"],["ANTHROPIC","2GW MI450 + 投至多 $50 亿，采购 >$200 亿"],["CBRS","同抢推理市场，收购 Taalas 强化推理"],["云厂商","MSFT/Meta/OpenAI/Oracle 采用 Helios 机架"]],
+    chain: ["指控把 AMD 拖进「中国问题」框架→相对干净叙事破裂","固件牵连 EPYC 基本盘 + 三家明面销售商→敞口大于单一产品线","高位(两日摸 $555、约 30x 远期 PE)放大跌幅","ANT 首日靴子落地→代理票 sell-the-news 叠加","裁判：AMD 回应 + 商务部是否跟进"],
+    src: [["Reuters：China links 或引监管关注","https://www.reuters.com/world/china/amd-shares-slide-report-says-china-links-could-invite-us-scrutiny-2026-11-19/"],["Hunterbrook 报告梳理(AIStockWire)","https://aistockwire.com/blog/amd-stock-falls-hunterbrook-short-ieit-china-firmware-blacklist-november-2026"]],
   },
   MU: {
     lead: "跟本周普跌的 AMD/ASML 相反，美光是 AI 链里逆势走强的一环——8/18 首破 $1,000。核心是 HBM 供不应求：HBM4 已独供 NVDA Vera Rubin，还锁了 16 份 5 年 take-or-pay 长约（~$1000 亿 RPO），把「周期股」变成了「合约化」的确定性。",
@@ -760,12 +761,12 @@ const DETAIL = {
     src: [["估值 $8520 亿收官融资","https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html"],["$1 万亿+ 基建开支","https://tomtunguz.com/openai-hardware-spending-2025-2035/"]],
   },
   ANTHROPIC: {
-    lead: "Claude 的缔造者，企业级 AI 龙头，全图另一个引力中心。10/26 大事：S-1 公开递交（代码 ANT，预计 11 月中旬挂牌）——H1 收入 $163 亿（同比约 14 倍）第一次以审计口径落地，Q2 单季 $115.6 亿且经营利润转正；$807 亿净亏损里 $724 亿是非现金公允价值变动，经营亏损仅 $6.93 亿。从私有传闻正式走向公开文件。",
-    move: [["性质","S-1 已递交(代码 ANT) · 待定价挂牌"],["收入","H1 $163 亿(+14 倍)，Q2 单季 $115.6 亿"]],
-    up: [["AMZN","投至多 $250 亿 + 5GW 算力"],["GOOGL","投至多 $400 亿 + 5GW TPU"],["AVGO/TSM","算力硬件更上游"]],
+    lead: "Claude 的缔造者，企业级 AI 龙头，全图另一个引力中心。11/19 大事：以史上最大 IPO 正式挂牌（发行 $83、募资 $813 亿＋私募配售 $260 亿）——开盘 $111.50 把完全稀释估值顶到约 $2 万亿，盘中跌破 $100、收盘 $97.17（+17%），定价一步到位、价格发现期开启。前九月收入 $332 亿、10 月底 run rate 约 $810 亿；总购买承诺＋租赁 $9,009 亿写入修订版 S-1。",
+    move: [["性质","已上市 (NASDAQ: ANT) · 发行价 $83"],["首日","开盘 $111.50 (+34%)，收盘 $97.17 (+17%)"]],
+    up: [["AMZN","投至多 $250 亿 + 5GW 算力"],["GOOGL","投至多 $400 亿 + 5GW TPU"],["AMD","2GW MI450 + 投至多 $50 亿"],["AVGO/TSM","算力硬件更上游"]],
     down: [["AMZN AWS","承诺十年 $1000 亿+ 采购→撑起 AWS 利润率"],["GOOGL Cloud","大额 TPU 订单"],["企业 AI","财富10强中8家是客户"]],
-    chain: ["Claude 企业采用爆发→H1 收入 $163 亿(+14 倍)，S-1 审计口径坐实","算力义务约 $4,170 亿(据 Skimwire 梳理 S-1)→长约需求从传闻变文件","亚马逊/谷歌各押数百亿→投资+卖算力双向绑定","但 IPO 估值讨论 $1.5–2 万亿 vs H1 年化约 $326 亿收入→定价待路演与 Q3 裁判"],
-    src: [["S-1 公开递交(Decrypt 梳理)","https://decrypt.co/381818/anthropic-makes-ipo-filing-public-plans-nasdaq-listing-under-ant"],["$650 亿 H 轮，估值 $9650 亿","https://www.anthropic.com/news/series-h"],["$2 万亿估值 vs 收入之争","https://fortune.com/2026/08/14/anthropic-valuation-ipo-amazon-trillion-openai/"]],
+    chain: ["S-1 审计口径坐实收入→IPO 定价 $83 高于区间顶、规模上调","开盘约 $2 万亿估值一步到位→首日冲高回落，看解禁与首份财报","总承诺 $9,009 亿→下游订单确定性空前，但约 $1,862 亿带终止权","七家供应链巨头私募配售 $260 亿按发行价上车→绑定再加一层"],
+    src: [["史上最大 IPO 首日(PitchBook 直播)","https://pitchbook.com/anthropic-ipo-live-updates"],["S-1 公开递交(Decrypt 梳理)","https://decrypt.co/381818/anthropic-makes-ipo-filing-public-plans-nasdaq-listing-under-ant"],["$650 亿 H 轮，估值 $9650 亿","https://www.anthropic.com/news/series-h"]],
   },
   HF: {
     lead: "全球最大的开源 AI 模型/数据集社区（1800 万+ 开发者、300 万+ 模型），开源模型事实上的「应用商店」。9/3：NVDA 拟以 ~$130 亿收购它——「卖铲子」的向上吃到「开发者入口/模型分发」层，CUDA(底层)+ Hugging Face(分发) 双护城河。2027 上半年完成。",

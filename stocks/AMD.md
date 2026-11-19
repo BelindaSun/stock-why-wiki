@@ -1,5 +1,5 @@
 # AMD — Advanced Micro Devices
-_Asset type: stock (NASDAQ)_ · _Last updated: 2026-09-22_
+_Asset type: stock (NASDAQ)_ · _Last updated: 2026-11-19_
 
 CPU + GPU 双线厂商,AI 加速器(Instinct MI 系列)是 [[NVDA]] 在训练/推理市场的头号挑战者。2026 年 AI 概念龙头之一,估值随之被推到极高。
 
@@ -12,6 +12,7 @@ CPU + GPU 双线厂商,AI 加速器(Instinct MI 系列)是 [[NVDA]] 在训练/�
 
 ## Downstream — what it affects
 - 云厂商客户 — Microsoft/Meta/OpenAI/Oracle 采用其 Helios AI 机架系统
+- [[ANTHROPIC]] — 7/22 战略合作:至多 2GW MI450(Helios)+ 至多 $50 亿股权投资(IPO 私募配售已落 $25 亿),Anthropic 采购额可 >$200 亿;上市前一度是其"代理票"
 - [[NVDA]] 英伟达 — 直接竞争对手,两者常同涨同跌(AI 芯片贝塔),但客户流向此消彼长
 - [[CBRS]] Cerebras 等推理新贵 — 同抢推理市场,AMD 收购 Taalas 强化推理
 - PC/服务器 CPU 市场 — EPYC 抢 Intel 份额,是其"非 AI"稳定盘
@@ -22,6 +23,30 @@ CPU + GPU 双线厂商,AI 加速器(Instinct MI 系列)是 [[NVDA]] 在训练/�
 
 ---
 ## Timeline (newest first)
+
+## 2026-11-19 — 做空报告狙击:固件流入实体清单企业的指控,盘中一度 -11.2%
+**Move:** 昨收 $530.14(11-18 +5.31%);今开 $542、最高 **$555(+4.7%)**;美东 10:27 Hunterbrook 报告发布时股价约 $530,半小时内最低 **$470.56(-11.2%)**,收盘 **$489.19(-7.72%)**
+**Catalyst confidence:** confirmed(报告发布与价格反应:Reuters 等多源);指控本身 **未证实**(报告方自认不知代码来源与许可情况,Reuters 无法独立核实,AMD 当日已回应否认)
+
+**What happened:**
+- **指控(报告《AMD 也有自己的中国问题》,Hunterbrook Media,其基金 Hunterbrook Capital 已公开做空 AMD):** ① [[industry:china-tech]] 浪潮旗下 IEIT Systems(2025 年 3 月被列入美国实体清单)此后仍把至少 **6 个新版 AMD 启动固件**做进 BIOS 更新,最新一版 2026-10-19 发布(Turin EPYC 平台);② 与 IEIT 关系密切的三家销售商(中国 Maginfra、新加坡 Kaytus、加州 Aivres)的固件与 IEIT **99.94% 相同**,疑似换牌销售 IEIT 设计的服务器——而 Aivres 是 AMD 官网列名的 Instinct 服务器伙伴;③ AMD 2025 年有 $6,700 万许可收入来自两家 2019 年已被列清单的中国芯片合资企业。中国占 AMD FY2025 收入 22.4%($77.5 亿,按账单地口径)。
+- **报告的自我限定:** 不知道 IEIT 如何获得代码、是否有许可允许,明言其发现**不构成** AMD 违反出口管制的认定。杀伤力不在坐实,在框架。
+- **AMD 当日回应(否认):** AMD 向 Bloomberg 表示指控"歪曲"(misrepresent)其业务与关系,称遵守美国出口管制法并有严格合规流程;WSJ 同日报 AMD 发言人同样表态。指控仍未证实,无监管跟进。
+- **为什么跌这么狠——位置与时点:** 11 月 AMD 是全场最热的票之一:黄仁勋离职引发的资金轮动 + Anthropic 上市"代理票"叙事,11 月上旬五日约 +45%(据 Finwire),远期 PE 约 30 倍([[NVDA]] 约 10 倍,LSEG 口径);今早又摸高 $555。ANT 首日指示价约 $99.82 不及灰市预期,代理票本就在"卖事实"模式里,报告正好在最高点引爆。
+- **基本面背景(非本次催化):** Q3 营收 $134 亿创纪录(+45%),数据中心 $85.5 亿(+97%);与 [[ANTHROPIC]] 的 2GW MI450 合作(7/22)与 $25 亿 IPO 配售刚落地。
+
+**Causal chain:**
+1. 指控把 AMD 拖进与 NVDA 同类的"中国问题"框架 → AMD 此前被当作相对干净的替代选项,这个相对叙事被打破,是跌幅的核心
+2. 固件是 EPYC 服务器生态的底层:若商务部跟进,敞口不止 AI GPU,还包括服务器 CPU 基本盘 + 三家明面销售商,比单一产品线大
+3. 高位 + 利空突袭放大波动:两日摸高 $555、估值容错极低,半小时 -11% 是拥挤交易的踩踏形态
+4. ANT 靴子落地 → 代理票 sell-the-news 与做空报告叠加,买盘当天缺席
+5. 接下来裁判:AMD 已回应否认,商务部是否表态、IEIT 更新是否继续 — 无监管跟进则属"指控定价"(历史上多为买入机会侧),有跟进则升级为基本面事件
+
+**Sources:**
+- [Reuters: AMD shares slide as report says China links could invite US scrutiny](https://www.reuters.com/world/china/amd-shares-slide-report-says-china-links-could-invite-us-scrutiny-2026-11-19/)
+- [AIStockWire: AMD stock falls on Hunterbrook short](https://aistockwire.com/blog/amd-stock-falls-hunterbrook-short-ieit-china-firmware-blacklist-november-2026)
+- [OfficeChai: AMD shares fall over 9% after Hunterbrook report](https://officechai.com/ai/amd-shares-fall-over-9-after-short-seller-hunterbrook-says-its-firmware-keeps-turning-up-at-a-blacklisted-chinese-server-maker/)
+- [TipRanks/The Fly: AMD says Hunterbrook report misrepresents practices, Bloomberg reports](https://www.tipranks.com/news/the-fly/amd-says-hunterbrook-report-misrepresents-practices-bloomberg-reports-thefly-news) · [WSJ: AMD sheds $67 billion as Anthropic debuts](https://www.wsj.com/livecoverage/anthropic-ipo-stock-market-today-11-19-2026/card/amd-sheds-67-billion-as-anthropic-debuts-kcfCndmmwbmDF1H0hhoD)
 
 ## 2026-09-22 — 首破万亿:AI 硬件全线重估,"第二供货源"叙事兑现
 **Move:** 美东 9/21 +9.9% 收 $615.52(盘中最高 $616.69),市值史上首次突破 $1 万亿;五连涨约 +25%;年内约 +177~185%(日期按"市场反应日"记:美东 9/21 收盘对应北京 9/22,延用 9/17 FOMC 条目的北京口径)

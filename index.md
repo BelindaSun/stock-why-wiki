@@ -16,6 +16,10 @@
 
 ## 条目（最新在上）
 
+- **2026-11-19** · [[ANTHROPIC]] Anthropic — 正式挂牌:史上最大 IPO(发行 $83、募资 $813 亿 + 私募配售 $260 亿),开盘 $111.50 完全稀释估值约 $2 万亿,收盘 $97.17(+17%);最终招股书:前九月收入 $332 亿、总承诺 $9,009 亿、AMZN 持股 14.6% → [stocks/ANTHROPIC.md](stocks/ANTHROPIC.md)
+- **2026-11-19** · [[AMD]] AMD — Hunterbrook 做空报告狙击:指控固件持续流入实体清单企业浪潮 IEIT + 三家关联销售商,盘中一度 -11.2%($555→$470.56);指控未坐实、报告方已公开做空,杀伤力在"相对干净"叙事破裂 → [stocks/AMD.md](stocks/AMD.md)
+- **2026-11-17** · [[NVDA]] NVIDIA — 无黄仁勋首份财报:营收 $1,158 亿(+103%)、Q4 指引 $1,300 亿、FY28 目标上调至 75%,全面超预期;董事会同日明确拒绝黄回归;SEC 据报调查其披露 → [stocks/NVDA.md](stocks/NVDA.md)
+- **2026-11-12** · [[NVDA]] NVIDIA — 黄仁勋辞职:董事会 11/11 接受其辞去 CEO/总裁/董事(8-K 未给理由;背景为婚外情指控 + Megaspeed 国家安全调查),Kress 任临时 CEO、Jones 任首位董事会主席;当日盘中 -14%、收盘 -4.3%,六周自高点 -35% → [stocks/NVDA.md](stocks/NVDA.md)
 - **2026-10-26** · [[ANTHROPIC]] Anthropic — S-1 公开递交(代码 ANT,预计 11 月中旬挂牌):H1 收入 $163 亿(同比约 14 倍,审计口径首落地),净亏损 $807 亿里 $724 亿是非现金公允价值变动、经营亏损仅 $6.93 亿且 Q2 单季转正;算力义务约 $4,170 亿落纸;创始人一股 Class F 握 50.1% 表决权 + 信托选董事会多数 → [stocks/ANTHROPIC.md](stocks/ANTHROPIC.md)
 - **2026-10-14** · [[industry:macro-rates]] 宏观利率 — 9 月 CPI 双超预期(3.7%/2.6%)：**Class A**，10 月加息定价 22%→~44–49%，2Y +14bp 至 4.93%，10Y +10bp 至 5.31%，DXY 18 个月新高 → [industries/macro-rates.md](industries/macro-rates.md)
 - **2026-10-14** · [[industry:macro-rates]] 宏观利率 — B 节点 10/14 强制复核：柴油缓解线关闭（证伪）、政策反应函数验证退役（并入 A 条目）、沙特本土/Aramco 遇袭由 C 升级为 B（驱动三，review 10/19）、霍尔木兹维持 B（review 10/15） → [industries/macro-rates.md](industries/macro-rates.md)

@@ -1,5 +1,5 @@
 # NVDA — NVIDIA Corporation
-_Asset type: stock_ · _Last updated: 2026-09-06_
+_Asset type: stock_ · _Last updated: 2026-11-19_
 
 ## Upstream — what drives it
 - [[TSM]] 台积电 — 独家代工 Nvidia 先进制程 GPU，产能/良率直接决定供给
@@ -21,6 +21,42 @@ _Asset type: stock_ · _Last updated: 2026-09-06_
 
 ---
 ## Timeline (newest first)
+
+## 2026-11-17 — 无黄仁勋首份财报:数字全面超预期,董事会同日关门谢客
+**Move:** 财报日正股收 $155.46(-0.44%);盘后 +4.4~4.8% 至约 $163(期权此前定价约 ±8%,实际波动远小于定价)。股价背景:10/6 历史高点 $239.24 → 11/16 收 $156.14,六周 -35%
+**Catalyst confidence:** confirmed(财报数字:公司发布;SEC 调查为 WSJ 报道、SEC 不予置评)
+
+**What happened:**
+- **数字(Q3 FY27,截至 10/25):** 营收 **$1,158 亿**(+103% 同比、+20% 环比),超一致预期约 $1,090 亿,超自家指引中点 $78 亿(纪录级 beat);调整 EPS $2.68(预期约 $2.47);GAAP 毛利率 74.8%、净利 $653 亿。Q4 指引 **$1,300 亿 ±3%**(预期约 $1,250 亿;注意 Q4 为 14 周,按周算增速约 +4%);毛利率指引降至 71–72%(Rubin 爬坡 + 存储成本)。Kress 把 FY28 收入增速目标从 70% **上调至 75%**(指引口径已剔除中国数据中心销售);另有 $1,500 亿回购授权。
+- **董事会关门:** 黄仁勋当天早些时候公开表示"若董事会邀请,乐意回归",民间请愿签名破 19 万;财报电话会开场,主席 Harvey Jones 一句话终结:"董事会一致接受了他的辞职,不打算恢复黄仁勋的 CEO 职务。"
+- **阴影面:** WSJ 报道 SEC 已就公司披露是否误导投资者展开民事调查(收盘前过线,SEC 不予置评);财长 Bessent 要求董事会 10 天内给说法;总未来承诺升至 **$5,180 亿**(上季 $3,660 亿),存货与应收走高被部分分析师点名;黄仁勋 12/1 将赴国会作证。
+
+**Causal chain:**
+1. 这份财报的真正问题是"没有黄仁勋的英伟达还转不转"——数字给出的答案是照转:营收翻倍、指引超预期、长期目标反上调,经营惯性未被人事地震打断
+2. 董事会选在财报日用"数字 + 一句关门话"同时完成切割:继承问题从"会不会请他回来"变成"永久 CEO 是谁",不确定性换了性质但没消失
+3. 股价六周 -35% 杀的不是业绩(业绩没 miss 过),是治理与国家安全敞口:SEC 调查、国会听证、Megaspeed 探案都还没结论,这一层折价在调查落地前很难完全修复
+4. 对全图:[[AMD]] 的相对吸引力、客户的"第二供货源"意愿都因此上升;但 NVDA 订单簿与 Rubin 节奏未乱,中心节点的供货地位暂无替代者
+5. 接下来裁判:永久 CEO 人选(内部 Ian Buck/Bill Dally 被点名)、独立调查结论、12/1 国会作证、Rubin 量产毛利率能否守住 71–72%
+
+**Sources:** [TheStreet: Stock market today, Nov 17 2026](https://pro.thestreet.com/stock-market-today/2026-11-17) · [SmartAIIntel: Nvidia earnings beat — $115.8B revenue, $130B guidance under Kress](https://smartaiintel.com/articles/nvidia-q3-earnings-beat-115-8-billion-revenue-130-billion-guidance-kress-2026/) · [AInvest: From $239 to $156 in six weeks](https://www.ainvest.com/news/239-156-weeks-nvidia-problem-jensen-huang-2611/)
+
+## 2026-11-12 — 黄仁勋辞职:33 年创始人时代终结
+**Move:** 11/12 开盘一度约 -14%,收盘 **-4.3%**(AP);11 月上旬已跌约 18%、抹去年内涨幅;自事发披露以来市值蒸发约 $7,350 亿(AP)
+**Catalyst confidence:** confirmed(人事变动:8-K + 公司公告);辞职背景为媒体报道(公司文件未给理由)
+
+**What happened:**
+- **文件口径:** 董事会 11/11 接受黄仁勋辞去总裁、CEO 及董事全部职务,即刻生效(11/12 开盘前 8-K);CFO **Colette Kress**(2013 年起任 CFO)任临时 CEO 并兼任 CFO;董事 Harvey C. Jones 任公司**首位**董事会主席;永久 CEO 内外遴选启动。8-K 未给辞职理由、无"分歧"措辞、无离职安排披露。黄仁勋是公司 1993 年创立以来唯一的 CEO。
+- **媒体报道的背景链:** 11/8 董事会宣布独立调查(独立董事 + 外部律师),起因是有报道称黄成为外国情报行动的目标——涉及其与新加坡客户 Megaspeed 高管 Alice Huang 的婚外情指控,美方官员怀疑后者与中国情报有关(中方否认);11/11 又曝出第二段与直属下属的关系报道,董事会当晚开会并接受辞职。商务部/司法部证实对 Megaspeed 的调查 2024 年已开始;公司新设董事会国家安全与出口管制监督委员会。
+- **为什么是大事:** 这不是业绩事件,是全图中心节点的**治理结构事件**:创始人个人品牌 = 公司定价的一部分(产品路线、客户关系、政府关系都系于一人),他的非正常离场让"关键人风险"从理论变成已实现。
+
+**Causal chain:**
+1. 导火索是国家安全框架而非单纯私德:情报目标指控 + 客户 Megaspeed 探案,使事件从花边升级为董事会必须切割的合规/国安风险
+2. 董事会节奏显示决心:11/8 开调查、11/11 接受辞职、11/12 开盘前公告、设首位独立主席 — 一周内完成与创始人切割
+3. 股价杀的是"不确定性 + 关键人折价":当日 -14% 的盘中低点是恐慌定价,收盘 -4.3% 说明市场初步接受"连续性"叙事(Kress 是讲了 13 年英伟达数字的人),但六周 -35% 的总跌幅表明折价未出清
+4. 连锁反应:资金轮动至 [[AMD]](11 月上旬五日约 +45%,见 AMD 11-19 条目注)、客户"第二供货源"意愿上升;但订单与产品节奏当时未见变化
+5. 悬而未决:独立调查结论、SEC 披露调查(见 11-17 条目)、永久 CEO 人选 — 三件事落地前,治理折价是 NVDA 估值的常驻项
+
+**Sources:** [NVIDIA 官方公告: NVIDIA announces CEO transition](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-CEO-Transition/) · [SEC Form 8-K(2026-11-12 递交)](https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvda-20261111.htm) · [Motley Fool: Jensen Huang is out as Nvidia names Colette Kress interim CEO](https://www.fool.com/investing/2026/11/12/jensen-huang-is-out-as-nvidia-names-collette-kress-interim-ceo/) · [Vector News/AP: Nvidia shares fall 4.3% after CEO Jensen Huang quits](https://vector.news/articles/nvidia-shares-fall-4-3-after-ceo-jensen-huang-quits-d3e548d4f4)
 
 ## 2026-09-03 — 斥资 ~$130 亿收购 Hugging Face:从"卖铲子"向上吃到模型分发层
 **Move:** 9/2 签署 definitive agreement,9/3 确认;非纯价格事件,属重大战略 M&A

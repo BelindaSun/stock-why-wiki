@@ -1,12 +1,13 @@
 # ANTHROPIC — Anthropic
-_Asset type: 未上市(private)· S-1 已公开递交(2026-10-26),拟纳斯达克挂牌代码 ANT · 私有估值 $9650 亿(5 月 Series H),IPO 估值讨论 $1.5–2 万亿_ · _Last updated: 2026-10-26_
+_Asset type: 已上市 (NASDAQ: ANT)· 2026-11-19 挂牌 · 发行价 $83,开盘 $111.50 · 完全稀释估值:定价约 $1.5 万亿、开盘约 $2 万亿_ · _Last updated: 2026-11-19_
 
-Claude 系列的缔造者,企业级 AI 龙头。全图另一个**隐形中心节点**。2026 年收入增速堪称史诗级:H1 收入 $163 亿(同比约 14 倍,S-1 审计口径)。2026-10-26 S-1 公开递交,拟以代码 ANT 挂牌纳斯达克(预计 11 月中旬);挂牌前仍以"关联实体"建档。
+Claude 系列的缔造者,企业级 AI 龙头。全图另一个**隐形中心节点**。2026-11-19 以史上最大 IPO 正式挂牌(代码 ANT):发行募资 $813 亿 + 同步私募配售 $260 亿。最终招股书口径:2026 年前九月收入 $332 亿,10 月底 run rate 约 $810 亿。
 
 ## Upstream — what drives it（钱和算力从哪来）
 - [[AMZN]] 亚马逊 — 投资至多 $250 亿,提供至多 5GW 算力;AWS Bedrock 卖 Claude
 - [[GOOGL]] 谷歌 — 投资至多 $400 亿 + 5GW 次世代 TPU 算力
 - [[AVGO]] 博通 — 与谷歌合作 TPU 算力
+- [[AMD]] — 7/22 战略合作:部署至多 2GW MI450(Helios 机架,首个 1GW 2027 上半年);AMD 承诺至多 $50 亿股权投资(IPO 私募配售已落 $25 亿),Anthropic 对 AMD 采购额可 >$200 亿
 - [[TSM]] / 存储三强 — 算力硬件的更上游
 
 ## Downstream — what it affects（它牵动谁）
@@ -21,6 +22,26 @@ Claude 系列的缔造者,企业级 AI 龙头。全图另一个**隐形中心节
 
 ---
 ## Timeline (newest first)
+
+## 2026-11-19 — 正式挂牌:史上最大 IPO,首日冲高回落
+**Move:** 发行价 **$83**(11/18 定价,高于 $70–78 区间,发行规模从 8.25 亿股上调至 **9.8 亿股**),募资 **$813 亿**,超 SpaceX 6 月 $750 亿成史上最大 IPO;另有 $260 亿同步私募配售(七家科技公司按发行价买无投票权股),总融资 $1,073 亿。首日开盘 **$111.50(+34.3%)**,完全稀释估值约 $2 万亿(定价时约 $1.5 万亿);开盘一小时内回落跌破 $100,收盘 **$97.17(+17.1%;盘中最高 $115.10、最低 $92.72)**。绿鞋另有至多 1.47 亿股(约 $122 亿,11/20 前可行权)
+**Catalyst confidence:** confirmed(定价/开盘/收盘:多源一致)
+
+**What happened:**
+- **需求端先兑现:** 认购约 6–7 倍,定价高于区间顶、规模上调;散户约分到 15%(约 $120 亿)。Amodei 姐弟在纳斯达克敲钟。
+- **最终招股书新数字(取代 10-26 条目的 H1 口径):** 2026 年前九月收入 **$332.4 亿**(同比约 +1,200%),净亏损 $1,040 亿(仍以公允价值变动为主);10 月底 run rate 约 **$810 亿**。发行后持股:[[AMZN]] 约 14.6%、[[GOOGL]] 约 13.4%。
+- **总承诺更新:** 修订版 S-1 披露购买承诺 + 租赁合计 **$9,009 亿**(10-26 条目引 Skimwire 的约 $4,170 亿只是其中一部分口径)。点名大线:[[AVGO]] TPU 租赁 $1,610 亿、SpaceXAI GPU 容量至多 $1,205 亿、[[GOOGL]] 云 $1,210 亿、[[AMZN]] $1,100 亿、[[MSFT]] 约 $472–492 亿、Nscale 至多 $446 亿、Lambda $413 亿、[[AMD]] >$200 亿;其中约 $1,862 亿带终止权或前置条件(Lambda 一单 $349 亿已因设施租赁未落实变为可终止)。
+- **私募配售名单:** [[NVDA]]、[[GOOGL]] 各 $100 亿,[[AMD]] $25 亿(其 $50 亿承诺的一部分),[[AVGO]]/[[MU]]/[[MSFT]] 各 $10 亿,[[TSM]] $5 亿——供应链集体按发行价上车。
+- **解禁结构(据 S-1 核实):** 第一年 23 个解禁日;首日非创始人高管/员工/顾问最多 **3.15 亿股**获可卖资格(其持股的 10%);早期投资人自 12/15 起第 27/48/62/76 天分批;2026 年报后员工再解禁 35%;创始人锁最久(至多一年)。指数:Morningstar 美股总市场指数 5 个交易日后纳入,纳斯达克 100 于 12/18 纳入。
+
+**Causal chain:**
+1. 定价 $83 高于区间顶 + 规模上调 + 约 6–7 倍认购 → 需求是真的;但开盘 $111.50 把完全稀释估值一步顶到约 $2 万亿(约 10 月底 run rate 的 25 倍),好消息基本定价完毕
+2. 首日冲高回落(一小时跌破 $100)不是需求问题,是价格问题:这个估值下"好但不够惊艳"就是回落;叠加首日即有 3.15 亿股获解禁资格的结构性抛压预期,以及大盘连跌的逆风
+3. 私募配售是信号:NVDA/GOOGL 各 $100 亿、AMD $25 亿按发行价买无投票权股 → "投资 + 卖算力"双向绑定再加一层,且股东名单第一次把 NVDA/MSFT/TSM/MU 全装了进来
+4. 总承诺 $9,009 亿落纸 → 下游订单簿确定性空前(AVGO/SpaceXAI/GOOGL/AMZN/MSFT/AMD),但约 $1,862 亿带终止权——承诺 ≠ 铁单,执行节奏押在收入增速能否跟上
+5. 接下来裁判:12/18 纳指 100 纳入(被动资金)、12/15 起早期投资人分批解禁、第一次财报(员工再解禁 35% 的窗口)——价格发现期至少持续到首份财报
+
+**Sources:** [PitchBook: Anthropic IPO live updates](https://pitchbook.com/anthropic-ipo-live-updates) · [Global Market News: Anthropic stock surges 34% in historic IPO](https://globalmarketnews.com/anthropic-stock-surges-34-in-historic-ipo-why-buying-now-could-be-a-mistake/) · [Crypto Briefing: Anthropic tops $2 trillion valuation in Nasdaq debut](https://cryptobriefing.com/anthropic-opens-34-above-ipo-price/) · [Le Private Banker: Anthropic opens at $111.50](https://leprivatebanker.com/2026/11/19/anthropic-opens-at-111-50-34-above-its-83-ipo-price-as-retail-demand-outruns-allocation/) · [AInvest: Anthropic's filing says AMD won a real order](https://www.ainvest.com/news/anthropic-filing-amd-won-real-order-amd-2-bill-2611/) · [Invezz: ANT closes at $97.17, up 17% on first day](https://invezz.com/news/2026/11/19/anthropic-stock-first-day-close-2026-11-19/) · [Invezz: ANT closes at $97.17, up 17% on its first day](https://invezz.com/news/2026/11/19/anthropic-stock-first-day-close-2026-11-19/) · [The Desk: Anthropic ends its first trading day at $97.17](https://www.thedeskresearch.com/publications/anthropic-ends-its-first-trading-day-at-97-6ca31e62)
 
 ## 2026-10-26 — S-1 公开递交:私有传闻数字第一次被审计口径替换
 **Move:** 未上市(无价格);S-1 于美东 10/26 09:00 被 SEC 接受公开(6 月 1 日已秘密递交草稿),拟纳斯达克全球精选市场挂牌,代码 **ANT**;发行股数/价格区间未定,公司与老股东共同售股;路演传最快 11/9 当周、挂牌目标感恩节(11/26)前(据报道)
