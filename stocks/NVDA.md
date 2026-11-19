@@ -29,7 +29,7 @@ _Asset type: stock_ · _Last updated: 2026-11-19_
 **What happened:**
 - **数字(Q3 FY27,截至 10/25):** 营收 **$1,158 亿**(+103% 同比、+20% 环比),超一致预期约 $1,090 亿,超自家指引中点 $78 亿(纪录级 beat);调整 EPS $2.68(预期约 $2.47);GAAP 毛利率 74.8%、净利 $653 亿。Q4 指引 **$1,300 亿 ±3%**(预期约 $1,250 亿;注意 Q4 为 14 周,按周算增速约 +4%);毛利率指引降至 71–72%(Rubin 爬坡 + 存储成本)。Kress 把 FY28 收入增速目标从 70% **上调至 75%**(指引口径已剔除中国数据中心销售);另有 $1,500 亿回购授权。
 - **董事会关门:** 黄仁勋当天早些时候公开表示"若董事会邀请,乐意回归",民间请愿签名破 19 万;财报电话会开场,主席 Harvey Jones 一句话终结:"董事会一致接受了他的辞职,不打算恢复黄仁勋的 CEO 职务。"
-- **阴影面:** WSJ 报道 SEC 已就公司披露是否误导投资者展开民事调查(收盘前过线,SEC 不予置评);财长 Bessent 要求董事会 10 天内给说法;总未来承诺升至 **$5,180 亿**(上季 $3,660 亿),存货与应收走高被部分分析师点名;黄仁勋 12/1 将赴国会作证。
+- **阴影面:** WSJ 报道 SEC 已就公司披露是否误导投资者展开民事调查(收盘前过线,SEC 不予置评);财长 Bessent 要求董事会 10 天内给说法;总未来承诺升至 **$5,180 亿**(上季 $3,660 亿),存货与应收走高被部分分析师点名;黄仁勋 12/1 将赴国会作证。**口径之辨(重要):** 两名分析师流传的"$5,300 亿担保"说法把采购承诺/租赁/投资与真担保混为一谈;Kress 在财报后 CNBC《Mad Money》访谈中澄清,公司披露的担保上限约 **$1,180 亿**——其中约 $1,050 亿集中于俄亥俄 Portsmouth 一地(SB Energy 园区,约 4.5GW、OpenAI 20 年租约、残值型担保且 OpenAI 需偿付),其余为电力/硬件融资 $95 亿 + neocloud 土地 $35 亿;担保只在伙伴建成并落实融资后才分阶段生效、建设停摆则责任取消,至今未赔付一分。与 $5,180 亿"未来承诺"不是同一口径,别被标题数字吓住。
 
 **Causal chain:**
 1. 这份财报的真正问题是"没有黄仁勋的英伟达还转不转"——数字给出的答案是照转:营收翻倍、指引超预期、长期目标反上调,经营惯性未被人事地震打断
@@ -38,7 +38,7 @@ _Asset type: stock_ · _Last updated: 2026-11-19_
 4. 对全图:[[AMD]] 的相对吸引力、客户的"第二供货源"意愿都因此上升;但 NVDA 订单簿与 Rubin 节奏未乱,中心节点的供货地位暂无替代者
 5. 接下来裁判:永久 CEO 人选(内部 Ian Buck/Bill Dally 被点名)、独立调查结论、12/1 国会作证、Rubin 量产毛利率能否守住 71–72%
 
-**Sources:** [TheStreet: Stock market today, Nov 17 2026](https://pro.thestreet.com/stock-market-today/2026-11-17) · [SmartAIIntel: Nvidia earnings beat — $115.8B revenue, $130B guidance under Kress](https://smartaiintel.com/articles/nvidia-q3-earnings-beat-115-8-billion-revenue-130-billion-guidance-kress-2026/) · [AInvest: From $239 to $156 in six weeks](https://www.ainvest.com/news/239-156-weeks-nvidia-problem-jensen-huang-2611/)
+**Sources:** [TheStreet: Stock market today, Nov 17 2026](https://pro.thestreet.com/stock-market-today/2026-11-17) · [SmartAIIntel: Nvidia earnings beat — $115.8B revenue, $130B guidance under Kress](https://smartaiintel.com/articles/nvidia-q3-earnings-beat-115-8-billion-revenue-130-billion-guidance-kress-2026/) · [AInvest: From $239 to $156 in six weeks](https://www.ainvest.com/news/239-156-weeks-nvidia-problem-jensen-huang-2611/) · [AInvest: $518B 承诺与 $118B 担保口径拆解](https://www.ainvest.com/news/nvidia-beat-6-7-billion-hours-gain-faded-1-2611/) · [TradingView/SeekingAlpha: Kress CNBC 访谈纪要](https://www.tradingview.com/news/seekingalpha:17ab588c1094b:0-interim-ceo-colette-kress-on-nvidia-earnings-revenue-growth-estimates-and-hyperscaler-demand/)
 
 ## 2026-11-12 — 黄仁勋辞职:33 年创始人时代终结
 **Move:** 11/12 开盘一度约 -14%,收盘 **-4.3%**(AP);11 月上旬已跌约 18%、抹去年内涨幅;自事发披露以来市值蒸发约 $7,350 亿(AP)
